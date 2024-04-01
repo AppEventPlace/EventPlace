@@ -1,52 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-//import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import {MenuWeb} from '.Menus/MenuWeb';
-//import MenuMovil from '.Menus/MenuMovil';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+//import MenuWeb from "./src/menu/MenuWeb";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import PerfilScreen from "./screens/Perfil";
+import NotificacionesScreen from "./screens/Notificaciones";
+import WallScreen from "./screens/Wall";
+import BoletasScreen from "./screens/Boletas";
+import ChatScreen from "./screens/Chat";
 
-function PerfilScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function CreacionEventoScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
-/*const Menu = Platform.select({
-    //ios : () => require(MenuMovil),
-    default : () => require('MenuMovil'),
-    web : () => require('MenuWeb'),
-})();*/
+
+const MenuMovil = () =>{
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Notificaciones" component={NotificacionesScreen} />
+        <Tab.Screen name="Chat" component={ChatScreen} />
+        <Tab.Screen name="Wall" component={WallScreen} />
+        <Tab.Screen name="Mis Boletas" component={BoletasScreen} />
+        <Tab.Screen name="Mi Perfil" component={PerfilScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+const Menu = () =>{
+  
+   if(Platform.OS === 'android') { 
+    return <MenuMovil />; 
+  } else{
+    
+    return (
+  <MenuMovil /> 
+  );}
+};
 
 export default function App() {
-  return (
-    //<Menu/>
-    <NavigationContainer>
-                <Tab.Navigator>
-                    <Tab.Screen name="Perfil" component={PerfilScreen}/>
-                    <Tab.Screen name="Creación Evento" component={CreacionEventoScreen}/>
-                </Tab.Navigator>
-            </NavigationContainer>
-  );
+  return <Menu />;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
