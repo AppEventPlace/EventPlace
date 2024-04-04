@@ -20,6 +20,7 @@ import StackCreacionUsuario from "./constants/StackCreacionUsuario";
 import CreaConstrasena from "./screens/screensStack/CreaContrasena";
 import CreaCuenta from "./screens/screensStack/CreaCuenta";
 import Gustos from "./screens/screensStack/Gustos";
+import EstadoAuth from "./src/EstadoAuth";
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
 
@@ -73,7 +74,7 @@ const CreacionStack = () => {
           component={
             creacion.name === "CreaCuenta"
               ? CreaCuenta
-              : creacion.name === "CreacionConstrasena"
+              : creacion.name === "CreacionContrasena"
               ? CreaConstrasena
               : Gustos
           }

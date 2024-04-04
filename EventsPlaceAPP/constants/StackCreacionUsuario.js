@@ -4,8 +4,8 @@ export default [
     label: "Crea tu cuenta",
   },
   {
-    name: "CreacionContraseña",
-    label: " Crea tu cuenta",
+    name: "CreacionContrasena",
+    label: "Crea tu contraseña",
   },
   {
     name: "Gustos",
