@@ -1,5 +1,9 @@
 export default [
   {
+    name: "Loguin",
+    label: "Iniciar sesion",
+  },
+  {
     name: "CreaCuenta",
     label: "Crea tu cuenta",
   },

@@ -19,6 +19,7 @@ import PropTypes from "prop-types";
 import StackCreacionUsuario from "./constants/StackCreacionUsuario";
 import CreaConstrasena from "./screens/screensStack/CreaContrasena";
 import CreaCuenta from "./screens/screensStack/CreaCuenta";
+import Loguin from "./screens/screensStack/Loguin";
 import Gustos from "./screens/screensStack/Gustos";
 import EstadoAuth from "./src/EstadoAuth";
 //Creación de menú a partir --------------------
@@ -72,7 +73,9 @@ const CreacionStack = () => {
           key={creacion.name}
           name={creacion.label}
           component={
-            creacion.name === "CreaCuenta"
+            creacion.name === "Loguin"
+              ? Loguin
+              :creacion.name === "CreaCuenta"
               ? CreaCuenta
               : creacion.name === "CreacionContrasena"
               ? CreaConstrasena
