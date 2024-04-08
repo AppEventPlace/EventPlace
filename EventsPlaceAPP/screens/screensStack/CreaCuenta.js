@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Text, View, StyleSheet, Button, TextInput, Modal, TouchableOpacity, Pressable
+  Text, View, StyleSheet, TextInput, TouchableOpacity
 } from "react-native";
 import DatePicker from "react-native-modern-datepicker";
 import { useState } from "react";
@@ -61,7 +61,7 @@ const CreaCuenta = ({ navigation }) => {
             />
           </View>
           <View style={style.ButonMarginTop} >
-          <Boton label="Continuar" />
+            <Boton label="Continuar" />
           </View>
         </View>
 
@@ -97,8 +97,8 @@ const CreaCuenta = ({ navigation }) => {
 const style = StyleSheet.create({
   PerfilContainer: {
     backgroundColor: "#F4F5FE",
-    width: '100%',         // Ancho de a imagen
-    height: '100%',        // Alto de la imagen
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
     position: 'relative',
     paddingHorizontal: 16,
@@ -106,23 +106,24 @@ const style = StyleSheet.create({
   },
   HeaderContainer: {
     marginTop: 67,
-    width: '100%',         // Ancho de a imagen
-    height: 25,        // Alto de la imagen
+    width: '100%',
+    height: 25,
     ////borderWidth: 1,
     //position: 'absolute',
   },
   ProgressBar: {
     marginTop: 16,
-    width: '100%',         // Ancho de a imagen
-    height: 10,        // Alto de la imagen
+    width: '100%',
+    height: 10,
     ////borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   RegisterTex: {
     top: 16,
-    width: '100%',         // Ancho de a imagen
-    height: 29,        // Alto de la imagen
+
+    width: '100%',
+    height: 29,
     //borderWidth: 1,
     fontWeight: '700',
     fontSize: 24,
@@ -172,10 +173,12 @@ const style = StyleSheet.create({
     paddingVertical: 16,
     color: '#0F172A',
     fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 20,
     borderBottomColor: '#A1A5A9',
     borderBottomWidth: StyleSheet.hairlineWidth = 3,
   },
-  ButonMarginTop:{
+  ButonMarginTop: {
     marginTop: 24,
   },
 });
