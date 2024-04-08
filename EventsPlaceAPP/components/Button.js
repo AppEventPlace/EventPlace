@@ -1,6 +1,7 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
+import IconSVG from "../assets/LogoSVG"
 
-export default function Button({ label, theme }) {
+export default function Button({ label, theme, onPress }) {
     if (theme === "primary") {
         return (
             <View style={styles.buttonContainer2}>
@@ -11,6 +12,27 @@ export default function Button({ label, theme }) {
                     <Text style={styles.buttonLabel_1}>{label}</Text>
                 </Pressable>
             </View>
+        );
+    }
+    if (theme === "Registrarme") {
+        return (
+            <View style={styles.buttonContainer3}>
+                <Pressable style={styles.button}
+                    onPress={onPress}>
+                    <Text style={styles.buttonLabel_1}>{label}</Text>
+                </Pressable>
+            </View>
+        );
+    }
+
+    if (theme === "BackCheckron") {
+        return (
+            <Pressable style={styles.BackButton}
+                onPress={onPress}>
+                <IconSVG theme='BackCheckron' />
+                <Text style={styles.BackButtonTex}>{label}</Text>
+            </Pressable>
+
         );
     }
 
@@ -41,8 +63,13 @@ const styles = StyleSheet.create({
         padding: 3,
         backgroundColor: "#F4F5FE",
     },
+    buttonContainer3: {
+        width: 94,
+        height: '100%',
+        alignItems: 'flex-end',
+        //borderWidth : 1,
+    },
     button: {
-        borderRadius: 10,
         width: '100%',
         height: '100%',
         alignItems: 'center',
@@ -57,7 +84,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textDecorationLine: 'underline',
         color: '#515EC0',
-    }
+    },
+    BackButton: {
+        width: 75,
+        height: 25,
+        //borderWidth: 1,
+        gap: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    BackButtonTex: {
+        fontSize: 12,
+        fontWeight: '500',
+        color: '#0F172A',
+        lineHeight: 15,
+    },
 });
-
-

@@ -69,7 +69,10 @@ const CreacionStack = () => {
   return (
     <Stack.Navigator>
       {StackCreacionUsuario.map((creacion) => (
-        <Stack.Screen
+        <Stack.Screen 
+        options={{
+          headerShown: false
+        }}
           key={creacion.name}
           name={creacion.label}
           component={

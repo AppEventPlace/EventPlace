@@ -1,14 +1,17 @@
 import React from "react";
-import { Text, View, StyleSheet, Button, TextInput } from "react-native";
-import Logo from "../../assets/LogoSVG"
-import Utton from "../../components/Button"
+import { Text, View, StyleSheet, Pressable, TextInput } from "react-native";
+import IconSVG from "../../assets/LogoSVG"
+import Boton from "../../components/Button"
 
 // npx expo install react-native-svg
-const Gustos = ({ navigation }) => {
+const Login = ({ navigation }) => {
     return (
         <View style={style.PerfilContainer}>
+            <View style={style.Registrarme}>
+                <Boton theme="Registrarme" label="Registrarme" onPress={() => navigation.navigate("Crea tu cuenta")} />
+            </View>
             <View style={style.LogoContainer}>
-                <Logo />
+                <IconSVG theme='LogoSvg' />
             </View>
             <View style={style.LoginContainer}>
                 <View style={style.Input}>
@@ -25,17 +28,28 @@ const Gustos = ({ navigation }) => {
                         style={style.TexInput}
                     />
                     <View style={[style.footerContainer, { marginTop: 24, }]}>
-                        <Utton label="Iniciar sesión" />
+                        <Boton label="Iniciar sesión" />
                     </View>
-
-                    {/* <Button
-                        title="Iniciar sesión"
-                        onPress={() => navigation.navigate("Crea tu contraseña")}
-                    /> */}
                 </View>
             </View>
-            <View style={[style.forget_password, { marginTop: 24, }]}>
-                <Utton theme="primary" label="Olvide mi contraseña" />
+            <View style={[style.forget_password, { marginTop: 18.5, }]}>
+                <Boton theme="primary" label="Olvide mi contraseña" />
+            </View>
+            <View style={style.AnotherLogin}>
+                <View style={style.Underscore} />
+                <View>
+                    <Text style={style.TexAnotherLogin}>Inicio sesion con otro medio</Text>
+                </View>
+                <View style={style.Underscore} />
+            </View>
+            <View style={style.AnotherLoginButton}>
+                <Pressable style={[style.styleButton, { backgroundColor: '#FFFFFF' }]}>
+                    <IconSVG theme='Google' />
+                </Pressable>
+                <Pressable style={[style.styleButton, { backgroundColor: '#1877F2' }]}>
+                    <View><IconSVG theme='Facebook' /></View>
+
+                </Pressable>
             </View>
         </View>
     );
@@ -49,7 +63,7 @@ const style = StyleSheet.create({
         alignItems: 'center',
     },
     LogoContainer: {
-        marginTop: 89,
+        marginTop: 23,
     },
     LoginContainer: {
         marginTop: 40,
@@ -94,13 +108,51 @@ const style = StyleSheet.create({
         marginTop: 40,
         fontSize: 16,
 
-    }
+    },
+    AnotherLogin: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 326,
+        marginTop: 18.5
+    },
+    Underscore: {
+        flex: 1,
+        height: 1,
+        backgroundColor: '#BDBDBD'
+    },
+    TexAnotherLogin: {
+        width: 195,
+        textAlign: 'center'
+    },
+    AnotherLoginButton: {
+        paddingTop: 20,     // Bajar imagen
+        height: 86,
+        //width: '83%',
+        width: 326,
+        //borderWidth: 1,
+        flexDirection: 'row',
+        //alignItems: 'center', 
+        justifyContent: 'space-between',
+        paddingHorizontal: 22,
+    },
+    styleButton: {
+        borderRadius: 10,
+        //width: '47%',
+        width: 132,
+        height: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+    Registrarme: {
+        marginTop: 107,
+        width: '100%',
+        height: 22,
+        //borderWidth: 1,
+        paddingRight: 28,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+    },
 });
 
-export default Gustos;
-
-
-
-
-
-
+export default Login;
