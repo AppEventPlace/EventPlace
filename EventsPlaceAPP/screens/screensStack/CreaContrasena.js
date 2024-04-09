@@ -7,10 +7,7 @@ const CreaConstrasena = ({ navigation }) => {
   return (
     <View style={style.PerfilContainer}>
       <Text> crea constraseña </Text>
-      <Button
-        title="Atrás"
-        onPress={() => navigation.navigate("Crea tu cuenta")}
-      />
+      <Button title="Atrás" />
       <Button title="Siguiente" onPress={() => navigation.navigate("Gustos")} />
     </View>
   );

@@ -36,6 +36,7 @@ const MenuMovil = () => {
             tabBarShowLabel: false,
             tabBarActiveBackgroundColor: "#E4E5E5",
             tabBarIcon: () => cargarIcono(Items.source),
+            tintColor: "black",
           }}
           component={
             Items.name === "Notificaciones"
@@ -69,16 +70,16 @@ const CreacionStack = () => {
   return (
     <Stack.Navigator>
       {StackCreacionUsuario.map((creacion) => (
-        <Stack.Screen 
-        options={{
-          headerShown: false
-        }}
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
           key={creacion.name}
           name={creacion.label}
           component={
             creacion.name === "Loguin"
               ? Loguin
-              :creacion.name === "CreaCuenta"
+              : creacion.name === "CreaCuenta"
               ? CreaCuenta
               : creacion.name === "CreacionContrasena"
               ? CreaConstrasena
@@ -91,7 +92,7 @@ const CreacionStack = () => {
 };
 //fin creacion stack
 //constante autenticacion
-const isUserAuthenticated = false;
+const isUserAuthenticated = true;
 
 const Pantalla = () => {
   return (
@@ -121,7 +122,7 @@ const cargarIcono = (imagen) => {
       source={imagen}
       style={{
         resizeMode: "contain",
-        tintColor: "#0F172A",
+        tintColor: "black",
       }}
     />
   );
