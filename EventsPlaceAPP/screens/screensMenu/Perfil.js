@@ -26,7 +26,7 @@ const StackPerfilScreen = () => {
               ? EditarPerfilScreen
               : Perfil.name === "EventosCreados"
               ? EventosPerfilScreen
-              : PerfilPrincipalScreen
+              : EstadisticasScreen
           }
         />
       ))}

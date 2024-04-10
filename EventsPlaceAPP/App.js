@@ -23,6 +23,7 @@ import Loguin from "./screens/screensStack/Loguin";
 import Gustos from "./screens/screensStack/Gustos";
 import VerifyIdentity from "./screens/screensStack/VerifyIdentity";
 import EstadoAuth from "./src/EstadoAuth";
+import SvgLogo from "./assets/LogoSVG";
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
 
@@ -34,9 +35,10 @@ const MenuMovil = () => {
           key={Items.name}
           name={Items.name}
           options={{
+            headerShown: false,
             tabBarShowLabel: false,
             tabBarActiveBackgroundColor: "#E4E5E5",
-            tabBarIcon: () => cargarIcono(Items.source),
+            tabBarIcon: ({ color, size }) => <SvgLogo theme={Items.source} />,
             tintColor: "black",
           }}
           component={
@@ -82,7 +84,7 @@ const CreacionStack = () => {
               ? Loguin
               : creacion.name === "CreaCuenta"
               ? CreaCuenta
-              :creacion.name === "VerifyIdentity"
+              : creacion.name === "VerifyIdentity"
               ? VerifyIdentity
               : creacion.name === "CreacionContrasena"
               ? CreaConstrasena

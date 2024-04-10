@@ -1,27 +1,27 @@
 export default [
   {
     name: "Notificaciones",
-    source: require("../assets/Icon_notifications.png"),
+    source: "NotificacionesLogo",
     iconName: "NotificacionesPic",
   },
   {
     name: "Chat",
-    source: require("../assets/Icon_chat.png"),
+    source: "ChatLogo",
     iconName: "ChatPic",
   },
   {
     name: "Wall",
-    source: require("../assets/Icon_wall.png"),
+    source: "WallLogo",
     iconName: "WallPic",
   },
   {
     name: "Mis Boletas",
-    source: require("../assets/Icon_ticket.png"),
+    source: "BoletasLogo",
     iconName: "BoletasPic",
   },
   {
     name: "Mi Perfil",
-    source: require("../assets/Icon_profile.png"),
+    source: "PerfilLogo",
     iconName: "PerfilPic",
   },
 ];
