@@ -21,6 +21,7 @@ import CreaConstrasena from "./screens/screensStack/CreaContrasena";
 import CreaCuenta from "./screens/screensStack/CreaCuenta";
 import Loguin from "./screens/screensStack/Loguin";
 import Gustos from "./screens/screensStack/Gustos";
+import VerifyIdentity from "./screens/screensStack/VerifyIdentity";
 import EstadoAuth from "./src/EstadoAuth";
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
@@ -81,6 +82,8 @@ const CreacionStack = () => {
               ? Loguin
               : creacion.name === "CreaCuenta"
               ? CreaCuenta
+              :creacion.name === "VerifyIdentity"
+              ? VerifyIdentity
               : creacion.name === "CreacionContrasena"
               ? CreaConstrasena
               : Gustos
@@ -92,7 +95,7 @@ const CreacionStack = () => {
 };
 //fin creacion stack
 //constante autenticacion
-const isUserAuthenticated = true;
+const isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (

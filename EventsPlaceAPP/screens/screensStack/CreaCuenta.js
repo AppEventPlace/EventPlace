@@ -1,7 +1,13 @@
 import React from "react";
 import {
-  Text, View, StyleSheet, TextInput, TouchableOpacity
+  Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView
 } from "react-native";
+import {
+  SafeAreaView,
+  SafeAreaProvider,
+  SafeAreaInsetsContext,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import DatePicker from "react-native-modern-datepicker";
 import { useState } from "react";
 
@@ -22,57 +28,89 @@ const CreaCuenta = ({ navigation }) => {
   }
 
   return (
-    <View style={style.PerfilContainer}>
-      <View style={style.HeaderContainer}>
-        <Boton theme="BackCheckron" label="Atras" onPress={() => navigation.navigate("Iniciar sesion")} />
-      </View>
-      <View style={style.ProgressBar}>
-        <IconSVG theme='ProgressBar' progress='90' />
-      </View>
-      <Text style={style.RegisterTex}>Registrarme</Text>
-      <View style={style.RegisterContainer}>
-        <View style={style.Container}>
-          <View style={style.SubContainer}>
-            <Text style={style.TexContainer}>Nombre y apellido</Text>
-            <TextInput
-              placeholder="Ingresa tu correo electrónico"
-              style={style.TexInput}
-            />
+    <SafeAreaView>
+    <ScrollView>
+      <View style={style.PerfilContainer}>
+        <View style={style.HeaderContainer}>
+          <Boton theme="BackCheckron" label="Atras" onPress={() => navigation.navigate("Iniciar sesion")} />
+        </View>
+        <View style={style.ProgressBar}>
+          <IconSVG theme='ProgressBar' progress='90' />
+        </View>
+        <Text style={style.RegisterTex}>Registrarme</Text>
+        <View style={style.RegisterContainer}>
+          <View style={style.Container}>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Nombre y apellido</Text>
+              <TextInput
+                placeholder="Ingresa tu correo electrónico"
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Fecha de nacimiento</Text>
+              <TextInput
+                placeholder="Ingresa la fecha de nacimiento"
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Número de celular</Text>
+              <TextInput
+                placeholder="Ingresa tu número celular"
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Correo electrónico</Text>
+              <TextInput
+                placeholder="Ingresa tu nombre correo electrónico"
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Correo electrónico</Text>
+              <TextInput
+                placeholder="Ingresa tu nombre correo electrónico"
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Crea contraseña</Text>
+              <TextInput
+                placeholder="Ingresa tu nueva contraseña "
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Confirma contraseña</Text>
+              <TextInput
+                placeholder="Confirma tu nueva contraseña"
+                style={style.TexInput}
+              />
+            </View>
+            <View style={style.SubContainer}>
+              <Text style={style.TexContainer}>Nombre de usuario</Text>
+              <TextInput
+                placeholder="Ingresa tu nombre de usuario"
+                style={style.TexInput}
+              />
+            </View>
           </View>
-          <View style={style.SubContainer}>
-            <Text style={style.TexContainer}>Fecha de nacimiento</Text>
-            <TextInput
-              placeholder="Ingresa la fecha de nacimiento"
-              style={style.TexInput}
-            />
-          </View>
-          <View style={style.SubContainer}>
-            <Text style={style.TexContainer}>Número de celular</Text>
-            <TextInput
-              placeholder="Ingresa tu número celular"
-              style={style.TexInput}
-            />
-          </View>
-          <View style={style.SubContainer}>
-            <Text style={style.TexContainer}>Correo electrónico</Text>
-            <TextInput
-              placeholder="Ingresa tu nombre correo electrónico"
-              style={style.TexInput}
-            />
+          <View style={style.ButonMarginTop} >
+            <Boton label="Aceptar términos y condiciones y tratamiento de datos personales." />
           </View>
           <View style={style.ButonMarginTop} >
             <Boton label="Continuar" />
           </View>
         </View>
-
-      </View>
-      {/* <Text> Nombre y apellido </Text>
+        {/* <Text> Nombre y apellido </Text>
       <TextInput placeholder="Ingresa tu nombre y apellido" />
       <Text>Fecha de nacimiento</Text>
       <TouchableOpacity onPress={handleOnPress}>
         <Text>Seleccionar fecha</Text>
       </TouchableOpacity> */}
-      {/* <Modal animationType="slide" transparent={true} visible={open}>
+        {/* <Modal animationType="slide" transparent={true} visible={open}>
         <View style={{ position: "center" }}>
           <View>
             <DatePicker
@@ -86,11 +124,13 @@ const CreaCuenta = ({ navigation }) => {
           </View>
         </View>
       </Modal> */}
-      {/* <Button
+        {/* <Button
         title="Continuar"
         onPress={() => navigation.navigate("Crea tu contraseña")}
       /> */}
-    </View>
+      </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -105,7 +145,7 @@ const style = StyleSheet.create({
     paddingBottom: 200,
   },
   HeaderContainer: {
-    marginTop: 67,
+    marginTop: 20,
     width: '100%',
     height: 25,
     ////borderWidth: 1,
@@ -121,7 +161,6 @@ const style = StyleSheet.create({
   },
   RegisterTex: {
     top: 16,
-
     width: '100%',
     height: 29,
     //borderWidth: 1,
@@ -132,7 +171,7 @@ const style = StyleSheet.create({
     letterSpacing: 0.01,
   },
   RegisterContainer: {
-    top: 16,
+    top: 16, //top: 32,
     display: 'flex',
     //borderWidth: 1,
     alignItems: 'center',
@@ -147,6 +186,10 @@ const style = StyleSheet.create({
     //borderWidth: 1,
     width: '100%',
     height: '83.4%',
+    backgroundColor: 'white',
+    elevation: 5,
+    borderRadius: 12,
+    marginTop: 16,
   },
   SubContainer: {
     display: "flex",

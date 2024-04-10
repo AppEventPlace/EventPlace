@@ -103,13 +103,13 @@ const Login = ({ navigation }) => {
 const style = StyleSheet.create({
     PerfilContainer: {
         backgroundColor: "#F4F5FE",
-        width: '100%',         // Ancho de a imagen
-        height: '100%',        // Alto de la imagen
+        width: '100%',         
+        height: '100%',        
         alignItems: 'center',
     },
     RegisterContainer: {
-        width: 390,         // Ancho de
-        height: 25,        // Alto
+        width: 390,         
+        height: 25,        
         marginTop: 67,
         //borderWidth: 1,
         alignItems: 'flex-end',

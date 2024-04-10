@@ -6,6 +6,9 @@ export default [
   {
     name: "CreaCuenta",
     label: "Crea tu cuenta",
+  },{
+    name: "VerifyIdentity",
+    label: "Verify identity",
   },
   {
     name: "CreacionContrasena",
