@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView
 } from "react-native";
-import {
-  SafeAreaView,
-  SafeAreaProvider,
-  SafeAreaInsetsContext,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import DatePicker from "react-native-modern-datepicker";
-import { useState } from "react";
+
 
 import IconSVG from "../../assets/LogoSVG"
 import Boton from "../../components/Button"
@@ -28,16 +23,34 @@ const CreaCuenta = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView>
-    <ScrollView>
-      <View style={style.PerfilContainer}>
+    <SafeAreaView backgroundColor="#F4F5FE">
+      <ScrollView style={style.PerfilContainer}>
         <View style={style.HeaderContainer}>
           <Boton theme="BackCheckron" label="Atras" onPress={() => navigation.navigate("Iniciar sesion")} />
         </View>
         <View style={style.ProgressBar}>
           <IconSVG theme='ProgressBar' progress='90' />
         </View>
-        <Text style={style.RegisterTex}>Registrarme</Text>
+        <Text style={style.RegisterTex}>Crear cuenta</Text>
+        <Text style={style.ContainerTex}>Crear la cuenta con tus redes o ingresar tu correo electrónico</Text>
+        <View style={style.AnotherLoginContainer}>
+          <View style={style.AnotherLoginSubContainer}>
+            <Boton theme='Google' />
+          </View>
+          <View style={style.AnotherLoginSubContainer}>
+            <Boton theme='Facebook' />
+          </View>
+          <View style={style.AnotherLoginSubContainer}>
+            <Boton theme='IOS' />
+          </View>
+        </View>
+        <View style={style.AnotherLogin}>
+          <View style={style.Underscore} />
+          <View>
+            <Text style={style.TexAnotherLogin}>Crea cuenta con correo electrónico</Text>
+          </View>
+          <View style={style.Underscore} />
+        </View>
         <View style={style.RegisterContainer}>
           <View style={style.Container}>
             <View style={style.SubContainer}>
@@ -104,32 +117,7 @@ const CreaCuenta = ({ navigation }) => {
             <Boton label="Continuar" />
           </View>
         </View>
-        {/* <Text> Nombre y apellido </Text>
-      <TextInput placeholder="Ingresa tu nombre y apellido" />
-      <Text>Fecha de nacimiento</Text>
-      <TouchableOpacity onPress={handleOnPress}>
-        <Text>Seleccionar fecha</Text>
-      </TouchableOpacity> */}
-        {/* <Modal animationType="slide" transparent={true} visible={open}>
-        <View style={{ position: "center" }}>
-          <View>
-            <DatePicker
-              mode="calendar"
-              selected={date}
-              onDateChange={handleChanged}
-            />
-            <TouchableOpacity onPress={handleOnPress}>
-              <Text>Cerrar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal> */}
-        {/* <Button
-        title="Continuar"
-        onPress={() => navigation.navigate("Crea tu contraseña")}
-      /> */}
-      </View>
-    </ScrollView>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -139,29 +127,24 @@ const style = StyleSheet.create({
     backgroundColor: "#F4F5FE",
     width: '100%',
     height: '100%',
-    alignItems: 'center',
-    position: 'relative',
     paddingHorizontal: 16,
     paddingBottom: 200,
   },
   HeaderContainer: {
     marginTop: 20,
-    width: '100%',
     height: 25,
-    ////borderWidth: 1,
-    //position: 'absolute',
+    //borderWidth: 1,
   },
   ProgressBar: {
-    marginTop: 16,
+    marginTop: 24,
     width: '100%',
     height: 10,
-    ////borderWidth: 1,
+    //borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   RegisterTex: {
-    top: 16,
-    width: '100%',
+    marginTop: 24,
     height: 29,
     //borderWidth: 1,
     fontWeight: '700',
@@ -170,10 +153,55 @@ const style = StyleSheet.create({
     color: '#515EC0',
     letterSpacing: 0.01,
   },
-  RegisterContainer: {
-    top: 16, //top: 32,
-    display: 'flex',
+  ContainerTex: {
+    marginTop: 16,
     //borderWidth: 1,
+    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#0F172A',
+    letterSpacing: 0.0044,
+  },
+  AnotherLoginContainer: {
+    columnGap: 12,
+    width: '100%',
+    marginTop: 20,
+    //borderWidth: 1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  AnotherLoginSubContainer: {
+    height: 44,
+    width: 111,
+    //borderWidth: 1
+  },
+  AnotherLogin: {
+    marginTop: 32,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 358,  //326
+    //borderWidth: 1,
+  },
+  Underscore: {
+    flex: 1,
+    height: 2,
+    backgroundColor: '#BDBDBD'
+  },
+  TexAnotherLogin: {
+    display: 'flex',
+    fontWeight: '500',
+    fontSize: 16,
+    lineHeight: 22,
+    textAlign: 'center',
+    alignItems: 'center',
+    letterSpacing: 0.0044,
+    color: '#0F172A',
+    paddingHorizontal: 10,
+  },
+  RegisterContainer: {
+    marginTop: 24,
+    display: 'flex',
+    borderWidth: 1,
     alignItems: 'center',
     width: '100%',
     height: '99%',
@@ -185,11 +213,9 @@ const style = StyleSheet.create({
     paddingHorizontal: 16,
     //borderWidth: 1,
     width: '100%',
-    height: '83.4%',
     backgroundColor: 'white',
     elevation: 5,
     borderRadius: 12,
-    marginTop: 16,
   },
   SubContainer: {
     display: "flex",
