@@ -7,6 +7,10 @@ export default [
     Celular: "3018451545",
     CorreoUsuario: "kargil@gmail.com",
     EventosRealizados: 6,
+    EventosCreados: 6,
+    EventosComprados: 1,
+    Invitaciones: 6,
+    MisLugares: 2,
     PorcentajePerfil: 20,
   },
 ];

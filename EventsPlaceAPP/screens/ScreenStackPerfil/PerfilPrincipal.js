@@ -12,6 +12,7 @@ import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CalificacionEst from "../../components/CalificacionEst";
+import CuadroEstado from "../../components/CuadroEstado";
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   return (
@@ -29,94 +30,128 @@ const PerfilPrincipalScreen = ({ navigation }) => {
             <Text style={styles.Titulo}> Mi perfil </Text>
           </View>
           {DatosClientePrueba.map((DCliente) => (
-            <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
-              <View style={styles.CabeceraTarjeta}>
-                <View style={styles.imagenPrincipal}>
-                  <IconSVG theme={"FotoGenerica"} />
-                </View>
+            <View>
+              <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
+                <View style={styles.CabeceraTarjeta}>
+                  <View style={styles.imagenPrincipal}>
+                    <IconSVG theme={"FotoGenerica"} />
+                  </View>
 
-                <View style={styles.NombrePerfil}>
-                  <Text style={styles.Titulo}>{DCliente.UserName}</Text>
-                </View>
-                <View
-                  style={{
-                    marginTop: 40,
+                  <View style={styles.NombrePerfil}>
+                    <Text style={styles.Titulo}>{DCliente.UserName}</Text>
+                  </View>
+                  <View
+                    style={{
+                      marginTop: 40,
 
-                    width: 30,
-                  }}
-                >
-                  <Boton
-                    theme="EditarPerfil"
-                    style={{ width: 24, height: 24, paddingRight: 10 }}
-                    onPress={() => navigation.navigate("Editar perfil")}
+                      width: 30,
+                    }}
+                  >
+                    <Boton
+                      theme="EditarPerfil"
+                      style={{ width: 24, height: 24, paddingRight: 10 }}
+                      onPress={() => navigation.navigate("Editar perfil")}
+                    />
+                  </View>
+                </View>
+                <View>
+                  <Text style={styles.Subtitulos}>Calificación</Text>
+                  <View
+                    key="Estrellas de calificacion perfil"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginLeft: 5,
+                      marginTop: 5,
+                    }}
+                  >
+                    <CalificacionEst califi={DCliente.Calificacion} />
+                    <Text
+                      style={{
+                        color: "#626264",
+                        paddingLeft: 5,
+                        marginTop: -1,
+                      }}
+                    >
+                      &#40;{DCliente.Calificacion}&#41;
+                    </Text>
+                  </View>
+                  <View
+                    key="Experiencia perfil"
+                    style={{ display: "flex", flexDirection: "row" }}
+                  >
+                    <Text
+                      style={{
+                        marginTop: 10,
+                        paddingLeft: 7,
+                        color: "#828282",
+                        flex: 5,
+                      }}
+                    >
+                      Experiencia
+                    </Text>
+                    <Text
+                      style={{
+                        marginTop: 10,
+                        paddingLeft: 0,
+                        color: "#828282",
+                      }}
+                    >
+                      &#35; de eventos realizados
+                    </Text>
+                    <Text
+                      style={{
+                        marginTop: 10,
+                        paddingRight: 2,
+                        color: "#333333",
+                        paddingLeft: 5,
+                        width: 30,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {DCliente.EventosRealizados}
+                    </Text>
+                  </View>
+                  <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
+                    <IconSVG
+                      theme={"ProgressBar"}
+                      progress={DCliente.PorcentajePerfil}
+                    />
+                  </View>
+                  <View style={{ marginTop: 10, marginLeft: 10 }}>
+                    <Boton
+                      theme={"StyleBoton2"}
+                      label={"Chat privado"}
+                      onPress={() => navigation.navigate("Chat")}
+                    />
+                  </View>
+                </View>
+              </View>
+              <View>
+                <View style={{ display: "flex", flexDirection: "row" }}>
+                  <CuadroEstado
+                    key={"Evento Creado"}
+                    cantidad={DCliente.EventosCreados}
+                    label={"Eventos Creados"}
+                  />
+                  <CuadroEstado
+                    key={"Evento Comprado"}
+                    cantidad={DCliente.EventosComprados}
+                    label={"Eventos Comprados"}
                   />
                 </View>
               </View>
               <View>
-                <Text style={styles.Subtitulos}>Calificación</Text>
-                <View
-                  key="Estrellas de calificacion perfil"
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginLeft: 5,
-                    marginTop: 5,
-                  }}
-                >
-                  <CalificacionEst califi={DCliente.Calificacion} />
-                  <Text
-                    style={{ color: "#626264", paddingLeft: 5, marginTop: -1 }}
-                  >
-                    &#40;{DCliente.Calificacion}&#41;
-                  </Text>
-                </View>
-                <View
-                  key="Experiencia perfil"
-                  style={{ display: "flex", flexDirection: "row" }}
-                >
-                  <Text
-                    style={{
-                      marginTop: 10,
-                      paddingLeft: 7,
-                      color: "#828282",
-                      flex: 5,
-                    }}
-                  >
-                    Experiencia
-                  </Text>
-                  <Text
-                    style={{
-                      marginTop: 10,
-                      paddingLeft: 0,
-                      color: "#828282",
-                    }}
-                  >
-                    &#35; de eventos realizados
-                  </Text>
-                  <Text
-                    style={{
-                      marginTop: 10,
-                      paddingRight: 2,
-                      color: "#333333",
-                      paddingLeft: 5,
-                      width: 30,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {DCliente.EventosRealizados}
-                  </Text>
-                </View>
-                <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
-                  <IconSVG
-                    theme={"ProgressBar"}
-                    progress={DCliente.PorcentajePerfil}
+                <View style={{ display: "flex", flexDirection: "row" }}>
+                  <CuadroEstado
+                    key={"Mis invitaciones"}
+                    cantidad={DCliente.Invitaciones}
+                    label={"Mis invitaciones a eventos"}
                   />
-                </View>
-                <View style={{ marginTop: 10, marginLeft: 10 }}>
-                  <Boton
-                    theme={"StyleBoton2"}
-                    label={"Chat privado"}
-                    onPress={() => navigation.navigate("Chat")}
+                  <CuadroEstado
+                    key={"Mis lugares"}
+                    cantidad={DCliente.MisLugares}
+                    label={"Mis lugares de eventos"}
                   />
                 </View>
               </View>
@@ -146,7 +181,7 @@ const styles = StyleSheet.create({
   TarjetaPerfil: {
     backgroundColor: "white",
     width: "100%",
-
+    borderRadius: 12,
     marginTop: 50,
     height: 250,
     display: "flex",
