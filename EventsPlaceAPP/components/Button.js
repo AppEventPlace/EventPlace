@@ -1,5 +1,6 @@
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import IconSVG from "../assets/LogoSVG";
+const FondImage = require('../assets/adaptive-icon.png'); // Espesificar ruta de la imagen
 
 export default function Button({ label, theme, onPress }) {
   if (theme === "StyleBoton1") {
@@ -40,21 +41,21 @@ export default function Button({ label, theme, onPress }) {
   }
   if (theme === "Google") {
     return (
-      <Pressable style={[styles.AnotherLoginButton,{backgroundColor:'#FFFFFF'}]} onPress={() => alert("You pressed a button1.")}>
+      <Pressable style={[styles.AnotherLoginButton, { backgroundColor: '#FFFFFF' }]} onPress={() => alert("You pressed a button1.")}>
         <IconSVG theme="Google" />
       </Pressable>
     );
   }
   if (theme === "Facebook") {
     return (
-      <Pressable style={[styles.AnotherLoginButton,{backgroundColor:'#1877F2'}]} onPress={() => alert("You pressed a button1.")}>
+      <Pressable style={[styles.AnotherLoginButton, { backgroundColor: '#1877F2' }]} onPress={() => alert("You pressed a button1.")}>
         <IconSVG theme="Facebook" />
       </Pressable>
     );
   }
   if (theme === "IOS") {
     return (
-      <Pressable style={[styles.AnotherLoginButton,{backgroundColor:'#000000'}]} onPress={() => alert("You pressed a button1.")}>
+      <Pressable style={[styles.AnotherLoginButton, { backgroundColor: '#000000' }]} onPress={() => alert("You pressed a button1.")}>
         <IconSVG theme="IOS" />
       </Pressable>
     );
@@ -79,6 +80,12 @@ export default function Button({ label, theme, onPress }) {
     return (
       <Pressable style={{ width: 22, height: 22 }} onPress={onPress}>
         <IconSVG theme="Editar" />
+      </Pressable>
+    );
+  }
+  if (theme === "Imagen") {
+    return (
+      <Pressable style={[{ width: 96, height: 96, position: "absolute" }]} onPress={onPress}>
       </Pressable>
     );
   }
@@ -140,7 +147,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   ForgetPassword: {

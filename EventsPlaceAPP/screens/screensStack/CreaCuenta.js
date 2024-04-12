@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { StatusBar } from 'expo-status-bar';
+import * as ImagePicker from 'expo-image-picker';             // Lib para el acceso a la interfaz de usuario
 import {
-  Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView
+  Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image
 } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DatePicker from "react-native-modern-datepicker";
 
-
 import IconSVG from "../../assets/LogoSVG"
 import Boton from "../../components/Button"
+import ImageViewer from '../../components/ImageViewer'
+
+const FondImage = require('../../assets/adaptive-icon.png'); // Espesificar ruta de la imagen
 
 const Separator = () => <View style={style.separator} />;
 const CreaCuenta = ({ navigation }) => {
@@ -17,11 +21,26 @@ const CreaCuenta = ({ navigation }) => {
   function handleOnPress() {
     setOpen(!open);
   }
-
   function handleChanged(propDate) {
     setDate(propDate);
   }
 
+  //Variable de estado que contenga el valor de la imagen seleccionada.
+  const [selectedImage, setSelectedImage] = useState(null);
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      //Opciones del selector de imágenes a launchImageLibraryAsync()
+      allowsEditing: true,
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }
+    //Si el usuario no elige una imagen, muestra una alerta.
+    else {
+      alert('No seleccionaste ninguna imagen.');
+    }
+  }
   return (
     <SafeAreaView backgroundColor="#F4F5FE">
       <ScrollView style={style.PerfilContainer}>
@@ -34,25 +53,37 @@ const CreaCuenta = ({ navigation }) => {
         <Text style={style.RegisterTex}>Crear cuenta</Text>
         <Text style={style.ContainerTex}>Crear la cuenta con tus redes o ingresar tu correo electrónico</Text>
         <View style={style.AnotherLoginContainer}>
-          <View style={style.AnotherLoginSubContainer}>
-            <Boton theme='Google' />
-          </View>
-          <View style={style.AnotherLoginSubContainer}>
-            <Boton theme='Facebook' />
-          </View>
-          <View style={style.AnotherLoginSubContainer}>
-            <Boton theme='IOS' />
+          <View style={style.IconContainer}>
+            <View style={style.AnotherLoginSubContainer}>
+              <Boton theme='Google' />
+            </View>
+            <View style={style.AnotherLoginSubContainer}>
+              <Boton theme='Facebook' />
+            </View>
+            <View style={style.AnotherLoginSubContainer}>
+              <Boton theme='IOS' />
+            </View>
           </View>
         </View>
-        <View style={style.AnotherLogin}>
-          <View style={style.Underscore} />
-          <View>
-            <Text style={style.TexAnotherLogin}>Crea cuenta con correo electrónico</Text>
+        <View style={style.Alinear}>
+          <View style={style.AnotherLogin}>
+            <View style={style.Underscore} />
+            <View>
+              <Text style={style.TexAnotherLogin}>Crea cuenta con correo electrónico</Text>
+            </View>
+            <View style={style.Underscore} />
           </View>
-          <View style={style.Underscore} />
         </View>
         <View style={style.RegisterContainer}>
           <View style={style.Container}>
+            <View style={[style.Alinear,{marginTop: 24}]}>
+              <ImageViewer
+                //Pase el URI de la imagen seleccionada al componente ImageViewer.
+                placeholderImageSource={FondImage}
+                selectedImage={selectedImage}>
+              </ImageViewer>
+              <Boton theme="Imagen" onPress={pickImageAsync} />
+            </View>
             <View style={style.SubContainer}>
               <Text style={style.TexContainer}>Nombre y apellido</Text>
               <TextInput
@@ -123,6 +154,10 @@ const CreaCuenta = ({ navigation }) => {
 };
 
 const style = StyleSheet.create({
+  Alinear: {
+    //borderWidth: 1,
+    alignItems: 'center'
+  },
   PerfilContainer: {
     backgroundColor: "#F4F5FE",
     width: '100%',
@@ -163,12 +198,14 @@ const style = StyleSheet.create({
     letterSpacing: 0.0044,
   },
   AnotherLoginContainer: {
-    columnGap: 12,
-    width: '100%',
+    alignItems: "center",
     marginTop: 20,
     //borderWidth: 1,
+  },
+  IconContainer: {
+    flex: 1,
     flexDirection: "row",
-    alignItems: "center",
+    columnGap: 12,
   },
   AnotherLoginSubContainer: {
     height: 44,
@@ -201,10 +238,10 @@ const style = StyleSheet.create({
   RegisterContainer: {
     marginTop: 24,
     display: 'flex',
-    borderWidth: 1,
+    //borderWidth: 1,
     alignItems: 'center',
     width: '100%',
-    height: '99%',
+    height: '100%',
   },
   Container: {
     display: 'flex',
