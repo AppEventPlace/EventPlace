@@ -16,26 +16,26 @@ const PerfilPrincipalScreen = ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View style={style.PerfilContainer}>
-          <View style={style.HeaderContainer}>
+        <View style={styles.PerfilContainer}>
+          <View style={styles.HeaderContainer}>
             <Boton
               theme="BackCheckron"
               label="Atras"
               onPress={() => navigation.navigate("Wall")}
             />
           </View>
-          <View style={style.Titulo}>
-            <Text style={style.Titulo}> Mi perfil </Text>
+          <View style={styles.Titulo}>
+            <Text style={styles.Titulo}> Mi perfil </Text>
           </View>
           {DatosClientePrueba.map((DCliente) => (
-            <View style={style.TarjetaPerfil} key={DCliente.UserName}>
-              <View style={style.CabeceraTarjeta}>
-                <View style={style.imagenPrincipal}>
+            <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
+              <View style={styles.CabeceraTarjeta}>
+                <View style={styles.imagenPrincipal}>
                   <IconSVG theme={"FotoGenerica"} />
                 </View>
 
-                <View style={style.NombrePerfil}>
-                  <Text style={style.Titulo}>{DCliente.UserName}</Text>
+                <View style={styles.NombrePerfil}>
+                  <Text style={styles.Titulo}>{DCliente.UserName}</Text>
                 </View>
                 <View style={{ marginTop: 40, paddingEnd: 1 }}>
                   <Boton
@@ -46,10 +46,22 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                 </View>
               </View>
               <View>
-                <Text style={style.Subtitulos}>Calificacion</Text>
-                <Text style={{ marginLeft: 5, marginTop: 5, color: "#626264" }}>
-                  Estrellas {DCliente.Calificacion}
-                </Text>
+                <Text style={styles.Subtitulos}>Calificacion</Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginLeft: 5,
+                    marginTop: 5,
+                  }}
+                >
+                  <Estrellas califi={DCliente.Calificacion} />
+                  <Text
+                    style={{ color: "#626264", paddingLeft: 5, marginTop: -1 }}
+                  >
+                    &#40;{DCliente.Calificacion}&#41;
+                  </Text>
+                </View>
               </View>
             </View>
           ))}
@@ -60,7 +72,33 @@ const PerfilPrincipalScreen = ({ navigation }) => {
 };
 //const FotoPerfil = [require("../assets/Icon_profile.png")];
 
-const style = StyleSheet.create({
+const Estrellas = ({ califi }) => {
+  return (
+    <View style={{ display: "flex", flexDirection: "row", width: 75 }}>
+      <IconSVG
+        theme={"Calificación"}
+        colEstrella={califi >= 1 ? "#141416" : "#BDBDBD"}
+      />
+      <IconSVG
+        theme={"Calificación"}
+        colEstrella={califi >= 2 ? "#141416" : "#BDBDBD"}
+      />
+      <IconSVG
+        theme={"Calificación"}
+        colEstrella={califi >= 3 ? "#141416" : "#BDBDBD"}
+      />
+      <IconSVG
+        theme={"Calificación"}
+        colEstrella={califi >= 4 ? "#141416" : "#BDBDBD"}
+      />
+      <IconSVG
+        theme={"Calificación"}
+        colEstrella={califi >= 5 ? "#141416" : "#BDBDBD"}
+      />
+    </View>
+  );
+};
+const styles = StyleSheet.create({
   PerfilContainer: {
     marginTop: 0,
     backgroundColor: "#F4F5FE",

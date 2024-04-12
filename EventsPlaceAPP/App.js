@@ -29,7 +29,7 @@ const Tab = createBottomTabNavigator();
 
 const MenuMovil = () => {
   return (
-    <Tab.Navigator initialRouteName="Wall">
+    <Tab.Navigator initialRouteName="Mi Perfil">
       {TabItems.map((Items) => (
         <Tab.Screen
           key={Items.name}
@@ -38,8 +38,9 @@ const MenuMovil = () => {
             headerShown: false,
             tabBarShowLabel: false,
             tabBarActiveBackgroundColor: "#E4E5E5",
-            tabBarIcon: ({ color, size }) => <SvgLogo theme={Items.source} />,
-            tintColor: "black",
+            tabBarIcon: ({ fill, size }) => (
+              <SvgLogo theme={Items.source} color="#0F172A" />
+            ),
           }}
           component={
             Items.name === "Notificaciones"
@@ -97,7 +98,7 @@ const CreacionStack = () => {
 };
 //fin creacion stack
 //constante autenticacion
-const isUserAuthenticated = false;
+const isUserAuthenticated = true;
 
 const Pantalla = () => {
   return (
@@ -121,14 +122,3 @@ const styles = StyleSheet.create({
 });
 
 //Iconos que se muestran en el menú inferior
-const cargarIcono = (imagen) => {
-  return (
-    <Image
-      source={imagen}
-      style={{
-        resizeMode: "contain",
-        tintColor: "black",
-      }}
-    />
-  );
-};
