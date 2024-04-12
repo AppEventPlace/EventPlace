@@ -11,6 +11,7 @@ import IconSVG from "../../assets/LogoSVG";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CalificacionEst from "../../components/CalificacionEst";
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   return (
@@ -37,17 +38,24 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                 <View style={styles.NombrePerfil}>
                   <Text style={styles.Titulo}>{DCliente.UserName}</Text>
                 </View>
-                <View style={{ marginTop: 40, paddingEnd: 1 }}>
+                <View
+                  style={{
+                    marginTop: 40,
+
+                    width: 30,
+                  }}
+                >
                   <Boton
                     theme="EditarPerfil"
-                    style={{ width: 24, height: 24 }}
+                    style={{ width: 24, height: 24, paddingRight: 10 }}
                     onPress={() => navigation.navigate("Editar perfil")}
                   />
                 </View>
               </View>
               <View>
-                <Text style={styles.Subtitulos}>Calificacion</Text>
+                <Text style={styles.Subtitulos}>Calificación</Text>
                 <View
+                  key="Estrellas de calificacion perfil"
                   style={{
                     display: "flex",
                     flexDirection: "row",
@@ -55,12 +63,61 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                     marginTop: 5,
                   }}
                 >
-                  <Estrellas califi={DCliente.Calificacion} />
+                  <CalificacionEst califi={DCliente.Calificacion} />
                   <Text
                     style={{ color: "#626264", paddingLeft: 5, marginTop: -1 }}
                   >
                     &#40;{DCliente.Calificacion}&#41;
                   </Text>
+                </View>
+                <View
+                  key="Experiencia perfil"
+                  style={{ display: "flex", flexDirection: "row" }}
+                >
+                  <Text
+                    style={{
+                      marginTop: 10,
+                      paddingLeft: 7,
+                      color: "#828282",
+                      flex: 5,
+                    }}
+                  >
+                    Experiencia
+                  </Text>
+                  <Text
+                    style={{
+                      marginTop: 10,
+                      paddingLeft: 0,
+                      color: "#828282",
+                    }}
+                  >
+                    &#35; de eventos realizados
+                  </Text>
+                  <Text
+                    style={{
+                      marginTop: 10,
+                      paddingRight: 2,
+                      color: "#333333",
+                      paddingLeft: 5,
+                      width: 30,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {DCliente.EventosRealizados}
+                  </Text>
+                </View>
+                <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
+                  <IconSVG
+                    theme={"ProgressBar"}
+                    progress={DCliente.PorcentajePerfil}
+                  />
+                </View>
+                <View style={{ marginTop: 10, marginLeft: 10 }}>
+                  <Boton
+                    theme={"StyleBoton2"}
+                    label={"Chat privado"}
+                    onPress={() => navigation.navigate("Chat")}
+                  />
                 </View>
               </View>
             </View>
@@ -70,34 +127,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-//const FotoPerfil = [require("../assets/Icon_profile.png")];
 
-const Estrellas = ({ califi }) => {
-  return (
-    <View style={{ display: "flex", flexDirection: "row", width: 75 }}>
-      <IconSVG
-        theme={"Calificación"}
-        colEstrella={califi >= 1 ? "#141416" : "#BDBDBD"}
-      />
-      <IconSVG
-        theme={"Calificación"}
-        colEstrella={califi >= 2 ? "#141416" : "#BDBDBD"}
-      />
-      <IconSVG
-        theme={"Calificación"}
-        colEstrella={califi >= 3 ? "#141416" : "#BDBDBD"}
-      />
-      <IconSVG
-        theme={"Calificación"}
-        colEstrella={califi >= 4 ? "#141416" : "#BDBDBD"}
-      />
-      <IconSVG
-        theme={"Calificación"}
-        colEstrella={califi >= 5 ? "#141416" : "#BDBDBD"}
-      />
-    </View>
-  );
-};
 const styles = StyleSheet.create({
   PerfilContainer: {
     marginTop: 0,
@@ -115,9 +145,10 @@ const styles = StyleSheet.create({
   },
   TarjetaPerfil: {
     backgroundColor: "white",
-    width: "95%",
+    width: "100%",
+
     marginTop: 50,
-    height: 200,
+    height: 250,
     display: "flex",
     flexDirection: "column",
   },
@@ -131,23 +162,25 @@ const styles = StyleSheet.create({
   CabeceraTarjeta: {
     display: "flex",
     flexDirection: "row",
-    width: "110%",
+    //width: "100",
   },
   imagenPrincipal: {
     display: "flex",
     alignItems: "start",
     marginLeft: 5,
     marginTop: 15,
+    //flex: 2,
     width: 80,
   },
   NombrePerfil: {
     marginTop: 30,
-    width: "60%",
+    //width: "80%",
+    flex: 5,
   },
   Subtitulos: {
     marginTop: 5,
-    paddingLeft: 5,
-    color: "grey",
+    paddingLeft: 7,
+    color: "#828282",
   },
 });
 

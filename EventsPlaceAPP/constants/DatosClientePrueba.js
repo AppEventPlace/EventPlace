@@ -1,11 +1,12 @@
 export default [
   {
     UserName: "Luis C Motta",
-    Calificacion: 3,
+    Calificacion: 5,
     FechaNacimiento: "01/01/86",
     CodigoPais: "+57",
     Celular: "3018451545",
     CorreoUsuario: "kargil@gmail.com",
-    EventosRealizados: 0,
+    EventosRealizados: 6,
+    PorcentajePerfil: 20,
   },
 ];

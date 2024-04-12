@@ -151,8 +151,8 @@ function SvgLogo({ theme, progress, color, colEstrella }) {
   if (theme === "ProgressBar") {
     return (
       <Svg
-        width={356}
-        height={4}
+        width={"96%"}
+        height={15}
         viewBox="0 0 356 4"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
