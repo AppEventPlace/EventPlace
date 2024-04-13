@@ -1,13 +1,16 @@
+import Checkbox from "expo-checkbox";
+
+import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import IconSVG from "../assets/LogoSVG";
-const FondImage = require("../assets/adaptive-icon.png"); // Espesificar ruta de la imagen
 
 export default function Button({ label, theme, onPress }) {
+  const [isChecked, setChecked] = useState(false);
   if (theme === "StyleBoton1") {
     return (
       <View style={styles.StyleBoton1}>
         <Pressable style={styles.button} onPress={onPress}>
-          <Text style={styles.StyleButtonLabel}>{label}</Text>
+          <Text style={styles.StyleButtonLabel1}>{label}</Text>
         </Pressable>
       </View>
     );
@@ -63,14 +66,6 @@ export default function Button({ label, theme, onPress }) {
       </Pressable>
     );
   }
-  // if (theme === "Registrarme") {
-  //   return (
-  //     <Pressable style={styles.RegisterButton} onPress={onPress}>
-  //       <Text style={styles.RegisterText}>{label}</Text>
-  //     </Pressable>
-  //   );
-  // }
-
   if (theme === "BackCheckron") {
     return (
       <Pressable style={styles.BackButton} onPress={onPress}>
@@ -97,17 +92,35 @@ export default function Button({ label, theme, onPress }) {
 
   return (
     <View style={styles.buttonContainer}>
-      <Pressable
-        style={styles.button}
-        onPress={() => alert("You pressed a button2.")}
-      >
-        <Text style={styles.StyleButtonLabel}>{label}</Text>
-      </Pressable>
+      <View>
+        <Checkbox
+          style={styles.checkbox}
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? "#6979F8" : undefined}
+        />
+      </View>
+      <View>
+        <Pressable
+          style={styles.button}
+          onPress={() => alert("You pressed a button2.")}
+        >
+          <Text style={styles.StyleButtonLabel}>{label}</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    //borderWidth: 1,
+    width: "96%",
+    height: 38,
+    alignItems: "center",
+    flexDirection: "row",
+    columnGap: 2,
+  },
   StyleBoton1: {
     width: 326,
     height: 43,
@@ -137,6 +150,14 @@ const styles = StyleSheet.create({
     //borderWidth:1,
   },
   StyleButtonLabel: {
+    width: "97%",
+    color: "#0F172A",
+    fontSize: 16,
+    fontWeight: "500",
+    lineHeight: 19,
+    textDecorationLine: "underline",
+  },
+  StyleButtonLabel1: {
     color: "#FBFBFE",
     fontSize: 16,
     fontWeight: "700",
@@ -195,5 +216,11 @@ const styles = StyleSheet.create({
     color: "#0F172A",
     lineHeight: 22,
     letterSpacing: 0.0044,
+  },
+  checkbox: {
+    borderRadius: 4,
+    width: 18,
+    height: 18,
+    borderColor: "#6979F8",
   },
 });

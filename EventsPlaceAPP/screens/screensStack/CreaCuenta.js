@@ -47,148 +47,154 @@ const CreaCuenta = ({ navigation }) => {
     }
   };
   return (
-    <SafeAreaView backgroundColor="#F4F5FE">
-      <ScrollView style={style.PerfilContainer}>
-        <View style={style.HeaderContainer}>
-          <Boton
-            theme="BackCheckron"
-            label="Atras"
-            onPress={() => navigation.navigate("Iniciar sesion")}
-          />
-        </View>
-        <View style={style.ProgressBar}>
-          <IconSVG theme="ProgressBar" progress="90" />
-        </View>
-        <Text style={style.RegisterTex}>Crear cuenta</Text>
-        <Text style={style.ContainerTex}>
-          Crear la cuenta con tus redes o ingresar tu correo electrónico
-        </Text>
-        <View style={style.AnotherLoginContainer}>
-          <View style={style.IconContainer}>
-            <View style={style.AnotherLoginSubContainer}>
-              <Boton theme="Google" />
-            </View>
-            <View style={style.AnotherLoginSubContainer}>
-              <Boton theme="Facebook" />
-            </View>
-            <View style={style.AnotherLoginSubContainer}>
-              <Boton theme="IOS" />
-            </View>
+    <View style={{ flex: 1, backgroundColor: "#F4F5FE" }}>
+      <SafeAreaView backgroundColor="#F4F5FE">
+        <ScrollView style={style.PerfilContainer}>
+          <View style={style.HeaderContainer}>
+            <Boton
+              theme="BackCheckron"
+              label="Atras"
+              onPress={() => navigation.navigate("Iniciar sesion")}
+            />
           </View>
-        </View>
-        <View style={style.Alinear}>
-          <View style={style.AnotherLogin}>
-            <View style={style.Underscore} />
-            <View>
-              <Text style={style.TexAnotherLogin}>
-                Crea cuenta con correo electrónico
-              </Text>
-            </View>
-            <View style={style.Underscore} />
+          <View style={style.ProgressBar}>
+            <IconSVG theme="ProgressBar" progress="90" />
           </View>
-        </View>
-        <View style={style.RegisterContainer}>
-          <View style={style.Container}>
-            <View style={[style.Alinear, { marginTop: 24 }]}>
-              <ImageViewer
-                //Pase el URI de la imagen seleccionada al componente ImageViewer.
-                placeholderImageSource={FondImage}
-                selectedImage={selectedImage}
-              ></ImageViewer>
-              <Boton theme="Imagen" onPress={pickImageAsync} />
-            </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Nombre y apellido</Text>
-              <TextInput
-                placeholder="Ingresa tu correo electrónico"
-                style={style.TexInput}
-              />
-            </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Fecha de nacimiento</Text>
-              <View style={style.SubContainer2}>
-                <View style={style.SubContainer3}>
-                  <TextInput
-                    placeholder="Ingresa la fecha de nacimiento"
-                    style={style.TexInput}
-                  />
-                </View>
-                <View
-                  style={[
-                    style.SubContainer4,
-                    {
-                      borderBottomColor: "#A1A5A9",
-                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
-                    },
-                  ]}
-                >
-                  <IconSVG theme="Calendario" />
-                </View>
+          <Text style={style.RegisterTex}>Crear cuenta</Text>
+          <Text style={style.ContainerTex}>
+            Crear la cuenta con tus redes o ingresar tu correo electrónico
+          </Text>
+          <View style={style.AnotherLoginContainer}>
+            <View style={style.IconContainer}>
+              <View style={style.AnotherLoginSubContainer}>
+                <Boton theme="Google" />
+              </View>
+              <View style={style.AnotherLoginSubContainer}>
+                <Boton theme="Facebook" />
+              </View>
+              <View style={style.AnotherLoginSubContainer}>
+                <Boton theme="IOS" />
               </View>
             </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Número de celular</Text>
-              <View style={style.SubContainer2}>
-                <View style={style.SubContainer4}>
-                  <TextInput
-                    value="+57"
-                    style={style.TexInput}
-                    editable={false}
-                  />
-                </View>
-                <View style={style.SubContainer3}>
-                  <TextInput
-                    placeholder="Ingresa tu número celular"
-                    style={style.TexInput}
-                  />
+          </View>
+          <View style={style.Alinear}>
+            <View style={style.AnotherLogin}>
+              <View style={style.Underscore} />
+              <View>
+                <Text style={style.TexAnotherLogin}>
+                  Crea cuenta con correo electrónico
+                </Text>
+              </View>
+              <View style={style.Underscore} />
+            </View>
+          </View>
+          <View style={style.RegisterContainer}>
+            <View style={style.Container}>
+              <View style={[style.Alinear, { marginTop: 24 }]}>
+                <ImageViewer
+                  //Pase el URI de la imagen seleccionada al componente ImageViewer.
+                  placeholderImageSource={FondImage}
+                  selectedImage={selectedImage}
+                ></ImageViewer>
+                <Boton theme="Imagen" onPress={pickImageAsync} />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Nombre y apellido</Text>
+                <TextInput
+                  placeholder="Ingresa tu correo electrónico"
+                  style={style.TexInput}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Fecha de nacimiento</Text>
+                <View style={style.SubContainer2}>
+                  <View style={style.SubContainer3}>
+                    <TextInput
+                      placeholder="Ingresa la fecha de nacimiento"
+                      style={style.TexInput}
+                    />
+                  </View>
+                  <View
+                    style={[
+                      style.SubContainer4,
+                      {
+                        borderBottomColor: "#A1A5A9",
+                        borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                      },
+                    ]}
+                  >
+                    <IconSVG theme="Calendario" />
+                  </View>
                 </View>
               </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Número de celular</Text>
+                <View style={style.SubContainer2}>
+                  <View style={style.SubContainer4}>
+                    <TextInput
+                      value="+57"
+                      style={style.TexInput}
+                      editable={false}
+                    />
+                  </View>
+                  <View style={style.SubContainer3}>
+                    <TextInput
+                      placeholder="Ingresa tu número celular"
+                      style={style.TexInput}
+                    />
+                  </View>
+                </View>
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Correo electrónico</Text>
+                <TextInput
+                  placeholder="Ingresa tu nombre correo electrónico"
+                  style={style.TexInput}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Correo electrónico</Text>
+                <TextInput
+                  placeholder="Ingresa tu nombre correo electrónico"
+                  style={style.TexInput}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Crea contraseña</Text>
+                <TextInput
+                  placeholder="Ingresa tu nueva contraseña "
+                  style={style.TexInput}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Confirma contraseña</Text>
+                <TextInput
+                  placeholder="Confirma tu nueva contraseña"
+                  style={style.TexInput}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Nombre de usuario</Text>
+                <TextInput
+                  placeholder="Ingresa tu nombre de usuario"
+                  style={style.TexInput}
+                />
+              </View>
             </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Correo electrónico</Text>
-              <TextInput
-                placeholder="Ingresa tu nombre correo electrónico"
-                style={style.TexInput}
-              />
+            <View style={style.ButonMarginTop}>
+              <Boton label="Aceptar términos y condiciones y tratamiento de datos personales." />
             </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Correo electrónico</Text>
-              <TextInput
-                placeholder="Ingresa tu nombre correo electrónico"
-                style={style.TexInput}
-              />
-            </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Crea contraseña</Text>
-              <TextInput
-                placeholder="Ingresa tu nueva contraseña "
-                style={style.TexInput}
-              />
-            </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Confirma contraseña</Text>
-              <TextInput
-                placeholder="Confirma tu nueva contraseña"
-                style={style.TexInput}
-              />
-            </View>
-            <View style={style.SubContainer}>
-              <Text style={style.TexContainer}>Nombre de usuario</Text>
-              <TextInput
-                placeholder="Ingresa tu nombre de usuario"
-                style={style.TexInput}
+            <View style={style.ButonMarginTop}>
+              <Boton
+                label="Continuar"
+                theme="StyleBoton1"
+                onPress={() => navigation.navigate("Verify identity")}
               />
             </View>
           </View>
-          <View style={style.ButonMarginTop}>
-            <Boton label="Aceptar términos y condiciones y tratamiento de datos personales." />
-          </View>
-          <View style={style.ButonMarginTop}>
-            <Boton label="Continuar" />
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 
@@ -202,7 +208,6 @@ const style = StyleSheet.create({
     width: "100%",
     height: "100%",
     paddingHorizontal: 16,
-    paddingBottom: 200,
   },
   HeaderContainer: {
     marginTop: 20,
@@ -280,7 +285,8 @@ const style = StyleSheet.create({
     //borderWidth: 1,
     alignItems: "center",
     width: "100%",
-    height: "100%",
+    //height: "100%",
+    paddingBottom: 38,
   },
   Container: {
     display: "flex",
@@ -292,6 +298,7 @@ const style = StyleSheet.create({
     backgroundColor: "white",
     elevation: 5,
     borderRadius: 12,
+    paddingBottom: 24,
   },
   SubContainer: {
     display: "flex",
