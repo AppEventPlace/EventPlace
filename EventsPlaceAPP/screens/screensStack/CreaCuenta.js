@@ -113,7 +113,15 @@ const CreaCuenta = ({ navigation }) => {
                     style={style.TexInput}
                   />
                 </View>
-                <View style={style.SubContainer4}>
+                <View
+                  style={[
+                    style.SubContainer4,
+                    {
+                      borderBottomColor: "#A1A5A9",
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                    },
+                  ]}
+                >
                   <IconSVG theme="Calendario" />
                 </View>
               </View>
@@ -293,8 +301,6 @@ const style = StyleSheet.create({
     height: 86,
     //borderWidth: 1,
     marginTop: 24,
-    borderBottomColor: "#A1A5A9",
-    borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
   SubContainer2: {
     display: "flex",
@@ -342,6 +348,8 @@ const style = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
     lineHeight: 20,
+    borderBottomColor: "#A1A5A9",
+    borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
   ButonMarginTop: {
     marginTop: 24,
