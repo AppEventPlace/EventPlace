@@ -16,8 +16,8 @@ import CuadroEstado from "../../components/CuadroEstado";
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   return (
-    <SafeAreaView>
-      <ScrollView>
+    <SafeAreaView style={styles.ScrollView}>
+      <ScrollView style={styles.ScrollView}>
         <View style={styles.PerfilContainer}>
           <View style={styles.HeaderContainer}>
             <Boton
@@ -32,13 +32,23 @@ const PerfilPrincipalScreen = ({ navigation }) => {
           {DatosClientePrueba.map((DCliente) => (
             <View>
               <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
-                <View style={styles.CabeceraTarjeta}>
+                <View
+                  style={styles.CabeceraTarjeta}
+                  key={"cabecera tarjeta perfil"}
+                >
                   <View style={styles.imagenPrincipal}>
-                    <IconSVG theme={"FotoGenerica"} />
+                    <IconSVG
+                      key={"icono foto generico"}
+                      theme={"FotoGenerica"}
+                      ancho={64}
+                      alto={64}
+                    />
                   </View>
 
                   <View style={styles.NombrePerfil}>
-                    <Text style={styles.Titulo}>{DCliente.UserName}</Text>
+                    <Text key={"Nombre usuario tarjeta"} style={styles.Titulo}>
+                      {DCliente.UserName}
+                    </Text>
                   </View>
                   <View
                     style={{
@@ -48,6 +58,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                     }}
                   >
                     <Boton
+                      key={"Editar perfil"}
                       theme="EditarPerfil"
                       style={{ width: 24, height: 24, paddingRight: 10 }}
                       onPress={() => navigation.navigate("Editar perfil")}
@@ -55,7 +66,9 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   </View>
                 </View>
                 <View>
-                  <Text style={styles.Subtitulos}>Calificación</Text>
+                  <Text key={"calificacion text"} style={styles.Subtitulos}>
+                    Calificación
+                  </Text>
                   <View
                     key="Estrellas de calificacion perfil"
                     style={{
@@ -65,8 +78,12 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       marginTop: 5,
                     }}
                   >
-                    <CalificacionEst califi={DCliente.Calificacion} />
+                    <CalificacionEst
+                      key={"estrellas calificacion"}
+                      califi={DCliente.Calificacion}
+                    />
                     <Text
+                      key={"numero calificacion"}
                       style={{
                         color: "#626264",
                         paddingLeft: 5,
@@ -155,6 +172,14 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   />
                 </View>
               </View>
+              <View style={{ marginTop: 10, marginBottom: 15 }}>
+                <Boton
+                  key={"Cerrar sesión"}
+                  theme={"StyleBoton1"}
+                  label={"Cerrar sesión"}
+                  onPress={() => alert("Cerrar sesión")}
+                />
+              </View>
             </View>
           ))}
         </View>
@@ -164,6 +189,12 @@ const PerfilPrincipalScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  ScrollView: {
+    marginTop: 0,
+    backgroundColor: "#F4F5FE",
+    width: "100%", // Ancho de a imagen
+    height: "100%", // Alto de la imagen
+  },
   PerfilContainer: {
     marginTop: 0,
     backgroundColor: "#F4F5FE",

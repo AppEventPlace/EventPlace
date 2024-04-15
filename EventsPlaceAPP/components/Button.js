@@ -1,117 +1,118 @@
 import Checkbox from "expo-checkbox";
 
 import React, { useState } from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
 import IconSVG from "../assets/LogoSVG";
 
 export default function Button({ label, theme, onPress }) {
   const [isChecked, setChecked] = useState(false);
-  if (theme === "StyleBoton1") {
-    return (
-      <View style={styles.StyleBoton1}>
-        <Pressable style={styles.button} onPress={onPress}>
-          <Text style={styles.StyleButtonLabel1}>{label}</Text>
-        </Pressable>
-      </View>
-    );
-  }
-  if (theme === "StyleBoton2") {
-    return (
-      <View style={styles.StyleBoton2}>
-        <Pressable style={styles.button} onPress={onPress}>
-          <Text style={styles.StyleButtonLabel2}>{label}</Text>
-        </Pressable>
-      </View>
-    );
-  }
-  if (theme === "primary") {
-    return (
-      <View style={styles.ForgetPassword}>
+
+  switch (theme) {
+    case "StyleBoton1":
+      return (
+        <View style={styles.StyleBoton1}>
+          <Pressable style={styles.button} onPress={onPress}>
+            <Text style={styles.StyleButtonLabel1}>{label}</Text>
+          </Pressable>
+        </View>
+      );
+
+    case "StyleBoton2":
+      return (
+        <View style={styles.StyleBoton2}>
+          <Pressable style={styles.button} onPress={onPress}>
+            <Text style={styles.StyleButtonLabel2}>{label}</Text>
+          </Pressable>
+        </View>
+      );
+
+    case "primary":
+      return (
+        <View style={styles.ForgetPassword}>
+          <Pressable
+            style={styles.button}
+            onPress={() => alert("You pressed a button1.")}
+          >
+            <Text style={styles.buttonLabel_1}>{label}</Text>
+          </Pressable>
+        </View>
+      );
+
+    case "Google":
+      return (
         <Pressable
-          style={styles.button}
+          style={[styles.AnotherLoginButton, { backgroundColor: "#FFFFFF" }]}
           onPress={() => alert("You pressed a button1.")}
         >
-          <Text style={styles.buttonLabel_1}>{label}</Text>
+          <IconSVG theme="Google" />
         </Pressable>
-      </View>
-    );
-  }
-  if (theme === "Google") {
-    return (
-      <Pressable
-        style={[styles.AnotherLoginButton, { backgroundColor: "#FFFFFF" }]}
-        onPress={() => alert("You pressed a button1.")}
-      >
-        <IconSVG theme="Google" />
-      </Pressable>
-    );
-  }
-  if (theme === "Facebook") {
-    return (
-      <Pressable
-        style={[styles.AnotherLoginButton, { backgroundColor: "#1877F2" }]}
-        onPress={() => alert("You pressed a button1.")}
-      >
-        <IconSVG theme="Facebook" />
-      </Pressable>
-    );
-  }
-  if (theme === "IOS") {
-    return (
-      <Pressable
-        style={[styles.AnotherLoginButton, { backgroundColor: "#000000" }]}
-        onPress={() => alert("You pressed a button1.")}
-      >
-        <IconSVG theme="IOS" />
-      </Pressable>
-    );
-  }
-  if (theme === "BackCheckron") {
-    return (
-      <Pressable style={styles.BackButton} onPress={onPress}>
-        <IconSVG theme="BackCheckron" />
-        <Text style={styles.BackButtonTex}>{label}</Text>
-      </Pressable>
-    );
-  }
-  if (theme === "EditarPerfil") {
-    return (
-      <Pressable style={{ width: 22, height: 22 }} onPress={onPress}>
-        <IconSVG theme="Editar" />
-      </Pressable>
-    );
-  }
-  if (theme === "Imagen") {
-    return (
-      <Pressable
-        style={[{ width: 96, height: 96, position: "absolute" }]}
-        onPress={onPress}
-      ></Pressable>
-    );
-  }
+      );
 
-  return (
-    <View style={styles.buttonContainer}>
-      <View>
-        <Checkbox
-          style={styles.checkbox}
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#6979F8" : undefined}
-        />
-      </View>
-      <View>
+    case "Facebook":
+      return (
         <Pressable
-          style={styles.button}
-          onPress={() => alert("You pressed a button2.")}
+          style={[styles.AnotherLoginButton, { backgroundColor: "#1877F2" }]}
+          onPress={() => alert("You pressed a button1.")}
         >
-          <Text style={styles.StyleButtonLabel}>{label}</Text>
+          <IconSVG theme="Facebook" />
         </Pressable>
-      </View>
-    </View>
-  );
-}
+      );
 
+    case "IOS":
+      return (
+        <Pressable
+          style={[styles.AnotherLoginButton, { backgroundColor: "#000000" }]}
+          onPress={() => alert("You pressed a button1.")}
+        >
+          <IconSVG theme="IOS" />
+        </Pressable>
+      );
+
+    case "BackCheckron":
+      return (
+        <Pressable style={styles.BackButton} onPress={onPress}>
+          <IconSVG theme="BackCheckron" />
+          <Text style={styles.BackButtonTex}>{label}</Text>
+        </Pressable>
+      );
+
+    case "EditarPerfil":
+      return (
+        <Pressable style={{ width: 22, height: 22 }} onPress={onPress}>
+          <IconSVG theme="Editar" />
+        </Pressable>
+      );
+
+    case "Imagen":
+      return (
+        <Pressable
+          style={[{ width: 96, height: 96, position: "absolute" }]}
+          onPress={onPress}
+        ></Pressable>
+      );
+    default:
+      return (
+        <View style={styles.buttonContainer}>
+          <View>
+            <Checkbox
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
+              color={isChecked ? "#6979F8" : undefined}
+            />
+          </View>
+          <View>
+            <Pressable
+              style={styles.button}
+              onPress={() => alert("You pressed a button2.")}
+            >
+              <Text style={styles.StyleButtonLabel}>{label}</Text>
+            </Pressable>
+          </View>
+        </View>
+      );
+  }
+}
 const styles = StyleSheet.create({
   buttonContainer: {
     //borderWidth: 1,

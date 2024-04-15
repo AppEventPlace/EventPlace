@@ -8,7 +8,7 @@ const CuadroEstado = ({ label, cantidad }) => {
       style={{
         display: "flex",
         width: 160,
-        height: 160,
+        height: 130,
         backgroundColor: "#E9EAFE",
         borderRadius: 12,
         marginTop: 5,
@@ -23,7 +23,12 @@ const CuadroEstado = ({ label, cantidad }) => {
           marginLeft: 10,
         }}
       >
-        <SvgLogo theme={"FotoGenerica"} style={{ width: 34, height: 34 }} />
+        <SvgLogo
+          theme={"FotoGenerica"}
+          style={{ width: 34, height: 34 }}
+          ancho={40}
+          alto={40}
+        />
       </View>
       <View style={{ width: 85, height: 35, marginLeft: 10, marginTop: 10 }}>
         <Text>{label}</Text>

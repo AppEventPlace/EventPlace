@@ -11,6 +11,6 @@ export default [
     EventosComprados: 1,
     Invitaciones: 6,
     MisLugares: 2,
-    PorcentajePerfil: 20,
+    PorcentajePerfil: 35,
   },
 ];
