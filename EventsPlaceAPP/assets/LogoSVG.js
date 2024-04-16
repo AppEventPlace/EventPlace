@@ -42,7 +42,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
+      break;
     case "Google":
       return (
         <Svg
@@ -77,7 +77,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </Defs>
         </Svg>
       );
-
+      break;
     case "Facebook":
       return (
         <Svg
@@ -100,7 +100,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </Defs>
         </Svg>
       );
-
+      break;
     case "IOS":
       return (
         <Svg
@@ -116,7 +116,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
+      break;
     case "BackCheckron":
       return (
         <Svg
@@ -147,7 +147,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-
+      break;
     case "ProgressBar":
       return (
         <Svg
@@ -162,7 +162,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           <Rect width={progress * 3.56} height={4} rx={2} fill="#515EC0" />
         </Svg>
       );
-
+      break;
     case "FotoGenerica":
       return (
         <Svg
@@ -192,7 +192,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
+      break;
     case "Editar":
       return (
         <Svg
@@ -210,7 +210,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
+      break;
     case "PerfilLogo":
       return (
         <Svg
@@ -243,7 +243,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-
+      break;
     case "WallLogo":
       return (
         <Svg
@@ -261,7 +261,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
+      break;
     case "NotificacionesLogo":
       return (
         <Svg
@@ -294,7 +294,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-
+      break;
     case "ChatLogo":
       return (
         <Svg
@@ -327,7 +327,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-
+      break;
     case "BoletasLogo":
       return (
         <Svg
@@ -360,7 +360,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-
+      break;
     case "Calificación":
       return (
         <Svg
@@ -391,7 +391,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-
+      break;
     case "Calendario":
       return (
         <Svg
@@ -407,6 +407,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
+      break;
   }
 }
 

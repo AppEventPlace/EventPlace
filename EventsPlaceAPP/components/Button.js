@@ -16,7 +16,7 @@ export default function Button({ label, theme, onPress }) {
           </Pressable>
         </View>
       );
-
+      break;
     case "StyleBoton2":
       return (
         <View style={styles.StyleBoton2}>
@@ -25,7 +25,7 @@ export default function Button({ label, theme, onPress }) {
           </Pressable>
         </View>
       );
-
+      break;
     case "primary":
       return (
         <View style={styles.ForgetPassword}>
@@ -37,7 +37,7 @@ export default function Button({ label, theme, onPress }) {
           </Pressable>
         </View>
       );
-
+      break;
     case "Google":
       return (
         <Pressable
@@ -47,7 +47,7 @@ export default function Button({ label, theme, onPress }) {
           <IconSVG theme="Google" />
         </Pressable>
       );
-
+      break;
     case "Facebook":
       return (
         <Pressable
@@ -57,7 +57,7 @@ export default function Button({ label, theme, onPress }) {
           <IconSVG theme="Facebook" />
         </Pressable>
       );
-
+      break;
     case "IOS":
       return (
         <Pressable
@@ -67,7 +67,7 @@ export default function Button({ label, theme, onPress }) {
           <IconSVG theme="IOS" />
         </Pressable>
       );
-
+      break;
     case "BackCheckron":
       return (
         <Pressable style={styles.BackButton} onPress={onPress}>
@@ -75,14 +75,14 @@ export default function Button({ label, theme, onPress }) {
           <Text style={styles.BackButtonTex}>{label}</Text>
         </Pressable>
       );
-
+      break;
     case "EditarPerfil":
       return (
         <Pressable style={{ width: 22, height: 22 }} onPress={onPress}>
           <IconSVG theme="Editar" />
         </Pressable>
       );
-
+      break;
     case "Imagen":
       return (
         <Pressable
@@ -90,6 +90,7 @@ export default function Button({ label, theme, onPress }) {
           onPress={onPress}
         ></Pressable>
       );
+      break;
     default:
       return (
         <View style={styles.buttonContainer}>
@@ -111,6 +112,7 @@ export default function Button({ label, theme, onPress }) {
           </View>
         </View>
       );
+      break;
   }
 }
 const styles = StyleSheet.create({

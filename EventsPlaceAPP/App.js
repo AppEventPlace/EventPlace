@@ -98,7 +98,7 @@ const CreacionStack = () => {
 };
 //fin creacion stack
 //constante autenticacion
-const isUserAuthenticated = true;
+const isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (
