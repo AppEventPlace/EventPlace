@@ -91,7 +91,7 @@ export default function Button({ label, theme, onPress }) {
         ></Pressable>
       );
       break;
-    default:
+    case "Terms":
       return (
         <View style={styles.buttonContainer}>
           <View>
@@ -103,14 +103,20 @@ export default function Button({ label, theme, onPress }) {
             />
           </View>
           <View>
-            <Pressable
-              style={styles.button}
-              onPress={() => alert("You pressed a button2.")}
-            >
+            <Pressable style={styles.button} onPress={onPress}>
               <Text style={styles.StyleButtonLabel}>{label}</Text>
             </Pressable>
           </View>
         </View>
+      );
+    default:
+      return (
+        <Pressable
+          style={styles.button}
+          onPress={() => alert("You pressed a button2.")}
+        >
+          <Text style={styles.StyleButtonLabel}>{label}</Text>
+        </Pressable>
       );
       break;
   }

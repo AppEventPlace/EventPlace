@@ -6,7 +6,12 @@ export default [
   {
     name: "CreaCuenta",
     label: "Crea tu cuenta",
-  },{
+  },
+  {
+    name: "TermsAndConditions",
+    label: "Términos y condiciones",
+  },
+  {
     name: "VerifyIdentity",
     label: "Verify identity",
   },

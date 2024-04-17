@@ -22,6 +22,7 @@ import CreaCuenta from "./screens/screensStack/CreaCuenta";
 import Loguin from "./screens/screensStack/Loguin";
 import Gustos from "./screens/screensStack/Gustos";
 import VerifyIdentity from "./screens/screensStack/VerifyIdentity";
+import TermsAndConditions from "./screens/screensStack/TermsAndConditions";
 import EstadoAuth from "./src/EstadoAuth";
 import SvgLogo from "./assets/LogoSVG";
 //Creación de menú a partir --------------------
@@ -85,6 +86,8 @@ const CreacionStack = () => {
               ? Loguin
               : creacion.name === "CreaCuenta"
               ? CreaCuenta
+              : creacion.name === "TermsAndConditions"
+              ? TermsAndConditions
               : creacion.name === "VerifyIdentity"
               ? VerifyIdentity
               : creacion.name === "CreacionContrasena"

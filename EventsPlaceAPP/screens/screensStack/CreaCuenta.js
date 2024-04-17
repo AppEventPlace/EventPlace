@@ -182,7 +182,11 @@ const CreaCuenta = ({ navigation }) => {
               </View>
             </View>
             <View style={style.ButonMarginTop}>
-              <Boton label="Aceptar términos y condiciones y tratamiento de datos personales." />
+              <Boton
+                label="Aceptar términos y condiciones y tratamiento de datos personales."
+                theme="Terms"
+                onPress={() => navigation.navigate("Términos y condiciones")}
+              />
             </View>
             <View style={style.ButonMarginTop}>
               <Boton
