@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Pressable, TextInput } from "react-native";
+import { Text, View, StyleSheet, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import IconSVG from "../../assets/LogoSVG";
 import Boton from "../../components/Button";
@@ -9,9 +9,6 @@ import Boton from "../../components/Button";
 const Login = ({ navigation }) => {
   return (
     <SafeAreaView style={style.PerfilContainer}>
-      {/* <View style={style.RegisterContainer}>
-                <Boton theme="Registrarme" label="Registrarme" onPress={() => navigation.navigate("Crea tu cuenta")} />
-            </View> */}
       <View style={style.LogoContainer}>
         <IconSVG theme="LogoSvg" />
       </View>

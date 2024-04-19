@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function App() {
+import Boton from "../../components/Button";
+
+const VerifyIdentity = ({ navigation }) => {
   const inputRefs = Array.from({ length: 6 }, () => useRef(null));
 
   const handleTextChange = (text, index) => {
@@ -11,33 +14,102 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      {inputRefs.map((ref, index) => (
-        <TextInput
-          key={index}
-          ref={ref}
-          style={styles.input}
-          onChangeText={(text) => handleTextChange(text, index)}
-          keyboardType="numeric"
-          maxLength={1}
+    <SafeAreaView View style={style.PerfilContainer}>
+      <View style={style.ContainerVerify}>
+        <View style={style.TexContainer}>
+          <Text style={style.TexTitle}>Para verificar tu identidad</Text>
+          <Text style={style.Texstyle}>
+            Hemos enviado al número +57 3018451234 y al correo mail@mail.com un
+            mensaje que contiene el código de seguridad de 6 dígitos el cual
+            debes ingresar a continuación.
+          </Text>
+        </View>
+        <View style={style.CodeContainer}>
+          <View style={style.InputContainer}>
+            {inputRefs.map((ref, index) => (
+              <TextInput
+                key={index}
+                ref={ref}
+                style={style.input}
+                onChangeText={(text) => handleTextChange(text, index)}
+                keyboardType="numeric"
+                maxLength={1}
+              />
+            ))}
+          </View>
+          <Boton theme="primary" label="Solicitar nuevo código" />
+        </View>
+        <Boton
+          label="Continuar"
+          theme="StyleBoton1"
+          onPress={() => navigation.navigate("Gustos")}
         />
-      ))}
-    </View>
+      </View>
+    </SafeAreaView>
   );
-}
+};
+export default VerifyIdentity;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+const style = StyleSheet.create({
+  PerfilContainer: {
+    backgroundColor: "#F4F5FE",
+    height: "100%",
+    paddingHorizontal: 16,
+    //borderWidth: 1,
     justifyContent: "center",
+  },
+  ContainerVerify: {
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 56,
+    //borderWidth: 1,
+    borderRadius: 12,
+    elevation: 1,
+    backgroundColor: "#FBFBFE",
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+  },
+  TexContainer: {
+    gap: 24,
+    justifyContent: "center",
+    //borderWidth: 1,
+    alignItems: "center",
+  },
+  CodeContainer: {
+    gap: 16,
+    justifyContent: "center",
+    //borderWidth: 1,
+    alignItems: "center",
+  },
+  TexTitle: {
+    fontWeight: "700",
+    fontSize: 24,
+    lineHeight: 29,
+    letterSpacing: 0.01,
+    color: "#515EC0",
+    textAlign: "center",
+  },
+  Texstyle: {
+    fontWeight: "500",
+    fontSize: 16,
+    lineHeight: 22,
+    letterSpacing: 0.0044,
+    color: "#0F172A",
+    textAlign: "center",
+  },
+  InputContainer: {
+    gap: 8,
+    flexDirection: "row",
+    justifyContent: "center",
+    //borderWidth: 1,
     alignItems: "center",
   },
   input: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
-    margin: 5,
+    width: 47,
+    height: 47,
     textAlign: "center",
+    borderBottomColor: "#A1A5A9",
+    borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
 });
 

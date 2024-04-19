@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DatePicker from "react-native-modern-datepicker";
 
