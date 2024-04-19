@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
 import IconSVG from "../assets/LogoSVG";
 
-export default function Button({ label, theme, onPress }) {
+export default function Button({ label, theme, onPress, color }) {
   const [isChecked, setChecked] = useState(false);
 
   switch (theme) {
@@ -36,6 +36,16 @@ export default function Button({ label, theme, onPress }) {
             <Text style={styles.buttonLabel_1}>{label}</Text>
           </Pressable>
         </View>
+      );
+      break;
+    case "botonSubRay":
+      return (
+        <Pressable
+          style={styles.button}
+          onPress={() => alert("You pressed a button1.")}
+        >
+          <Text style={styles.buttonLabel_1}>{label}</Text>
+        </Pressable>
       );
       break;
     case "Google":
@@ -109,6 +119,15 @@ export default function Button({ label, theme, onPress }) {
           </View>
         </View>
       );
+    case "Seleccionable":
+      return (
+        <View style={styles.Seleccionable}>
+          <Pressable style={styles.button} onPress={onPress}>
+            <Text style={styles.StyleButtonLabel2}>{label}</Text>
+          </Pressable>
+        </View>
+      );
+      break;
     default:
       return (
         <Pressable
@@ -149,6 +168,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#F4F5FE",
     borderWidth: 2,
     borderColor: "#6979F8",
+  },
+  Seleccionable: {
+    height: 43,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 3,
+    backgroundColor: "#E9EAFE",
+    marginTop: 10,
+    marginHorizontal: 10,
   },
   button: {
     width: "100%",
