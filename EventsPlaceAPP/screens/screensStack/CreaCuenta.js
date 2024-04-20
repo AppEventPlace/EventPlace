@@ -1,7 +1,15 @@
 import React, { useState } from "react";
+import CheckBox from "expo-checkbox";
 import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
-import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DatePicker from "react-native-modern-datepicker";
 
@@ -39,6 +47,54 @@ const CreaCuenta = ({ navigation }) => {
       alert("No seleccionaste ninguna imagen.");
     }
   };
+
+  const TerminosCondicionesForm = () => {
+    const [aceptado, setAceptado] = useState(false);
+
+    return (
+      <View
+        style={{
+          marginTop: 24,
+          gap: 56,
+          alignItems: "center",
+        }}
+      >
+        <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
+          <CheckBox
+            style={style.checkbox}
+            value={aceptado}
+            color={aceptado ? "#6979F8" : undefined}
+            onValueChange={setAceptado}
+          />
+          <Boton
+            label="Aceptar términos y condiciones y tratamiento de datos personales."
+            theme="TexTerms"
+            onPress={() => navigation.navigate("Términos y condiciones")}
+          />
+        </View>
+        <Boton
+          label="Continuar"
+          theme="Terms"
+          onPress={() => navigation.navigate("Verify identity")}
+          disabled={aceptado}
+        />
+        {/* <Pressable
+          onPress={() => {
+            if (aceptado) {
+              // Lógica para continuar
+              console.log("Continuar presionado");
+            } else {
+              console.log("Debe aceptar los términos");
+            }
+          }}
+          disabled={!aceptado}
+        >
+          <Text style={{ color: aceptado ? "blue" : "gray" }}>Continuar</Text>
+        </Pressable> */}
+      </View>
+    );
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "#F4F5FE" }}>
       <SafeAreaView backgroundColor="#F4F5FE">
@@ -175,7 +231,8 @@ const CreaCuenta = ({ navigation }) => {
               </View>
             </View>
             <View style={style.ButonMarginTop}>
-              <Boton
+              <TerminosCondicionesForm />
+              {/* <Boton
                 label="Aceptar términos y condiciones y tratamiento de datos personales."
                 theme="Terms"
                 onPress={() => navigation.navigate("Términos y condiciones")}
@@ -186,7 +243,7 @@ const CreaCuenta = ({ navigation }) => {
                 label="Continuar"
                 theme="StyleBoton1"
                 onPress={() => navigation.navigate("Verify identity")}
-              />
+              /> */}
             </View>
           </View>
         </ScrollView>
@@ -355,8 +412,11 @@ const style = StyleSheet.create({
     borderBottomColor: "#A1A5A9",
     borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
-  ButonMarginTop: {
-    marginTop: 24,
+  checkbox: {
+    borderRadius: 4,
+    width: 20,
+    height: 20,
+    borderColor: "#6979F8",
   },
 });
 

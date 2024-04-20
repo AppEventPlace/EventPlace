@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
 import IconSVG from "../assets/LogoSVG";
 
-export default function Button({ label, theme, onPress, color }) {
-  const [isChecked, setChecked] = useState(false);
-
+export default function Button({ label, theme, onPress, color, disabled }) {
   switch (theme) {
     case "StyleBoton1":
       return (
@@ -22,6 +20,24 @@ export default function Button({ label, theme, onPress, color }) {
         <View style={styles.StyleBoton2}>
           <Pressable style={styles.button} onPress={onPress}>
             <Text style={styles.StyleButtonLabel2}>{label}</Text>
+          </Pressable>
+        </View>
+      );
+      break;
+    case "Terms":
+      return (
+        <View
+          style={[
+            styles.StyleBoton,
+            { backgroundColor: disabled ? "#6979F8" : "#D0D4FC" },
+          ]}
+        >
+          <Pressable
+            style={styles.button}
+            onPress={onPress}
+            disabled={!disabled}
+          >
+            <Text style={styles.StyleButtonLabel1}>{label}</Text>
           </Pressable>
         </View>
       );
@@ -101,23 +117,14 @@ export default function Button({ label, theme, onPress, color }) {
         ></Pressable>
       );
       break;
-    case "Terms":
+    case "TexTerms":
       return (
-        <View style={styles.buttonContainer}>
-          <View>
-            <Checkbox
-              style={styles.checkbox}
-              value={isChecked}
-              onValueChange={setChecked}
-              color={isChecked ? "#6979F8" : undefined}
-            />
-          </View>
-          <View>
-            <Pressable style={styles.button} onPress={onPress}>
-              <Text style={styles.StyleButtonLabel}>{label}</Text>
-            </Pressable>
-          </View>
-        </View>
+        <Pressable
+          style={{ width: "92.1%", alignItems: "center" }}
+          onPress={onPress}
+        >
+          <Text style={styles.StyleButtonLabel}>{label}</Text>
+        </Pressable>
       );
     case "Seleccionable":
       return (
@@ -141,13 +148,13 @@ export default function Button({ label, theme, onPress, color }) {
   }
 }
 const styles = StyleSheet.create({
-  buttonContainer: {
-    //borderWidth: 1,
-    width: "96%",
-    height: 38,
+  StyleBoton: {
+    width: 326,
+    height: 43,
+    borderRadius: 50,
     alignItems: "center",
-    flexDirection: "row",
-    columnGap: 2,
+    justifyContent: "center",
+    padding: 3,
   },
   StyleBoton1: {
     width: 326,
@@ -188,7 +195,6 @@ const styles = StyleSheet.create({
     //borderWidth:1,
   },
   StyleButtonLabel: {
-    width: "97%",
     color: "#0F172A",
     fontSize: 16,
     fontWeight: "500",
@@ -226,12 +232,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     justifyContent: "center",
   },
-  RegisterText: {
-    fontSize: 14,
-    fontWeight: "500",
-    lineHeight: 17,
-    color: "#515EC0",
-  },
   buttonLabel_1: {
     display: "flex",
     fontSize: 16,
@@ -254,11 +254,5 @@ const styles = StyleSheet.create({
     color: "#0F172A",
     lineHeight: 22,
     letterSpacing: 0.0044,
-  },
-  checkbox: {
-    borderRadius: 4,
-    width: 18,
-    height: 18,
-    borderColor: "#6979F8",
   },
 });
