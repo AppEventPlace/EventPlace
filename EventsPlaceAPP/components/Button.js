@@ -15,6 +15,16 @@ export default function Button({ label, theme, onPress, color, disabled }) {
         </View>
       );
       break;
+    case "FullStyleBoton1":
+      return (
+        <Pressable
+          style={[styles.button, { backgroundColor: "#6979F8" }]}
+          onPress={onPress}
+        >
+          <Text style={styles.StyleButtonLabel1}>{label}</Text>
+        </Pressable>
+      );
+      break;
     case "StyleBoton2":
       return (
         <View style={styles.StyleBoton2}>
@@ -192,7 +202,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    //borderWidth:1,
+    // borderWidth: 1,
+    borderRadius: 50,
   },
   StyleButtonLabel: {
     color: "#0F172A",

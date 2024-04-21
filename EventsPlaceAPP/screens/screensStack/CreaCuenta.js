@@ -103,7 +103,7 @@ const CreaCuenta = ({ navigation }) => {
             <Boton
               theme="BackCheckron"
               label="Atras"
-              onPress={() => navigation.navigate("Iniciar sesion")}
+              onPress={() => navigation.goBack()}
             />
           </View>
           <View style={style.ProgressBar}>
