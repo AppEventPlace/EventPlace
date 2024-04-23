@@ -8,11 +8,11 @@ const CuadroEstado = ({ label, cantidad }) => {
       style={{
         display: "flex",
         width: 160,
-        height: 130,
+        height: 140,
         backgroundColor: "#E9EAFE",
         borderRadius: 12,
         marginTop: 5,
-        marginLeft: 5,
+        marginHorizontal: 5,
       }}
     >
       <View
@@ -30,10 +30,14 @@ const CuadroEstado = ({ label, cantidad }) => {
           alto={40}
         />
       </View>
-      <View style={{ width: 85, height: 35, marginLeft: 10, marginTop: 10 }}>
+      <View
+        style={{ width: 85, height: 35, marginLeft: 10, marginVertical: 5 }}
+      >
         <Text>{label}</Text>
       </View>
-      <View style={{ display: "flex", flexDirection: "row" }}>
+      <View
+        style={{ display: "flex", flexDirection: "row", marginVertical: 10 }}
+      >
         <Text
           style={{ color: "#828282", marginTop: 5, marginLeft: 10, width: 130 }}
         >

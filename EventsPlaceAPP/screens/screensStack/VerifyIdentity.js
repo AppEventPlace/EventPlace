@@ -42,7 +42,7 @@ const VerifyIdentity = ({ navigation }) => {
         <Boton
           label="Continuar"
           theme="StyleBoton1"
-          onPress={() => navigation.navigate("Finaliza creacion de usuario")}
+          onPress={() => navigation.navigate("Gustos")}
         />
       </View>
     </SafeAreaView>

@@ -71,6 +71,7 @@ const Gustos = ({ navigation }) => {
 
 const Seleccion = ({ label }) => {
   const [selectedeButton, setSelectedButton] = useState([]);
+  const [Seleccionado, setSeleccionado] = useState(false);
   function Escoger(id) {
     setSelectedButton(selectedeButton.concat(id));
   }
@@ -86,14 +87,31 @@ const Seleccion = ({ label }) => {
       }}
     >
       {OpcionesSeleccion.map((Selec) => (
-        <View style={style.Seleccionable}>
+        //const [Seleccionado, setSeleccionado] = useState(false);
+
+        <View
+          key={Selec.name}
+          style={Seleccionado ? style.Seleccionable1 : style.Seleccionable2}
+          //backgroundColor={Seleccionado ? "#6979F8" : "#E9EAFE"}
+          //color={Seleccionado ? "#0F172A" : "#FBFBFE"}
+        >
           <Pressable
             key={Selec.name}
             style={style.button}
             //label={Selec.label}
-            onPress={() => Escoger(Selec.label)}
+            onPress={() => {
+              Escoger(Selec.label);
+              //setSeleccionado(true);
+              setSeleccionado((current) => !current);
+            }}
           >
-            <Text style={style.StyleButtonLabel2}>{Selec.label}</Text>
+            <Text
+              style={
+                Seleccionado ? style.StyleButtonLabel2 : style.StyleButtonLabel1
+              }
+            >
+              {Selec.label}
+            </Text>
           </Pressable>
         </View>
       ))}
@@ -289,7 +307,7 @@ const style = StyleSheet.create({
     flexDirection: "column",
     //justifyContent: "space-around",
   },
-  Seleccionable: {
+  Seleccionable1: {
     //display: "flex",
     height: 43,
     borderRadius: 50,
@@ -298,6 +316,18 @@ const style = StyleSheet.create({
     //justifyContent: "center",
     padding: 3,
     backgroundColor: "#E9EAFE",
+    marginTop: 10,
+    marginHorizontal: 3,
+  },
+  Seleccionable2: {
+    //display: "flex",
+    height: 43,
+    borderRadius: 50,
+    //alignItems: "center",
+    alignSelf: "flex-start",
+    //justifyContent: "center",
+    padding: 3,
+    backgroundColor: "#6979F8",
     marginTop: 10,
     marginHorizontal: 3,
   },
@@ -313,6 +343,15 @@ const style = StyleSheet.create({
   },
   StyleButtonLabel2: {
     color: "#6979F8",
+
+    fontSize: 16,
+    fontWeight: "700",
+    lineHeight: 19,
+    textAlign: "center",
+  },
+  StyleButtonLabel1: {
+    color: "#FBFBFE",
+
     fontSize: 16,
     fontWeight: "700",
     lineHeight: 19,

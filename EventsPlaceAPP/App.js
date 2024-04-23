@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,8 +23,9 @@ import Gustos from "./screens/screensStack/Gustos";
 import VerifyIdentity from "./screens/screensStack/VerifyIdentity";
 import TermsAndConditions from "./screens/screensStack/TermsAndConditions";
 import successful from "./screens/screensStack/successful";
-import EstadoAuth from "./src/EstadoAuth";
+//import isUserAuthenticated from "./src/EstadoAuth";
 import SvgLogo from "./assets/LogoSVG";
+
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
 
@@ -101,7 +102,7 @@ const CreacionStack = () => {
 };
 //fin creacion stack
 //constante autenticacion
-const isUserAuthenticated = false;
+let isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (
