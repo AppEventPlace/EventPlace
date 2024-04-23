@@ -140,7 +140,7 @@ export default function Button({ label, theme, onPress, color, disabled }) {
       return (
         <View style={styles.Seleccionable}>
           <Pressable style={styles.button} onPress={onPress}>
-            <Text style={styles.StyleButtonLabel2}>{label}</Text>
+            <Text style={styles.StyleButtonLabel1}>{label}</Text>
           </Pressable>
         </View>
       );
@@ -151,7 +151,7 @@ export default function Button({ label, theme, onPress, color, disabled }) {
           style={styles.button}
           onPress={() => alert("You pressed a button2.")}
         >
-          <Text style={styles.StyleButtonLabel}>{label}</Text>
+          <Text style={styles.StyleButtonLabel1}>{label}</Text>
         </Pressable>
       );
       break;
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 3,
-    backgroundColor: "#E9EAFE",
+    backgroundColor: "#6979F8",
     marginTop: 10,
     marginHorizontal: 10,
   },
