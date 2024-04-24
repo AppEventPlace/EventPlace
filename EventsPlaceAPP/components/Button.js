@@ -1,10 +1,15 @@
-import Checkbox from "expo-checkbox";
-
 import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
 import IconSVG from "../assets/LogoSVG";
 
-export default function Button({ label, theme, onPress, color, disabled }) {
+export default function Button({
+  label,
+  theme,
+  onPress,
+  color,
+  disabled,
+  Icon,
+}) {
   switch (theme) {
     case "StyleBoton1":
       return (
@@ -18,10 +23,20 @@ export default function Button({ label, theme, onPress, color, disabled }) {
     case "FullStyleBoton1":
       return (
         <Pressable
-          style={[styles.button, { backgroundColor: "#6979F8" }]}
+          style={[
+            styles.button,
+            { backgroundColor: color ? "#6979F8" : undefined },
+          ]}
           onPress={onPress}
         >
-          <Text style={styles.StyleButtonLabel1}>{label}</Text>
+          {/* Lógica para mostrar un icono o el label de un botón*/}
+          {label ? (
+            // Label - Pressable
+            <Text style={styles.StyleButtonLabel1}>{label}</Text>
+          ) : (
+            // Icon - Pressable
+            <IconSVG theme={Icon} />
+          )}
         </Pressable>
       );
       break;
@@ -202,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    // borderWidth: 1,
+    //borderWidth: 1,
     borderRadius: 50,
   },
   StyleButtonLabel: {

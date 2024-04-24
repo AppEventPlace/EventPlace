@@ -2,34 +2,32 @@ import React, { useState } from "react";
 import CheckBox from "expo-checkbox";
 import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  ScrollView,
-  Pressable,
-} from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import DatePicker from "react-native-modern-datepicker";
 
 import IconSVG from "../../assets/LogoSVG";
 import Boton from "../../components/Button";
 import ImageViewer from "../../components/ImageViewer";
 
+import DatePickerComponent from "../../components/datepicke";
+
 const FondImage = require("../../assets/adaptive-icon.png"); // Espesificar ruta de la imagen
 
-const Separator = () => <View style={style.separator} />;
 const CreaCuenta = ({ navigation }) => {
-  const [date, setDate] = useState(new Date());
-  const [open, setOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  function handleOnPress() {
-    setOpen(!open);
-  }
-  function handleChanged(propDate) {
-    setDate(propDate);
-  }
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  /*
+  ----------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
+  Componente ImageViewer permite el acceso a la interfaz de usuario para seleccionar 
+  la imagen de perfil. 
+  ----------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
+  */
 
   //Variable de estado que contenga el valor de la imagen seleccionada.
   const [selectedImage, setSelectedImage] = useState(null);
@@ -48,6 +46,23 @@ const CreaCuenta = ({ navigation }) => {
     }
   };
 
+  /*
+  ----------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
+  Este componente valida que el usuario acepte los términos y condiciones.
+  i checkbox = True      Se habilita el botón para continuar.
+  Si checkbox = false     El botón para continuar permanece inhabilitado.
+
+  1.	Componente TerminosCondicionesForm:
+    a)	Este componente funcional se encarga de mostrar una interfaz para aceptar 
+        los términos y condiciones.
+    b)	Utiliza el estado local (useState) para rastrear si el usuario ha aceptado
+        los términos (aceptado).
+    c)	Cuando el usuario cambia el estado del checkbox, se actualiza el valor de
+        aceptado.
+  ----------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
+  */
   const TerminosCondicionesForm = () => {
     const [aceptado, setAceptado] = useState(false);
 
@@ -95,6 +110,14 @@ const CreaCuenta = ({ navigation }) => {
     );
   };
 
+  /*
+  ----------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
+
+
+  ----------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
+  */
   return (
     <View style={{ flex: 1, backgroundColor: "#F4F5FE" }}>
       <SafeAreaView backgroundColor="#F4F5FE">
@@ -159,8 +182,13 @@ const CreaCuenta = ({ navigation }) => {
                 <View style={style.SubContainer2}>
                   <View style={style.SubContainer3}>
                     <TextInput
-                      placeholder="Ingresa la fecha de nacimiento"
-                      style={style.TexInput}
+                      placeholder={
+                        selectedDate
+                          ? selectedDate.toLocaleDateString()
+                          : "Ingresa la fecha de nacimiento"
+                      }
+                      //editable={false}
+                      style={[style.TexInput, { textAlign: "center" }]}
                     />
                   </View>
                   <View
@@ -172,7 +200,10 @@ const CreaCuenta = ({ navigation }) => {
                       },
                     ]}
                   >
-                    <IconSVG theme="Calendario" />
+                    <DatePickerComponent
+                      value={selectedDate}
+                      onDateChange={handleDateChange}
+                    />
                   </View>
                 </View>
               </View>
@@ -232,18 +263,6 @@ const CreaCuenta = ({ navigation }) => {
             </View>
             <View style={style.ButonMarginTop}>
               <TerminosCondicionesForm />
-              {/* <Boton
-                label="Aceptar términos y condiciones y tratamiento de datos personales."
-                theme="Terms"
-                onPress={() => navigation.navigate("Términos y condiciones")}
-              />
-            </View>
-            <View style={style.ButonMarginTop}>
-              <Boton
-                label="Continuar"
-                theme="StyleBoton1"
-                onPress={() => navigation.navigate("Verify identity")}
-              /> */}
             </View>
           </View>
         </ScrollView>
@@ -386,7 +405,6 @@ const style = StyleSheet.create({
     //borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "row",
   },
   TexContainer: {
     //borderWidth: 1,

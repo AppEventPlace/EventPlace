@@ -23,6 +23,7 @@ const VerifyIdentity = ({ navigation }) => {
         <View style={style.BotonContainer}>
           <Boton
             label="Continuar"
+            color={true}
             theme="FullStyleBoton1"
             // onPress={() => navigation.navigate("Gustos")}
           />
