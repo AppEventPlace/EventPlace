@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import { Text, View, StyleSheet, Button, ScrollView } from "react-native";
+import React, { useRef, useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SvgLogo from "../../assets/LogoSVG";
 import OpcionesSeleccion from "../../constants/OpcionesSeleccion";
 import { Picker } from "react-native-web";
+import { RadioButton } from "react-native-paper";
 
 const Gustos = ({ navigation }) => {
   return (
@@ -30,17 +38,28 @@ const Gustos = ({ navigation }) => {
           <Text style={style.ContainerTex}>
             Selecciona algunos eventos a los cuales te gusta ir o participar
           </Text>
-          <View style={style.ContainerCategorias}>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-              }}
-            >
-              {OpcionesSeleccion.map((Selec) => (
-                <Seleccion key={Selec.name} label={Selec.label} />
-              ))}
+          <View style={style.ContainerSelecciones}>
+            <Seleccion />
+          </View>
+          <View style={style.ContainerSeleccionesRad}>
+            <View>
+              <SeleccionPreferencias />
             </View>
+            <View>
+              <ServicioEventos />
+            </View>
+            <View>
+              <LugarEventos />
+            </View>
+          </View>
+          <View style={{ marginVertical: 10, marginHorizontal: 5 }}>
+            <Boton
+              theme={"Seleccionable"}
+              label={"Continuar"}
+              onPress={() =>
+                navigation.navigate("Finaliza creacion de usuario")
+              }
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -50,20 +69,184 @@ const Gustos = ({ navigation }) => {
 
 //const selectedButton = ["0", "hola"];
 
-const Seleccion = ({ key, label }) => {
+const Seleccion = ({ label }) => {
   const [selectedeButton, setSelectedButton] = useState([]);
+  const [Seleccionado, setSeleccionado] = useState(false);
   function Escoger(id) {
-    setSelectedButton(selectedeButton + id);
+    setSelectedButton(selectedeButton.concat(id));
   }
+
   return (
-    <View>
-      <Boton
-        id={key}
-        theme={"Seleccionable"}
-        label={label}
-        onPress={() => Escoger(label)}
-      />
-      <Text>hola {selectedeButton}</Text>
+    <View
+      style={{
+        marginVertical: 10,
+        marginHorizontal: 5,
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+      }}
+    >
+      {OpcionesSeleccion.map((Selec) => (
+        //const [Seleccionado, setSeleccionado] = useState(false);
+
+        <View
+          key={Selec.name}
+          style={Seleccionado ? style.Seleccionable1 : style.Seleccionable2}
+          //backgroundColor={Seleccionado ? "#6979F8" : "#E9EAFE"}
+          //color={Seleccionado ? "#0F172A" : "#FBFBFE"}
+        >
+          <Pressable
+            key={Selec.name}
+            style={style.button}
+            //label={Selec.label}
+            onPress={() => {
+              Escoger(Selec.label);
+              //setSeleccionado(true);
+              setSeleccionado((current) => !current);
+            }}
+          >
+            <Text
+              style={
+                Seleccionado ? style.StyleButtonLabel2 : style.StyleButtonLabel1
+              }
+            >
+              {Selec.label}
+            </Text>
+          </Pressable>
+        </View>
+      ))}
+      <Text>{selectedeButton}</Text>
+    </View>
+  );
+};
+
+const SeleccionPreferencias = () => {
+  const [checked, setChecked] = React.useState("Si");
+
+  return (
+    <View style={{ marginHorizontal: 5, marginVertical: 10 }}>
+      <Text style={{ color: "#0F172A", marginVertical: 10, marginLeft: 10 }}>
+        ¿Te gusta crear eventos?
+      </Text>
+      <View
+        style={{ marginHorizontal: 10, display: "flex", flexDirection: "row" }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text>Si</Text>
+          <RadioButton
+            value="Si"
+            status={checked === "Si" ? "checked" : "unchecked"}
+            onPress={() => setChecked("Si")}
+          />
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text>No</Text>
+          <RadioButton
+            value="No"
+            status={checked === "No" ? "checked" : "unchecked"}
+            onPress={() => setChecked("No")}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const ServicioEventos = () => {
+  const [checked, setChecked] = React.useState("Si");
+
+  return (
+    <View style={{ marginHorizontal: 5, marginVertical: 10 }}>
+      <Text style={{ color: "#0F172A", marginVertical: 10, marginLeft: 10 }}>
+        ¿Prestas servicios para eventos?
+      </Text>
+      <View
+        style={{ marginHorizontal: 10, display: "flex", flexDirection: "row" }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text>Si</Text>
+          <RadioButton
+            value="Si"
+            status={checked === "Si" ? "checked" : "unchecked"}
+            onPress={() => setChecked("Si")}
+          />
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text>No</Text>
+          <RadioButton
+            value="No"
+            status={checked === "No" ? "checked" : "unchecked"}
+            onPress={() => setChecked("No")}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+const LugarEventos = () => {
+  const [checked, setChecked] = React.useState("Si");
+
+  return (
+    <View style={{ marginHorizontal: 5, marginVertical: 10 }}>
+      <Text style={{ color: "#0F172A", marginVertical: 10, marginLeft: 10 }}>
+        ¿Cuentas con un lugar/sitio/negocio para realizar eventos?
+      </Text>
+      <View
+        style={{ marginHorizontal: 10, display: "flex", flexDirection: "row" }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text>Si</Text>
+          <RadioButton
+            value="Si"
+            status={checked === "Si" ? "checked" : "unchecked"}
+            onPress={() => setChecked("Si")}
+          />
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text>No</Text>
+          <RadioButton
+            value="No"
+            status={checked === "No" ? "checked" : "unchecked"}
+            onPress={() => setChecked("No")}
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -106,11 +289,73 @@ const style = StyleSheet.create({
     color: "#0F172A",
     letterSpacing: 0.0044,
   },
-  ContainerCategorias: {
+  ContainerSelecciones: {
     backgroundColor: "#FBFBFE",
     width: "100%",
     marginVertical: 10,
     borderRadius: 12,
+    display: "flex",
+    flexDirection: "row",
+    //justifyContent: "space-around",
+  },
+  ContainerSeleccionesRad: {
+    backgroundColor: "#FBFBFE",
+    width: "100%",
+    marginVertical: 10,
+    borderRadius: 12,
+    display: "flex",
+    flexDirection: "column",
+    //justifyContent: "space-around",
+  },
+  Seleccionable1: {
+    //display: "flex",
+    height: 43,
+    borderRadius: 50,
+    //alignItems: "center",
+    alignSelf: "flex-start",
+    //justifyContent: "center",
+    padding: 3,
+    backgroundColor: "#E9EAFE",
+    marginTop: 10,
+    marginHorizontal: 3,
+  },
+  Seleccionable2: {
+    //display: "flex",
+    height: 43,
+    borderRadius: 50,
+    //alignItems: "center",
+    alignSelf: "flex-start",
+    //justifyContent: "center",
+    padding: 3,
+    backgroundColor: "#6979F8",
+    marginTop: 10,
+    marginHorizontal: 3,
+  },
+  button: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    //justifyContent: "center",
+    flexDirection: "row",
+    // borderWidth: 1,
+    borderRadius: 50,
+    marginHorizontal: 5,
+  },
+  StyleButtonLabel2: {
+    color: "#6979F8",
+
+    fontSize: 16,
+    fontWeight: "700",
+    lineHeight: 19,
+    textAlign: "center",
+  },
+  StyleButtonLabel1: {
+    color: "#FBFBFE",
+
+    fontSize: 16,
+    fontWeight: "700",
+    lineHeight: 19,
+    textAlign: "center",
   },
 });
 

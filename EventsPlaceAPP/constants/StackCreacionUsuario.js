@@ -16,11 +16,11 @@ export default [
     label: "Verify identity",
   },
   {
-    name: "Gustos",
-    label: "Gustos",
-  },
-  {
     name: "successful",
     label: "Finaliza creacion de usuario",
+  },
+  {
+    name: "Gustos",
+    label: "Gustos",
   },
 ];

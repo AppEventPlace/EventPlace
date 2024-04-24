@@ -32,7 +32,7 @@ const Login = ({ navigation }) => {
           <Boton
             label="Iniciar sesión"
             theme="StyleBoton1"
-            onPress={() => navigation.navigate("Gustos")}
+            onPress={() => navigation.navigate("")}
           />
           <Boton
             label="Crear cuenta"

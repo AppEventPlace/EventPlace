@@ -13,6 +13,7 @@ import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
+import Autenticar from "../../App";
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   return (
@@ -26,7 +27,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
               onPress={() => navigation.navigate("Wall")}
             />
           </View>
-          <View style={styles.Titulo}>
+          <View style={{ alignSelf: "center" }}>
             <Text style={styles.Titulo}> Mi perfil </Text>
           </View>
           {DatosClientePrueba.map((DCliente) => (
@@ -135,7 +136,14 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       progress={DCliente.PorcentajePerfil}
                     />
                   </View>
-                  <View style={{ marginTop: 10, marginLeft: 10 }}>
+                  <View
+                    style={{
+                      marginTop: 10,
+                      marginLeft: 10,
+                      marginRight: 5,
+                      alignSelf: "center",
+                    }}
+                  >
                     <Boton
                       theme={"StyleBoton2"}
                       label={"Chat privado"}
@@ -145,7 +153,14 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                 </View>
               </View>
               <View>
-                <View style={{ display: "flex", flexDirection: "row" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    alignContent: "flex-start",
+                  }}
+                >
                   <CuadroEstado
                     key={"Evento Creado"}
                     cantidad={DCliente.EventosCreados}
@@ -156,10 +171,6 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                     cantidad={DCliente.EventosComprados}
                     label={"Eventos Comprados"}
                   />
-                </View>
-              </View>
-              <View>
-                <View style={{ display: "flex", flexDirection: "row" }}>
                   <CuadroEstado
                     key={"Mis invitaciones"}
                     cantidad={DCliente.Invitaciones}
@@ -172,12 +183,20 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   />
                 </View>
               </View>
-              <View style={{ marginTop: 10, marginBottom: 15 }}>
+
+              <View
+                style={{
+                  marginTop: 10,
+                  marginBottom: 15,
+                  alignItems: "center",
+                  marginEnd: 10,
+                }}
+              >
                 <Boton
                   key={"Cerrar sesión"}
                   theme={"StyleBoton1"}
                   label={"Cerrar sesión"}
-                  onPress={() => alert("Cerrar sesión")}
+                  onPress={() => alert("cerrar sesión")}
                 />
               </View>
             </View>
@@ -191,6 +210,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   ScrollView: {
     marginTop: 0,
+    marginLeft: 2,
     backgroundColor: "#F4F5FE",
     width: "100%", // Ancho de a imagen
     height: "100%", // Alto de la imagen

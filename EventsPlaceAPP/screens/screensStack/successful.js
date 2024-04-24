@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import IconSVG from "../../assets/LogoSVG";
 import Boton from "../../components/Button";
+import Autenticar from "../../App";
 
 const VerifyIdentity = ({ navigation }) => {
   return (
@@ -25,7 +26,7 @@ const VerifyIdentity = ({ navigation }) => {
             label="Continuar"
             color={true}
             theme="FullStyleBoton1"
-            // onPress={() => navigation.navigate("Gustos")}
+            onPress={() => alert("iniciar sesion")}
           />
         </View>
       </View>
