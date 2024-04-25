@@ -13,7 +13,7 @@ import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
-import Autenticar from "../../App";
+//import Autenticar from "../../App";
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   return (

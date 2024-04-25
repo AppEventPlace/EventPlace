@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import IconSVG from "../../assets/LogoSVG";
 import Boton from "../../components/Button";
-import Autenticar from "../../App";
+//import Autenticar from "../../App";
 
 const VerifyIdentity = ({ navigation }) => {
   return (

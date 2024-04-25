@@ -11,6 +11,27 @@ export default function Button({
   Icon,
 }) {
   switch (theme) {
+    case "StyleBoton":
+      return (
+        <Pressable
+          style={[styles.button, { backgroundColor: color }]}
+          onPress={onPress}
+        >
+          <Text style={styles.StyleButtonLabel1}>{label}</Text>
+        </Pressable>
+      );
+
+    case "StyleBoton_1":
+      return (
+        <Pressable
+          style={[styles.button, { backgroundColor: color }]}
+          onPress={onPress}
+        >
+          <Text style={styles.StyleButtonLabel2}>{label}</Text>
+        </Pressable>
+      );
+
+    //// Eliminar ////////
     case "StyleBoton1":
       return (
         <View style={styles.StyleBoton1}>
@@ -19,7 +40,8 @@ export default function Button({
           </Pressable>
         </View>
       );
-      break;
+    //////////////////////
+
     case "FullStyleBoton1":
       return (
         <Pressable
@@ -39,7 +61,8 @@ export default function Button({
           )}
         </Pressable>
       );
-      break;
+
+    //// Eliminar ////////
     case "StyleBoton2":
       return (
         <View style={styles.StyleBoton2}>
@@ -48,7 +71,8 @@ export default function Button({
           </Pressable>
         </View>
       );
-      break;
+    //////////////////////
+
     case "Terms":
       return (
         <View
@@ -66,7 +90,7 @@ export default function Button({
           </Pressable>
         </View>
       );
-      break;
+
     case "primary":
       return (
         <View style={styles.ForgetPassword}>
@@ -78,7 +102,7 @@ export default function Button({
           </Pressable>
         </View>
       );
-      break;
+
     case "botonSubRay":
       return (
         <Pressable
@@ -88,7 +112,7 @@ export default function Button({
           <Text style={styles.buttonLabel_1}>{label}</Text>
         </Pressable>
       );
-      break;
+
     case "Google":
       return (
         <Pressable
@@ -98,7 +122,7 @@ export default function Button({
           <IconSVG theme="Google" />
         </Pressable>
       );
-      break;
+
     case "Facebook":
       return (
         <Pressable
@@ -108,7 +132,7 @@ export default function Button({
           <IconSVG theme="Facebook" />
         </Pressable>
       );
-      break;
+
     case "IOS":
       return (
         <Pressable
@@ -118,7 +142,7 @@ export default function Button({
           <IconSVG theme="IOS" />
         </Pressable>
       );
-      break;
+
     case "BackCheckron":
       return (
         <Pressable style={styles.BackButton} onPress={onPress}>
@@ -126,14 +150,14 @@ export default function Button({
           <Text style={styles.BackButtonTex}>{label}</Text>
         </Pressable>
       );
-      break;
+
     case "EditarPerfil":
       return (
         <Pressable style={{ width: 22, height: 22 }} onPress={onPress}>
           <IconSVG theme="Editar" />
         </Pressable>
       );
-      break;
+
     case "Imagen":
       return (
         <Pressable
@@ -141,7 +165,7 @@ export default function Button({
           onPress={onPress}
         ></Pressable>
       );
-      break;
+
     case "TexTerms":
       return (
         <Pressable
@@ -159,7 +183,7 @@ export default function Button({
           </Pressable>
         </View>
       );
-      break;
+
     default:
       return (
         <Pressable
@@ -169,7 +193,6 @@ export default function Button({
           <Text style={styles.StyleButtonLabel1}>{label}</Text>
         </Pressable>
       );
-      break;
   }
 }
 const styles = StyleSheet.create({
@@ -212,7 +235,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   button: {
-    width: "100%",
+    minWidth: "100%",
     height: "100%",
     alignItems: "center",
     justifyContent: "center",

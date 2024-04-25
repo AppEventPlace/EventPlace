@@ -28,20 +28,24 @@ const Login = ({ navigation }) => {
             style={style.TexInput}
           />
         </View>
-        <View style={style.ButonMarginTop}>
+        <View style={style.BotonContainer}>
           <Boton
             label="Iniciar sesión"
-            theme="StyleBoton1"
-            onPress={() => navigation.navigate("")}
+            color="#6979F8"
+            theme="StyleBoton"
+            onPress={() => alert("iniciar sesion")}
           />
+        </View>
+        <View style={style.BotonContainer_1}>
           <Boton
             label="Crear cuenta"
-            theme="StyleBoton2"
+            color="#F4F5FE"
+            theme="StyleBoton_1"
             onPress={() => navigation.navigate("Crea tu cuenta")}
           />
-          <View style={style.ForgetPassword}>
-            <Boton theme="primary" label="Olvide mi contraseña" />
-          </View>
+        </View>
+        <View style={style.ForgetPassword}>
+          <Boton theme="primary" label="Olvide mi contraseña" />
         </View>
       </View>
       <View style={style.AnotherLogin}>
@@ -70,10 +74,12 @@ const Login = ({ navigation }) => {
 
 const style = StyleSheet.create({
   PerfilContainer: {
+    flex: 1,
     height: "100%",
     alignItems: "center",
     backgroundColor: "#F4F5FE",
     justifyContent: "center",
+    paddingHorizontal: 16,
   },
   LogoContainer: {
     width: 218,
@@ -82,24 +88,25 @@ const style = StyleSheet.create({
     //marginTop: 66
   },
   LogionContainer: {
+    rowGap: 24,
     display: "flex",
-    width: 358,
-    height: 413,
+    maxWidth: 358, //358
+    minWidth: 200, //340
     elevation: 1,
     marginTop: 40,
     //borderWidth: 1,
     borderRadius: 12,
     alignItems: "center",
     paddingHorizontal: 16,
+    paddingVertical: 24,
     backgroundColor: "#FBFBFE",
   },
   SubContainer: {
+    gap: 8,
     height: 82,
     width: "100%",
-    marginTop: 24,
     //borderWidth: 1,
-    display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   TexContainer: {
     height: 22,
@@ -112,8 +119,7 @@ const style = StyleSheet.create({
   },
   TexInput: {
     flex: 1,
-    width: 326,
-    marginTop: 8,
+    minWidth: "100%",
     fontSize: 14,
     //borderWidth: 1,
     lineHeight: 20,
@@ -124,9 +130,18 @@ const style = StyleSheet.create({
     borderBottomColor: "#A1A5A9",
     borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
-  ButonMarginTop: {
-    rowGap: 24,
-    marginTop: 24,
+  BotonContainer: {
+    minWidth: "100%",
+    height: 43,
+    //borderWidth: 1,
+  },
+  BotonContainer_1: {
+    minWidth: "100%",
+    height: 43,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "#6979F8",
+    //borderWidth: 1,
   },
   ForgetPassword: {
     //borderWidth: 1,
