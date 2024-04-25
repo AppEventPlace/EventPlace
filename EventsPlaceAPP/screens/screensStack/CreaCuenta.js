@@ -72,6 +72,7 @@ const CreaCuenta = ({ navigation }) => {
           marginTop: 24,
           gap: 56,
           alignItems: "center",
+          width: "100%",
         }}
       >
         <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
@@ -119,16 +120,24 @@ const CreaCuenta = ({ navigation }) => {
   ----------------------------------------------------------------------------------
   */
   return (
-    <View style={{ flex: 1, backgroundColor: "#F4F5FE" }}>
-      <SafeAreaView backgroundColor="#F4F5FE">
-        <ScrollView style={style.PerfilContainer}>
-          <View style={style.HeaderContainer}>
-            <Boton
-              theme="BackCheckron"
-              label="Atras"
-              onPress={() => navigation.goBack()}
-            />
-          </View>
+    <SafeAreaView style={{ backgroundColor: "#F4F5FE", width: "100%" }}>
+      <ScrollView style={style.PerfilContainer}>
+        <View style={style.HeaderContainer}>
+          <Boton
+            theme="BackCheckron"
+            label="Atras"
+            onPress={() => navigation.goBack()}
+          />
+        </View>
+        <View
+          style={{
+            backgroundColor: "#F4F5FE",
+            width: "97%",
+            maxWidth: 500, //Esto evita que tome toda la pantalla
+            //minWidth: 340, // no disminuye el ancho a menos de este valor en movil
+            alignSelf: "center",
+          }}
+        >
           <View style={style.ProgressBar}>
             <IconSVG theme="ProgressBar" progress="90" />
           </View>
@@ -265,9 +274,9 @@ const CreaCuenta = ({ navigation }) => {
               <TerminosCondicionesForm />
             </View>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -278,13 +287,16 @@ const style = StyleSheet.create({
   },
   PerfilContainer: {
     backgroundColor: "#F4F5FE",
-    width: "100%",
+    width: "98%", //asegura el ancho total en el dispositivo
     height: "100%",
-    paddingHorizontal: 16,
+    marginLeft: 5,
+    marginRight: 5,
+    alignSelf: "center", //alinea todo el forumlario al centro
   },
   HeaderContainer: {
     marginTop: 20,
     height: 25,
+    width: "100%",
     //borderWidth: 1,
   },
   ProgressBar: {
@@ -315,18 +327,23 @@ const style = StyleSheet.create({
     letterSpacing: 0.0044,
   },
   AnotherLoginContainer: {
-    alignItems: "center",
+    alignSelf: "center",
     marginTop: 20,
+    minWidth: 320,
+    //width: "100%",
     //borderWidth: 1,
   },
   IconContainer: {
-    flex: 1,
+    //flex: 1,
+    width: "100%",
     flexDirection: "row",
     columnGap: 12,
+    //alignItems: "center",
   },
   AnotherLoginSubContainer: {
     height: 44,
-    width: 111,
+    width: "30%",
+    maxWidth: 111,
     //borderWidth: 1
   },
   AnotherLogin: {

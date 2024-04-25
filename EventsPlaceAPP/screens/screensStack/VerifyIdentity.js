@@ -39,11 +39,13 @@ const VerifyIdentity = ({ navigation }) => {
           </View>
           <Boton theme="primary" label="Solicitar nuevo código" />
         </View>
-        <Boton
-          label="Continuar"
-          theme="StyleBoton1"
-          onPress={() => navigation.navigate("Gustos")}
-        />
+        <View style={{ width: 310, marginHorizontal: 10 }}>
+          <Boton
+            label="Continuar"
+            theme="StyleBoton1"
+            onPress={() => navigation.navigate("Gustos")}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -59,6 +61,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
   },
   ContainerVerify: {
+    alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
     gap: 56,
@@ -68,6 +71,9 @@ const style = StyleSheet.create({
     backgroundColor: "#FBFBFE",
     paddingHorizontal: 16,
     paddingVertical: 24,
+    width: "100%",
+    maxWidth: 400,
+    minWidth: 335,
   },
   TexContainer: {
     gap: 24,
@@ -80,6 +86,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
     //borderWidth: 1,
     alignItems: "center",
+    width: "95%",
   },
   TexTitle: {
     fontWeight: "700",
@@ -103,9 +110,10 @@ const style = StyleSheet.create({
     justifyContent: "center",
     //borderWidth: 1,
     alignItems: "center",
+    width: "95%",
   },
   input: {
-    width: 47,
+    width: 45,
     height: 47,
     textAlign: "center",
     borderBottomColor: "#A1A5A9",

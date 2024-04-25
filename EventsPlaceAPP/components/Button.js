@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   StyleBoton1: {
-    width: 326,
+    //width: 326,
     height: 43,
     borderRadius: 50,
     alignItems: "center",

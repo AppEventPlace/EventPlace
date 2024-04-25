@@ -90,10 +90,12 @@ const style = StyleSheet.create({
   LogionContainer: {
     rowGap: 24,
     display: "flex",
+    width: "100%",
     maxWidth: 358, //358
-    minWidth: 200, //340
+    minWidth: 340, //340
     elevation: 1,
     marginTop: 40,
+
     //borderWidth: 1,
     borderRadius: 12,
     alignItems: "center",
