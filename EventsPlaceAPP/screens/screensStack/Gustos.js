@@ -68,14 +68,45 @@ const Gustos = ({ navigation }) => {
 };
 
 //const selectedButton = ["0", "hola"];
-
-const Seleccion = ({ label }) => {
-  const [selectedeButton, setSelectedButton] = useState([]);
+const PresionableSeleccion = ({ id, label }) => {
   const [Seleccionado, setSeleccionado] = useState(false);
-  function Escoger(id) {
+  return (
+    <View
+      key={id}
+      style={Seleccionado ? style.Seleccionable2 : style.Seleccionable1}
+      //backgroundColor={Seleccionado ? "#6979F8" : "#E9EAFE"}
+      //color={Seleccionado ? "#0F172A" : "#FBFBFE"}
+    >
+      <Pressable
+        key={id}
+        style={style.button}
+        //label={Selec.label}
+        onPress={() => {
+          //Escoger(label);
+          //setSeleccionado(true);
+          setSeleccionado((current) => !current);
+        }}
+      >
+        <Text
+          style={
+            Seleccionado ? style.StyleButtonLabel1 : style.StyleButtonLabel2
+          }
+        >
+          {label}
+        </Text>
+      </Pressable>
+    </View>
+  );
+};
+
+/*const Seleccionados = () => {
+  const [selectedeButton, setSelectedButton] = useState([]);
+
+  function Escoger() {
     setSelectedButton(selectedeButton.concat(id));
   }
-
+};*/
+const Seleccion = () => {
   return (
     <View
       style={{
@@ -87,35 +118,12 @@ const Seleccion = ({ label }) => {
       }}
     >
       {OpcionesSeleccion.map((Selec) => (
-        //const [Seleccionado, setSeleccionado] = useState(false);
-
-        <View
+        <PresionableSeleccion
           key={Selec.name}
-          style={Seleccionado ? style.Seleccionable1 : style.Seleccionable2}
-          //backgroundColor={Seleccionado ? "#6979F8" : "#E9EAFE"}
-          //color={Seleccionado ? "#0F172A" : "#FBFBFE"}
-        >
-          <Pressable
-            key={Selec.name}
-            style={style.button}
-            //label={Selec.label}
-            onPress={() => {
-              Escoger(Selec.label);
-              //setSeleccionado(true);
-              setSeleccionado((current) => !current);
-            }}
-          >
-            <Text
-              style={
-                Seleccionado ? style.StyleButtonLabel2 : style.StyleButtonLabel1
-              }
-            >
-              {Selec.label}
-            </Text>
-          </Pressable>
-        </View>
+          id={Selec.name}
+          label={Selec.label}
+        />
       ))}
-      <Text>{selectedeButton}</Text>
     </View>
   );
 };
