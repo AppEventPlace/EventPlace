@@ -33,7 +33,7 @@ const Login = ({ navigation }) => {
             label="Iniciar sesión"
             color="#6979F8"
             theme="StyleBoton"
-            onPress={() => alert("iniciar sesion")}
+            onPress={() => navigation.navigate("Gustos")}
           />
         </View>
         <View style={style.BotonContainer_1}>

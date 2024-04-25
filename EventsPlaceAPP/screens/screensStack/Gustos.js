@@ -6,6 +6,7 @@ import {
   Button,
   ScrollView,
   Pressable,
+  Dimensions,
 } from "react-native";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,8 +16,9 @@ import { Picker } from "react-native-web";
 import { RadioButton } from "react-native-paper";
 
 const Gustos = ({ navigation }) => {
+  const screenHeight = Dimensions.get("window").height;
   return (
-    <View style={{ flex: 1, backgroundColor: "#F4F5FE" }}>
+    <View style={{ backgroundColor: "#F4F5FE" }}>
       <SafeAreaView style={{ backgroundColor: "#F4F5FE" }}>
         <ScrollView style={style.PerfilContainer}>
           <View style={style.HeaderContainer}>
@@ -28,7 +30,13 @@ const Gustos = ({ navigation }) => {
               />
             </View>
             <View style={{ width: 60, alignContent: "flex-end" }}>
-              <Boton theme={"botonSubRay"} label={"Saltar"} />
+              <Boton
+                theme={"botonSubRay"}
+                label={"Saltar"}
+                onPress={() =>
+                  navigation.navigate("Finaliza creacion de usuario")
+                }
+              />
             </View>
           </View>
           <View style={{ marginTop: 15 }}>
@@ -52,7 +60,15 @@ const Gustos = ({ navigation }) => {
               <LugarEventos />
             </View>
           </View>
-          <View style={{ marginVertical: 10, marginHorizontal: 5 }}>
+          <View
+            style={{
+              marginVertical: 10,
+              marginHorizontal: 5,
+              maxWidth: 330,
+              minWidth: 320,
+              alignSelf: "center",
+            }}
+          >
             <Boton
               theme={"Seleccionable"}
               label={"Continuar"}
@@ -115,6 +131,7 @@ const Seleccion = () => {
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
+        width: "100%",
       }}
     >
       {OpcionesSeleccion.map((Selec) => (

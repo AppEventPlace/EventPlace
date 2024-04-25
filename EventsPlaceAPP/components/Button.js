@@ -105,10 +105,7 @@ export default function Button({
 
     case "botonSubRay":
       return (
-        <Pressable
-          style={styles.button}
-          onPress={() => alert("You pressed a button1.")}
-        >
+        <Pressable style={styles.button} onPress={onPress}>
           <Text style={styles.buttonLabel_1}>{label}</Text>
         </Pressable>
       );
