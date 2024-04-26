@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -13,69 +13,90 @@ import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
+import * as ImagePicker from "expo-image-picker";
+import ImageViewer from "../../components/ImageViewer";
 //import Autenticar from "../../App";
+const FondImage = require("../../assets/PerfilGenerico.png");
 
 const PerfilPrincipalScreen = ({ navigation }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      //Opciones del selector de imágenes a launchImageLibraryAsync()
+      allowsEditing: true,
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }
+    //Si el usuario no elige una imagen, muestra una alerta.
+    else {
+      alert("No seleccionaste ninguna imagen.");
+    }
+  };
   return (
-    <SafeAreaView style={styles.ScrollView}>
+    <SafeAreaView style={{ backgroundColor: "#353638" }}>
       <ScrollView style={styles.ScrollView}>
         <View style={styles.PerfilContainer}>
-          <View style={styles.HeaderContainer}>
-            <Boton
-              theme="BackCheckron"
-              label="Atras"
-              onPress={() => navigation.navigate("Wall")}
-            />
+          <View style={styles.IconBackground}>
+            <IconSVG theme={"BackgroundPerfil"} />
           </View>
-          <View style={{ alignSelf: "center" }}>
+
+          <View style={{ alignSelf: "center", marginTop: 20 }}>
             <Text style={styles.Titulo}> Mi perfil </Text>
           </View>
           {DatosClientePrueba.map((DCliente) => (
             <View>
               <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
                 <View
-                  style={styles.CabeceraTarjeta}
-                  key={"cabecera tarjeta perfil"}
+                  style={[
+                    styles.Alinear,
+                    {
+                      marginTop: 15,
+                      width: 68,
+                      height: 68,
+                      alignSelf: "center",
+                    },
+                  ]}
                 >
-                  <View style={styles.imagenPrincipal}>
-                    <IconSVG
-                      key={"icono foto generico"}
-                      theme={"FotoGenerica"}
-                      ancho={64}
-                      alto={64}
-                    />
-                  </View>
-
+                  <ImageViewer
+                    //Pase el URI de la imagen seleccionada al componente ImageViewer.
+                    placeholderImageSource={FondImage}
+                    selectedImage={selectedImage}
+                    ancho={68}
+                    alto={68}
+                  />
+                  <Boton theme="Imagen" onPress={pickImageAsync} />
+                </View>
+                <View>
                   <View style={styles.NombrePerfil}>
-                    <Text key={"Nombre usuario tarjeta"} style={styles.Titulo}>
+                    <Text
+                      key={"Nombre usuario tarjeta"}
+                      style={styles.TituloTarjeta}
+                    >
                       {DCliente.UserName}
                     </Text>
                   </View>
                   <View
+                    key={"CalificacionText"}
                     style={{
-                      marginTop: 40,
-
-                      width: 30,
+                      marginTop: 5,
+                      alignSelf: "center",
                     }}
                   >
-                    <Boton
-                      key={"Editar perfil"}
-                      theme="EditarPerfil"
-                      style={{ width: 24, height: 24, paddingRight: 10 }}
-                      onPress={() => navigation.navigate("Editar perfil")}
-                    />
+                    <Text
+                      key={"calificacion text"}
+                      style={[styles.Subtitulos, { fontSize: 16 }]}
+                    >
+                      Calificación
+                    </Text>
                   </View>
-                </View>
-                <View>
-                  <Text key={"calificacion text"} style={styles.Subtitulos}>
-                    Calificación
-                  </Text>
                   <View
                     key="Estrellas de calificacion perfil"
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: 5,
+                      alignSelf: "center",
                       marginTop: 5,
                     }}
                   >
@@ -83,16 +104,6 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       key={"estrellas calificacion"}
                       califi={DCliente.Calificacion}
                     />
-                    <Text
-                      key={"numero calificacion"}
-                      style={{
-                        color: "#626264",
-                        paddingLeft: 5,
-                        marginTop: -1,
-                      }}
-                    >
-                      &#40;{DCliente.Calificacion}&#41;
-                    </Text>
                   </View>
                   <View
                     key="Experiencia perfil"
@@ -129,6 +140,12 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                     >
                       {DCliente.EventosRealizados}
                     </Text>
+                    <Boton
+                      key={"Editar perfil"}
+                      theme="EditarPerfil"
+                      style={{ width: 24, height: 24, paddingRight: 10 }}
+                      onPress={() => navigation.navigate("Editar perfil")}
+                    />
                   </View>
                   <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
                     <IconSVG
@@ -136,23 +153,9 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       progress={DCliente.PorcentajePerfil}
                     />
                   </View>
-                  <View
-                    style={{
-                      marginTop: 10,
-                      marginLeft: 10,
-                      marginRight: 5,
-                      alignSelf: "center",
-                    }}
-                  >
-                    <Boton
-                      theme={"StyleBoton2"}
-                      label={"Chat privado"}
-                      onPress={() => navigation.navigate("Chat")}
-                    />
-                  </View>
                 </View>
               </View>
-              <View>
+              <View style={{ alignSelf: "center", marginLeft: 5 }}>
                 <View
                   style={{
                     display: "flex",
@@ -188,8 +191,10 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                 style={{
                   marginTop: 10,
                   marginBottom: 15,
-                  alignItems: "center",
+                  alignSelf: "center",
                   marginEnd: 10,
+                  width: "100%",
+                  maxWidth: 320,
                 }}
               >
                 <Boton
@@ -208,10 +213,23 @@ const PerfilPrincipalScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  Alinear: {
+    //borderWidth: 1,
+    alignItems: "center",
+  },
+  IconBackground: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    marginLeft: 0,
+    marginTop: -7,
+  },
   ScrollView: {
-    marginTop: 0,
-    marginLeft: 2,
-    backgroundColor: "#F4F5FE",
+    paddingTop: -3,
+    //marginLeft: 2,
+    //backgroundColor: "black",
     width: "100%", // Ancho de a imagen
     height: "100%", // Alto de la imagen
   },
@@ -220,7 +238,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F4F5FE",
     width: "100%", // Ancho de a imagen
     height: "100%", // Alto de la imagen
-    alignItems: "center",
+    //alignItems: "center",
   },
   HeaderContainer: {
     marginTop: 20,
@@ -232,22 +250,31 @@ const styles = StyleSheet.create({
   TarjetaPerfil: {
     backgroundColor: "white",
     width: "100%",
+    maxWidth: 326,
     borderRadius: 12,
-    marginTop: 50,
-    height: 250,
+    marginTop: 32,
+    height: 271,
     display: "flex",
     flexDirection: "column",
+    alignSelf: "center",
+    elevation: 2,
   },
   Titulo: {
     alignContent: "center",
     fontSize: 20,
     marginTop: 10,
     fontWeight: "bold",
-    color: "#333333",
+    color: "#FBFBFB",
+  },
+  TituloTarjeta: {
+    alignContent: "center",
+    fontSize: 20,
+    marginTop: 10,
+    fontWeight: "bold",
+    color: "#515EC0",
   },
   CabeceraTarjeta: {
-    display: "flex",
-    flexDirection: "row",
+    alignSelf: "center",
     //width: "100",
   },
   imagenPrincipal: {
@@ -259,13 +286,14 @@ const styles = StyleSheet.create({
     width: 80,
   },
   NombrePerfil: {
-    marginTop: 30,
+    marginTop: 5,
+    alignSelf: "center",
     //width: "80%",
-    flex: 5,
+    //flex: 5,
   },
   Subtitulos: {
     marginTop: 5,
-    paddingLeft: 7,
+    //paddingLeft: 7,
     color: "#828282",
   },
 });
