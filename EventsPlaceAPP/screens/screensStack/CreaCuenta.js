@@ -413,7 +413,7 @@ const style = StyleSheet.create({
   SubContainer4: {
     width: 75,
     height: "100%",
-    borderWidth: 1,
+    //borderWidth: 1,
     justifyContent: "center",
   },
   TexContainer: {

@@ -102,7 +102,7 @@ const CreacionStack = () => {
 };
 //fin creacion stack
 //constante autenticacion
-let isUserAuthenticated = true;
+let isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (

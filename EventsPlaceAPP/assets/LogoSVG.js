@@ -466,65 +466,6 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-<<<<<<< HEAD
-=======
-      break;
-    case "BackgroundPerfil":
-      return (
-        <Svg
-          width="390"
-          height="208"
-          viewBox="0 0 390 208"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <G filter="url(#filter0_d_3093_10717)">
-            <Path
-              d="M485 10H-95L-95 10C-62.0373 52.5856 -45.5559 73.8784 -30.4906 88.7776C93.1146 211.02 291.705 212.219 416.778 91.4786C432.022 76.7625 449.681 54.5087 484.999 10.0012L485 10Z"
-              fill="#5E6CDE"
-            />
-          </G>
-          <Defs>
-            <Rect
-              id="filter0_d_3093_10717"
-              x="-113"
-              y="0"
-              width="616"
-              height="207.253"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset dy="8" />
-              <feGaussianBlur stdDeviation="9" />
-              <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0.08 0"
-              />
-              <feBlend
-                mode="multiply"
-                in2="BackgroundImageFix"
-                result="effect1_dropShadow_3093_10717"
-              />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow_3093_10717"
-                result="shape"
-              />
-            </Rect>
-          </Defs>
-        </Svg>
-      );
-      break;
->>>>>>> fca15e9a511c65b208d6c1e949929064236aac13
   }
 }
 
