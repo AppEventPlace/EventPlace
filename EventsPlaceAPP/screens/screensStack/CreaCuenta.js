@@ -69,13 +69,21 @@ const CreaCuenta = ({ navigation }) => {
     return (
       <View
         style={{
-          marginTop: 24,
           gap: 56,
+          marginTop: 24,
           alignItems: "center",
-          width: "100%",
+          justifyContent: "center",
         }}
       >
-        <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
+        <View
+          style={{
+            gap: 6,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            //borderWidth: 1,
+          }}
+        >
           <CheckBox
             style={style.checkbox}
             value={aceptado}
@@ -83,30 +91,19 @@ const CreaCuenta = ({ navigation }) => {
             onValueChange={setAceptado}
           />
           <Boton
-            label="Aceptar términos y condiciones y tratamiento de datos personales."
             theme="TexTerms"
+            label="Aceptar términos, condiciones y tratamiento de datos personales."
             onPress={() => navigation.navigate("Términos y condiciones")}
           />
         </View>
-        <Boton
-          label="Continuar"
-          theme="Terms"
-          onPress={() => navigation.navigate("Verify identity")}
-          disabled={aceptado}
-        />
-        {/* <Pressable
-          onPress={() => {
-            if (aceptado) {
-              // Lógica para continuar
-              console.log("Continuar presionado");
-            } else {
-              console.log("Debe aceptar los términos");
-            }
-          }}
-          disabled={!aceptado}
-        >
-          <Text style={{ color: aceptado ? "blue" : "gray" }}>Continuar</Text>
-        </Pressable> */}
+        <View style={style.BotonContainer}>
+          <Boton
+            label="Continuar"
+            theme="Terms"
+            onPress={() => navigation.navigate("Verify identity")}
+            disabled={aceptado}
+          />
+        </View>
       </View>
     );
   };
@@ -120,7 +117,7 @@ const CreaCuenta = ({ navigation }) => {
   ----------------------------------------------------------------------------------
   */
   return (
-    <SafeAreaView style={{ backgroundColor: "#F4F5FE", width: "100%" }}>
+    <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
       <ScrollView style={style.PerfilContainer}>
         <View style={style.HeaderContainer}>
           <Boton
@@ -129,15 +126,7 @@ const CreaCuenta = ({ navigation }) => {
             onPress={() => navigation.goBack()}
           />
         </View>
-        <View
-          style={{
-            backgroundColor: "#F4F5FE",
-            width: "97%",
-            maxWidth: 500, //Esto evita que tome toda la pantalla
-            //minWidth: 340, // no disminuye el ancho a menos de este valor en movil
-            alignSelf: "center",
-          }}
-        >
+        <View style={style.FullContainer}>
           <View style={style.ProgressBar}>
             <IconSVG theme="ProgressBar" progress="90" />
           </View>
@@ -146,16 +135,14 @@ const CreaCuenta = ({ navigation }) => {
             Crear la cuenta con tus redes o ingresar tu correo electrónico
           </Text>
           <View style={style.AnotherLoginContainer}>
-            <View style={style.IconContainer}>
-              <View style={style.AnotherLoginSubContainer}>
-                <Boton theme="Google" />
-              </View>
-              <View style={style.AnotherLoginSubContainer}>
-                <Boton theme="Facebook" />
-              </View>
-              <View style={style.AnotherLoginSubContainer}>
-                <Boton theme="IOS" />
-              </View>
+            <View style={style.AnotherLoginSubContainer}>
+              <Boton theme="IconPressable" Icon="Google" color="#FFFFFF" />
+            </View>
+            <View style={style.AnotherLoginSubContainer}>
+              <Boton theme="IconPressable" Icon="Facebook" color="#1877F2" />
+            </View>
+            <View style={style.AnotherLoginSubContainer}>
+              <Boton theme="IconPressable" Icon="IOS" color="#000000" />
             </View>
           </View>
           <View style={style.Alinear}>
@@ -212,6 +199,7 @@ const CreaCuenta = ({ navigation }) => {
                     <DatePickerComponent
                       value={selectedDate}
                       onDateChange={handleDateChange}
+                      IconColor="#6979F8" // Color del icono SVG
                     />
                   </View>
                 </View>
@@ -270,9 +258,7 @@ const CreaCuenta = ({ navigation }) => {
                 />
               </View>
             </View>
-            <View style={style.ButonMarginTop}>
-              <TerminosCondicionesForm />
-            </View>
+            <TerminosCondicionesForm />
           </View>
         </View>
       </ScrollView>
@@ -287,10 +273,9 @@ const style = StyleSheet.create({
   },
   PerfilContainer: {
     backgroundColor: "#F4F5FE",
-    width: "98%", //asegura el ancho total en el dispositivo
+    width: "100%", //asegura el ancho total en el dispositivo
     height: "100%",
-    marginLeft: 5,
-    marginRight: 5,
+    paddingHorizontal: 16,
     alignSelf: "center", //alinea todo el forumlario al centro
   },
   HeaderContainer: {
@@ -298,6 +283,12 @@ const style = StyleSheet.create({
     height: 25,
     width: "100%",
     //borderWidth: 1,
+  },
+  FullContainer: {
+    backgroundColor: "#F4F5FE",
+    width: "100%",
+    maxWidth: 800, //Esto evita que tome toda la pantalla
+    alignSelf: "center",
   },
   ProgressBar: {
     marginTop: 24,
@@ -327,30 +318,23 @@ const style = StyleSheet.create({
     letterSpacing: 0.0044,
   },
   AnotherLoginContainer: {
-    alignSelf: "center",
     marginTop: 20,
-    minWidth: 320,
-    //width: "100%",
-    //borderWidth: 1,
-  },
-  IconContainer: {
-    //flex: 1,
+    justifyContent: "center",
     width: "100%",
+    maxWidth: 800, //Esto evita que tome toda la pantalla
+    //borderWidth: 1,
     flexDirection: "row",
     columnGap: 12,
-    //alignItems: "center",
   },
   AnotherLoginSubContainer: {
+    flex: 1,
     height: 44,
-    width: "30%",
-    maxWidth: 111,
-    //borderWidth: 1
   },
   AnotherLogin: {
     marginTop: 32,
     flexDirection: "row",
     alignItems: "center",
-    width: 358, //326
+    width: "100%", //326
     //borderWidth: 1,
   },
   Underscore: {
@@ -375,7 +359,6 @@ const style = StyleSheet.create({
     //borderWidth: 1,
     alignItems: "center",
     width: "100%",
-    //height: "100%",
     paddingBottom: 38,
   },
   Container: {
@@ -419,8 +402,7 @@ const style = StyleSheet.create({
   SubContainer4: {
     width: 75,
     height: "100%",
-    //borderWidth: 1,
-    alignItems: "center",
+    borderWidth: 1,
     justifyContent: "center",
   },
   TexContainer: {
@@ -452,6 +434,12 @@ const style = StyleSheet.create({
     width: 20,
     height: 20,
     borderColor: "#6979F8",
+  },
+  BotonContainer: {
+    width: "100%",
+    height: 43,
+    maxWidth: 326,
+    //borderWidth: 1,
   },
 });
 

@@ -14,7 +14,7 @@ const VerifyIdentity = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView View style={style.PerfilContainer}>
+    <SafeAreaView style={style.PerfilContainer}>
       <View style={style.ContainerVerify}>
         <View style={style.TexContainer}>
           <Text style={style.TexTitle}>Para verificar tu identidad</Text>
@@ -37,12 +37,15 @@ const VerifyIdentity = ({ navigation }) => {
               />
             ))}
           </View>
-          <Boton theme="primary" label="Solicitar nuevo código" />
+          <View style={{ height: 19 }}>
+            <Boton theme="primary" label="Solicitar nuevo código" />
+          </View>
         </View>
-        <View style={{ width: 310, marginHorizontal: 10 }}>
+        <View style={style.BotonContainer}>
           <Boton
+            theme="StyleBoton"
             label="Continuar"
-            theme="StyleBoton1"
+            color="#6979F8"
             onPress={() => navigation.navigate("Gustos")}
           />
         </View>
@@ -54,8 +57,8 @@ export default VerifyIdentity;
 
 const style = StyleSheet.create({
   PerfilContainer: {
+    flex: 1,
     backgroundColor: "#F4F5FE",
-    height: "100%",
     paddingHorizontal: 16,
     //borderWidth: 1,
     justifyContent: "center",
@@ -72,8 +75,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 24,
     width: "100%",
-    maxWidth: 400,
-    minWidth: 335,
+    maxWidth: 800,
   },
   TexContainer: {
     gap: 24,
@@ -86,7 +88,6 @@ const style = StyleSheet.create({
     justifyContent: "center",
     //borderWidth: 1,
     alignItems: "center",
-    width: "95%",
   },
   TexTitle: {
     fontWeight: "700",
@@ -118,6 +119,11 @@ const style = StyleSheet.create({
     textAlign: "center",
     borderBottomColor: "#A1A5A9",
     borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+  },
+  BotonContainer: {
+    width: "100%",
+    height: 43,
+    //borderWidth: 1,
   },
 });
 

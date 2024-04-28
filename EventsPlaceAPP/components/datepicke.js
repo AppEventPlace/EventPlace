@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Platform } from "react-native";
+import { View, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Boton from "./Button";
-import moment from "moment";
+//import moment from "moment";
 
 ///"@react-native-community/datetimepicker"; //
 
-const DatePickerComponent = ({ onDateChange }) => {
+const DatePickerComponent = ({ onDateChange, IconColor }) => {
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -28,6 +28,7 @@ const DatePickerComponent = ({ onDateChange }) => {
         theme="FullStyleBoton1"
         Icon="Calendario"
         onPress={showDatepicker}
+        IconColor={IconColor} // Color del icono SVG
       />
       {/* <TextInput
         placeholder="Fecha de nacimiento"

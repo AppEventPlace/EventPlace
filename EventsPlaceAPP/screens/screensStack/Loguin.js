@@ -50,22 +50,18 @@ const Login = ({ navigation }) => {
       </View>
       <View style={style.AnotherLogin}>
         <View style={style.Underscore} />
-        <View>
-          <Text style={style.TexAnotherLogin}>
-            Inicio sesion con otro medio
-          </Text>
-        </View>
+        <Text style={style.TexAnotherLogin}>Inicio sesion con otro medio</Text>
         <View style={style.Underscore} />
       </View>
       <View style={style.AnotherLoginContainer}>
         <View style={style.AnotherLoginSubContainer}>
-          <Boton theme="Google" />
+          <Boton theme="IconPressable" Icon="Google" color="#FFFFFF" />
         </View>
         <View style={style.AnotherLoginSubContainer}>
-          <Boton theme="Facebook" />
+          <Boton theme="IconPressable" Icon="Facebook" color="#1877F2" />
         </View>
         <View style={style.AnotherLoginSubContainer}>
-          <Boton theme="IOS" />
+          <Boton theme="IconPressable" Icon="IOS" color="#000000" />
         </View>
       </View>
     </SafeAreaView>
@@ -85,17 +81,14 @@ const style = StyleSheet.create({
     width: 218,
     height: 64,
     //borderWidth: 1,
-    //marginTop: 66
   },
   LogionContainer: {
     rowGap: 24,
     display: "flex",
     width: "100%",
-    maxWidth: 358, //358
-    minWidth: 340, //340
+    maxWidth: 358, // Ancho máximo
     elevation: 1,
     marginTop: 40,
-
     //borderWidth: 1,
     borderRadius: 12,
     alignItems: "center",
@@ -133,12 +126,12 @@ const style = StyleSheet.create({
     borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
   BotonContainer: {
-    minWidth: "100%",
+    width: "100%",
     height: 43,
     //borderWidth: 1,
   },
   BotonContainer_1: {
-    minWidth: "100%",
+    width: "100%",
     height: 43,
     borderRadius: 50,
     borderWidth: 2,
@@ -146,7 +139,7 @@ const style = StyleSheet.create({
     //borderWidth: 1,
   },
   ForgetPassword: {
-    //borderWidth: 1,
+    width: 200,
     height: 19,
     alignItems: "center",
     justifyContent: "center",
@@ -155,7 +148,8 @@ const style = StyleSheet.create({
     marginTop: 40,
     flexDirection: "row",
     alignItems: "center",
-    width: 358, //326
+    width: "100%",
+    maxWidth: 358, // Ancho máximo
     //borderWidth: 1,
   },
   Underscore: {
@@ -175,17 +169,17 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
   },
   AnotherLoginContainer: {
+    justifyContent: "center",
     columnGap: 12,
-    width: 326,
-    marginTop: 20,
+    width: "100%",
+    maxWidth: 358, // Ancho máximo
+    marginTop: 24,
     //borderWidth: 1,
     flexDirection: "row",
-    alignItems: "center",
   },
   AnotherLoginSubContainer: {
+    flex: 1,
     height: 44,
-    width: 101,
-    //borderWidth:1
   },
 });
 

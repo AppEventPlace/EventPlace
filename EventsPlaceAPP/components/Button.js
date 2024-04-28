@@ -9,6 +9,7 @@ export default function Button({
   color,
   disabled,
   Icon,
+  IconColor,
 }) {
   switch (theme) {
     case "StyleBoton":
@@ -28,6 +29,16 @@ export default function Button({
           onPress={onPress}
         >
           <Text style={styles.StyleButtonLabel2}>{label}</Text>
+        </Pressable>
+      );
+
+    case "IconPressable":
+      return (
+        <Pressable
+          style={[styles.AnotherLoginButton, { backgroundColor: color }]}
+          onPress={() => alert("You pressed a button1.")}
+        >
+          <IconSVG theme={Icon} />
         </Pressable>
       );
 
@@ -57,7 +68,7 @@ export default function Button({
             <Text style={styles.StyleButtonLabel1}>{label}</Text>
           ) : (
             // Icon - Pressable
-            <IconSVG theme={Icon} />
+            <IconSVG theme={Icon} color={IconColor} /> // IconColor = Color del icono SVG
           )}
         </Pressable>
       );
@@ -91,16 +102,21 @@ export default function Button({
         </View>
       );
 
+    case "TexTerms":
+      return (
+        <Pressable onPress={onPress}>
+          <Text style={styles.StyleButtonLabel}>{label}</Text>
+        </Pressable>
+      );
+
     case "primary":
       return (
-        <View style={styles.ForgetPassword}>
-          <Pressable
-            style={styles.button}
-            onPress={() => alert("You pressed a button1.")}
-          >
-            <Text style={styles.buttonLabel_1}>{label}</Text>
-          </Pressable>
-        </View>
+        <Pressable
+          style={styles.button}
+          onPress={() => alert("You pressed a button1.")}
+        >
+          <Text style={styles.buttonLabel_1}>{label}</Text>
+        </Pressable>
       );
 
     case "botonSubRay":
@@ -110,40 +126,10 @@ export default function Button({
         </Pressable>
       );
 
-    case "Google":
-      return (
-        <Pressable
-          style={[styles.AnotherLoginButton, { backgroundColor: "#FFFFFF" }]}
-          onPress={() => alert("You pressed a button1.")}
-        >
-          <IconSVG theme="Google" />
-        </Pressable>
-      );
-
-    case "Facebook":
-      return (
-        <Pressable
-          style={[styles.AnotherLoginButton, { backgroundColor: "#1877F2" }]}
-          onPress={() => alert("You pressed a button1.")}
-        >
-          <IconSVG theme="Facebook" />
-        </Pressable>
-      );
-
-    case "IOS":
-      return (
-        <Pressable
-          style={[styles.AnotherLoginButton, { backgroundColor: "#000000" }]}
-          onPress={() => alert("You pressed a button1.")}
-        >
-          <IconSVG theme="IOS" />
-        </Pressable>
-      );
-
     case "BackCheckron":
       return (
         <Pressable style={styles.BackButton} onPress={onPress}>
-          <IconSVG theme="BackCheckron" />
+          <IconSVG theme="BackCheckron" color="#6979F8" />
           <Text style={styles.BackButtonTex}>{label}</Text>
         </Pressable>
       );
@@ -163,15 +149,6 @@ export default function Button({
         ></Pressable>
       );
 
-    case "TexTerms":
-      return (
-        <Pressable
-          style={{ width: "92.1%", alignItems: "center" }}
-          onPress={onPress}
-        >
-          <Text style={styles.StyleButtonLabel}>{label}</Text>
-        </Pressable>
-      );
     case "Seleccionable":
       return (
         <View style={styles.Seleccionable}>
@@ -194,12 +171,11 @@ export default function Button({
 }
 const styles = StyleSheet.create({
   StyleBoton: {
-    width: 326,
+    width: "100%",
     height: 43,
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
-    padding: 3,
   },
   StyleBoton1: {
     //width: 326,
@@ -242,7 +218,7 @@ const styles = StyleSheet.create({
   },
   StyleButtonLabel: {
     color: "#0F172A",
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "500",
     lineHeight: 19,
     textDecorationLine: "underline",
@@ -263,19 +239,6 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 8,
     alignItems: "center",
-    justifyContent: "center",
-  },
-
-  ForgetPassword: {
-    width: 200,
-    height: 19,
-    //borderWidth: 1,
-  },
-  RegisterButton: {
-    width: 110,
-    height: "100%",
-    //borderWidth: 1,
-    alignItems: "flex-end",
     justifyContent: "center",
   },
   buttonLabel_1: {

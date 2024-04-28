@@ -42,7 +42,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-      break;
+
     case "Google":
       return (
         <Svg
@@ -77,7 +77,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </Defs>
         </Svg>
       );
-      break;
+
     case "Facebook":
       return (
         <Svg
@@ -100,7 +100,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </Defs>
         </Svg>
       );
-      break;
+
     case "IOS":
       return (
         <Svg
@@ -116,7 +116,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-      break;
+
     case "BackCheckron":
       return (
         <Svg
@@ -142,27 +142,27 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           <G mask="url(#a)">
             <Path
               d="M4.775 6.5l3.675 3.675c.125.125.185.27.181.438a.623.623 0 01-.193.437.6.6 0 01-.438.188.6.6 0 01-.437-.188l-3.85-3.837a.999.999 0 010-1.425l3.85-3.85a.585.585 0 01.443-.182.63.63 0 01.444.194.6.6 0 01.188.438.6.6 0 01-.188.437L4.775 6.5z"
-              fill="#0F172A"
+              fill={color}
             />
           </G>
         </Svg>
       );
-      break;
+
     case "ProgressBar":
       return (
         <Svg
-          width={"96%"}
+          width={"100%"}
           height={15}
-          viewBox="0 0 356 4"
+          viewBox="0 0 400 4"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <Rect width={356} height={4} rx={2} fill="#E9EAFE" />
+          <Rect width={400} height={4} rx={2} fill="#E9EAFE" />
 
           <Rect width={progress * 3.56} height={4} rx={2} fill="#515EC0" />
         </Svg>
       );
-      break;
+
     case "FotoGenerica":
       return (
         <Svg
@@ -192,7 +192,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-      break;
+
     case "Editar":
       return (
         <Svg
@@ -210,7 +210,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-      break;
+
     case "PerfilLogo":
       return (
         <Svg
@@ -243,7 +243,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-      break;
+
     case "WallLogo":
       return (
         <Svg
@@ -261,7 +261,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-      break;
+
     case "NotificacionesLogo":
       return (
         <Svg
@@ -294,7 +294,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-      break;
+
     case "ChatLogo":
       return (
         <Svg
@@ -327,7 +327,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-      break;
+
     case "BoletasLogo":
       return (
         <Svg
@@ -360,7 +360,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-      break;
+
     case "Calificación":
       return (
         <Svg
@@ -391,7 +391,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-      break;
+
     case "Calendario":
       return (
         <Svg
@@ -403,11 +403,11 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
         >
           <Path
             d="M2 20c-.55 0-1.02-.196-1.413-.587A1.926 1.926 0 010 18V4c0-.55.196-1.02.588-1.413A1.926 1.926 0 012 2h1V1c0-.283.096-.52.288-.713A.968.968 0 014 0c.283 0 .52.096.713.287C4.904.48 5 .718 5 1v1h8V1c0-.283.096-.52.287-.713A.968.968 0 0114 0c.283 0 .52.096.713.287.191.192.287.43.287.713v1h1c.55 0 1.02.196 1.413.587C17.803 2.98 18 3.45 18 4v14c0 .55-.196 1.02-.587 1.413A1.926 1.926 0 0116 20H2zm0-2h14V8H2v10zM2 6h14V4H2v2zm7 6a.967.967 0 01-.713-.287A.968.968 0 018 11c0-.283.096-.52.287-.713A.967.967 0 019 10c.283 0 .52.096.713.287.191.192.287.43.287.713s-.096.52-.287.713A.967.967 0 019 12zm-4 0a.967.967 0 01-.713-.287A.968.968 0 014 11c0-.283.096-.52.287-.713A.967.967 0 015 10c.283 0 .52.096.713.287.191.192.287.43.287.713s-.096.52-.287.713A.967.967 0 015 12zm8 0a.968.968 0 01-.713-.287A.968.968 0 0112 11c0-.283.096-.52.287-.713A.968.968 0 0113 10c.283 0 .52.096.713.287.191.192.287.43.287.713s-.096.52-.287.713A.968.968 0 0113 12zm-4 4a.967.967 0 01-.713-.287A.968.968 0 018 15c0-.283.096-.52.287-.713A.967.967 0 019 14c.283 0 .52.096.713.287.191.192.287.43.287.713s-.096.52-.287.713A.967.967 0 019 16zm-4 0a.967.967 0 01-.713-.287A.968.968 0 014 15c0-.283.096-.52.287-.713A.967.967 0 015 14c.283 0 .52.096.713.287.191.192.287.43.287.713s-.096.52-.287.713A.967.967 0 015 16zm8 0a.968.968 0 01-.713-.287A.968.968 0 0112 15c0-.283.096-.52.287-.713A.968.968 0 0113 14c.283 0 .52.096.713.287.191.192.287.43.287.713s-.096.52-.287.713A.968.968 0 0113 16z"
-            fill="#0F172A"
+            fill={color}
           />
         </Svg>
       );
-      break;
+
     case "successful":
       return (
         <Svg
@@ -438,7 +438,6 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           </G>
         </Svg>
       );
-      break;
   }
 }
 

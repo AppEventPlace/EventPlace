@@ -23,9 +23,9 @@ const VerifyIdentity = ({ navigation }) => {
         </Text>
         <View style={style.BotonContainer}>
           <Boton
+            theme="StyleBoton"
             label="Continuar"
-            color={true}
-            theme="FullStyleBoton1"
+            color="#6979F8"
             onPress={() => alert("iniciar sesion")}
           />
         </View>
@@ -42,6 +42,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 32,
     //borderWidth: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
   Container: {
     justifyContent: "center",
@@ -52,6 +53,8 @@ const style = StyleSheet.create({
     elevation: 1,
     backgroundColor: "#FBFBFE",
     padding: 24,
+    width: "100%",
+    maxWidth: 800,
   },
   Style1Container: {
     gap: 24,
@@ -83,7 +86,7 @@ const style = StyleSheet.create({
   BotonContainer: {
     width: "100%",
     height: 43,
-    maxWidth: 320,
+    maxWidth: 326,
     //borderWidth: 1,
   },
 });
