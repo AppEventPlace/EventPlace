@@ -158,11 +158,22 @@ const CreaCuenta = ({ navigation }) => {
           </View>
           <View style={style.RegisterContainer}>
             <View style={style.Container}>
-              <View style={[style.Alinear, { marginTop: 24 }]}>
+              <View
+                style={[
+                  style.Alinear,
+                  {
+                    marginTop: 24,
+                    width: 96, // Ancho de a imagen
+                    height: 96,
+                  },
+                ]}
+              >
                 <ImageViewer
                   //Pase el URI de la imagen seleccionada al componente ImageViewer.
                   placeholderImageSource={FondImage}
                   selectedImage={selectedImage}
+                  ancho={96}
+                  alto={96}
                 ></ImageViewer>
                 <Boton theme="Imagen" onPress={pickImageAsync} />
               </View>
