@@ -25,6 +25,7 @@ import TermsAndConditions from "./screens/screensStack/TermsAndConditions";
 import successful from "./screens/screensStack/successful";
 //import isUserAuthenticated from "./src/EstadoAuth";
 import SvgLogo from "./assets/LogoSVG";
+import StackInit from "./constants/StackInit";
 
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
@@ -61,6 +62,29 @@ const MenuMovil = () => {
   );
 };
 
+const StackCreacion = () => {
+  return (
+    <Tab.Navigator>
+      {StackInit.map((Items) => (
+        <Tab.Screen
+          key={Items.name}
+          name={Items.name}
+          options={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarButton: () => (
+              <View style={{ width: 0, height: "0%" }}></View>
+            ),
+            //tabBarVisible: false,
+            //tabBarActiveBackgroundColor: "#E4E5E5",
+          }}
+          component={CreacionStack}
+        />
+      ))}
+    </Tab.Navigator>
+  );
+};
+
 const Menu = () => {
   if (Platform.OS === "android") {
     return <MenuMovil />;
@@ -75,23 +99,23 @@ const Stack = createStackNavigator();
 const CreacionStack = () => {
   return (
     <Stack.Navigator>
-      {StackCreacionUsuario.map((creacion) => (
+      {StackCreacionUsuario.map((Creacion) => (
         <Stack.Screen
           options={{
             headerShown: false,
           }}
-          key={creacion.name}
-          name={creacion.label}
+          key={Creacion.name}
+          name={Creacion.label}
           component={
-            creacion.name === "Loguin"
+            Creacion.name === "Loguin"
               ? Loguin
-              : creacion.name === "CreaCuenta"
+              : Creacion.name === "CreaCuenta"
               ? CreaCuenta
-              : creacion.name === "TermsAndConditions"
+              : Creacion.name === "TermsAndConditions"
               ? TermsAndConditions
-              : creacion.name === "VerifyIdentity"
+              : Creacion.name === "VerifyIdentity"
               ? VerifyIdentity
-              : creacion.name === "Gustos"
+              : Creacion.name === "Gustos"
               ? Gustos
               : successful
           }
@@ -107,7 +131,7 @@ let isUserAuthenticated = false;
 const Pantalla = () => {
   return (
     <NavigationContainer>
-      {isUserAuthenticated ? <Menu /> : <CreacionStack />}
+      {isUserAuthenticated ? <Menu /> : <StackCreacion />}
     </NavigationContainer>
   );
 };

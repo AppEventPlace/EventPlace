@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import IconSVG from "../../assets/LogoSVG";
 import Boton from "../../components/Button";
@@ -76,6 +76,7 @@ const style = StyleSheet.create({
     backgroundColor: "#F4F5FE",
     justifyContent: "center",
     paddingHorizontal: 16,
+    width: "100%",
   },
   LogoContainer: {
     width: 218,

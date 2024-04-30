@@ -5,19 +5,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const EditarPerfilScreen = ({ navigation }) => {
   return (
-    <SafeAreaView>
-      <ScrollView style={style.PerfilContainer}>
-        <View>
-          <View style={style.HeaderContainer}>
-            <Boton
-              theme="BackCheckron"
-              label="Atras"
-              onPress={() => navigation.navigate("Mi perfil")}
-            />
+    <View style={{ flex: 1 }}>
+      <SafeAreaView>
+        <ScrollView style={style.PerfilContainer}>
+          <View>
+            <View style={style.HeaderContainer}>
+              <Boton
+                theme="BackCheckron"
+                label="Atras"
+                onPress={() => navigation.navigate("Mi perfil")}
+              />
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 

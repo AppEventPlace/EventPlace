@@ -7,21 +7,27 @@ import {
   ScrollView,
   Pressable,
   Dimensions,
+  FlatList,
 } from "react-native";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SvgLogo from "../../assets/LogoSVG";
+
 import OpcionesSeleccion from "../../constants/OpcionesSeleccion";
 import { Picker } from "react-native-web";
 import { RadioButton } from "react-native-paper";
+import DatosClientePrueba from "../../constants/DatosClientePrueba";
+import ImageViewer from "../../components/ImageViewer";
+import CalificacionEst from "../../components/CalificacionEst";
+import CuadroEstado from "../../components/CuadroEstado";
+import * as ImagePicker from "expo-image-picker";
 
 const Gustos = ({ navigation }) => {
-  const screenHeight = Dimensions.get("window").height;
   return (
-    <View style={{ backgroundColor: "#F4F5FE" }}>
-      <SafeAreaView style={{ backgroundColor: "#F4F5FE" }}>
-        <ScrollView style={style.PerfilContainer}>
-          <View style={style.HeaderContainer}>
+    <View style={{ flex: 1 }}>
+      <ScrollView style={styles.ScrollView}>
+        <View style={styles.PerfilContainer}>
+          <View style={styles.HeaderContainer}>
             <View style={{ flex: 2 }}>
               <Boton
                 theme="BackCheckron"
@@ -42,14 +48,14 @@ const Gustos = ({ navigation }) => {
           <View style={{ marginTop: 15 }}>
             <SvgLogo theme="ProgressBar" progress="15" />
           </View>
-          <Text style={style.RegisterTex}>Gustos y servicios</Text>
-          <Text style={style.ContainerTex}>
+          <Text style={styles.RegisterTex}>Gustos y servicios</Text>
+          <Text style={styles.ContainerTex}>
             Selecciona algunos eventos a los cuales te gusta ir o participar
           </Text>
-          <View style={style.ContainerSelecciones}>
+          <View style={styles.ContainerSelecciones}>
             <Seleccion />
           </View>
-          <View style={style.ContainerSeleccionesRad}>
+          <View style={styles.ContainerSeleccionesRad}>
             <View>
               <SeleccionPreferencias />
             </View>
@@ -77,8 +83,8 @@ const Gustos = ({ navigation }) => {
               }
             />
           </View>
-        </ScrollView>
-      </SafeAreaView>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -89,13 +95,13 @@ const PresionableSeleccion = ({ id, label }) => {
   return (
     <View
       key={id}
-      style={Seleccionado ? style.Seleccionable2 : style.Seleccionable1}
+      style={Seleccionado ? styles.Seleccionable2 : styles.Seleccionable1}
       //backgroundColor={Seleccionado ? "#6979F8" : "#E9EAFE"}
       //color={Seleccionado ? "#0F172A" : "#FBFBFE"}
     >
       <Pressable
         key={id}
-        style={style.button}
+        style={styles.button}
         //label={Selec.label}
         onPress={() => {
           //Escoger(label);
@@ -105,7 +111,7 @@ const PresionableSeleccion = ({ id, label }) => {
       >
         <Text
           style={
-            Seleccionado ? style.StyleButtonLabel1 : style.StyleButtonLabel2
+            Seleccionado ? styles.StyleButtonLabel1 : styles.StyleButtonLabel2
           }
         >
           {label}
@@ -275,17 +281,20 @@ const LugarEventos = () => {
     </View>
   );
 };
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   ScrollView: {
     backgroundColor: "#E9EAFE",
+    paddingTop: -3,
     width: "100%", // Ancho de a imagen
     height: "100%", // Alto de la imagen
+    paddingHorizontal: 16,
   },
   PerfilContainer: {
+    marginTop: 0,
     backgroundColor: "#E9EAFE",
+
     width: "100%",
     height: "100%",
-    paddingHorizontal: 16,
   },
   HeaderContainer: {
     marginTop: 20,
