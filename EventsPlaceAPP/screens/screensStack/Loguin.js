@@ -41,7 +41,7 @@ const Login = ({ navigation }) => {
             label="Crear cuenta"
             color="#F4F5FE"
             theme="StyleBoton_1"
-            onPress={() => navigation.navigate("Crea tu cuenta")}
+            onPress={() => navigation.navigate("CreaCuenta")}
           />
         </View>
         <View style={style.ForgetPassword}>

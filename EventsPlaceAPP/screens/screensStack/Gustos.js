@@ -78,9 +78,7 @@ const Gustos = ({ navigation }) => {
             <Boton
               theme={"Seleccionable"}
               label={"Continuar"}
-              onPress={() =>
-                navigation.navigate("Finaliza creacion de usuario")
-              }
+              onPress={() => navigation.navigate("Successful")}
             />
           </View>
         </View>

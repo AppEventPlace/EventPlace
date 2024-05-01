@@ -94,14 +94,14 @@ const CreaCuenta = ({ navigation }) => {
           <Boton
             theme="TexTerms"
             label="Aceptar términos, condiciones y tratamiento de datos personales."
-            onPress={() => navigation.navigate("Términos y condiciones")}
+            onPress={() => navigation.navigate("TermsAndConditions")}
           />
         </View>
         <View style={style.BotonContainer}>
           <Boton
             label="Continuar"
             theme="Terms"
-            onPress={() => navigation.navigate("Verify identity")}
+            onPress={() => navigation.navigate("VerifyIdentity")}
             disabled={aceptado}
           />
         </View>
@@ -259,6 +259,13 @@ const CreaCuenta = ({ navigation }) => {
                 <Text style={style.TexContainer}>Confirma contraseña</Text>
                 <TextInput
                   placeholder="Confirma tu nueva contraseña"
+                  style={style.TexInput}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Nombre de usuario</Text>
+                <TextInput
+                  placeholder="Ingresa tu nombre de usuario"
                   style={style.TexInput}
                 />
               </View>

@@ -42,7 +42,7 @@ const Gustos = ({ navigation }) => {
               theme="StyleBoton"
               label="Aceptar"
               color="#6979F8"
-              onPress={() => navigation.navigate("Crea tu cuenta")}
+              onPress={() => navigation.navigate("CreaCuenta")}
             />
           </View>
           <View style={style.BotonContainer_1}>
@@ -50,7 +50,7 @@ const Gustos = ({ navigation }) => {
               theme="StyleBoton_1"
               label="Cancelar"
               color="#F4F5FE"
-              onPress={() => navigation.navigate("Crea tu cuenta")}
+              onPress={() => navigation.navigate("CreaCuenta")}
             />
           </View>
         </View>
