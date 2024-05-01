@@ -1,8 +1,10 @@
 import React from "react";
 import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 import IconSVG from "../../assets/LogoSVG";
 import Boton from "../../components/Button";
+import RenderBotonesLogin from "../../components/RenderBotonesLogin";
 
 // npx expo install react-native-svg
 
@@ -54,15 +56,7 @@ const Login = ({ navigation }) => {
         <View style={style.Underscore} />
       </View>
       <View style={style.AnotherLoginContainer}>
-        <View style={style.AnotherLoginSubContainer}>
-          <Boton theme="IconPressable" Icon="Google" color="#FFFFFF" />
-        </View>
-        <View style={style.AnotherLoginSubContainer}>
-          <Boton theme="IconPressable" Icon="Facebook" color="#1877F2" />
-        </View>
-        <View style={style.AnotherLoginSubContainer}>
-          <Boton theme="IconPressable" Icon="IOS" color="#000000" />
-        </View>
+        <RenderBotonesLogin />
       </View>
     </SafeAreaView>
   );

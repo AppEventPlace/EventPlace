@@ -1,35 +1,29 @@
 import React, { useState } from "react";
-import CheckBox from "expo-checkbox";
-import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
-import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import IconSVG from "../../assets/LogoSVG";
+import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
 import Boton from "../../components/Button";
 import ImageViewer from "../../components/ImageViewer";
-
 import DatePickerComponent from "../../components/datepicke";
-
-const FondImage = require("../../assets/adaptive-icon.png"); // Espesificar ruta de la imagen
+import IconSVG from "../../assets/LogoSVG";
+import TerminosCondiciones from "../../components/TerminosCondiciones";
+import RenderBotonesLogin from "../../components/RenderBotonesLogin";
+const FondImage = require("../../assets/adaptive-icon.png");
 
 const CreaCuenta = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
+  //Variable de estado que contenga el valor de la imagen seleccionada.
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  /*
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
+  /*----------------------------------------------------------------------------------
   Componente ImageViewer permite el acceso a la interfaz de usuario para seleccionar 
   la imagen de perfil. 
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  */
-
-  //Variable de estado que contenga el valor de la imagen seleccionada.
-  const [selectedImage, setSelectedImage] = useState(null);
+  ----------------------------------------------------------------------------------*/
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       //Opciones del selector de imágenes a launchImageLibraryAsync()
@@ -45,78 +39,6 @@ const CreaCuenta = ({ navigation }) => {
     }
   };
 
-  /*
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  Este componente valida que el usuario acepte los términos y condiciones.
-  i checkbox = True      Se habilita el botón para continuar.
-  Si checkbox = false     El botón para continuar permanece inhabilitado.
-
-  1.	Componente TerminosCondicionesForm:
-    a)	Este componente funcional se encarga de mostrar una interfaz para aceptar 
-        los términos y condiciones.
-    b)	Utiliza el estado local (useState) para rastrear si el usuario ha aceptado
-        los términos (aceptado).
-    c)	Cuando el usuario cambia el estado del checkbox, se actualiza el valor de
-        aceptado.
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  */
-  const TerminosCondicionesForm = () => {
-    const [aceptado, setAceptado] = useState(false);
-
-    return (
-      <View
-        style={{
-          gap: 56,
-          marginTop: 24,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <View
-          style={{
-            gap: 8,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            maxWidth: 326,
-            width: "100%",
-            //borderWidth: 1,
-          }}
-        >
-          <CheckBox
-            style={style.checkbox}
-            value={aceptado}
-            color={aceptado ? "#6979F8" : undefined}
-            onValueChange={setAceptado}
-          />
-          <Boton
-            theme="TexTerms"
-            label="Aceptar términos, condiciones y tratamiento de datos personales."
-            onPress={() => navigation.navigate("TermsAndConditions")}
-          />
-        </View>
-        <View style={style.BotonContainer}>
-          <Boton
-            label="Continuar"
-            theme="Terms"
-            onPress={() => navigation.navigate("VerifyIdentity")}
-            disabled={aceptado}
-          />
-        </View>
-      </View>
-    );
-  };
-
-  /*
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-
-
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  */
   return (
     <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
       <ScrollView style={style.PerfilContainer}>
@@ -135,25 +57,13 @@ const CreaCuenta = ({ navigation }) => {
           <Text style={style.ContainerTex}>
             Crear la cuenta con tus redes o ingresar tu correo electrónico
           </Text>
-          <View style={style.AnotherLoginContainer}>
-            <View style={style.AnotherLoginSubContainer}>
-              <Boton theme="IconPressable" Icon="Google" color="#FFFFFF" />
-            </View>
-            <View style={style.AnotherLoginSubContainer}>
-              <Boton theme="IconPressable" Icon="Facebook" color="#1877F2" />
-            </View>
-            <View style={style.AnotherLoginSubContainer}>
-              <Boton theme="IconPressable" Icon="IOS" color="#000000" />
-            </View>
-          </View>
+          <RenderBotonesLogin />
           <View style={style.Alinear}>
             <View style={style.AnotherLogin}>
               <View style={style.Underscore} />
-              <View>
-                <Text style={style.TexAnotherLogin}>
-                  Crea cuenta con correo electrónico
-                </Text>
-              </View>
+              <Text style={style.TexAnotherLogin}>
+                Crea cuenta con correo electrónico
+              </Text>
               <View style={style.Underscore} />
             </View>
           </View>
@@ -249,35 +159,64 @@ const CreaCuenta = ({ navigation }) => {
                 />
               </View>
               <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Nombre de usuario</Text>
+                <View
+                  style={[
+                    style.SubContainer2,
+                    {
+                      paddingRight: 8,
+                      borderBottomColor: "#A1A5A9",
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                    },
+                  ]}
+                >
+                  <TextInput
+                    placeholder="Ingresa tu nombre de usuario"
+                    style={style.TexInputIcon}
+                  />
+                  <IconSVG theme={"Check"} />
+                </View>
+              </View>
+              <View style={style.SubContainer}>
                 <Text style={style.TexContainer}>Crea contraseña</Text>
-                <TextInput
-                  placeholder="Ingresa tu nueva contraseña "
-                  style={style.TexInput}
-                />
+                <View
+                  style={[
+                    style.SubContainer2,
+                    {
+                      paddingRight: 8,
+                      borderBottomColor: "#A1A5A9",
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                    },
+                  ]}
+                >
+                  <TextInput
+                    placeholder="Ingresa tu nueva contraseña"
+                    style={style.TexInputIcon}
+                  />
+                  <IconSVG theme={"Check"} />
+                </View>
               </View>
               <View style={style.SubContainer}>
                 <Text style={style.TexContainer}>Confirma contraseña</Text>
-                <TextInput
-                  placeholder="Confirma tu nueva contraseña"
-                  style={style.TexInput}
-                />
-              </View>
-              <View style={style.SubContainer}>
-                <Text style={style.TexContainer}>Nombre de usuario</Text>
-                <TextInput
-                  placeholder="Ingresa tu nombre de usuario"
-                  style={style.TexInput}
-                />
-              </View>
-              <View style={style.SubContainer}>
-                <Text style={style.TexContainer}>Nombre de usuario</Text>
-                <TextInput
-                  placeholder="Ingresa tu nombre de usuario"
-                  style={style.TexInput}
-                />
+                <View
+                  style={[
+                    style.SubContainer2,
+                    {
+                      paddingRight: 8,
+                      borderBottomColor: "#A1A5A9",
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                    },
+                  ]}
+                >
+                  <TextInput
+                    placeholder="Confirma tu nueva contraseña"
+                    style={style.TexInputIcon}
+                  />
+                  <IconSVG theme={"Check"} />
+                </View>
               </View>
             </View>
-            <TerminosCondicionesForm />
+            <TerminosCondiciones navigation={navigation} />
           </View>
         </View>
       </ScrollView>
@@ -336,19 +275,6 @@ const style = StyleSheet.create({
     color: "#0F172A",
     letterSpacing: 0.0044,
   },
-  AnotherLoginContainer: {
-    marginTop: 20,
-    justifyContent: "center",
-    width: "100%",
-    maxWidth: 800, //Esto evita que tome toda la pantalla
-    //borderWidth: 1,
-    flexDirection: "row",
-    columnGap: 12,
-  },
-  AnotherLoginSubContainer: {
-    flex: 1,
-    height: 44,
-  },
   AnotherLogin: {
     marginTop: 32,
     flexDirection: "row",
@@ -402,7 +328,6 @@ const style = StyleSheet.create({
     marginTop: 24,
   },
   SubContainer2: {
-    display: "flex",
     flex: 1,
     width: "100%",
     alignItems: "center",
@@ -448,17 +373,18 @@ const style = StyleSheet.create({
     borderBottomColor: "#A1A5A9",
     borderBottomWidth: (StyleSheet.hairlineWidth = 3),
   },
-  checkbox: {
-    borderRadius: 4,
-    width: 20,
-    height: 20,
-    borderColor: "#6979F8",
-  },
-  BotonContainer: {
-    maxWidth: 326,
-    width: "100%",
-    height: 43,
+  TexInputIcon: {
     //borderWidth: 1,
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: 8,
+    paddingVertical: 16,
+    color: "#72767A",
+    fontSize: 14,
+    fontWeight: "500",
+    lineHeight: 20,
+    borderBottomColor: "#A1A5A9",
   },
 });
 
