@@ -196,8 +196,8 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
     case "Editar":
       return (
         <Svg
-          width="20"
-          height="20"
+          width="18"
+          height="18"
           viewBox="0 0 18 18"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M2 16H3.425L13.2 6.225L11.775 4.8L2 14.575V16ZM0 18V13.75L13.2 0.575C13.4 0.391667 13.6208 0.25 13.8625 0.15C14.1042 0.05 14.3583 0 14.625 0C14.8917 0 15.15 0.05 15.4 0.15C15.65 0.25 15.8667 0.4 16.05 0.6L17.425 2C17.625 2.18333 17.7708 2.4 17.8625 2.65C17.9542 2.9 18 3.15 18 3.4C18 3.66667 17.9542 3.92083 17.8625 4.1625C17.7708 4.40417 17.625 4.625 17.425 4.825L4.25 18H0ZM12.475 5.525L11.775 4.8L13.2 6.225L12.475 5.525Z"
-            fill="#0F172A"
+            fill={color}
           />
         </Svg>
       );
@@ -372,7 +372,9 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
         >
           <Mask
             id="mask0_3348_2181"
-            style="mask-type:alpha"
+            style={{
+              maskType: "alpha",
+            }}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -401,7 +403,9 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
         >
           <Mask
             id="mask0_3348_2184"
-            style="mask-type:alpha"
+            style={{
+              maskType: "alpha",
+            }}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -435,7 +439,75 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
+    case "BackgroundPerfil":
+      return (
+        <Svg
+          width="100%"
+          height="208"
+          viewBox="0 0 390 208"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <G filter="url(#filter0_d_3093_10717)">
+            <Path
+              d="M485 10H-95L-95 10C-62.0373 52.5856 -45.5559 73.8784 -30.4906 88.7776C93.1146 211.02 291.705 212.219 416.778 91.4786C432.022 76.7625 449.681 54.5087 484.999 10.0012L485 10Z"
+              fill="#5E6CDE"
+            />
+          </G>
+          <Defs>
+            <Rect
+              id="filter0_d_3093_10717"
+              x="-113"
+              y="0"
+              width="616"
+              height="207.253"
+              filterUnits="userSpaceOnUse"
+              colorInterpolationFilters="sRGB"
+            >
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="8" />
+              <feGaussianBlur stdDeviation="9" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0.08 0"
+              />
+              <feBlend
+                mode="multiply"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_3093_10717"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_3093_10717"
+                result="shape"
+              />
+            </Rect>
+          </Defs>
+        </Svg>
+      );
+    case "photoCamera":
+      return (
+        <Svg
+          width="14"
+          height="12"
+          viewBox="0 0 14 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <Path
+            d="M6.66667 9.66667C7.5 9.66667 8.20833 9.375 8.79167 8.79167C9.375 8.20833 9.66667 7.5 9.66667 6.66667C9.66667 5.83333 9.375 5.125 8.79167 4.54167C8.20833 3.95833 7.5 3.66667 6.66667 3.66667C5.83333 3.66667 5.125 3.95833 4.54167 4.54167C3.95833 5.125 3.66667 5.83333 3.66667 6.66667C3.66667 7.5 3.95833 8.20833 4.54167 8.79167C5.125 9.375 5.83333 9.66667 6.66667 9.66667ZM6.66667 8.33333C6.2 8.33333 5.80556 8.17222 5.48333 7.85C5.16111 7.52778 5 7.13333 5 6.66667C5 6.2 5.16111 5.80556 5.48333 5.48333C5.80556 5.16111 6.2 5 6.66667 5C7.13333 5 7.52778 5.16111 7.85 5.48333C8.17222 5.80556 8.33333 6.2 8.33333 6.66667C8.33333 7.13333 8.17222 7.52778 7.85 7.85C7.52778 8.17222 7.13333 8.33333 6.66667 8.33333ZM1.33333 12C0.966667 12 0.652778 11.8694 0.391667 11.6083C0.130556 11.3472 0 11.0333 0 10.6667V2.66667C0 2.3 0.130556 1.98611 0.391667 1.725C0.652778 1.46389 0.966667 1.33333 1.33333 1.33333H3.43333L4.66667 0H8.66667L9.9 1.33333H12C12.3667 1.33333 12.6806 1.46389 12.9417 1.725C13.2028 1.98611 13.3333 2.3 13.3333 2.66667V10.6667C13.3333 11.0333 13.2028 11.3472 12.9417 11.6083C12.6806 11.8694 12.3667 12 12 12H1.33333ZM1.33333 10.6667H12V2.66667H9.3L8.08333 1.33333H5.25L4.03333 2.66667H1.33333V10.6667Z"
+            fill="#FBFBFE"
+          />
+        </Svg>
+      );
     case "successful":
       return (
         <Svg

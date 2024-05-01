@@ -9,10 +9,12 @@ const CuadroEstado = ({ label, cantidad }) => {
         display: "flex",
         width: 160,
         height: 140,
-        backgroundColor: "#E9EAFE",
+        backgroundColor: "#FBFBFB",
         borderRadius: 12,
         marginTop: 5,
         marginHorizontal: 5,
+        marginBottom: 15,
+        elevation: 5,
       }}
     >
       <View

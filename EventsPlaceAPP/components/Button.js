@@ -137,7 +137,7 @@ export default function Button({
     case "EditarPerfil":
       return (
         <Pressable style={{ width: 22, height: 22 }} onPress={onPress}>
-          <IconSVG theme="Editar" />
+          <IconSVG theme="Editar" color="#6979F8" />
         </Pressable>
       );
 

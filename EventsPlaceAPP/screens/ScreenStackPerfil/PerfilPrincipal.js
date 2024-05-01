@@ -6,6 +6,7 @@ import {
   Image,
   Pressable,
   ScrollView,
+  FlatList,
 } from "react-native";
 import IconSVG from "../../assets/LogoSVG";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
@@ -35,7 +36,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
     }
   };
   return (
-    <SafeAreaView style={{ backgroundColor: "#353638" }}>
+    <View style={{ flex: 1 }}>
       <ScrollView style={styles.ScrollView}>
         <View style={styles.PerfilContainer}>
           <View style={styles.IconBackground}>
@@ -49,6 +50,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
             <View>
               <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
                 <View
+                  key={"Imagen perfil"}
                   style={[
                     styles.Alinear,
                     {
@@ -68,7 +70,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   />
                   <Boton theme="Imagen" onPress={pickImageAsync} />
                 </View>
-                <View>
+                <View key={"Cabecera tarjeta"}>
                   <View style={styles.NombrePerfil}>
                     <Text
                       key={"Nombre usuario tarjeta"}
@@ -105,57 +107,73 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       califi={DCliente.Calificacion}
                     />
                   </View>
+                  <View style={styles.lineaTarjeta}></View>
                   <View
                     key="Experiencia perfil"
                     style={{ display: "flex", flexDirection: "row" }}
                   >
-                    <Text
-                      style={{
-                        marginTop: 10,
-                        paddingLeft: 7,
-                        color: "#828282",
-                        flex: 5,
-                      }}
-                    >
-                      Experiencia
-                    </Text>
-                    <Text
-                      style={{
-                        marginTop: 10,
-                        paddingLeft: 0,
-                        color: "#828282",
-                      }}
-                    >
-                      &#35; de eventos realizados
-                    </Text>
-                    <Text
-                      style={{
-                        marginTop: 10,
-                        paddingRight: 2,
-                        color: "#333333",
-                        paddingLeft: 5,
-                        width: 30,
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {DCliente.EventosRealizados}
-                    </Text>
-                    <Boton
-                      key={"Editar perfil"}
-                      theme="EditarPerfil"
-                      style={{ width: 24, height: 24, paddingRight: 10 }}
-                      onPress={() => navigation.navigate("Editar perfil")}
-                    />
-                  </View>
-                  <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
-                    <IconSVG
-                      theme={"ProgressBar"}
-                      progress={DCliente.PorcentajePerfil}
-                    />
+                    <View style={styles.TarjetaFooter}>
+                      <Text style={[styles.TextosBold, { fontSize: 18 }]}>
+                        &#37;{DCliente.PorcentajePerfil}
+                      </Text>
+                      <Text
+                        style={{
+                          marginTop: 10,
+                          marginLeft: 7,
+                          color: "#828282",
+                          textAlign: "center",
+                          fontSize: 12,
+                        }}
+                      >
+                        Experiencia
+                      </Text>
+                    </View>
+                    <View style={styles.TarjetaFooter}>
+                      <Text style={[styles.TextosBold, { fontSize: 18 }]}>
+                        {DCliente.EventosRealizados}
+                      </Text>
+                      <Text
+                        style={{
+                          marginTop: 10,
+                          paddingLeft: 0,
+                          color: "#828282",
+                          textAlign: "center",
+                          fontSize: 12,
+                        }}
+                      >
+                        Eventos realizados
+                      </Text>
+                    </View>
+                    <View style={styles.TarjetaFooter}>
+                      <Boton
+                        key={"Editar perfil"}
+                        theme="EditarPerfil"
+                        style={{
+                          width: 18,
+                          height: 18,
+                          paddingRight: 10,
+                        }}
+                        onPress={() => navigation.navigate("Editar perfil")}
+                      />
+                      <Text
+                        style={{
+                          marginTop: 10,
+                          paddingLeft: 0,
+                          color: "#828282",
+                          textAlign: "center",
+                          fontSize: 12,
+                        }}
+                      >
+                        Editar mis datos
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
-              <View style={{ alignSelf: "center", marginLeft: 5 }}>
+              <View style={styles.lineaSeparacion}></View>
+              <View
+                style={{ alignSelf: "center", marginLeft: 5, marginTop: 30 }}
+              >
                 <View
                   style={{
                     display: "flex",
@@ -208,7 +226,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
           ))}
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -224,7 +242,8 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     marginLeft: 0,
-    marginTop: -7,
+    marginTop: -20,
+    width: "100%",
   },
   ScrollView: {
     paddingTop: -3,
@@ -250,7 +269,7 @@ const styles = StyleSheet.create({
   TarjetaPerfil: {
     backgroundColor: "white",
     width: "100%",
-    maxWidth: 326,
+    maxWidth: 310,
     borderRadius: 12,
     marginTop: 32,
     height: 271,
@@ -295,6 +314,33 @@ const styles = StyleSheet.create({
     marginTop: 5,
     //paddingLeft: 7,
     color: "#828282",
+  },
+  lineaTarjeta: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#C6C7C8",
+    width: "90%",
+    maxWidth: 294,
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  lineaSeparacion: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#72767A",
+    width: "90%",
+    //maxWidth: 294,
+    alignSelf: "center",
+    marginTop: 30,
+  },
+  TextosBold: {
+    fontWeight: "bold",
+    color: "black",
+  },
+  TarjetaFooter: {
+    display: "flex",
+    flexDirection: "column",
+    width: "33%",
+    alignItems: "center",
+    marginTop: 10,
   },
 });
 
