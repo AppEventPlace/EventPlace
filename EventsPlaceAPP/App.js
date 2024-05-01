@@ -56,7 +56,7 @@ const MenuMovil = () => {
     </Tab.Navigator>
   );
 };
-
+/*
 const StackCreacion = () => {
   return (
     <Tab.Navigator>
@@ -78,7 +78,7 @@ const StackCreacion = () => {
       ))}
     </Tab.Navigator>
   );
-};
+};*/
 
 const Menu = () => {
   if (Platform.OS === "android") {

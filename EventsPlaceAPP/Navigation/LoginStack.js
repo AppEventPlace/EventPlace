@@ -9,7 +9,7 @@ import CreaCuenta from "../screens/screensStack/CreaCuenta";
 import TermsAndConditions from "../screens/screensStack/TermsAndConditions";
 import VerifyIdentity from "../screens/screensStack/VerifyIdentity";
 import Gustos from "../screens/screensStack/Gustos";
-import Successful from "../screens/screensStack/Successful";
+import Successful from "../screens/screensStack/successful";
 
 const Stack = createStackNavigator();
 
