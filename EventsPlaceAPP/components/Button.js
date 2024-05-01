@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   },
   StyleButtonLabel: {
     color: "#0F172A",
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: "500",
     lineHeight: 19,
     textDecorationLine: "underline",

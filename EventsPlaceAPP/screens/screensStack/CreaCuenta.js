@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CheckBox from "expo-checkbox";
-import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
 import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -77,10 +76,12 @@ const CreaCuenta = ({ navigation }) => {
       >
         <View
           style={{
-            gap: 6,
+            gap: 8,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
+            maxWidth: 326,
+            width: "100%",
             //borderWidth: 1,
           }}
         >
@@ -447,9 +448,9 @@ const style = StyleSheet.create({
     borderColor: "#6979F8",
   },
   BotonContainer: {
+    maxWidth: 326,
     width: "100%",
     height: 43,
-    maxWidth: 326,
     //borderWidth: 1,
   },
 });

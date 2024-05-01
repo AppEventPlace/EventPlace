@@ -4,6 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Boton from "../../components/Button";
 
+//  Crear un arreglo de referencias (inputRefs) para los 6 campos de texto.
+// Cuando se ingresa un número en un campo de texto, se verifica si su longitud es 1.
+// Si es así y no estamos en el último campo,  se enfoca automáticamente el siguiente campo de texto.
+
 const VerifyIdentity = ({ navigation }) => {
   const inputRefs = Array.from({ length: 6 }, () => useRef(null));
 
@@ -114,7 +118,8 @@ const style = StyleSheet.create({
     width: "95%",
   },
   input: {
-    width: 45,
+    width: "100%",
+    maxWidth: 45,
     height: 47,
     textAlign: "center",
     borderBottomColor: "#A1A5A9",
@@ -122,11 +127,8 @@ const style = StyleSheet.create({
   },
   BotonContainer: {
     width: "100%",
+    maxWidth: 326,
     height: 43,
     //borderWidth: 1,
   },
 });
-
-// Crear un arreglo de referencias (inputRefs) para los 6 campos de texto.
-// Cuando se ingresa un número en un campo de texto, se verifica si su longitud es 1.
-// Si es así y no estamos en el último campo,  se enfoca automáticamente el siguiente campo de texto.
