@@ -25,8 +25,25 @@ const TerminosCondiciones = ({ navigation }) => {
   const [aceptado, setAceptado] = useState(false);
 
   return (
-    <View style={style.Container}>
-      <View style={style.SubContainer}>
+    <View
+      style={{
+        gap: 56,
+        marginTop: 24,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <View
+        style={{
+          gap: 8,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          maxWidth: 326,
+          width: "100%",
+          //borderWidth: 1,
+        }}
+      >
         <CheckBox
           style={style.checkbox}
           value={aceptado}
@@ -52,21 +69,6 @@ const TerminosCondiciones = ({ navigation }) => {
 };
 
 const style = StyleSheet.create({
-  Container: {
-    gap: 56,
-    marginTop: 24,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  SubContainer: {
-    gap: 8,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: 326,
-    width: "100%",
-    //borderWidth: 1,
-  },
   checkbox: {
     borderRadius: 4,
     width: 20,

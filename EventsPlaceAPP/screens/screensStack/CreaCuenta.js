@@ -105,7 +105,7 @@ const CreaCuenta = ({ navigation }) => {
                           ? selectedDate.toLocaleDateString()
                           : "Ingresa la fecha de nacimiento"
                       }
-                      editable={false}
+                      //editable={false}
                       style={[style.TexInput, { textAlign: "center" }]}
                     />
                   </View>

@@ -9,7 +9,7 @@ import CreaCuenta from "../screens/screensStack/CreaCuenta";
 import TermsAndConditions from "../screens/screensStack/TermsAndConditions";
 import VerifyIdentity from "../screens/screensStack/VerifyIdentity";
 import Gustos from "../screens/screensStack/Gustos";
-import Successful from "../screens/screensStack/Successful";
+import Successful from "../screens/screensStack/successful";
 
 const Stack = createStackNavigator();
 
@@ -24,7 +24,7 @@ const CreacionStack = () => {
   };
 
   const getScreenComponent = (name) => {
-    return screens[name] || Successful; //Si no se encuentra la pantalla, se muestra Successful
+    return screens[name] || Successful; // Si no se encuentra la pantalla, se muestra Successful
   };
 
   return (
