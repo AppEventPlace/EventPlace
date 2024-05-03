@@ -50,11 +50,13 @@ const TerminosCondiciones = ({ navigation }) => {
           color={aceptado ? "#6979F8" : undefined}
           onValueChange={setAceptado}
         />
-        <Boton
-          theme="TexTerms"
-          label="Aceptar términos, condiciones y tratamiento de datos personales."
-          onPress={() => navigation.navigate("TermsAndConditions")}
-        />
+        <View style={{ maxWidth: 326, width: "100%" }}>
+          <Boton
+            theme="TexTerms"
+            label="Aceptar términos, condiciones y tratamiento de datos personales."
+            onPress={() => navigation.navigate("TermsAndConditions")}
+          />
+        </View>
       </View>
       <View style={style.BotonContainer}>
         <Boton
