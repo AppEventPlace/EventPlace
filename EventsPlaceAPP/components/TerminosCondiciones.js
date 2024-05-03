@@ -50,7 +50,7 @@ const TerminosCondiciones = ({ navigation }) => {
           color={aceptado ? "#6979F8" : undefined}
           onValueChange={setAceptado}
         />
-        <View style={{ maxWidth: 326, width: "100%" }}>
+        <View style={{ maxWidth: 290, width: "100%" }}>
           <Boton
             theme="TexTerms"
             label="Aceptar términos, condiciones y tratamiento de datos personales."
@@ -78,7 +78,7 @@ const style = StyleSheet.create({
     borderColor: "#6979F8",
   },
   BotonContainer: {
-    maxWidth: 326,
+    maxWidth: 316,
     width: "100%",
     height: 43,
     //borderWidth: 1,
