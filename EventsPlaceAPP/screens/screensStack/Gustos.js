@@ -25,64 +25,64 @@ import * as ImagePicker from "expo-image-picker";
 const Gustos = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={styles.ScrollView}>
-        <View style={styles.PerfilContainer}>
-          <View style={styles.HeaderContainer}>
-            <View style={{ flex: 2 }}>
+      <SafeAreaView>
+        <ScrollView style={styles.ScrollView}>
+          <View style={styles.PerfilContainer}>
+            <View style={styles.HeaderContainer}>
+              <View style={{ flex: 2 }}>
+                <Boton
+                  theme="BackCheckron"
+                  label="Atras"
+                  onPress={() => navigation.goBack()}
+                />
+              </View>
+              <View style={{ width: 60, alignContent: "flex-end" }}>
+                <Boton
+                  theme={"botonSubRay"}
+                  label={"Saltar"}
+                  onPress={() => navigation.navigate("Successful")}
+                />
+              </View>
+            </View>
+            <View style={{ marginTop: 15 }}>
+              <SvgLogo theme="ProgressBar" progress="15" />
+            </View>
+            <Text style={styles.RegisterTex}>Gustos y servicios</Text>
+            <Text style={styles.ContainerTex}>
+              Selecciona algunos eventos a los cuales te gusta ir o participar
+            </Text>
+            <View style={styles.ContainerSelecciones}>
+              <Seleccion />
+            </View>
+            <View style={styles.ContainerSeleccionesRad}>
+              <View>
+                <SeleccionPreferencias />
+              </View>
+              <View>
+                <ServicioEventos />
+              </View>
+              <View>
+                <LugarEventos />
+              </View>
+            </View>
+            <View
+              style={{
+                marginVertical: 10,
+                marginHorizontal: 5,
+                maxWidth: 330,
+                minWidth: 320,
+                alignSelf: "center",
+              }}
+            >
               <Boton
-                theme="BackCheckron"
-                label="Atras"
-                onPress={() => navigation.navigate("Crea tu cuenta")}
+                theme={"Seleccionable"}
+                label={"Continuar"}
+                onPress={() => navigation.navigate("Successful")}
               />
             </View>
-            <View style={{ width: 60, alignContent: "flex-end" }}>
-              <Boton
-                theme={"botonSubRay"}
-                label={"Saltar"}
-                onPress={() =>
-                  navigation.navigate("Finaliza creacion de usuario")
-                }
-              />
-            </View>
           </View>
-          <View style={{ marginTop: 15 }}>
-            <SvgLogo theme="ProgressBar" progress="15" />
-          </View>
-          <Text style={styles.RegisterTex}>Gustos y servicios</Text>
-          <Text style={styles.ContainerTex}>
-            Selecciona algunos eventos a los cuales te gusta ir o participar
-          </Text>
-          <View style={styles.ContainerSelecciones}>
-            <Seleccion />
-          </View>
-          <View style={styles.ContainerSeleccionesRad}>
-            <View>
-              <SeleccionPreferencias />
-            </View>
-            <View>
-              <ServicioEventos />
-            </View>
-            <View>
-              <LugarEventos />
-            </View>
-          </View>
-          <View
-            style={{
-              marginVertical: 10,
-              marginHorizontal: 5,
-              maxWidth: 330,
-              minWidth: 320,
-              alignSelf: "center",
-            }}
-          >
-            <Boton
-              theme={"Seleccionable"}
-              label={"Continuar"}
-              onPress={() => navigation.navigate("Successful")}
-            />
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 };

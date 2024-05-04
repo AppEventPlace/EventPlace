@@ -38,16 +38,22 @@ const PerfilPrincipalScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView style={styles.ScrollView}>
-        <View style={styles.PerfilContainer}>
-          <View style={styles.IconBackground}>
-            <IconSVG theme={"BackgroundPerfil"} />
+        <View key={"ContenedorPagina"} style={styles.PerfilContainer}>
+          <View key={"ContenedorFondo"} style={styles.IconBackground}>
+            <IconSVG key={"FonndoPerfil"} theme={"BackgroundPerfil"} />
           </View>
 
-          <View style={{ alignSelf: "center", marginTop: 20 }}>
-            <Text style={styles.Titulo}> Mi perfil </Text>
+          <View
+            key={"ContenedorTitulo"}
+            style={{ alignSelf: "center", marginTop: 20 }}
+          >
+            <Text key={"TextoTitulo"} style={styles.Titulo}>
+              {" "}
+              Mi perfil{" "}
+            </Text>
           </View>
           {DatosClientePrueba.map((DCliente) => (
-            <View>
+            <View key={"ContenedorInfoPerfil"}>
               <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
                 <View
                   key={"Imagen perfil"}
@@ -62,16 +68,24 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   ]}
                 >
                   <ImageViewer
+                    key={"SelectorImagen"}
                     //Pase el URI de la imagen seleccionada al componente ImageViewer.
                     placeholderImageSource={FondImage}
                     selectedImage={selectedImage}
                     ancho={68}
                     alto={68}
                   />
-                  <Boton theme="Imagen" onPress={pickImageAsync} />
+                  <Boton
+                    key={"BotonImagen"}
+                    theme="Imagen"
+                    onPress={pickImageAsync}
+                  />
                 </View>
                 <View key={"Cabecera tarjeta"}>
-                  <View style={styles.NombrePerfil}>
+                  <View
+                    key={"ContenedorNombreUsuario"}
+                    style={styles.NombrePerfil}
+                  >
                     <Text
                       key={"Nombre usuario tarjeta"}
                       style={styles.TituloTarjeta}
@@ -112,11 +126,18 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                     key="Experiencia perfil"
                     style={{ display: "flex", flexDirection: "row" }}
                   >
-                    <View style={styles.TarjetaFooter}>
-                      <Text style={[styles.TextosBold, { fontSize: 18 }]}>
+                    <View
+                      key={"PieTarjetaPorcentaje"}
+                      style={styles.TarjetaFooter}
+                    >
+                      <Text
+                        key={"ValorPorcentaje"}
+                        style={[styles.TextosBold, { fontSize: 18 }]}
+                      >
                         &#37;{DCliente.PorcentajePerfil}
                       </Text>
                       <Text
+                        key={"TextoExperiencia"}
                         style={{
                           marginTop: 10,
                           marginLeft: 7,
@@ -128,11 +149,18 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                         Experiencia
                       </Text>
                     </View>
-                    <View style={styles.TarjetaFooter}>
-                      <Text style={[styles.TextosBold, { fontSize: 18 }]}>
+                    <View
+                      key={"PieTarjetaEventos"}
+                      style={styles.TarjetaFooter}
+                    >
+                      <Text
+                        key={"NumeroEventos"}
+                        style={[styles.TextosBold, { fontSize: 18 }]}
+                      >
                         {DCliente.EventosRealizados}
                       </Text>
                       <Text
+                        key={"TextoEventos"}
                         style={{
                           marginTop: 10,
                           paddingLeft: 0,
@@ -144,7 +172,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                         Eventos realizados
                       </Text>
                     </View>
-                    <View style={styles.TarjetaFooter}>
+                    <View key={"BotonEditar"} style={styles.TarjetaFooter}>
                       <Boton
                         key={"Editar perfil"}
                         theme="EditarPerfil"
@@ -156,6 +184,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                         onPress={() => navigation.navigate("Editar perfil")}
                       />
                       <Text
+                        key={"TextoEditar"}
                         style={{
                           marginTop: 10,
                           paddingLeft: 0,
@@ -170,42 +199,114 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   </View>
                 </View>
               </View>
-              <View style={styles.lineaSeparacion}></View>
               <View
-                style={{ alignSelf: "center", marginLeft: 5, marginTop: 30 }}
+                key={"LineaSeparacionPerfil"}
+                style={styles.lineaSeparacion}
+              ></View>
+              <View
+                key={"ContenedorInferior"}
+                style={{
+                  alignSelf: "center",
+                  alignItems: "center",
+                  marginLeft: 5,
+                  marginTop: 30,
+                  maxWidth: 700,
+                }}
               >
                 <View
+                  key={"ContenedorCuadrosEstado"}
                   style={{
                     display: "flex",
                     flexDirection: "row",
                     flexWrap: "wrap",
-                    alignContent: "flex-start",
+                    //alignContent: "flex-start",
+                    //alignSelf: "center",
                   }}
                 >
                   <CuadroEstado
-                    key={"Evento Creado"}
+                    key={"EventoCreado"}
+                    id={"EventoCreado"}
                     cantidad={DCliente.EventosCreados}
                     label={"Eventos Creados"}
                   />
                   <CuadroEstado
-                    key={"Evento Comprado"}
+                    key={"EventoComprado"}
+                    id={"EventoComprado"}
                     cantidad={DCliente.EventosComprados}
                     label={"Eventos Comprados"}
                   />
                   <CuadroEstado
-                    key={"Mis invitaciones"}
+                    key={"MisInvitaciones"}
+                    id={"MisInvitaciones"}
                     cantidad={DCliente.Invitaciones}
                     label={"Mis invitaciones a eventos"}
                   />
                   <CuadroEstado
-                    key={"Mis lugares"}
+                    key={"MisLugares"}
+                    id={"MisLugares"}
                     cantidad={DCliente.MisLugares}
                     label={"Mis lugares de eventos"}
                   />
+                  <CuadroEstado
+                    key={"Estadisticas"}
+                    id={"Estadisticas"}
+                    cantidad={DCliente.Estadisticas}
+                    label={"¿Cómo van mis estadísticas de eventos?"}
+                  />
+                  <CuadroEstado
+                    key={"EstadisticasContratacion"}
+                    id={"EstadisticasContratacion"}
+                    cantidad={DCliente.EstadisticasContratacion}
+                    label={"Mis estadísticas por contratación"}
+                  />
                 </View>
               </View>
-
               <View
+                key={"ContenedorPolitica"}
+                style={{
+                  marginVertical: 20,
+                  width: "100%",
+                  maxWidth: 680,
+                  alignSelf: "center",
+                }}
+              >
+                <View
+                  key={"ContenedorTituloPolitica"}
+                  style={{ alignSelf: "center" }}
+                >
+                  <Text key={"TituloPolitica"} style={styles.TituloTarjeta}>
+                    Politica de pagos &#47; impuestos
+                  </Text>
+                </View>
+                <View
+                  key={"ContenedorTextoPolitica"}
+                  style={styles.ContenedorPolitica}
+                >
+                  <View
+                    key={"TextoPolitica"}
+                    style={{ marginHorizontal: 10, marginVertical: 10 }}
+                  >
+                    <Text
+                      key={"Politica"}
+                      style={{
+                        color: "black",
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        lineHeight: 25,
+                      }}
+                    >
+                      Es posible que las regulaciones estatales o locales le
+                      exijan cobrar impuestos. Le recomendamos que consulte a un
+                      profesional de impuestos para asegurarse de comprender sus
+                      obligaciones tributarias. EventPlace sólo puede permitir a
+                      los organizadores recaudar impuestos en determinados
+                      países. Trabajamos continuamente para apoyar a más países.
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                key={"ContenedorBoton"}
                 style={{
                   marginTop: 10,
                   marginBottom: 15,
@@ -341,6 +442,14 @@ const styles = StyleSheet.create({
     width: "33%",
     alignItems: "center",
     marginTop: 10,
+  },
+  ContenedorPolitica: {
+    marginTop: 15,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#BDBDBD",
+    backgroundColor: "#FBFBFB",
+    marginHorizontal: 10,
   },
 });
 

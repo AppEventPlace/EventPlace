@@ -93,7 +93,7 @@ const Menu = () => {
 //fin creacion stack
 //constante autenticacion
 
-let isUserAuthenticated = false;
+let isUserAuthenticated = true;
 
 const Pantalla = () => {
   return (

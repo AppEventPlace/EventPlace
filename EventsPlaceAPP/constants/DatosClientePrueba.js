@@ -12,5 +12,7 @@ export default [
     Invitaciones: 6,
     MisLugares: 2,
     PorcentajePerfil: 35,
+    Estadisticas: 0,
+    EstadisticasContratacion: 0,
   },
 ];
