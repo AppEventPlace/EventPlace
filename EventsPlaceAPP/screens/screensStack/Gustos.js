@@ -25,7 +25,7 @@ import * as ImagePicker from "expo-image-picker";
 const Gustos = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
         <ScrollView style={styles.ScrollView}>
           <View style={styles.PerfilContainer}>
             <View style={styles.HeaderContainer}>

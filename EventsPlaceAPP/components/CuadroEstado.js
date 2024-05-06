@@ -20,7 +20,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -64,7 +64,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -108,7 +108,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -129,8 +129,13 @@ const CuadroEstado = ({ label, cantidad, id }) => {
                 {cantidad}
               </Text>
             </View>
-            <View style={{ marginTop: 15, marginLeft: 15 }}>
-              <SvgLogo theme="BoletasLogo" color="#FDB022" />
+            <View style={{ marginTop: 15, marginLeft: 12 }}>
+              <SvgLogo
+                theme="BoletasLogo"
+                color="#FDB022"
+                ancho="33"
+                alto="28"
+              />
             </View>
           </Pressable>
         </View>
@@ -152,7 +157,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>

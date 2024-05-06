@@ -37,7 +37,12 @@ const MenuMovil = () => {
             tabBarShowLabel: false,
             tabBarActiveBackgroundColor: "#E4E5E5",
             tabBarIcon: ({ fill, size }) => (
-              <SvgLogo theme={Items.source} color="#0F172A" />
+              <SvgLogo
+                theme={Items.source}
+                color="#0F172A"
+                ancho="24"
+                alto="24"
+              />
             ),
           }}
           component={

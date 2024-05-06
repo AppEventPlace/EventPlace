@@ -40,7 +40,7 @@ const CreaCuenta = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
       <ScrollView style={style.PerfilContainer}>
         <View style={style.HeaderContainer}>
           <Boton
