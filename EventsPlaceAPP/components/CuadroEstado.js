@@ -7,8 +7,9 @@ const CuadroEstado = ({ label, cantidad, id }) => {
       return (
         <View
           style={{
-            display: "flex",
-            width: 160,
+            //display: "flex",
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -52,7 +53,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: 160,
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -96,7 +98,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: 160,
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -145,7 +148,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: 160,
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -189,8 +193,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: "100%",
-            maxWidth: 330,
+            width: "95%",
+            maxWidth: 400,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -239,8 +243,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: "100%",
-            maxWidth: 330,
+            width: "95%",
+            maxWidth: 400,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,

@@ -17,6 +17,7 @@ import CuadroEstado from "../../components/CuadroEstado";
 import * as ImagePicker from "expo-image-picker";
 import ImageViewer from "../../components/ImageViewer";
 import SvgLogo from "../../assets/LogoSVG";
+import TerminosYPoliticas from "../../constants/TerminosYPoliticas";
 //import Autenticar from "../../App";
 const FondImage = require("../../assets/PerfilGenerico.png");
 
@@ -220,8 +221,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                   key={"ContenedorInferior"}
                   style={{
                     alignSelf: "center",
-                    alignItems: "center",
-                    marginLeft: 5,
+                    width: "100%",
                     marginTop: 30,
                     maxWidth: 700,
                   }}
@@ -232,8 +232,10 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       display: "flex",
                       flexDirection: "row",
                       flexWrap: "wrap",
-                      //alignContent: "flex-start",
-                      //alignSelf: "center",
+                      width: "98%",
+                      maxWidth: 700,
+                      justifyContent: "space-evenly",
+                      alignSelf: "center",
                     }}
                   >
                     <CuadroEstado
@@ -274,71 +276,66 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                     />
                   </View>
                 </View>
-                <View
-                  key={"ContenedorPolitica"}
-                  style={{
-                    marginVertical: 20,
-                    width: "100%",
-                    maxWidth: 680,
-                    alignSelf: "center",
-                  }}
-                >
-                  <View
-                    key={"ContenedorTituloPolitica"}
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Text key={"TituloPolitica"} style={styles.TituloTarjeta}>
-                      Politica de pagos &#47; impuestos
-                    </Text>
-                  </View>
-                  <View
-                    key={"ContenedorTextoPolitica"}
-                    style={styles.ContenedorPolitica}
-                  >
-                    <View
-                      key={"TextoPolitica"}
-                      style={{ marginHorizontal: 10, marginVertical: 10 }}
-                    >
-                      <Text
-                        key={"Politica"}
-                        style={{
-                          color: "black",
-                          fontSize: 16,
-                          fontWeight: "bold",
-                          lineHeight: 25,
-                        }}
-                      >
-                        Es posible que las regulaciones estatales o locales le
-                        exijan cobrar impuestos. Le recomendamos que consulte a
-                        un profesional de impuestos para asegurarse de
-                        comprender sus obligaciones tributarias. EventPlace sólo
-                        puede permitir a los organizadores recaudar impuestos en
-                        determinados países. Trabajamos continuamente para
-                        apoyar a más países.
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  key={"ContenedorBoton"}
-                  style={{
-                    marginTop: 10,
-                    marginBottom: 15,
-                    alignSelf: "center",
-                    marginEnd: 10,
-                    width: "100%",
-                    maxWidth: 320,
-                  }}
-                >
-                  <Boton
-                    key={"Cerrar sesión"}
-                    theme={"StyleBoton1"}
-                    label={"Cerrar sesión"}
-                    onPress={() => alert("cerrar sesión")}
-                  />
-                </View>
               </View>
             ))}
+            <View
+              key={"ContenedorPolitica"}
+              style={{
+                marginVertical: 20,
+                width: "100%",
+                maxWidth: 680,
+                alignSelf: "center",
+              }}
+            >
+              <View
+                key={"ContenedorTituloPolitica"}
+                style={{ alignSelf: "center" }}
+              >
+                <Text key={"TituloPolitica"} style={styles.TituloTarjeta}>
+                  Politica de pagos &#47; impuestos
+                </Text>
+              </View>
+              <View
+                key={"ContenedorTextoPolitica"}
+                style={styles.ContenedorPolitica}
+              >
+                <View
+                  key={"TextoPolitica"}
+                  style={{ marginHorizontal: 10, marginVertical: 10 }}
+                >
+                  {TerminosYPoliticas.map((Terminos) => (
+                    <Text
+                      key={"Politica"}
+                      style={{
+                        color: "black",
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        lineHeight: 25,
+                      }}
+                    >
+                      {Terminos.Politica}
+                    </Text>
+                  ))}
+                </View>
+              </View>
+            </View>
+            <View
+              key={"ContenedorBoton"}
+              style={{
+                marginTop: 10,
+                marginBottom: 15,
+                alignSelf: "center",
+                width: "100%",
+                maxWidth: 320,
+              }}
+            >
+              <Boton
+                key={"Cerrar sesión"}
+                theme={"StyleBoton1"}
+                label={"Cerrar sesión"}
+                onPress={() => alert("cerrar sesión")}
+              />
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>

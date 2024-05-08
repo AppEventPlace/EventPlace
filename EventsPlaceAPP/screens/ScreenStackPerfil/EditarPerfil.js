@@ -4,6 +4,9 @@ import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import DatePickerComponent from "../../components/datepicke";
+import IndicativosTel from "../../constants/IndicativosTel";
+import { SelectList } from "react-native-dropdown-select-list";
+import SelectorIndicativo from "../../constants/IndicativosTel";
 
 const EditarPerfilScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -63,7 +66,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                               : DCliente.FechaNacimiento
                           }
                           //editable={false}
-                          style={[style.TexInput, { textAlign: "flex-start" }]}
+                          style={[style.TexInput, { textAlign: "left" }]}
                         />
                       </View>
                       <View
@@ -81,6 +84,39 @@ const EditarPerfilScreen = ({ navigation }) => {
                         />
                       </View>
                     </View>
+                  </View>
+                  <View style={style.SubForms}>
+                    <Text style={style.SubFormsTitulo}>Número de celular</Text>
+                    <View style={style.SubContainer2}>
+                      <View style={style.SubContainer5}>
+                        <SelectorIndicativo />
+                      </View>
+                      <View
+                        style={{
+                          width: "70%",
+                          height: "100%",
+                          //borderWidth: 1,
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Ingresa tu número celular"
+                          style={style.TexInput}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                  <View key={"Correo"} style={style.SubForms}>
+                    <Text key={"labelCorreo"} style={style.SubFormsTitulo}>
+                      Correo electrónico
+                    </Text>
+                    <TextInput
+                      key={"InputCorreo"}
+                      placeholder={DCliente.CorreoUsuario}
+                      style={style.TexInput}
+                      editable={false}
+                    />
                   </View>
                 </View>
               ))}
@@ -169,6 +205,12 @@ const style = StyleSheet.create({
   },
   SubContainer4: {
     width: "20%",
+    height: "100%",
+    //borderWidth: 1,
+    //justifyContent: "center",
+  },
+  SubContainer5: {
+    width: "30%",
     height: "100%",
     //borderWidth: 1,
     //justifyContent: "center",
