@@ -88,29 +88,42 @@ const EditarPerfilScreen = ({ navigation }) => {
                       </View>
                     </View>
                   </View>
-                  <View style={style.SubForms}>
+                  <View
+                    key={"TelefonoCelular1"}
+                    style={{
+                      marginTop: 20,
+                      //width: "95%",
+                      marginLeft: 15,
+                      marginRight: 15,
+                    }}
+                  >
                     <Text style={style.SubFormsTitulo}>Número de celular</Text>
-                    <View style={style.SubContainer2}>
-                      <View style={style.SubContainer5}>
-                        <SelectorIndicativo />
-                      </View>
-                      <View
-                        style={{
-                          width: "70%",
-                          height: "100%",
-                          //borderWidth: 1,
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <TextInput
-                          placeholder="Ingresa tu número celular"
-                          style={style.TexInput}
-                          placeholderTextColor="#0F172A"
-                        />
-                      </View>
+                  </View>
+                  <View style={style.SubContainer5}>
+                    <SelectorIndicativo />
+                  </View>
+
+                  <View style={style.SubContainer2}>
+                    <View
+                      style={{
+                        width: "60%",
+                        height: "100%",
+                        //borderWidth: 1,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderBottomWidth: 1.5,
+                        borderBottomColor: "#A1A5A9",
+                        marginLeft: 100,
+                      }}
+                    >
+                      <TextInput
+                        placeholder={DCliente.Celular}
+                        style={style.TexInput}
+                        placeholderTextColor="#0F172A"
+                      />
                     </View>
                   </View>
+
                   <View key={"Correo"} style={style.SubFormsDisable}>
                     <Text
                       key={"labelCorreo"}
@@ -277,7 +290,7 @@ const style = StyleSheet.create({
   },
   SubContainer5: {
     width: "30%",
-    height: "100%",
+    // height: "100%",
     //borderWidth: 1,
     //justifyContent: "center",
   },

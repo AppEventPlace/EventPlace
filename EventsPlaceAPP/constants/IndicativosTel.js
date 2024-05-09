@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
+import SvgLogo from "../assets/LogoSVG";
 
 const SelectorIndicativo = () => {
   const [selected, setSelected] = useState("");
@@ -18,13 +19,30 @@ const SelectorIndicativo = () => {
       style={style.TexInput}
       search={false}
       placeholder="+57"
-      boxStyles={{ borderWidth: 0 }}
-      defaultOption={{ key: "1", value: "+57" }}
-      dropdownStyles={{
+      arrowicon={
+        <View style={{ width: 15, marginLeft: 20, marginTop: 5 }}>
+          <SvgLogo theme={"FlechaDesplegable"} />
+        </View>
+      }
+      boxStyles={{
         borderWidth: 0,
         position: "absolute",
-        top: 20,
+        top: 12,
+        borderBottomWidth: 1.5,
+        borderColor: "#A1A5A9",
+        borderRadius: 0,
+        left: 15,
+        height: 49,
+      }}
+      defaultOption={{ key: "1", value: "+57" }}
+      dropdownStyles={{
+        borderWidth: 0.5,
+        position: "absolute",
+        top: 40,
         backgroundColor: "white",
+        zIndex: 999,
+        borderRadius: 2,
+        marginLeft: 15,
       }}
       dropdownItemStyles={{ backgroundColor: "white" }}
     />
