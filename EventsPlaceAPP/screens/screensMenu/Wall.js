@@ -3,26 +3,31 @@ import { Text, View, StyleSheet, FlatList } from "react-native";
 
 //import { FlatList } from "react-native-web";
 
+// ------------------- Eliminar -------------------
+import CreateEvent from "../ScreensCreateEvent/CreateEvent";
+// ------------------- Eliminar -------------------
+
 const WallScreen = () => {
   return (
-    <View style={style.PerfilContainer}>
-      <FlatList
-        style={{ backgroundColor: "white" }}
-        data={[
-          { key: "Devin" },
-          { key: "Dan" },
-          { key: "Dominic" },
-          { key: "Jackson" },
-          { key: "James" },
-          { key: "Joel" },
-          { key: "John" },
-          { key: "Jillian" },
-          { key: "Jimmy" },
-          { key: "Julie" },
-        ]}
-        renderItem={({ item }) => <Text style={style.item}>{item.key}</Text>}
-      />
-    </View>
+    <CreateEvent />
+    // <View style={style.PerfilContainer}>
+    //   <FlatList
+    //     style={{ backgroundColor: "white" }}
+    //     data={[
+    //       { key: "Devin" },
+    //       { key: "Dan" },
+    //       { key: "Dominic" },
+    //       { key: "Jackson" },
+    //       { key: "James" },
+    //       { key: "Joel" },
+    //       { key: "John" },
+    //       { key: "Jillian" },
+    //       { key: "Jimmy" },
+    //       { key: "Julie" },
+    //     ]}
+    //     renderItem={({ item }) => <Text style={style.item}>{item.key}</Text>}
+    //   />
+    // </View>
   );
 };
 

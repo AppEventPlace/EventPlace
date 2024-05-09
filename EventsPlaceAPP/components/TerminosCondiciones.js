@@ -39,8 +39,9 @@ const TerminosCondiciones = ({ navigation }) => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          maxWidth: 326,
-          width: "100%",
+          maxWidth: 800,
+          width: "95%",
+          paddingHorizontal: 10,
           //borderWidth: 1,
         }}
       >
@@ -50,13 +51,11 @@ const TerminosCondiciones = ({ navigation }) => {
           color={aceptado ? "#6979F8" : undefined}
           onValueChange={setAceptado}
         />
-        <View style={{ maxWidth: 290, width: "100%" }}>
-          <Boton
-            theme="TexTerms"
-            label="Aceptar términos, condiciones y tratamiento de datos personales."
-            onPress={() => navigation.navigate("TermsAndConditions")}
-          />
-        </View>
+        <Boton
+          theme="TexTerms"
+          label="Aceptar términos, condiciones y tratamiento de datos personales."
+          onPress={() => navigation.navigate("TermsAndConditions")}
+        />
       </View>
       <View style={style.BotonContainer}>
         <Boton
@@ -77,8 +76,9 @@ const style = StyleSheet.create({
     height: 20,
     borderColor: "#6979F8",
   },
+
   BotonContainer: {
-    maxWidth: 316,
+    maxWidth: 326,
     width: "100%",
     height: 43,
     //borderWidth: 1,

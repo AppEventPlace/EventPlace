@@ -9,6 +9,8 @@ import DatePickerComponent from "../../components/datepicke";
 import IconSVG from "../../assets/LogoSVG";
 import TerminosCondiciones from "../../components/TerminosCondiciones";
 import RenderBotonesLogin from "../../components/RenderBotonesLogin";
+import BackCheckron from "../../components/BackCheckron";
+
 const FondImage = require("../../assets/adaptive-icon.png");
 
 const CreaCuenta = ({ navigation }) => {
@@ -42,13 +44,7 @@ const CreaCuenta = ({ navigation }) => {
   return (
     <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
       <ScrollView style={style.PerfilContainer}>
-        <View style={style.HeaderContainer}>
-          <Boton
-            theme="BackCheckron"
-            label="Atras"
-            onPress={() => navigation.goBack()}
-          />
-        </View>
+        <BackCheckron navigation={navigation} />
         <View style={style.FullContainer}>
           <View style={style.ProgressBar}>
             <IconSVG theme="ProgressBar" progress="90" />
@@ -216,7 +212,9 @@ const CreaCuenta = ({ navigation }) => {
                 </View>
               </View>
             </View>
-            <TerminosCondiciones navigation={navigation} />
+            <View style={{ axWidth: 800, width: "100%" }}>
+              <TerminosCondiciones navigation={navigation} />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -234,7 +232,6 @@ const style = StyleSheet.create({
     width: "100%", //asegura el ancho total en el dispositivo
     height: "100%",
     paddingHorizontal: 16,
-    alignSelf: "center", //alinea todo el forumlario al centro
   },
   HeaderContainer: {
     marginTop: 20,

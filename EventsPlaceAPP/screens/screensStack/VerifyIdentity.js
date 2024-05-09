@@ -128,7 +128,7 @@ const style = StyleSheet.create({
   BotonContainer: {
     width: "100%",
     maxWidth: 326,
-    height: 43,
+    height: 40,
     //borderWidth: 1,
   },
 });
