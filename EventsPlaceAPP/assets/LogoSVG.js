@@ -634,7 +634,6 @@ function SvgLogo({ theme, progress, color, colEstrella, ancho, alto }) {
           />
         </Svg>
       );
-
     case "ExpandMore":
       return (
         <Svg
