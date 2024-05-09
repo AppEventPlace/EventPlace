@@ -7,6 +7,7 @@ import DatePickerComponent from "../../components/datepicke";
 import IndicativosTel from "../../constants/IndicativosTel";
 import { SelectList } from "react-native-dropdown-select-list";
 import SelectorIndicativo from "../../constants/IndicativosTel";
+import SvgLogo from "../../assets/LogoSVG";
 
 const EditarPerfilScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -50,6 +51,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                     <TextInput
                       key={"InputNombres"}
                       placeholder={DCliente.UserName}
+                      placeholderTextColor="#0F172A"
                       style={style.TexInput}
                     />
                   </View>
@@ -65,6 +67,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                               ? selectedDate.toLocaleDateString()
                               : DCliente.FechaNacimiento
                           }
+                          placeholderTextColor="#0F172A"
                           //editable={false}
                           style={[style.TexInput, { textAlign: "left" }]}
                         />
@@ -103,20 +106,55 @@ const EditarPerfilScreen = ({ navigation }) => {
                         <TextInput
                           placeholder="Ingresa tu número celular"
                           style={style.TexInput}
+                          placeholderTextColor="#0F172A"
                         />
                       </View>
                     </View>
                   </View>
-                  <View key={"Correo"} style={style.SubForms}>
-                    <Text key={"labelCorreo"} style={style.SubFormsTitulo}>
+                  <View key={"Correo"} style={style.SubFormsDisable}>
+                    <Text
+                      key={"labelCorreo"}
+                      style={style.SubFormsTituloDisable}
+                    >
                       Correo electrónico
                     </Text>
                     <TextInput
                       key={"InputCorreo"}
                       placeholder={DCliente.CorreoUsuario}
-                      style={style.TexInput}
+                      placeholderTextColor="#A1A3A6"
+                      style={style.TexInputDisable}
                       editable={false}
                     />
+                  </View>
+                  <View
+                    key={"Apodo"}
+                    style={[style.SubForms, { marginBottom: 30 }]}
+                  >
+                    <Text key={"TituloApodo"} style={style.SubFormsTitulo}>
+                      Nombre de usuario &#40;Opcional&#41;
+                    </Text>
+                    <View key={"ComponentesApodo"} style={style.SubContainer2}>
+                      <View
+                        key={"ContenedorinputApodo"}
+                        style={{
+                          width: "86.5%",
+                          height: "100%",
+                          marginLeft: 0,
+                          //borderWidth: 1,
+                          //alignItems: "center",
+                          //justifyContent: "center",
+                        }}
+                      >
+                        <TextInput
+                          placeholder={DCliente.NombrePersonalizado}
+                          style={[style.TexInput, { textAlign: "left" }]}
+                          placeholderTextColor="#0F172A"
+                        />
+                      </View>
+                      <View key={"ContainerCheck"} style={{ width: "13.5%" }}>
+                        <SvgLogo theme={"Check"} />
+                      </View>
+                    </View>
                   </View>
                 </View>
               ))}
@@ -183,6 +221,34 @@ const style = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 16,
     color: "#0F172A",
+
+    fontSize: 14,
+    fontWeight: "600",
+    //lineHeight: 20,
+  },
+  SubFormsDisable: {
+    marginTop: 20,
+    //width: "95%",
+    marginLeft: 15,
+    marginRight: 15,
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#A1A3A6",
+
+    height: 70,
+  },
+  SubFormsTituloDisable: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#A1A3A6",
+  },
+  TexInputDisable: {
+    //borderWidth: 1,
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: 8,
+    paddingVertical: 16,
+    color: "#A1A3A6",
     fontSize: 14,
     fontWeight: "500",
     //lineHeight: 20,
