@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   checkBox1Container: {
     width: "100%",
-    maxWidth: 200,
+    maxWidth: 180,
   },
   checkBoxText: {
     fontWeight: "500",
