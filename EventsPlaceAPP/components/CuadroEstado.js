@@ -7,8 +7,9 @@ const CuadroEstado = ({ label, cantidad, id }) => {
       return (
         <View
           style={{
-            display: "flex",
-            width: 160,
+            //display: "flex",
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -20,7 +21,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -52,7 +53,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: 160,
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -64,7 +66,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -96,7 +98,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: 160,
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -108,7 +111,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -129,8 +132,13 @@ const CuadroEstado = ({ label, cantidad, id }) => {
                 {cantidad}
               </Text>
             </View>
-            <View style={{ marginTop: 15, marginLeft: 15 }}>
-              <SvgLogo theme="BoletasLogo" color="#FDB022" />
+            <View style={{ marginTop: 15, marginLeft: 12 }}>
+              <SvgLogo
+                theme="BoletasLogo"
+                color="#FDB022"
+                ancho="33"
+                alto="28"
+              />
             </View>
           </Pressable>
         </View>
@@ -140,7 +148,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: 160,
+            width: "45%",
+            maxWidth: 190,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -152,7 +161,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         >
           <Pressable onPress={() => alert("prueba")}>
             <View
-              style={{ width: 120, height: 35, marginLeft: 15, marginTop: 20 }}
+              style={{ width: 130, height: 35, marginLeft: 15, marginTop: 20 }}
             >
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>{label}</Text>
             </View>
@@ -184,8 +193,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: "100%",
-            maxWidth: 330,
+            width: "95%",
+            maxWidth: 400,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,
@@ -234,8 +243,8 @@ const CuadroEstado = ({ label, cantidad, id }) => {
         <View
           style={{
             display: "flex",
-            width: "100%",
-            maxWidth: 330,
+            width: "95%",
+            maxWidth: 400,
             height: 140,
             backgroundColor: "#FBFBFB",
             borderRadius: 12,

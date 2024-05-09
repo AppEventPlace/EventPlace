@@ -16,6 +16,8 @@ import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
 import * as ImagePicker from "expo-image-picker";
 import ImageViewer from "../../components/ImageViewer";
+import SvgLogo from "../../assets/LogoSVG";
+import TerminosYPoliticas from "../../constants/TerminosYPoliticas";
 //import Autenticar from "../../App";
 const FondImage = require("../../assets/PerfilGenerico.png");
 
@@ -37,255 +39,271 @@ const PerfilPrincipalScreen = ({ navigation }) => {
   };
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={styles.ScrollView}>
-        <View key={"ContenedorPagina"} style={styles.PerfilContainer}>
-          <View key={"ContenedorFondo"} style={styles.IconBackground}>
-            <IconSVG key={"FonndoPerfil"} theme={"BackgroundPerfil"} />
-          </View>
+      <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
+        <ScrollView style={styles.ScrollView}>
+          <View key={"ContenedorPagina"} style={styles.PerfilContainer}>
+            <View key={"ContenedorFondo"} style={styles.IconBackground}>
+              <IconSVG key={"FonndoPerfil"} theme={"BackgroundPerfil"} />
+            </View>
 
-          <View
-            key={"ContenedorTitulo"}
-            style={{ alignSelf: "center", marginTop: 20 }}
-          >
-            <Text key={"TextoTitulo"} style={styles.Titulo}>
-              {" "}
-              Mi perfil{" "}
-            </Text>
-          </View>
-          {DatosClientePrueba.map((DCliente) => (
-            <View key={"ContenedorInfoPerfil"}>
-              <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
-                <View
-                  key={"Imagen perfil"}
-                  style={[
-                    styles.Alinear,
-                    {
-                      marginTop: 15,
-                      width: 68,
-                      height: 68,
-                      alignSelf: "center",
-                    },
-                  ]}
-                >
-                  <ImageViewer
-                    key={"SelectorImagen"}
-                    //Pase el URI de la imagen seleccionada al componente ImageViewer.
-                    placeholderImageSource={FondImage}
-                    selectedImage={selectedImage}
-                    ancho={68}
-                    alto={68}
-                  />
-                  <Boton
-                    key={"BotonImagen"}
-                    theme="Imagen"
-                    onPress={pickImageAsync}
-                  />
+            <View
+              key={"ContenedorTitulo"}
+              style={{ alignSelf: "center", marginTop: 20 }}
+            >
+              <Text key={"TextoTitulo"} style={styles.Titulo}>
+                {" "}
+                Mi perfil{" "}
+              </Text>
+            </View>
+            {DatosClientePrueba.map((DCliente) => (
+              <View key={"ContenedorInfoPerfil"}>
+                <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
+                  <View
+                    key={"Imagen perfil"}
+                    style={[
+                      styles.Alinear,
+                      {
+                        marginTop: 15,
+                        width: 68,
+                        height: 68,
+                        alignSelf: "center",
+                      },
+                    ]}
+                  >
+                    <View style={{ position: "absolute", alignSelf: "center" }}>
+                      <ImageViewer
+                        key={"SelectorImagen"}
+                        //Pase el URI de la imagen seleccionada al componente ImageViewer.
+                        placeholderImageSource={FondImage}
+                        selectedImage={selectedImage}
+                        ancho={68}
+                        alto={68}
+                      />
+                      <Boton
+                        key={"BotonImagen"}
+                        theme="Imagen"
+                        onPress={pickImageAsync}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        position: "absolute",
+                        alignSelf: "center",
+                        top: 52,
+                      }}
+                    >
+                      <SvgLogo theme="photoCamera" />
+                    </View>
+                  </View>
+                  <View key={"Cabecera tarjeta"}>
+                    <View
+                      key={"ContenedorNombreUsuario"}
+                      style={styles.NombrePerfil}
+                    >
+                      <Text
+                        key={"Nombre usuario tarjeta"}
+                        style={styles.TituloTarjeta}
+                      >
+                        {DCliente.UserName}
+                      </Text>
+                    </View>
+                    <View
+                      key={"CalificacionText"}
+                      style={{
+                        marginTop: 5,
+                        alignSelf: "center",
+                      }}
+                    >
+                      <Text
+                        key={"calificacion text"}
+                        style={[styles.Subtitulos, { fontSize: 16 }]}
+                      >
+                        Calificación
+                      </Text>
+                    </View>
+                    <View
+                      key="Estrellas de calificacion perfil"
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignSelf: "center",
+                        marginTop: 5,
+                      }}
+                    >
+                      <CalificacionEst
+                        key={"estrellas calificacion"}
+                        califi={DCliente.Calificacion}
+                      />
+                    </View>
+                    <View style={styles.lineaTarjeta}></View>
+                    <View
+                      key="Experiencia perfil"
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <View
+                        key={"PieTarjetaPorcentaje"}
+                        style={styles.TarjetaFooter}
+                      >
+                        <Text
+                          key={"ValorPorcentaje"}
+                          style={[styles.TextosBold, { fontSize: 18 }]}
+                        >
+                          &#37;{DCliente.PorcentajePerfil}
+                        </Text>
+                        <Text
+                          key={"TextoExperiencia"}
+                          style={{
+                            marginTop: 10,
+                            marginLeft: 7,
+                            color: "#828282",
+                            textAlign: "center",
+                            fontSize: 12,
+                          }}
+                        >
+                          Experiencia
+                        </Text>
+                      </View>
+                      <View
+                        key={"PieTarjetaEventos"}
+                        style={styles.TarjetaFooter}
+                      >
+                        <Text
+                          key={"NumeroEventos"}
+                          style={[styles.TextosBold, { fontSize: 18 }]}
+                        >
+                          {DCliente.EventosRealizados}
+                        </Text>
+                        <Text
+                          key={"TextoEventos"}
+                          style={{
+                            marginTop: 10,
+                            paddingLeft: 0,
+                            color: "#828282",
+                            textAlign: "center",
+                            fontSize: 12,
+                          }}
+                        >
+                          Eventos realizados
+                        </Text>
+                      </View>
+                      <View key={"BotonEditar"} style={styles.TarjetaFooter}>
+                        <Boton
+                          key={"Editar perfil"}
+                          theme="EditarPerfil"
+                          style={{
+                            width: 18,
+                            height: 18,
+                            paddingRight: 10,
+                          }}
+                          onPress={() => navigation.navigate("Editar perfil")}
+                        />
+                        <Text
+                          key={"TextoEditar"}
+                          style={{
+                            marginTop: 10,
+                            paddingLeft: 0,
+                            color: "#828282",
+                            textAlign: "center",
+                            fontSize: 12,
+                          }}
+                        >
+                          Editar mis datos
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
                 </View>
-                <View key={"Cabecera tarjeta"}>
+                <View
+                  key={"LineaSeparacionPerfil"}
+                  style={styles.lineaSeparacion}
+                ></View>
+                <View
+                  key={"ContenedorInferior"}
+                  style={{
+                    alignSelf: "center",
+                    width: "100%",
+                    marginTop: 30,
+                    maxWidth: 700,
+                  }}
+                >
                   <View
-                    key={"ContenedorNombreUsuario"}
-                    style={styles.NombrePerfil}
-                  >
-                    <Text
-                      key={"Nombre usuario tarjeta"}
-                      style={styles.TituloTarjeta}
-                    >
-                      {DCliente.UserName}
-                    </Text>
-                  </View>
-                  <View
-                    key={"CalificacionText"}
-                    style={{
-                      marginTop: 5,
-                      alignSelf: "center",
-                    }}
-                  >
-                    <Text
-                      key={"calificacion text"}
-                      style={[styles.Subtitulos, { fontSize: 16 }]}
-                    >
-                      Calificación
-                    </Text>
-                  </View>
-                  <View
-                    key="Estrellas de calificacion perfil"
+                    key={"ContenedorCuadrosEstado"}
                     style={{
                       display: "flex",
                       flexDirection: "row",
+                      flexWrap: "wrap",
+                      width: "98%",
+                      maxWidth: 700,
+                      justifyContent: "space-evenly",
                       alignSelf: "center",
-                      marginTop: 5,
                     }}
                   >
-                    <CalificacionEst
-                      key={"estrellas calificacion"}
-                      califi={DCliente.Calificacion}
+                    <CuadroEstado
+                      key={"EventoCreado"}
+                      id={"EventoCreado"}
+                      cantidad={DCliente.EventosCreados}
+                      label={"Eventos Creados"}
+                    />
+                    <CuadroEstado
+                      key={"EventoComprado"}
+                      id={"EventoComprado"}
+                      cantidad={DCliente.EventosComprados}
+                      label={"Eventos Comprados"}
+                    />
+                    <CuadroEstado
+                      key={"MisInvitaciones"}
+                      id={"MisInvitaciones"}
+                      cantidad={DCliente.Invitaciones}
+                      label={"Mis invitaciones a eventos"}
+                    />
+                    <CuadroEstado
+                      key={"MisLugares"}
+                      id={"MisLugares"}
+                      cantidad={DCliente.MisLugares}
+                      label={"Mis lugares de eventos"}
+                    />
+                    <CuadroEstado
+                      key={"Estadisticas"}
+                      id={"Estadisticas"}
+                      cantidad={DCliente.Estadisticas}
+                      label={"¿Cómo van mis estadísticas de eventos?"}
+                    />
+                    <CuadroEstado
+                      key={"EstadisticasContratacion"}
+                      id={"EstadisticasContratacion"}
+                      cantidad={DCliente.EstadisticasContratacion}
+                      label={"Mis estadísticas por contratación"}
                     />
                   </View>
-                  <View style={styles.lineaTarjeta}></View>
-                  <View
-                    key="Experiencia perfil"
-                    style={{ display: "flex", flexDirection: "row" }}
-                  >
-                    <View
-                      key={"PieTarjetaPorcentaje"}
-                      style={styles.TarjetaFooter}
-                    >
-                      <Text
-                        key={"ValorPorcentaje"}
-                        style={[styles.TextosBold, { fontSize: 18 }]}
-                      >
-                        &#37;{DCliente.PorcentajePerfil}
-                      </Text>
-                      <Text
-                        key={"TextoExperiencia"}
-                        style={{
-                          marginTop: 10,
-                          marginLeft: 7,
-                          color: "#828282",
-                          textAlign: "center",
-                          fontSize: 12,
-                        }}
-                      >
-                        Experiencia
-                      </Text>
-                    </View>
-                    <View
-                      key={"PieTarjetaEventos"}
-                      style={styles.TarjetaFooter}
-                    >
-                      <Text
-                        key={"NumeroEventos"}
-                        style={[styles.TextosBold, { fontSize: 18 }]}
-                      >
-                        {DCliente.EventosRealizados}
-                      </Text>
-                      <Text
-                        key={"TextoEventos"}
-                        style={{
-                          marginTop: 10,
-                          paddingLeft: 0,
-                          color: "#828282",
-                          textAlign: "center",
-                          fontSize: 12,
-                        }}
-                      >
-                        Eventos realizados
-                      </Text>
-                    </View>
-                    <View key={"BotonEditar"} style={styles.TarjetaFooter}>
-                      <Boton
-                        key={"Editar perfil"}
-                        theme="EditarPerfil"
-                        style={{
-                          width: 18,
-                          height: 18,
-                          paddingRight: 10,
-                        }}
-                        onPress={() => navigation.navigate("Editar perfil")}
-                      />
-                      <Text
-                        key={"TextoEditar"}
-                        style={{
-                          marginTop: 10,
-                          paddingLeft: 0,
-                          color: "#828282",
-                          textAlign: "center",
-                          fontSize: 12,
-                        }}
-                      >
-                        Editar mis datos
-                      </Text>
-                    </View>
-                  </View>
                 </View>
               </View>
+            ))}
+            <View
+              key={"ContenedorPolitica"}
+              style={{
+                marginVertical: 20,
+                width: "100%",
+                maxWidth: 680,
+                alignSelf: "center",
+              }}
+            >
               <View
-                key={"LineaSeparacionPerfil"}
-                style={styles.lineaSeparacion}
-              ></View>
-              <View
-                key={"ContenedorInferior"}
-                style={{
-                  alignSelf: "center",
-                  alignItems: "center",
-                  marginLeft: 5,
-                  marginTop: 30,
-                  maxWidth: 700,
-                }}
+                key={"ContenedorTituloPolitica"}
+                style={{ alignSelf: "center" }}
               >
-                <View
-                  key={"ContenedorCuadrosEstado"}
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    //alignContent: "flex-start",
-                    //alignSelf: "center",
-                  }}
-                >
-                  <CuadroEstado
-                    key={"EventoCreado"}
-                    id={"EventoCreado"}
-                    cantidad={DCliente.EventosCreados}
-                    label={"Eventos Creados"}
-                  />
-                  <CuadroEstado
-                    key={"EventoComprado"}
-                    id={"EventoComprado"}
-                    cantidad={DCliente.EventosComprados}
-                    label={"Eventos Comprados"}
-                  />
-                  <CuadroEstado
-                    key={"MisInvitaciones"}
-                    id={"MisInvitaciones"}
-                    cantidad={DCliente.Invitaciones}
-                    label={"Mis invitaciones a eventos"}
-                  />
-                  <CuadroEstado
-                    key={"MisLugares"}
-                    id={"MisLugares"}
-                    cantidad={DCliente.MisLugares}
-                    label={"Mis lugares de eventos"}
-                  />
-                  <CuadroEstado
-                    key={"Estadisticas"}
-                    id={"Estadisticas"}
-                    cantidad={DCliente.Estadisticas}
-                    label={"¿Cómo van mis estadísticas de eventos?"}
-                  />
-                  <CuadroEstado
-                    key={"EstadisticasContratacion"}
-                    id={"EstadisticasContratacion"}
-                    cantidad={DCliente.EstadisticasContratacion}
-                    label={"Mis estadísticas por contratación"}
-                  />
-                </View>
+                <Text key={"TituloPolitica"} style={styles.TituloTarjeta}>
+                  Politica de pagos &#47; impuestos
+                </Text>
               </View>
               <View
-                key={"ContenedorPolitica"}
-                style={{
-                  marginVertical: 20,
-                  width: "100%",
-                  maxWidth: 680,
-                  alignSelf: "center",
-                }}
+                key={"ContenedorTextoPolitica"}
+                style={styles.ContenedorPolitica}
               >
                 <View
-                  key={"ContenedorTituloPolitica"}
-                  style={{ alignSelf: "center" }}
+                  key={"TextoPolitica"}
+                  style={{ marginHorizontal: 10, marginVertical: 10 }}
                 >
-                  <Text key={"TituloPolitica"} style={styles.TituloTarjeta}>
-                    Politica de pagos &#47; impuestos
-                  </Text>
-                </View>
-                <View
-                  key={"ContenedorTextoPolitica"}
-                  style={styles.ContenedorPolitica}
-                >
-                  <View
-                    key={"TextoPolitica"}
-                    style={{ marginHorizontal: 10, marginVertical: 10 }}
-                  >
+                  {TerminosYPoliticas.map((Terminos) => (
                     <Text
                       key={"Politica"}
                       style={{
@@ -295,38 +313,32 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                         lineHeight: 25,
                       }}
                     >
-                      Es posible que las regulaciones estatales o locales le
-                      exijan cobrar impuestos. Le recomendamos que consulte a un
-                      profesional de impuestos para asegurarse de comprender sus
-                      obligaciones tributarias. EventPlace sólo puede permitir a
-                      los organizadores recaudar impuestos en determinados
-                      países. Trabajamos continuamente para apoyar a más países.
+                      {Terminos.Politica}
                     </Text>
-                  </View>
+                  ))}
                 </View>
               </View>
-              <View
-                key={"ContenedorBoton"}
-                style={{
-                  marginTop: 10,
-                  marginBottom: 15,
-                  alignSelf: "center",
-                  marginEnd: 10,
-                  width: "100%",
-                  maxWidth: 320,
-                }}
-              >
-                <Boton
-                  key={"Cerrar sesión"}
-                  theme={"StyleBoton1"}
-                  label={"Cerrar sesión"}
-                  onPress={() => alert("cerrar sesión")}
-                />
-              </View>
             </View>
-          ))}
-        </View>
-      </ScrollView>
+            <View
+              key={"ContenedorBoton"}
+              style={{
+                marginTop: 10,
+                marginBottom: 15,
+                alignSelf: "center",
+                width: "100%",
+                maxWidth: 320,
+              }}
+            >
+              <Boton
+                key={"Cerrar sesión"}
+                theme={"StyleBoton1"}
+                label={"Cerrar sesión"}
+                onPress={() => alert("cerrar sesión")}
+              />
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 };
@@ -425,7 +437,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   lineaSeparacion: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     borderBottomColor: "#72767A",
     width: "90%",
     //maxWidth: 294,
