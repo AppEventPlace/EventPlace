@@ -92,6 +92,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
     //borderWidth: 1,
     alignItems: "center",
+    width: "100%",
   },
   TexTitle: {
     fontWeight: "700",

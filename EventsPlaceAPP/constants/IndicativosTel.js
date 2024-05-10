@@ -21,7 +21,7 @@ const SelectorIndicativo = () => {
       placeholder="+57"
       arrowicon={
         <View style={{ width: 15, marginLeft: 20, marginTop: 5 }}>
-          <SvgLogo theme={"FlechaDesplegable"} />
+          <SvgLogo theme={"ExpandMore"} color={"#6979F8"} />
         </View>
       }
       boxStyles={{

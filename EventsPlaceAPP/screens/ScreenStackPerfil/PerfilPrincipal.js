@@ -309,7 +309,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                       style={{
                         color: "black",
                         fontSize: 16,
-                        fontWeight: "bold",
+                        fontWeight: "400",
                         lineHeight: 25,
                       }}
                     >

@@ -8,6 +8,7 @@ import IndicativosTel from "../../constants/IndicativosTel";
 import { SelectList } from "react-native-dropdown-select-list";
 import SelectorIndicativo from "../../constants/IndicativosTel";
 import SvgLogo from "../../assets/LogoSVG";
+import Direccionador from "../../components/Direccionador";
 
 const EditarPerfilScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -171,6 +172,34 @@ const EditarPerfilScreen = ({ navigation }) => {
                   </View>
                 </View>
               ))}
+              <View style={{ marginTop: 20 }}>
+                <Direccionador
+                  key={"ActualizarContraseña"}
+                  logo={"Key"}
+                  label={"Cambiar Contraseña"}
+                />
+              </View>
+              <View style={{ marginTop: 20 }}>
+                <Direccionador
+                  Key={"EditarGustos"}
+                  logo={"HappyFace"}
+                  label={"Editar gustos"}
+                />
+              </View>
+              <View style={{ marginTop: 20 }}>
+                <Direccionador
+                  id={"EditarServicios"}
+                  logo={"Recaudo"}
+                  label={"Editar servicios"}
+                />
+              </View>
+              <View style={{ marginTop: 20, marginBottom: 15 }}>
+                <Direccionador
+                  id={"EditarHorario"}
+                  logo={"CalendarClock"}
+                  label={"Editar Horario de disponibilidad"}
+                />
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -210,6 +239,7 @@ const style = StyleSheet.create({
     alignSelf: "center",
     marginHorizontal: 10,
     marginTop: 20,
+    elevation: 5,
   },
   SubForms: {
     marginTop: 20,

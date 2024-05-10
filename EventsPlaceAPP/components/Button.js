@@ -104,7 +104,7 @@ export default function Button({
 
     case "TexTerms":
       return (
-        <Pressable onPress={onPress}>
+        <Pressable style={{ width: "100%" }} onPress={onPress}>
           <Text style={styles.StyleButtonLabel}>{label}</Text>
         </Pressable>
       );
