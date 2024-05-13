@@ -110,7 +110,7 @@ const CreaCuenta = ({ navigation }) => {
                       style.SubContainer4,
                       {
                         borderBottomColor: "#A1A5A9",
-                        borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                        borderBottomWidth: (StyleSheet.hairlineWidth = 1),
                       },
                     ]}
                   >
@@ -162,7 +162,7 @@ const CreaCuenta = ({ navigation }) => {
                     {
                       paddingRight: 8,
                       borderBottomColor: "#A1A5A9",
-                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 1),
                     },
                   ]}
                 >
@@ -181,7 +181,7 @@ const CreaCuenta = ({ navigation }) => {
                     {
                       paddingRight: 8,
                       borderBottomColor: "#A1A5A9",
-                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 1),
                     },
                   ]}
                 >
@@ -200,7 +200,7 @@ const CreaCuenta = ({ navigation }) => {
                     {
                       paddingRight: 8,
                       borderBottomColor: "#A1A5A9",
-                      borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+                      borderBottomWidth: (StyleSheet.hairlineWidth = 1),
                     },
                   ]}
                 >
@@ -368,7 +368,7 @@ const style = StyleSheet.create({
     fontWeight: "500",
     lineHeight: 20,
     borderBottomColor: "#A1A5A9",
-    borderBottomWidth: (StyleSheet.hairlineWidth = 3),
+    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
   },
   TexInputIcon: {
     //borderWidth: 1,

@@ -18,6 +18,10 @@ const preguntas = [
     SubTitle: "Selecciona la ciudad o municipio",
   },
   {
+    Title: "Tipo de lugar",
+    SubTitle: "Selecciona el tipo de lugar",
+  },
+  {
     Title: "Ingresa la dirección dónde se realizará en evento",
     SubTitle: "Ingresa la dirección",
   },
@@ -40,7 +44,8 @@ en la lista:
       <View style={style.InfoContainer}>
         {preguntas.map((pregunta, index) =>
           pregunta.Title === "Departamento" ||
-          pregunta.Title === "Ciudad o municipio" ? (
+          pregunta.Title === "Ciudad o municipio" ||
+          pregunta.Title === "Tipo de lugar" ? (
             <Dropdown
               key={index}
               Title={pregunta.Title}
@@ -54,6 +59,10 @@ en la lista:
             />
           )
         )}
+        <View style={style.Anfitrion}>
+          <Text style={style.TextStyle}>Agregar anfitrión</Text>
+          <Text style={style.Icon}>+</Text>
+        </View>
       </View>
     </View>
   );
@@ -80,6 +89,26 @@ const style = StyleSheet.create({
     paddingHorizontal: 16,
     flexDirection: "column",
     backgroundColor: "white",
+  },
+  Anfitrion: {
+    width: "100%",
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    columnGap: 18,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  TextStyle: {
+    fontWeight: "700",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#6979F8",
+  },
+  Icon: {
+    fontWeight: "700",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#6979F8",
   },
 });
 

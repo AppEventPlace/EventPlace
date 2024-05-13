@@ -61,29 +61,6 @@ const MenuMovil = () => {
     </Tab.Navigator>
   );
 };
-/*
-const StackCreacion = () => {
-  return (
-    <Tab.Navigator>
-      {StackInit.map((Items) => (
-        <Tab.Screen
-          key={Items.name}
-          name={Items.name}
-          options={{
-            headerShown: false,
-            tabBarShowLabel: false,
-            tabBarButton: () => (
-              <View style={{ width: 0, height: "0%" }}></View>
-            ),
-            //tabBarVisible: false,
-            //tabBarActiveBackgroundColor: "#E4E5E5",
-          }}
-          component={CreacionStack}
-        />
-      ))}
-    </Tab.Navigator>
-  );
-};*/
 
 const Menu = () => {
   if (Platform.OS === "android") {

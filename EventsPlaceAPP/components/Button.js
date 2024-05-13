@@ -29,6 +29,7 @@ export default function Button({
           onPress={onPress}
         >
           <Text style={styles.StyleButtonLabel2}>{label}</Text>
+          <IconSVG theme={Icon} color={IconColor} />
         </Pressable>
       );
 
@@ -41,17 +42,6 @@ export default function Button({
           <IconSVG theme={Icon} />
         </Pressable>
       );
-
-    //// Eliminar ////////
-    case "StyleBoton1":
-      return (
-        <View style={styles.StyleBoton1}>
-          <Pressable style={styles.button} onPress={onPress}>
-            <Text style={styles.StyleButtonLabel1}>{label}</Text>
-          </Pressable>
-        </View>
-      );
-    //////////////////////
 
     case "FullStyleBoton1":
       return (
@@ -72,17 +62,6 @@ export default function Button({
           )}
         </Pressable>
       );
-
-    //// Eliminar ////////
-    case "StyleBoton2":
-      return (
-        <View style={styles.StyleBoton2}>
-          <Pressable style={styles.button} onPress={onPress}>
-            <Text style={styles.StyleButtonLabel2}>{label}</Text>
-          </Pressable>
-        </View>
-      );
-    //////////////////////
 
     case "Terms":
       return (
@@ -215,6 +194,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     //borderWidth: 1,
     borderRadius: 50,
+    columnGap: 5,
   },
   StyleButtonLabel: {
     color: "#0F172A",

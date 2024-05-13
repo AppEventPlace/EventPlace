@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 79,
     borderBottomColor: "#A1A5A9",
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
   },
   TexContainer: {
     width: "100%",

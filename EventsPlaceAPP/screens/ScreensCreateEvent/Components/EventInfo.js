@@ -8,6 +8,10 @@ import Dropdown from "../../../components/Dropdown";
 import CheckBoxRadio from "../../../components/CheckBoxRadio";
 import Boton from "../../../components/Button";
 
+import SvgLogo from "../../../assets/LogoSVG";
+
+import { SelectList } from "react-native-dropdown-select-list";
+
 //Definición de preguntas:
 const preguntas = [
   { Title: "Nombre del evento", SubTitle: "Título del evento" },
@@ -17,10 +21,20 @@ const preguntas = [
     Title: "Número de aforo de personas",
     SubTitle: "Ingresa el número máximo de personas",
   },
-  { Title: "Fecha de inicio", SubTitle: "DD/MM/AAAA" },
-  { Title: "Hora de inicio", SubTitle: "00:00 A.M" },
-  { Title: "Fecha de finalización", SubTitle: "DD/MM/AAAA" },
-  { Title: "Hora de finalización", SubTitle: "00:00 A.M" },
+  {
+    Title: "Fecha de inicio",
+    SubTitle: "DD/MM/AAAA",
+    type: "1",
+    Title_1: "Hora de inicio",
+    SubTitle_1: "00:00 A.M",
+  },
+  {
+    Title: "Fecha de finalización",
+    SubTitle: "DD/MM/AAAA",
+    type: "1",
+    Title_1: "Hora de finalización",
+    SubTitle_1: "00:00 A.M",
+  },
   {
     Title: "Descripción",
     SubTitle: "Ingresa una breve descripción del evento",
@@ -59,11 +73,29 @@ Si el título de la pregunta coincide, se renderiza el componente Dropdown
 con las propiedades Title y SubTitle correspondientes.
 Si no, se renderiza el componente Froms.
 -------------------------------------------------------------------------*/
+
+  const [selected, setSelected] = React.useState("");
+  const data = [
+    //{ key: "1", value: "Mobiles", disabled: true },
+    { key: "2", value: "Appliances" },
+    { key: "3", value: "Cameras" },
+    //{ key: "4", value: "Computers", disabled: true },
+    { key: "5", value: "Vegetables" },
+    { key: "6", value: "Diary Products" },
+    { key: "7", value: "Drinks" },
+  ];
+
   return (
     <View style={style.InfoContainer}>
-      {preguntas.map((pregunta, index) =>
-        pregunta.Title === "Tipo de evento" ||
-        pregunta.Title === "Categoría" ? (
+      {[...preguntas, ...Checkpreguntas].map((pregunta, index) =>
+        pregunta.Options ? (
+          <CheckBoxRadio
+            key={index}
+            Title={pregunta.Title}
+            Options={pregunta.Options}
+          />
+        ) : pregunta.Title === "Tipo de evento" ||
+          pregunta.Title === "Categoría" ? (
           <Dropdown
             key={index}
             Title={pregunta.Title}
@@ -74,16 +106,12 @@ Si no, se renderiza el componente Froms.
             key={index}
             Title={pregunta.Title}
             SubTitle={pregunta.SubTitle}
+            Title_1={pregunta.Title_1}
+            SubTitle_1={pregunta.SubTitle_1}
+            type={pregunta.type}
           />
         )
       )}
-      {Checkpreguntas.map((pregunta, index) => (
-        <CheckBoxRadio
-          key={index}
-          Title={pregunta.Title}
-          Options={pregunta.Options}
-        />
-      ))}
       <View style={style.ButtonContainer}>
         <Text style={style.ButtonText}>Material publicitario del evento</Text>
         <View style={style.Button}>
@@ -91,7 +119,9 @@ Si no, se renderiza el componente Froms.
             label="Subir archivos"
             color="#F4F5FE"
             theme="StyleBoton_1"
-            onPress={() => navigation.navigate("CreaCuenta")}
+            Icon="File"
+            IconColor="#6979F8"
+            onPress={() => alert("You pressed a button2.")}
           />
         </View>
         <Text style={style.FileText}>
@@ -109,6 +139,46 @@ Si no, se renderiza el componente Froms.
           tema.
         </Text>
         <Froms SubTitle="#Hashtags" />
+      </View>
+      <View
+        style={{
+          width: "100%",
+          borderBottomColor: "#A1A5A9",
+          //borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+        }}
+      >
+        <Text style={style.TexContainer}>{"Title"}</Text>
+        <SelectList
+          setSelected={(val) => setSelected(val)}
+          data={data}
+          save="value"
+          placeholder="Hola"
+          arrowicon={
+            <View style={{ justifyContent: "center" }}>
+              <SvgLogo theme={"ExpandMore"} color={"#6979F8"} />
+            </View>
+          }
+          closeicon={<SvgLogo theme={"ExpandMore"} color={"#6979F8"} />}
+          boxStyles={{
+            flex: 1,
+            width: "100%",
+            height: "100%",
+            paddingHorizontal: 8,
+            paddingVertical: 16,
+            borderWidth: 0,
+          }}
+          inputStyles={{
+            color: "#72767A",
+            fontSize: 14,
+            fontWeight: "500",
+            lineHeight: 20,
+          }}
+          searchicon={<View style={{ justifyContent: "center" }}></View>}
+          dropdownStyles={{
+            backgroundColor: "white",
+            borderWidth: 0,
+          }}
+        />
       </View>
     </View>
   );
@@ -165,6 +235,22 @@ const style = StyleSheet.create({
     lineHeight: 22,
     color: "#333333",
     alignSelf: "stretch",
+  },
+  SubContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: 79,
+    borderBottomColor: "#A1A5A9",
+    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+  },
+  TexContainer: {
+    width: "100%",
+    height: 22,
+    fontWeight: "500",
+    fontSize: 16,
+    lineHeight: 22,
+    color: "#0F172A",
   },
 });
 

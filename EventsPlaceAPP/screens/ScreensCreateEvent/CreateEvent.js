@@ -7,7 +7,7 @@ import ProgressBar from "./Components/ProgressStep";
 import EventInfo from "./Components/EventInfo";
 import Organizador from "./Components/Organizador";
 import UbicaciónDelEvento from "./Components/UbicaciónDelEvento";
-import Button from "../../components/Button";
+
 const CreateEvent = ({ navigation }) => {
   return (
     <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
@@ -54,7 +54,7 @@ const style = StyleSheet.create({
   },
   Info: {
     marginTop: 32,
-    marginBottom: 16,
+    marginBottom: -16,
     fontWeight: "700",
     fontSize: 20,
     lineHeight: 24,

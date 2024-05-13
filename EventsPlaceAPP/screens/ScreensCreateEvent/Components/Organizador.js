@@ -32,7 +32,7 @@ Organizador es un componente funcional que toma navigation como una propiedad.
 Este componente renderiza el formulario en pantalla.
 -------------------------------------------------------------------------*/
 
-const Organizador = ({ navigation }) => {
+const Organizador = () => {
   /*-------------------------------------------------------------------------
 Iteramr sobre la lista preguntas utilizando el método map(). Para cada pregunta 
 en la lista:
@@ -48,6 +48,10 @@ en la lista:
             SubTitle={pregunta.SubTitle}
           />
         ))}
+        <View style={style.Anfitrion}>
+          <Text style={style.TextStyle}>Agregar anfitrión</Text>
+          <Text style={style.Icon}>+</Text>
+        </View>
       </View>
     </View>
   );
@@ -74,6 +78,26 @@ const style = StyleSheet.create({
     paddingHorizontal: 16,
     flexDirection: "column",
     backgroundColor: "white",
+  },
+  Anfitrion: {
+    width: "100%",
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    columnGap: 18,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  TextStyle: {
+    fontWeight: "700",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#6979F8",
+  },
+  Icon: {
+    fontWeight: "700",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#6979F8",
   },
 });
 
