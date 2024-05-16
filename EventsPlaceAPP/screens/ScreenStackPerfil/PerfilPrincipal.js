@@ -327,11 +327,13 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                 alignSelf: "center",
                 width: "100%",
                 maxWidth: 320,
+                height: 45,
               }}
             >
               <Boton
                 key={"Cerrar sesión"}
-                theme={"StyleBoton1"}
+                theme={"StyleBoton"}
+                color={"#6979F8"}
                 label={"Cerrar sesión"}
                 onPress={() => alert("cerrar sesión")}
               />

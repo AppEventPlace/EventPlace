@@ -13,7 +13,7 @@ const Direccionador = ({ label, logo }) => {
         borderRadius: 12,
         marginTop: 5,
         // marginHorizontal: 10,
-
+        alignSelf: "center",
         elevation: 5,
       }}
     >
@@ -22,10 +22,12 @@ const Direccionador = ({ label, logo }) => {
           style={{
             width: "100%",
             marginLeft: 15,
-            marginTop: 25,
 
+            alignItems: "center",
+            maxHeight: 64,
             display: "flex",
             flexDirection: "row",
+            height: 64,
           }}
         >
           <SvgLogo theme={logo} />
