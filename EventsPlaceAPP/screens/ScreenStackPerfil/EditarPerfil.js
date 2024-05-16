@@ -186,18 +186,38 @@ const EditarPerfilScreen = ({ navigation }) => {
                   label={"Editar gustos"}
                 />
               </View>
-              <View style={{ marginTop: 20 }}>
+              <View style={{ marginTop: 15 }}>
                 <Direccionador
-                  id={"EditarServicios"}
+                  key={"EditarServicios"}
                   logo={"Recaudo"}
                   label={"Editar servicios"}
                 />
               </View>
-              <View style={{ marginTop: 20, marginBottom: 15 }}>
+              <View style={{ marginTop: 15, marginBottom: 15 }}>
                 <Direccionador
-                  id={"EditarHorario"}
+                  key={"EditarHorario"}
                   logo={"CalendarClock"}
                   label={"Editar Horario de disponibilidad"}
+                />
+              </View>
+              <View style={style.lineaSeparacion} />
+              <View
+                key={"ContenedorBoton"}
+                style={{
+                  marginTop: 10,
+                  marginBottom: 15,
+                  alignSelf: "center",
+                  width: "100%",
+                  maxWidth: 320,
+                  height: 45,
+                }}
+              >
+                <Boton
+                  key={"Cerrar sesión"}
+                  theme={"StyleBoton"}
+                  color={"#6979F8"}
+                  label={"Guardar cambios"}
+                  onPress={() => alert("cerrar sesión")}
                 />
               </View>
             </View>
@@ -323,6 +343,14 @@ const style = StyleSheet.create({
     // height: "100%",
     //borderWidth: 1,
     //justifyContent: "center",
+  },
+  lineaSeparacion: {
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#72767A",
+    width: "95%",
+    //maxWidth: 294,
+    alignSelf: "center",
+    marginVertical: 20,
   },
 });
 
