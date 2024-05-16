@@ -1,40 +1,66 @@
+import React, { useState, useMemo } from "react";
 import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
 
-import IconSVG from "../assets/LogoSVG";
+import { SelectList } from "react-native-dropdown-select-list";
+import SvgLogo from "../assets/LogoSVG";
+import EventType from "../constants/EventType";
 
-export default ({ Title, SubTitle }) => {
+const Dropdown = ({ Title, SubTitle }) => {
+  const [selected, setSelected] = React.useState("");
+
   return (
-    <View style={styles.DropdownContainer}>
-      <View style={styles.SubContainer}>
-        <Text style={styles.TexContainer}>{Title}</Text>
-        <Pressable style={{ width: "100%" }}>
-          <View style={styles.PressableContainer}>
-            <TextInput placeholder={SubTitle} style={styles.TexInput} />
-            <View style={styles.Circulo} />
-            <View style={styles.IconContainer}>
-              <IconSVG theme={"ExpandMore"} color={"#6979F8"} />
-            </View>
+    <View style={{ width: "100%" }}>
+      <Text style={styles.TextContainer}>{Title}</Text>
+      <SelectList
+        setSelected={(val) => setSelected(val)}
+        data={EventType}
+        save="value"
+        placeholder={SubTitle}
+        arrowicon={
+          <View style={{ justifyContent: "center" }}>
+            <SvgLogo theme={"ExpandMore"} color={"#6979F8"} />
           </View>
-        </Pressable>
-      </View>
+        }
+        closeicon={<SvgLogo theme={"ExpandMore"} color={"#6979F8"} />}
+        boxStyles={{
+          flex: 1,
+          width: "100%",
+          height: "100%",
+          paddingHorizontal: 8,
+          paddingVertical: 16,
+          borderWidth: 0,
+          borderRadius: 0,
+          borderBottomColor: "#A1A5A9",
+          borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+        }}
+        inputStyles={{
+          color: "#72767A",
+          fontSize: 14,
+          fontWeight: "500",
+          lineHeight: 20,
+        }}
+        searchicon={<View style={{ justifyContent: "center" }}></View>}
+        dropdownStyles={{
+          backgroundColor: "white",
+          borderWidth: 0,
+        }}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   DropdownContainer: {
-    height: "auto",
     alignSelf: "stretch",
   },
   SubContainer: {
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: 79,
     borderBottomColor: "#A1A5A9",
-    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  TexContainer: {
+  TextContainer: {
     width: "100%",
     height: 22,
     fontWeight: "500",
@@ -46,9 +72,9 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    position: "relative", // Establecer un contexto de apilamiento para elementos absolutos
+    position: "relative",
   },
-  TexInput: {
+  TextInput: {
     flex: 1,
     width: "100%",
     height: "100%",
@@ -59,22 +85,35 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     lineHeight: 20,
   },
-  Circulo: {
+  Circle: {
     height: 35,
     width: 35,
     borderRadius: 35 / 2,
     backgroundColor: "#E9EAFE",
-    zIndex: 10, // Asegura que el círculo esté debajo del icono
+    zIndex: 10,
     position: "absolute",
     right: 0,
   },
   IconContainer: {
-    position: "absolute", // Asegura que el contenedor tenga una posición definida
+    position: "absolute",
     right: 0,
     width: 35,
     height: 35,
-    justifyContent: "center", // Centrado vertical
-    alignItems: "center", // Centrado horizontal
-    zIndex: 20, // Ajustado para estar encima del círculo
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 20,
+  },
+  OptionsContainer: {
+    overflow: "auto",
+    borderWidth: 1,
+    borderColor: "#A1A5A9",
+    borderTopWidth: 0,
+  },
+  Option: {
+    padding: 10,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: "#A1A5A9",
   },
 });
+
+export default Dropdown;

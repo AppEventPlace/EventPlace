@@ -10,8 +10,6 @@ import Boton from "../../../components/Button";
 
 import SvgLogo from "../../../assets/LogoSVG";
 
-import { SelectList } from "react-native-dropdown-select-list";
-
 //Definición de preguntas:
 const preguntas = [
   { Title: "Nombre del evento", SubTitle: "Título del evento" },
@@ -73,18 +71,6 @@ Si el título de la pregunta coincide, se renderiza el componente Dropdown
 con las propiedades Title y SubTitle correspondientes.
 Si no, se renderiza el componente Froms.
 -------------------------------------------------------------------------*/
-
-  const [selected, setSelected] = React.useState("");
-  const data = [
-    //{ key: "1", value: "Mobiles", disabled: true },
-    { key: "2", value: "Appliances" },
-    { key: "3", value: "Cameras" },
-    //{ key: "4", value: "Computers", disabled: true },
-    { key: "5", value: "Vegetables" },
-    { key: "6", value: "Diary Products" },
-    { key: "7", value: "Drinks" },
-  ];
-
   return (
     <View style={style.InfoContainer}>
       {[...preguntas, ...Checkpreguntas].map((pregunta, index) =>
@@ -139,46 +125,6 @@ Si no, se renderiza el componente Froms.
           tema.
         </Text>
         <Froms SubTitle="#Hashtags" />
-      </View>
-      <View
-        style={{
-          width: "100%",
-          borderBottomColor: "#A1A5A9",
-          //borderBottomWidth: (StyleSheet.hairlineWidth = 1),
-        }}
-      >
-        <Text style={style.TexContainer}>{"Title"}</Text>
-        <SelectList
-          setSelected={(val) => setSelected(val)}
-          data={data}
-          save="value"
-          placeholder="Hola"
-          arrowicon={
-            <View style={{ justifyContent: "center" }}>
-              <SvgLogo theme={"ExpandMore"} color={"#6979F8"} />
-            </View>
-          }
-          closeicon={<SvgLogo theme={"ExpandMore"} color={"#6979F8"} />}
-          boxStyles={{
-            flex: 1,
-            width: "100%",
-            height: "100%",
-            paddingHorizontal: 8,
-            paddingVertical: 16,
-            borderWidth: 0,
-          }}
-          inputStyles={{
-            color: "#72767A",
-            fontSize: 14,
-            fontWeight: "500",
-            lineHeight: 20,
-          }}
-          searchicon={<View style={{ justifyContent: "center" }}></View>}
-          dropdownStyles={{
-            backgroundColor: "white",
-            borderWidth: 0,
-          }}
-        />
       </View>
     </View>
   );
