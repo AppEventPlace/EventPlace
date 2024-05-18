@@ -6,6 +6,7 @@ import { Text, View, StyleSheet } from "react-native";
 import Froms from "../../../components/Form";
 import Boton from "../../../components/Button";
 import Dropdown from "../../../components/Dropdown";
+import SvgLogo from "../../../assets/LogoSVG";
 
 //Definición de preguntas:
 const preguntas = [
@@ -61,7 +62,7 @@ en la lista:
         )}
         <View style={style.Anfitrion}>
           <Text style={style.TextStyle}>Agregar anfitrión</Text>
-          <Text style={style.Icon}>+</Text>
+          <SvgLogo theme={"Map"} color={"#6979F8"} />
         </View>
       </View>
     </View>

@@ -8,8 +8,6 @@ import Dropdown from "../../../components/Dropdown";
 import CheckBoxRadio from "../../../components/CheckBoxRadio";
 import Boton from "../../../components/Button";
 
-import SvgLogo from "../../../assets/LogoSVG";
-
 //Definición de preguntas:
 const preguntas = [
   { Title: "Nombre del evento", SubTitle: "Título del evento" },
@@ -181,22 +179,6 @@ const style = StyleSheet.create({
     lineHeight: 22,
     color: "#333333",
     alignSelf: "stretch",
-  },
-  SubContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: 79,
-    borderBottomColor: "#A1A5A9",
-    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
-  },
-  TexContainer: {
-    width: "100%",
-    height: 22,
-    fontWeight: "500",
-    fontSize: 16,
-    lineHeight: 22,
-    color: "#0F172A",
   },
 });
 

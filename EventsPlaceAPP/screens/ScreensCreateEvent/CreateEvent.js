@@ -1,75 +1,38 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import StackCreateEvent from "../../constants/StackCreateEvent";
+import CreateEvent from "./Step1";
+import Boleteria from "./Step2";
+import Resumen from "./Step3";
 
-import BackCheckron from "../../components/BackCheckron";
-import ProgressBar from "./Components/ProgressStep";
-import EventInfo from "./Components/EventInfo";
-import Organizador from "./Components/Organizador";
-import UbicaciónDelEvento from "./Components/UbicaciónDelEvento";
+const Stack = createStackNavigator();
 
-const CreateEvent = ({ navigation }) => {
+const StackCreateEventNavigator = () => {
   return (
-    <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
-      <ScrollView style={style.PerfilContainer}>
-        <BackCheckron navigation={navigation} />
-        <Text style={style.TexCreateEvent}>Crear evento</Text>
-        <ProgressBar step={1} />
-        <View style={style.FullContainer}>
-          <Text style={style.Info}>Información principal</Text>
-          <EventInfo />
-          <Organizador />
-          <UbicaciónDelEvento />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Stack.Navigator>
+      {StackCreateEvent.map((Create) => (
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          key={Create.name}
+          name={Create.label}
+          component={
+            Create.name === "Step1"
+              ? CreateEvent
+              : Create.name === "Step2"
+              ? Boleteria
+              : Resumen
+          }
+        />
+      ))}
+    </Stack.Navigator>
   );
 };
 
-const style = StyleSheet.create({
-  PerfilContainer: {
-    backgroundColor: "#F4F5FE",
-    width: "100%", //Asegura el ancho total en el dispositivo
-    height: "100%",
-    paddingHorizontal: 16,
-    paddingBottom: 55,
-  },
-  FullContainer: {
-    backgroundColor: "#F4F5FE",
-    width: "100%",
-    maxWidth: 800, //Esto evita que tome toda la pantalla
-    alignSelf: "center",
-    justifyContent: "center",
-    rowGap: 32,
-  },
-  TexCreateEvent: {
-    marginTop: 24,
-    height: 29,
-    //borderWidth: 1,
-    fontWeight: "700",
-    fontSize: 24,
-    lineHeight: 29,
-    color: "#515EC0",
-    letterSpacing: 0.01,
-  },
-  Info: {
-    marginTop: 32,
-    marginBottom: -16,
-    fontWeight: "700",
-    fontSize: 20,
-    lineHeight: 24,
-    letterSpacing: 0.005,
-    color: "#515EC0",
-  },
-  TexContainer: {
-    fontWeight: "700",
-    fontSize: 16,
-    lineHeight: 19,
-    color: "#0F172A",
-  },
-  Container: {
-    rowGap: 16,
-  },
-});
+const Event = () => {
+  return <StackCreateEvent />;
+};
 
-export default CreateEvent;
+export default StackCreateEventNavigator;

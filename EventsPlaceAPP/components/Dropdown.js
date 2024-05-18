@@ -50,16 +50,6 @@ const Dropdown = ({ Title, SubTitle }) => {
 };
 
 const styles = StyleSheet.create({
-  DropdownContainer: {
-    alignSelf: "stretch",
-  },
-  SubContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    borderBottomColor: "#A1A5A9",
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   TextContainer: {
     width: "100%",
     height: 22,
@@ -67,52 +57,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 22,
     color: "#0F172A",
-  },
-  PressableContainer: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    position: "relative",
-  },
-  TextInput: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    paddingHorizontal: 8,
-    paddingVertical: 16,
-    color: "#72767A",
-    fontSize: 14,
-    fontWeight: "500",
-    lineHeight: 20,
-  },
-  Circle: {
-    height: 35,
-    width: 35,
-    borderRadius: 35 / 2,
-    backgroundColor: "#E9EAFE",
-    zIndex: 10,
-    position: "absolute",
-    right: 0,
-  },
-  IconContainer: {
-    position: "absolute",
-    right: 0,
-    width: 35,
-    height: 35,
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 20,
-  },
-  OptionsContainer: {
-    overflow: "auto",
-    borderWidth: 1,
-    borderColor: "#A1A5A9",
-    borderTopWidth: 0,
-  },
-  Option: {
-    padding: 10,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: "#A1A5A9",
   },
 });
 

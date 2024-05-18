@@ -4,12 +4,13 @@ import { Text, View, StyleSheet, FlatList } from "react-native";
 //import { FlatList } from "react-native-web";
 
 // ------------------- Eliminar -------------------
-import CreateEvent from "../ScreensCreateEvent/CreateEvent";
+import CreateEvent from "../ScreensCreateEvent/Step1";
+import StackCreateEventNavigator from "../ScreensCreateEvent/CreateEvent";
 // ------------------- Eliminar -------------------
 
 const WallScreen = () => {
   return (
-    <CreateEvent />
+    <StackCreateEventNavigator />
     // <View style={style.PerfilContainer}>
     //   <FlatList
     //     style={{ backgroundColor: "white" }}
