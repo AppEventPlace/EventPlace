@@ -55,6 +55,7 @@ const style = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
     rowGap: 32,
+    //paddingHorizontal: 16,
     paddingBottom: 20,
   },
   Info: {

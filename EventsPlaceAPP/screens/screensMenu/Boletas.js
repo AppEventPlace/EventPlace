@@ -7,11 +7,13 @@ import {
   FlatList,
   ScrollView,
   Image,
+  Alert,
 } from "react-native";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import Categorias from "../../constants/Categorias";
 import Boton from "../../components/Button";
 import EventosCercanos from "../../constants/EventosCercanos";
+import TarjetaWall from "../../components/TarjetaWall";
 
 const OpcionesWall = [
   {
@@ -144,99 +146,36 @@ const WallScroll = ({ item }) => {
             marginRight: 15,
           }}
         >
-          <Text style={style.SubTitulo}> Eventos cercanos a tu ubicación</Text>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginHorizontal: 5,
+              justifyContent: "space-around",
+            }}
+          >
+            <View style={{ width: "65%" }}>
+              <Text style={style.SubTitulo}>
+                Eventos cercanos a tu ubicación
+              </Text>
+            </View>
+            <View style={{ marginLeft: 20 }}>
+              <Boton
+                theme={"VerMas"}
+                onPress={() => alert("Ver más de Eventos cercanos")}
+              />
+            </View>
+          </View>
           <ScrollView horizontal={true}>
             {EventosCercanos.map((EvtCer) => (
-              <View
-                style={{
-                  width: 160,
-                  borderRadius: 12,
-                  height: 359,
-                  maxWidth: 179,
-                  marginHorizontal: 5,
-                  backgroundColor: "#FBFBFB",
-                  elevation: 2,
-                  marginBottom: 15,
-                }}
-              >
-                <View
-                  style={{
-                    //width: "45%",
-                    width: 160,
-                    height: 152,
-                    maxWidth: 179,
-                    alignSelf: "center",
-                    borderRadius: 12,
-                  }}
-                >
-                  <Image
-                    key={"ImagenCategoria"}
-                    //Pase el URI de la imagen seleccionada al componente ImageViewer.
-                    source={EvtCer.Imagen}
-                    style={{
-                      //borderRadius: 96 / 2,
-                      // width: "45%",
-                      borderTopLeftRadius: 12,
-                      borderTopRightRadius: 12,
-                      width: 160,
-                      maxWidth: 179,
-                      height: 152,
-                      //borderWidth: 2,
-                      //borderColor: "#D0D4FC",
-                    }}
-                  />
-                  <Boton
-                    key={"BotonImagen"}
-                    theme="Imagen"
-                    onPress={() => alert("Ir a categoría")}
-                  />
-                </View>
-                <View style={{ width: "95%", marginTop: 15, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      fontWeight: "600",
-                      color: "#0F172A",
-                    }}
-                  >
-                    {EvtCer.Titulo}
-                  </Text>
-                </View>
-                <View style={{ width: "95%", marginTop: 30, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      fontWeight: "500",
-                      color: "#0F172A",
-                    }}
-                  >
-                    {EvtCer.Fecha}
-                  </Text>
-                </View>
-                <View style={{ width: "95%", marginTop: 15, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      fontWeight: "500",
-                      color: "#828282",
-                    }}
-                  >
-                    {EvtCer.Ubicacion}
-                  </Text>
-                </View>
-                <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      fontWeight: "500",
-                      color: "#333333",
-                      lineHeight: 16,
-                    }}
-                  >
-                    {EvtCer.Descripcion}
-                  </Text>
-                </View>
-              </View>
+              <TarjetaWall
+                key={EvtCer.Id}
+                source={EvtCer.Imagen}
+                Titulo={EvtCer.Titulo}
+                fecha={EvtCer.Fecha}
+                ubicacion={EvtCer.Ubicacion}
+                Descripcion={EvtCer.Descripcion}
+              />
             ))}
           </ScrollView>
         </View>
@@ -252,99 +191,33 @@ const WallScroll = ({ item }) => {
             marginRight: 15,
           }}
         >
-          <Text style={style.SubTitulo}> Eventos Recomendados</Text>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginHorizontal: 5,
+            }}
+          >
+            <View style={{ width: "65%" }}>
+              <Text style={style.SubTitulo}>Eventos recomendados</Text>
+            </View>
+            <View style={{ marginLeft: 20 }}>
+              <Boton
+                theme={"VerMas"}
+                onPress={() => alert("Ver más de Eventos recomendados")}
+              />
+            </View>
+          </View>
           <ScrollView horizontal={true}>
             {EventosCercanos.map((EvtCer) => (
-              <View
-                style={{
-                  width: 160,
-                  borderRadius: 12,
-                  height: 359,
-                  maxWidth: 179,
-                  marginHorizontal: 5,
-                  backgroundColor: "#FBFBFB",
-                  elevation: 2,
-                  marginBottom: 15,
-                }}
-              >
-                <View
-                  style={{
-                    //width: "45%",
-                    width: 160,
-                    height: 152,
-                    maxWidth: 179,
-                    alignSelf: "center",
-                    borderRadius: 12,
-                  }}
-                >
-                  <Image
-                    key={"ImagenCategoria"}
-                    //Pase el URI de la imagen seleccionada al componente ImageViewer.
-                    source={EvtCer.Imagen}
-                    style={{
-                      //borderRadius: 96 / 2,
-                      // width: "45%",
-                      borderTopLeftRadius: 12,
-                      borderTopRightRadius: 12,
-                      width: 160,
-                      maxWidth: 179,
-                      height: 152,
-                      //borderWidth: 2,
-                      //borderColor: "#D0D4FC",
-                    }}
-                  />
-                  <Boton
-                    key={"BotonImagen"}
-                    theme="Imagen"
-                    onPress={() => alert("Ir a categoría")}
-                  />
-                </View>
-                <View style={{ width: "95%", marginTop: 15, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      fontWeight: "600",
-                      color: "#0F172A",
-                    }}
-                  >
-                    {EvtCer.Titulo}
-                  </Text>
-                </View>
-                <View style={{ width: "95%", marginTop: 30, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      fontWeight: "500",
-                      color: "#0F172A",
-                    }}
-                  >
-                    {EvtCer.Fecha}
-                  </Text>
-                </View>
-                <View style={{ width: "95%", marginTop: 15, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      fontWeight: "500",
-                      color: "#828282",
-                    }}
-                  >
-                    {EvtCer.Ubicacion}
-                  </Text>
-                </View>
-                <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      fontWeight: "500",
-                      color: "#333333",
-                      lineHeight: 16,
-                    }}
-                  >
-                    {EvtCer.Descripcion}
-                  </Text>
-                </View>
-              </View>
+              <TarjetaWall
+                key={EvtCer.Id}
+                source={EvtCer.Imagen}
+                Titulo={EvtCer.Titulo}
+                fecha={EvtCer.Fecha}
+                ubicacion={EvtCer.Ubicacion}
+                Descripcion={EvtCer.Descripcion}
+              />
             ))}
           </ScrollView>
         </View>

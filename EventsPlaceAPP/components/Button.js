@@ -137,6 +137,23 @@ export default function Button({
         </View>
       );
 
+    case "VerMas":
+      return (
+        <Pressable
+          style={{ display: "flex", flexDirection: "row", width: "100%" }}
+          onPress={onPress}
+        >
+          <View style={{ justifyContent: "center" }}>
+            <Text style={{ fontSize: 18, color: "#6979F8", fontWeight: "700" }}>
+              Ver más
+            </Text>
+          </View>
+          <View style={{ justifyContent: "center", width: 25, marginLeft: 20 }}>
+            <IconSVG theme={"ArrowForward"} />
+          </View>
+        </Pressable>
+      );
+
     default:
       return (
         <Pressable
