@@ -9,6 +9,10 @@ const SelectorIndicativo = () => {
   const indicativos = [
     { key: "1", value: "+57" },
     { key: "2", value: "+1" },
+    { key: "3", value: "+52" },
+    { key: "4", value: "+30" },
+    { key: "5", value: "+564" },
+    { key: "2", value: "+12" },
   ];
 
   return (
@@ -27,6 +31,7 @@ const SelectorIndicativo = () => {
       boxStyles={{
         borderWidth: 0,
         position: "absolute",
+
         top: 12,
         borderBottomWidth: 1.5,
         borderColor: "#A1A5A9",
@@ -36,6 +41,9 @@ const SelectorIndicativo = () => {
       }}
       defaultOption={{ key: "1", value: "+57" }}
       dropdownStyles={{
+        width: 80,
+        height: 100,
+        flex: 1,
         borderWidth: 0.5,
         position: "absolute",
         top: 40,

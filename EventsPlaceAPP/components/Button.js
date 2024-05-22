@@ -15,7 +15,10 @@ export default function Button({
     case "StyleBoton":
       return (
         <Pressable
-          style={[styles.button, { backgroundColor: color }]}
+          style={({ pressed }) => [
+            styles.button,
+            { backgroundColor: pressed ? "#6866D4" : color },
+          ]}
           onPress={onPress}
         >
           <Text style={styles.StyleButtonLabel1}>{label}</Text>
@@ -120,14 +123,6 @@ export default function Button({
         </Pressable>
       );
 
-    case "Imagen":
-      return (
-        <Pressable
-          style={[{ width: 96, height: 96, position: "absolute" }]}
-          onPress={onPress}
-        ></Pressable>
-      );
-
     case "Seleccionable":
       return (
         <View style={styles.Seleccionable}>
@@ -140,10 +135,19 @@ export default function Button({
     case "VerMas":
       return (
         <Pressable
-          style={{ display: "flex", flexDirection: "row", width: "100%" }}
+          style={({ pressed }) => [
+            { backgroundColor: pressed ? "#E3E2FC" : null },
+            {
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              height: 40,
+              borderRadius: 12,
+            },
+          ]}
           onPress={onPress}
         >
-          <View style={{ justifyContent: "center" }}>
+          <View style={{ justifyContent: "center", marginLeft: 15 }}>
             <Text style={{ fontSize: 18, color: "#6979F8", fontWeight: "700" }}>
               Ver más
             </Text>
@@ -153,7 +157,17 @@ export default function Button({
           </View>
         </Pressable>
       );
-
+    case "BuscarEventos":
+      return (
+        <Pressable style={{ width: "100%" }} onPress={onPress}>
+          <IconSVG
+            theme={"Search"}
+            ancho={"18"}
+            alto={"19"}
+            color={"#6979F8"}
+          />
+        </Pressable>
+      );
     default:
       return (
         <Pressable
