@@ -57,14 +57,6 @@ const TerminosCondiciones = ({ navigation }) => {
           onPress={() => navigation.navigate("TermsAndConditions")}
         />
       </View>
-      <View style={style.BotonContainer}>
-        <Boton
-          label="Continuar"
-          theme="Terms"
-          onPress={() => navigation.navigate("VerifyIdentity")}
-          disabled={aceptado}
-        />
-      </View>
     </View>
   );
 };

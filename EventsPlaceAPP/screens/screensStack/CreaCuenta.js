@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
 import Boton from "../../components/Button";
@@ -17,6 +20,15 @@ const CreaCuenta = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   //Variable de estado que contenga el valor de la imagen seleccionada.
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const [Name, setName] = useState("");
+  const [Lastname, setLastname] = useState("");
+  const [FechaNacimiento, setFechaNacimiento] = useState("");
+  const [Indicativo, setIndicativo] = useState("");
+  const [Celular, setCelular] = useState("");
+  const [email, setEmail] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [contraseña, setContraseña] = useState("");
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -85,10 +97,22 @@ const CreaCuenta = ({ navigation }) => {
                 <Boton theme="Imagen" onPress={pickImageAsync} />
               </View>
               <View style={style.SubContainer}>
-                <Text style={style.TexContainer}>Nombre y apellido</Text>
+                <Text style={style.TexContainer}>Nombre&#40;s&#41;</Text>
                 <TextInput
-                  placeholder="Ingresa tu correo electrónico"
+                  placeholder="Ingresa tu(s) nombre(s)"
                   style={style.TexInput}
+                  onChangeText={(texto) => [setName(texto), console.log(Name)]}
+                />
+              </View>
+              <View style={style.SubContainer}>
+                <Text style={style.TexContainer}>Apellido&#40;s&#41;</Text>
+                <TextInput
+                  placeholder="Ingresa tu(s) apellido(s)"
+                  style={style.TexInput}
+                  onChangeText={(texto) => [
+                    setLastname(texto),
+                    console.log(Lastname),
+                  ]}
                 />
               </View>
               <View style={style.SubContainer}>
@@ -103,6 +127,10 @@ const CreaCuenta = ({ navigation }) => {
                       }
                       //editable={false}
                       style={[style.TexInput, { textAlign: "center" }]}
+                      onChangeText={(texto) => [
+                        setFechaNacimiento(texto),
+                        console.log(FechaNacimiento),
+                      ]}
                     />
                   </View>
                   <View
@@ -130,12 +158,20 @@ const CreaCuenta = ({ navigation }) => {
                       value="+57"
                       style={style.TexInput}
                       editable={false}
+                      onChangeText={(texto) => [
+                        setIndicativo(texto),
+                        console.log(Indicativo),
+                      ]}
                     />
                   </View>
                   <View style={style.SubContainer3}>
                     <TextInput
                       placeholder="Ingresa tu número celular"
                       style={style.TexInput}
+                      onChangeText={(texto) => [
+                        setCelular(texto),
+                        console.log(Celular),
+                      ]}
                     />
                   </View>
                 </View>
@@ -145,15 +181,13 @@ const CreaCuenta = ({ navigation }) => {
                 <TextInput
                   placeholder="Ingresa tu nombre correo electrónico"
                   style={style.TexInput}
+                  onChangeText={(texto) => [
+                    setEmail(texto),
+                    console.log(email),
+                  ]}
                 />
               </View>
-              <View style={style.SubContainer}>
-                <Text style={style.TexContainer}>Correo electrónico</Text>
-                <TextInput
-                  placeholder="Ingresa tu nombre correo electrónico"
-                  style={style.TexInput}
-                />
-              </View>
+
               <View style={style.SubContainer}>
                 <Text style={style.TexContainer}>Nombre de usuario</Text>
                 <View
@@ -169,6 +203,10 @@ const CreaCuenta = ({ navigation }) => {
                   <TextInput
                     placeholder="Ingresa tu nombre de usuario"
                     style={style.TexInputIcon}
+                    onChangeText={(texto) => [
+                      setUsuario(texto),
+                      console.log(usuario),
+                    ]}
                   />
                   <IconSVG theme={"Check"} />
                 </View>
@@ -188,6 +226,10 @@ const CreaCuenta = ({ navigation }) => {
                   <TextInput
                     placeholder="Ingresa tu nueva contraseña"
                     style={style.TexInputIcon}
+                    onChangeText={(texto) => [
+                      setContraseña(texto),
+                      console.log(contraseña),
+                    ]}
                   />
                   <IconSVG theme={"Check"} />
                 </View>
@@ -207,6 +249,10 @@ const CreaCuenta = ({ navigation }) => {
                   <TextInput
                     placeholder="Confirma tu nueva contraseña"
                     style={style.TexInputIcon}
+                    onChangeText={(texto) => [
+                      setContraseña(texto),
+                      console.log(contraseña),
+                    ]}
                   />
                   <IconSVG theme={"Check"} />
                 </View>
@@ -215,11 +261,65 @@ const CreaCuenta = ({ navigation }) => {
             <View style={{ axWidth: 800, width: "100%" }}>
               <TerminosCondiciones navigation={navigation} />
             </View>
+            <View style={style.BotonContainer}>
+              <Boton
+                label="Continuar"
+                theme="Terms"
+                onPress={() => [
+                  navigation.navigate("VerifyIdentity"),
+                  CrearCuenta(
+                    Name,
+                    Lastname,
+                    selectedDate,
+                    Celular,
+                    email,
+                    usuario,
+                    contraseña
+                  ),
+                ]}
+                disabled={true}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
+};
+
+const CrearCuenta = async (
+  nombre,
+  apellido,
+  fechaNacimiento,
+  celular,
+  email,
+  usuario,
+  contraseña
+) => {
+  await fetch(
+    "https://vx817uirmf.execute-api.us-east-1.amazonaws.com/createUser",
+    {
+      method: "POST",
+      headers: {
+        date: "Fri, 24 May 2024 00",
+        "Content-Type": "application/json",
+        rquid: "fsdgf6854sahgdf5243",
+        //"Access-Control-Allow-Origin": "http://localhost:8081",
+      },
+      body: JSON.stringify({
+        nombre: { nombre },
+        apellido: { apellido },
+        fechaNacimiento: { fechaNacimiento },
+        celular: { celular },
+        email: { email },
+        usuario: { usuario },
+        contraseña: { contraseña },
+      }),
+    }
+  )
+    .then((response) => response.json())
+    .then((result) => console.log(result));
+  return null;
 };
 
 const style = StyleSheet.create({
@@ -382,6 +482,12 @@ const style = StyleSheet.create({
     fontWeight: "500",
     lineHeight: 20,
     borderBottomColor: "#A1A5A9",
+  },
+  BotonContainer: {
+    maxWidth: 326,
+    width: "100%",
+    height: 43,
+    //borderWidth: 1,
   },
 });
 
