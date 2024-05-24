@@ -19,9 +19,9 @@ import TusEventos from "../../constants/TusEventos";
 import SvgLogo from "../../assets/LogoSVG";
 
 const OpcionesWall = [
-  {
+  /* {
     type: "CabeceraWall",
-  },
+  },*/
   {
     type: "Categorias",
   },
@@ -43,6 +43,19 @@ const BoletasScreen = ({ navigation }) => {
       <SafeAreaView
         style={{ backgroundColor: "#032030", flex: 1, marginTop: 30 }}
       >
+        <View
+          style={{
+            backgroundColor: "#F4F5FE",
+            borderBottomColor: "#C4C7C8",
+            borderBottomWidth: 1,
+            height: 140,
+            elevation: 1,
+          }}
+        >
+          {}
+          <Cabecera style={{ backgroundColor: "#F4F5FE" }} />
+        </View>
+
         <FlatList
           key={"ScrollInfinite"}
           style={{
@@ -62,44 +75,7 @@ const BoletasScreen = ({ navigation }) => {
 const WallScroll = ({ item, navigation }) => {
   switch (item.type) {
     case "CabeceraWall":
-      return (
-        <View>
-          <View
-            style={{
-              display: "flex",
-            }}
-          >
-            <View
-              key={"ContenedorNombrePrincipal"}
-              style={{ alignSelf: "center", marginTop: 15 }}
-            >
-              {DatosClientePrueba.map((DCliente) => (
-                <Text style={style.Titulo}>Hola {DCliente.UserName}</Text>
-              ))}
-            </View>
-            <View
-              style={{
-                width: 25,
-                height: 25,
-                position: "absolute",
-                top: 25,
-                right: 10,
-                justifyContent: "center",
-              }}
-            >
-              <Boton
-                theme={"BuscarEventos"}
-                onPress={() => alert("ir a buscar")}
-              />
-            </View>
-          </View>
-          <View style={style.SubText}>
-            <Text style={{ fontSize: 19, color: "#0F172A", fontWeight: "400" }}>
-              Estos son algunos eventos que te pueden interesar.
-            </Text>
-          </View>
-        </View>
-      );
+      return <Cabecera />;
     case "Categorias":
       return (
         <View
@@ -382,6 +358,43 @@ const WallScroll = ({ item, navigation }) => {
     default:
       return null;
   }
+};
+const Cabecera = () => {
+  return (
+    <View style={{ backgroundColor: "F4F5FE" }}>
+      <View
+        style={{
+          display: "flex",
+        }}
+      >
+        <View
+          key={"ContenedorNombrePrincipal"}
+          style={{ alignSelf: "center", marginTop: 15 }}
+        >
+          {DatosClientePrueba.map((DCliente) => (
+            <Text style={style.Titulo}>Hola {DCliente.UserName}</Text>
+          ))}
+        </View>
+        <View
+          style={{
+            width: 25,
+            height: 25,
+            position: "absolute",
+            top: 25,
+            right: 25,
+            justifyContent: "center",
+          }}
+        >
+          <Boton theme={"BuscarEventos"} onPress={() => alert("ir a buscar")} />
+        </View>
+      </View>
+      <View style={style.SubText}>
+        <Text style={{ fontSize: 19, color: "#0F172A", fontWeight: "400" }}>
+          Estos son algunos eventos que te pueden interesar.
+        </Text>
+      </View>
+    </View>
+  );
 };
 const TarjetaSinEventos = () => {
   return (
