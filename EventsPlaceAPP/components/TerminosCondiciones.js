@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import CheckBox from "expo-checkbox";
 import Boton from "./Button";
-
+import CrearCuenta from "../ConsumoAPIs/CreateUser";
 /*
   ----------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------
@@ -21,7 +21,16 @@ import Boton from "./Button";
   ----------------------------------------------------------------------------------
   */
 
-const TerminosCondiciones = ({ navigation }) => {
+const TerminosCondiciones = ({
+  navigation,
+  Name,
+  Lastname,
+  FechaNacimiento,
+  Celular,
+  email,
+  usuario,
+  contraseña,
+}) => {
   const [aceptado, setAceptado] = useState(false);
 
   return (
@@ -55,6 +64,25 @@ const TerminosCondiciones = ({ navigation }) => {
           theme="TexTerms"
           label="Aceptar términos, condiciones y tratamiento de datos personales."
           onPress={() => navigation.navigate("TermsAndConditions")}
+        />
+      </View>
+      <View style={style.BotonContainer}>
+        <Boton
+          label="Continuar"
+          theme="Terms"
+          onPress={() => [
+            navigation.navigate("VerifyIdentity"),
+            CrearCuenta(
+              Name,
+              Lastname,
+              FechaNacimiento,
+              Celular,
+              email,
+              usuario,
+              contraseña
+            ),
+          ]}
+          disabled={aceptado}
         />
       </View>
     </View>

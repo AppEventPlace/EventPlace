@@ -17,7 +17,7 @@ import BackCheckron from "../../components/BackCheckron";
 const FondImage = require("../../assets/adaptive-icon.png");
 
 const CreaCuenta = ({ navigation }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
   //Variable de estado que contenga el valor de la imagen seleccionada.
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -32,6 +32,11 @@ const CreaCuenta = ({ navigation }) => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    //setFechaNacimiento(selectedDate.toLocaleDateString());
+    CambiaFecha();
+  };
+  const CambiaFecha = () => {
+    setFechaNacimiento(selectedDate.toLocaleDateString());
   };
 
   /*----------------------------------------------------------------------------------
@@ -124,13 +129,10 @@ const CreaCuenta = ({ navigation }) => {
                         selectedDate
                           ? selectedDate.toLocaleDateString()
                           : "Ingresa la fecha de nacimiento"
-                      }
-                      //editable={false}
+                      } //value={selectedDate.toLocaleDateString()}
+                      editable={false}
                       style={[style.TexInput, { textAlign: "center" }]}
-                      onChangeText={(texto) => [
-                        setFechaNacimiento(texto),
-                        console.log(FechaNacimiento),
-                      ]}
+                      //format="DD/MM/YYYY"
                     />
                   </View>
                   <View
@@ -259,25 +261,15 @@ const CreaCuenta = ({ navigation }) => {
               </View>
             </View>
             <View style={{ axWidth: 800, width: "100%" }}>
-              <TerminosCondiciones navigation={navigation} />
-            </View>
-            <View style={style.BotonContainer}>
-              <Boton
-                label="Continuar"
-                theme="Terms"
-                onPress={() => [
-                  navigation.navigate("VerifyIdentity"),
-                  CrearCuenta(
-                    Name,
-                    Lastname,
-                    selectedDate,
-                    Celular,
-                    email,
-                    usuario,
-                    contraseña
-                  ),
-                ]}
-                disabled={true}
+              <TerminosCondiciones
+                navigation={navigation}
+                Name={Name}
+                Lastname={Lastname}
+                Celular={Celular}
+                FechaNacimiento={FechaNacimiento}
+                email={email}
+                usuario={usuario}
+                contraseña={contraseña}
               />
             </View>
           </View>
@@ -285,41 +277,6 @@ const CreaCuenta = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-};
-
-const CrearCuenta = async (
-  nombre,
-  apellido,
-  fechaNacimiento,
-  celular,
-  email,
-  usuario,
-  contraseña
-) => {
-  await fetch(
-    "https://vx817uirmf.execute-api.us-east-1.amazonaws.com/createUser",
-    {
-      method: "POST",
-      headers: {
-        date: "Fri, 24 May 2024 00",
-        "Content-Type": "application/json",
-        rquid: "fsdgf6854sahgdf5243",
-        //"Access-Control-Allow-Origin": "http://localhost:8081",
-      },
-      body: JSON.stringify({
-        nombre: { nombre },
-        apellido: { apellido },
-        fechaNacimiento: { fechaNacimiento },
-        celular: { celular },
-        email: { email },
-        usuario: { usuario },
-        contraseña: { contraseña },
-      }),
-    }
-  )
-    .then((response) => response.json())
-    .then((result) => console.log(result));
-  return null;
 };
 
 const style = StyleSheet.create({
