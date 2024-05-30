@@ -1,5 +1,9 @@
 export default [
   {
+    name: "WallPrincipal",
+    label: "Wall Principal",
+  },
+  {
     name: "Step1",
     label: "Crear Evento",
   },
@@ -10,5 +14,10 @@ export default [
   {
     name: "Step3",
     label: "Resumen del evento",
+  },
+
+  {
+    name: "SearchPage",
+    label: "Pagina de busqueda",
   },
 ];

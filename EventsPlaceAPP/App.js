@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Platform, StyleSheet, View } from "react-native";
+import { Text, Platform, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import CreacionStack from "./Navigation/LoginStack";
@@ -27,19 +27,34 @@ const Tab = createBottomTabNavigator();
 
 const MenuMovil = () => {
   return (
-    <Tab.Navigator initialRouteName="Mi Perfil">
+    <Tab.Navigator initialRouteName="Wall">
       {TabItems.map((Items) => (
         <Tab.Screen
           key={Items.name}
           name={Items.name}
           options={{
             headerShown: false,
-            tabBarShowLabel: false,
+            tabBarShowLabel: true,
             tabBarActiveBackgroundColor: "#E4E5E5",
-            tabBarIcon: ({ fill, size }) => (
+            tabBarStyle: {
+              height: 60,
+            },
+            tabBarLabel: ({ focused }) => (
+              <Text
+                style={{
+                  color: focused ? "#6979F8" : "#000000",
+                  fontSize: 10,
+                  marginBottom: 10,
+                }}
+              >
+                {Items.name}
+              </Text>
+            ),
+
+            tabBarIcon: ({ focused }) => (
               <SvgLogo
                 theme={Items.source}
-                color="#0F172A"
+                color={focused ? "#6979F8" : "#0F172A"}
                 ancho="24"
                 alto="24"
               />
@@ -75,7 +90,7 @@ const Menu = () => {
 //fin creacion stack
 //constante autenticacion
 
-let isUserAuthenticated = false;
+let isUserAuthenticated = true;
 
 const Pantalla = () => {
   return (

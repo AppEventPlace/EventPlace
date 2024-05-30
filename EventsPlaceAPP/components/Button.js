@@ -184,6 +184,33 @@ export default function Button({
           </View>
         </Pressable>
       );
+    case "SearchButton":
+      return (
+        <Pressable
+          style={({ pressed }) => [
+            { backgroundColor: pressed ? "#6866D4" : "#6979F8" },
+            { borderRadius: 12 },
+          ]}
+          onPress={onPress}
+        >
+          <View
+            style={{
+              width: 41,
+              height: 41,
+              borderRadius: 12,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <IconSVG
+              theme={"Search"}
+              alto={"19"}
+              ancho={"18"}
+              color={"#FBFBFE"}
+            />
+          </View>
+        </Pressable>
+      );
     default:
       return (
         <Pressable

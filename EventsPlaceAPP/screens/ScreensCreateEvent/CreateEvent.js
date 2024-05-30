@@ -5,6 +5,8 @@ import StackCreateEvent from "../../constants/StackCreateEvent";
 import CreateEvent from "./Step1";
 import Boleteria from "./Step2";
 import Resumen from "./Step3";
+import WallPrincipal from "./WallPrincipal";
+import SearchPage from "./SearchPage";
 
 const Stack = createStackNavigator();
 
@@ -13,16 +15,21 @@ const StackCreateEventNavigator = () => {
     <Stack.Navigator>
       {StackCreateEvent.map((Create) => (
         <Stack.Screen
+          initialRouteName="WallPrincipal"
           options={{
             headerShown: false,
           }}
           key={Create.name}
           name={Create.label}
           component={
-            Create.name === "Step1"
+            Create.name === "WallPrincipal"
+              ? WallPrincipal
+              : Create.name === "Step1"
               ? CreateEvent
               : Create.name === "Step2"
               ? Boleteria
+              : Create.name === "SearchPage"
+              ? SearchPage
               : Resumen
           }
         />
