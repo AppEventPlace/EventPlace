@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import {
   Text,
   View,
@@ -20,9 +20,9 @@ import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
 
 const OpcionesWall = [
-  /* {
+  {
     type: "CabeceraWall",
-  },*/
+  },
   {
     type: "Categorias",
   },
@@ -45,24 +45,9 @@ const WallPrincipal = ({ navigation }) => {
       <SafeAreaView
         style={{ backgroundColor: "#032030", flex: 1, marginTop: 30 }}
       >
-        <View
-          style={{
-            backgroundColor: "#F4F5FE",
-            borderBottomColor: "#C4C7C8",
-            borderBottomWidth: 1,
-            height: 140,
-            elevation: 1,
-          }}
-        >
-          {}
-          <Cabecera
-            style={{ backgroundColor: "#F4F5FE" }}
-            navigation={navigation}
-          />
-        </View>
-
         <FlatList
           key={"ScrollInfinite"}
+          stickyHeaderIndices={[1]}
           style={{
             backgroundColor: "#F4F5FE",
 
@@ -82,19 +67,25 @@ const WallPrincipal = ({ navigation }) => {
 const WallScroll = ({ item, navigation }) => {
   switch (item.type) {
     case "CabeceraWall":
-      return <Cabecera />;
+      return <Cabecera navigation={navigation} />;
     case "Categorias":
       return (
         <View
           style={{
-            marginTop: 30,
+            top: 0,
             width: "100%",
             maxWidth: 700,
-            marginLeft: 10,
+            marginLeft: 0,
             marginRight: 15,
+            backgroundColor: "#F4F5FE",
+            borderBottomWidth: 0.5,
+            borderBottomColor: "#C6C7C8",
           }}
         >
-          <Text style={style.SubTitulo}> Categorías</Text>
+          <Text style={[style.SubTitulo, { marginLeft: 10, marginTop: 10 }]}>
+            {" "}
+            Categorías
+          </Text>
           <ScrollView horizontal={true}>
             {Categorias.map((Categorias) => (
               <View
@@ -102,6 +93,7 @@ const WallScroll = ({ item, navigation }) => {
                   width: 80,
                   height: 90,
                   marginHorizontal: 5,
+                  marginLeft: 10,
                   alignContent: "center",
                   //backgroundColor: "#FBFBFB",
                 }}
@@ -158,6 +150,7 @@ const WallScroll = ({ item, navigation }) => {
           </ScrollView>
         </View>
       );
+
     case "Eventos Cercanos":
       return (
         <View
@@ -320,10 +313,14 @@ const WallScroll = ({ item, navigation }) => {
               <Text style={style.SubTitulo}>Tus eventos</Text>
             </View>
             <View style={{ marginLeft: 10, marginRight: 10, marginTop: -10 }}>
-              <Boton
-                theme={"VerMas"}
-                onPress={() => alert("Ver más de Tus Eventos")}
-              />
+              {TusEventos.length === 0 ? (
+                <View style={{ width: 110 }}></View>
+              ) : (
+                <Boton
+                  theme={"VerMas"}
+                  onPress={() => alert("Ver más de Tus Eventos")}
+                />
+              )}
             </View>
           </View>
           <View

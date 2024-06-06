@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -6,58 +6,162 @@ import {
   ScrollView,
   StyleSheet,
   TextInput,
+  Pressable,
+  FlatList,
 } from "react-native";
 import BackCheckron from "../../components/BackCheckron";
 import Button from "../../components/Button";
+import SvgLogo from "../../assets/LogoSVG";
+import EventosCercanos from "../../constants/EventosCercanos";
+import TarjetaWall from "../../components/TarjetaWall";
+import { Switch } from "react-native-web";
 
 const SearchPage = ({ navigation }) => {
+  const [busqueda, setBusqueda] = useState("");
+  const [resultado, setResultado] = useState([]);
+  const Datos = [{ type: "Tarjetas" }];
+
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
         <View style={style.PageContainer}>
-          <View style={style.HeaderContainer}>
-            <BackCheckron navigation={navigation} />
-            <View
-              key={"ContenedorNombrePrincipal"}
-              style={{ alignSelf: "center", marginTop: 15 }}
-            >
-              <Text style={style.Titulo}>Buscar</Text>
+          <View style={{ height: 200, marginHorizontal: 10 }}>
+            <View style={style.HeaderContainer}>
+              <BackCheckron navigation={navigation} />
+              <View
+                key={"ContenedorNombrePrincipal"}
+                style={{ alignSelf: "center", marginTop: 15 }}
+              >
+                <Text style={style.Titulo}>Buscar</Text>
+              </View>
+              <View
+                key={"BuscadorPrincipal"}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  height: 41,
+                  width: "100%",
+                  maxWidth: 358,
+                  marginTop: 30,
+                }}
+              >
+                <View
+                  key={"ContenedorBarraBusqueda"}
+                  style={{
+                    borderRadius: 12,
+                    borderWidth: 1,
+                    backgroundColor: "#FBFBFE",
+                    width: "85%",
+                    borderColor: "#D0D4FC",
+                    height: 41,
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <TextInput
+                    key={"InputBusqueda"}
+                    style={{ width: "80%", height: 41, marginHorizontal: 10 }}
+                    placeholder="Busca tu evento"
+                    value={busqueda}
+                    onChangeText={(texto) => setBusqueda(texto)}
+                  />
+                  <View
+                    key={"ContenedorBorradorTexto"}
+                    style={{
+                      width: "20%",
+                      height: 41,
+                      justifyContent: "center",
+                      marginRight: 20,
+                    }}
+                  >
+                    <Pressable
+                      key={"PresionableBorradorTexto"}
+                      style={({ pressed }) => [
+                        { backgroundColor: pressed ? "#F3F4F6" : null },
+                        {
+                          justifyContent: "center",
+                          height: 30,
+                          width: 30,
+                          marginRight: 20,
+                          alignItems: "center",
+                          borderRadius: 12,
+                        },
+                      ]}
+                      onPress={() => setBusqueda("")}
+                    >
+                      <SvgLogo key={"LogoBorraBusqueda"} theme={"close"} />
+                    </Pressable>
+                  </View>
+                </View>
+
+                <View style={{ marginLeft: 5, width: 41, height: 41 }}>
+                  <Button theme={"SearchButton"} />
+                </View>
+              </View>
             </View>
-            <View
+          </View>
+          <View
+            key={"ResultadosBusqueda"}
+            style={{
+              marginTop: -30,
+              flex: 1,
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <SafeAreaView
               style={{
-                display: "flex",
-                flexDirection: "row",
-                height: 41,
-                width: "100%",
-                maxWidth: 358,
+                flex: 1,
                 marginTop: 30,
               }}
             >
-              <View
+              <FlatList
+                key={"ScrollBusqueda"}
                 style={{
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  backgroundColor: "#FBFBFE",
-                  width: "85%",
-                  borderColor: "#D0D4FC",
-                  height: 41,
+                  backgroundColor: "#F4F5FE",
+                  height: 1000,
+                  width: "100%", // Ancho de a imagen
                 }}
-              >
-                <TextInput
-                  style={{ width: "90%", height: 41, marginHorizontal: 10 }}
-                  placeholder="Busca tu evento"
-                />
-              </View>
-              <View style={{ marginLeft: 5, width: 41, height: 41 }}>
-                <Button theme={"SearchButton"} />
-              </View>
-            </View>
+                data={Datos}
+                renderItem={({ item }) => <BusquedaScroll item={item} />}
+              />
+            </SafeAreaView>
           </View>
         </View>
       </SafeAreaView>
     </View>
   );
 };
+const BusquedaScroll = ({ item }) => {
+  switch (item.type) {
+    case "Tarjetas":
+      return (
+        <View
+          style={{
+            marginTop: 5,
+            width: "99.5%",
+            maxWidth: 310,
+            maxWidth: 1700,
+          }}
+        >
+          {EventosCercanos.map((EvtCer) => (
+            <TarjetaWall
+              theme={"Horizontal"}
+              key={EvtCer.Id}
+              source={EvtCer.Imagen}
+              Titulo={EvtCer.Titulo}
+              fecha={EvtCer.Fecha}
+              ubicacion={EvtCer.Ubicacion}
+              Descripcion={EvtCer.Descripcion}
+            />
+          ))}
+        </View>
+      );
+    default:
+      return null;
+  }
+};
+
 const style = StyleSheet.create({
   PerfilContainer: {
     backgroundColor: "#666666",
@@ -73,7 +177,6 @@ const style = StyleSheet.create({
     marginTop: 30,
     backgroundColor: "#F4F5FE",
     height: "100%",
-    paddingHorizontal: 16,
   },
   Titulo: {
     alignContent: "center",
