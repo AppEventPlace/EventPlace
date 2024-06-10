@@ -14,9 +14,9 @@ const TarjetaWall = ({
       return (
         <View
           style={{
-            width: 160,
+            width: "55%",
             borderRadius: 12,
-            height: 359,
+            height: 370,
             maxWidth: 179,
             marginHorizontal: 5,
             backgroundColor: "#FBFBFB",
@@ -34,7 +34,7 @@ const TarjetaWall = ({
             <View
               style={{
                 //width: "45%",
-                width: 160,
+                width: "100%",
                 height: 152,
                 maxWidth: 179,
                 alignSelf: "center",
@@ -48,13 +48,15 @@ const TarjetaWall = ({
                 style={{
                   borderTopLeftRadius: 12,
                   borderTopRightRadius: 12,
-                  width: 160,
+                  width: "100%",
                   maxWidth: 179,
                   height: 152,
                 }}
               />
             </View>
-            <View style={{ width: "95%", marginTop: 15, marginLeft: 7 }}>
+            <View
+              style={{ width: "95%", marginTop: 15, marginLeft: 7, height: 40 }}
+            >
               <Text
                 style={{
                   fontSize: 16,
@@ -65,7 +67,7 @@ const TarjetaWall = ({
                 {Titulo}
               </Text>
             </View>
-            <View style={{ width: "95%", marginTop: 30, marginLeft: 7 }}>
+            <View style={{ width: "95%", marginTop: 10, marginLeft: 7 }}>
               <Text
                 style={{
                   fontSize: 14,
@@ -87,13 +89,25 @@ const TarjetaWall = ({
                 {ubicacion}
               </Text>
             </View>
-            <View style={{ width: "100%", marginTop: 10, marginLeft: 7 }}>
+            <View
+              style={{
+                width: "100%",
+                marginTop: 10,
+                marginHorizontal: 7,
+                flexDirection: "row",
+                height: "25%",
+                marginBottom: 10,
+                flexShrink: 1,
+              }}
+            >
               <Text
                 style={{
-                  fontSize: 12,
+                  //fontSize: 12,
                   fontWeight: "500",
                   color: "#333333",
                   lineHeight: 16,
+                  flexShrink: 1,
+                  textAlign: "auto",
                 }}
               >
                 {Descripcion}
@@ -106,16 +120,17 @@ const TarjetaWall = ({
       return (
         <View
           style={{
-            width: "100%",
+            //width: "95%",
             borderRadius: 12,
             height: 193,
-            maxWidth: 330,
+            maxWidth: 400,
             //marginHorizontal: 15,
             backgroundColor: "#FBFBFB",
             elevation: 2,
             marginBottom: 15,
             display: "flex",
             flexDirection: "row",
+            marginHorizontal: 16,
           }}
         >
           <Pressable
@@ -124,7 +139,7 @@ const TarjetaWall = ({
               {
                 width: "100%",
                 height: "100%",
-                maxWidth: 330,
+                maxWidth: 400,
                 display: "flex",
                 flexDirection: "row",
                 borderRadius: 12,
@@ -156,9 +171,17 @@ const TarjetaWall = ({
                 }}
               />
             </View>
-            <View style={{ width: "75%", marginRight: 15, marginLeft: 5 }}>
+            <View
+              style={{
+                width: "75%",
+                marginRight: 10,
+                height: 193,
+
+                marginBottom: 10,
+              }}
+            >
               <View
-                style={{ width: "95%", marginTop: 15, marginHorizontal: 15 }}
+                style={{ width: "95%", marginTop: 5, marginHorizontal: 15 }}
               >
                 <Text
                   style={{
@@ -197,14 +220,25 @@ const TarjetaWall = ({
                 </Text>
               </View>
               <View
-                style={{ width: "95%", marginTop: 10, marginHorizontal: 15 }}
+                style={{
+                  //height: 60,
+                  marginTop: 10,
+                  marginHorizontal: 15,
+                  marginBottom: 10,
+
+                  //width: "95%",
+
+                  //flexDirection: "row",
+                  flexShrink: 1,
+                }}
               >
                 <Text
                   style={{
-                    fontSize: 12,
+                    //fontSize: 12,
                     fontWeight: "500",
                     color: "#333333",
                     lineHeight: 16,
+                    flexShrink: 1,
                   }}
                 >
                   {Descripcion}

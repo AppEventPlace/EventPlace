@@ -74,7 +74,7 @@ const WallScroll = ({ item, navigation }) => {
           style={{
             top: 0,
             width: "100%",
-            maxWidth: 700,
+            //maxWidth: 700,
             marginLeft: 0,
             marginRight: 15,
             backgroundColor: "#F4F5FE",
@@ -253,8 +253,8 @@ const WallScroll = ({ item, navigation }) => {
             marginTop: 30,
             width: "100%",
             maxWidth: 1700,
-            marginLeft: 10,
-            marginRight: 15,
+            //marginLeft: 10,
+            //marginHorizontal: 16,
           }}
         >
           <View

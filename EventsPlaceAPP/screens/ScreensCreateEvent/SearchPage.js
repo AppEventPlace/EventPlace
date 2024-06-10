@@ -20,29 +20,26 @@ const SearchPage = ({ navigation }) => {
   const [busqueda, setBusqueda] = useState("");
   const [resultado, setResultado] = useState([]);
   const Datos = [{ type: "Tarjetas" }];
-
+  let numColumn = 3;
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
         <View style={style.PageContainer}>
-          <View style={{ height: 200, marginHorizontal: 10 }}>
+          <View style={{ height: 150, marginHorizontal: 10 }}>
             <View style={style.HeaderContainer}>
               <BackCheckron navigation={navigation} />
-              <View
-                key={"ContenedorNombrePrincipal"}
-                style={{ alignSelf: "center", marginTop: 15 }}
-              >
-                <Text style={style.Titulo}>Buscar</Text>
-              </View>
+
               <View
                 key={"BuscadorPrincipal"}
                 style={{
                   display: "flex",
                   flexDirection: "row",
                   height: 41,
-                  width: "100%",
-                  maxWidth: 358,
+                  // width: "100%",
+                  // maxWidth: 400,
                   marginTop: 30,
+                  alignSelf: "center",
+                  marginHorizontal: 10,
                 }}
               >
                 <View
@@ -56,6 +53,7 @@ const SearchPage = ({ navigation }) => {
                     height: 41,
                     display: "flex",
                     flexDirection: "row",
+                    //marginHorizontal: 16,
                   }}
                 >
                   <TextInput
@@ -106,21 +104,30 @@ const SearchPage = ({ navigation }) => {
               marginTop: -30,
               flex: 1,
               alignItems: "center",
+              alignSelf: "center",
               width: "100%",
+              maxWidth: 1700,
+              //marginHorizontal: 16,
             }}
           >
             <SafeAreaView
               style={{
                 flex: 1,
                 marginTop: 30,
+                width: "100%",
+                maxWidth: 1700,
               }}
             >
               <FlatList
                 key={"ScrollBusqueda"}
+                numColumns={3}
+                horizontal={false}
                 style={{
                   backgroundColor: "#F4F5FE",
-                  height: 1000,
+                  //height: 1000,
                   width: "100%", // Ancho de a imagen
+                  marginBottom: 40,
+                  // marginHorizontal: 16,
                 }}
                 data={Datos}
                 renderItem={({ item }) => <BusquedaScroll item={item} />}
@@ -139,9 +146,13 @@ const BusquedaScroll = ({ item }) => {
         <View
           style={{
             marginTop: 5,
+            flexDirection: "row",
+            flexWrap: "wrap",
             width: "99.5%",
-            maxWidth: 310,
-            maxWidth: 1700,
+            //maxWidth: 400,
+            marginHorizontal: 0,
+            justifyContent: "space-evenly",
+            //maxWidth: 1700,
           }}
         >
           {EventosCercanos.map((EvtCer) => (
