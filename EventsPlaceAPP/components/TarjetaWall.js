@@ -8,6 +8,7 @@ const TarjetaWall = ({
   ubicacion,
   Descripcion,
   theme,
+  onPress,
 }) => {
   switch (theme) {
     case "Vertical":
@@ -29,7 +30,7 @@ const TarjetaWall = ({
               { backgroundColor: pressed ? "#C6C7C8" : null },
               { width: "100%", height: "100%", borderRadius: 12 },
             ]}
-            onPress={() => alert("Ir a detalle de evento")}
+            onPress={onPress}
           >
             <View
               style={{

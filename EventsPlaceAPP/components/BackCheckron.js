@@ -16,7 +16,7 @@ const BackCheckron = ({ navigation }) => {
 
 const style = StyleSheet.create({
   HeaderContainer: {
-    marginTop: 20,
+    marginTop: 10,
     height: 25,
     width: "100%",
     //borderWidth: 1,

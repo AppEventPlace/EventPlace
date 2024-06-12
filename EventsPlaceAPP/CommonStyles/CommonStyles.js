@@ -19,6 +19,7 @@ export const Colors = {
   Blanco: "#FBFBFE",
   // -->
   Negro: "#000000",
+  Grey_Top: "#032030",
 };
 
 // Lista de tamaños de fuente

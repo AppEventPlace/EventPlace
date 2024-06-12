@@ -7,6 +7,7 @@ import Boleteria from "./Step2";
 import Resumen from "./Step3";
 import WallPrincipal from "./WallPrincipal";
 import SearchPage from "./SearchPage";
+import DetalleEvento from "./DetalleEvento";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,8 @@ const StackCreateEventNavigator = () => {
               ? Boleteria
               : Create.name === "SearchPage"
               ? SearchPage
+              : Create.name === "DetalleEvento"
+              ? DetalleEvento
               : Resumen
           }
         />

@@ -192,6 +192,7 @@ const WallScroll = ({ item, navigation }) => {
                 fecha={EvtCer.Fecha}
                 ubicacion={EvtCer.Ubicacion}
                 Descripcion={EvtCer.Descripcion}
+                onPress={() => navigation.navigate("Detalle Evento")}
               />
             ))}
           </ScrollView>

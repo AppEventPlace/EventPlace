@@ -20,4 +20,5 @@ export default [
     name: "SearchPage",
     label: "Pagina de busqueda",
   },
+  { name: "DetalleEvento", label: "Detalle Evento" },
 ];

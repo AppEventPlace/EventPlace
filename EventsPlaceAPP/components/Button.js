@@ -110,9 +110,24 @@ export default function Button({
 
     case "BackCheckron":
       return (
-        <Pressable style={styles.BackButton} onPress={onPress}>
-          <IconSVG theme="BackCheckron" color="#6979F8" />
-          <Text style={styles.BackButtonTex}>{label}</Text>
+        <Pressable
+          style={({ pressed }) => [
+            { backgroundColor: pressed ? "#E3E2FC" : null },
+            styles.BackButton,
+          ]}
+          onPress={onPress}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              marginHorizontal: 5,
+              alignItems: "center",
+              columnGap: 10,
+            }}
+          >
+            <IconSVG theme="BackCheckron" color="#6979F8" />
+            <Text style={styles.BackButtonTex}>{label}</Text>
+          </View>
         </Pressable>
       );
 
@@ -304,12 +319,13 @@ const styles = StyleSheet.create({
     color: "#515EC0",
   },
   BackButton: {
-    width: 75,
+    width: 70,
     height: 25,
     //borderWidth: 1,
     gap: 8,
     flexDirection: "row",
     alignItems: "center",
+    borderRadius: 12,
   },
   BackButtonTex: {
     fontSize: 16,
