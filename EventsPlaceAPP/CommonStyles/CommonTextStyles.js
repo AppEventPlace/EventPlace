@@ -18,6 +18,18 @@ const CommonTextStyles = StyleSheet.create({
     color: Colors.TexColor,
     letterSpacing: 0.0044,
   },
+  SemiBold_M: {
+    fontWeight: "600",
+    fontSize: 14,
+    lineHeight: 16.8,
+    color: Colors.Placeholder,
+  },
+  Subtitle_16: {
+    fontWeight: "700",
+    fontSize: 16,
+    lineHeight: 19,
+    color: Colors.NightBlue_600,
+  },
 });
 
 export default CommonTextStyles;

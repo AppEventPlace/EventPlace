@@ -15,6 +15,8 @@ export const Colors = {
   Azul_Facebook: "#1877F2",
   // --> Gris
   Grey_04: "#BDBDBD",
+  Grey_300: "#c6c7c8",
+  Grey_07: "#333333",
   // -->
   Blanco: "#FBFBFE",
   // -->
@@ -56,7 +58,7 @@ const CommonStyles = StyleSheet.create({
 
   AreaView_Full: {
     flex: 1,
-    paddingVertical: 10,
+    paddingTop: 10,
   },
 
   ScrollView: {
@@ -152,6 +154,14 @@ const CommonStyles = StyleSheet.create({
     width: "100%",
     height: 10,
     alignItems: "center",
+  },
+  AmpliarInfo: {
+    width: "100%",
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    columnGap: 18,
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
 });
 

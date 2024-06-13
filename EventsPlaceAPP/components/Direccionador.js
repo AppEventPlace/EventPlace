@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
 import SvgLogo from "../assets/LogoSVG";
-const Direccionador = ({ label, logo }) => {
+const Direccionador = ({ label, logo, color }) => {
   return (
     <View
       style={{
@@ -28,13 +28,14 @@ const Direccionador = ({ label, logo }) => {
             display: "flex",
             flexDirection: "row",
             height: 64,
+            gap: 8,
           }}
         >
-          <SvgLogo theme={logo} />
+          <SvgLogo theme={logo} color={color} />
           <View style={{ marginTop: -2, width: "70%", marginLeft: 10 }}>
             <Text style={{ fontSize: 16, fontWeight: "500" }}>{label}</Text>
           </View>
-          <SvgLogo theme={"Next"} />
+          <SvgLogo theme={"Next"} color={color} />
         </View>
       </Pressable>
     </View>

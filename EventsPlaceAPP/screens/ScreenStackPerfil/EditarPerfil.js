@@ -9,6 +9,7 @@ import { SelectList } from "react-native-dropdown-select-list";
 import SelectorIndicativo from "../../constants/IndicativosTel";
 import SvgLogo from "../../assets/LogoSVG";
 import Direccionador from "../../components/Direccionador";
+import { Colors } from "../../CommonStyles/CommonStyles";
 
 const EditarPerfilScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -177,6 +178,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                   key={"ActualizarContraseña"}
                   logo={"Key"}
                   label={"Cambiar Contraseña"}
+                  color={Colors.TexColor}
                 />
               </View>
               <View style={{ marginTop: 20 }}>
@@ -184,6 +186,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                   Key={"EditarGustos"}
                   logo={"HappyFace"}
                   label={"Editar gustos"}
+                  color={Colors.TexColor}
                 />
               </View>
               <View style={{ marginTop: 15 }}>
@@ -191,6 +194,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                   key={"EditarServicios"}
                   logo={"Recaudo"}
                   label={"Editar servicios"}
+                  color={Colors.TexColor}
                 />
               </View>
               <View style={{ marginTop: 15, marginBottom: 15 }}>
@@ -198,6 +202,7 @@ const EditarPerfilScreen = ({ navigation }) => {
                   key={"EditarHorario"}
                   logo={"CalendarClock"}
                   label={"Editar Horario de disponibilidad"}
+                  color={Colors.TexColor}
                 />
               </View>
               <View style={style.lineaSeparacion} />
