@@ -2,6 +2,12 @@ export default [
   {
     Id: "1",
     Titulo: "Festival de baile",
+    NombreOrganizador: "Tatiana Muñoz",
+    CalificacionOrganizador: 4,
+    EventosRealizadorOrg: 6,
+    ExpOrganizador: 50,
+    CorreoAnfitrion: "ejemplo@gmail.com",
+    CelularAnfitrion: "+ 57 3200987654",
     Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",

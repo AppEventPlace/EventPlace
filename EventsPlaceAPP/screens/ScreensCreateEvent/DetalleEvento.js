@@ -16,6 +16,8 @@ import CommonTextStyles from "../../CommonStyles/CommonTextStyles";
 import EjemploDetalleEvento from "../../constants/EjemploDetalleEvento";
 import SvgLogo from "../../assets/LogoSVG";
 import Direccionador from "../../components/Direccionador";
+import TarjetaOrganizador from "../../components/TarjetaOrganizador";
+import TarjetaAnfitrion from "../../components/TarjetaAnfitrion";
 
 const DetalleEvento = ({ navigation }) => {
   const Imagen_width = Dimensions.get("window").width * 0.85;
@@ -46,7 +48,7 @@ const DetalleEvento = ({ navigation }) => {
               horizontal={true}
               pagingEnabled={true}
               decelerationRate={0}
-              snapToInterval={Imagen_width + 10}
+              snapToInterval={Imagen_width + 20}
               snapToAlignment="center"
             >
               {EventosCercanos.map((Galeria) => (
@@ -75,8 +77,8 @@ const DetalleEvento = ({ navigation }) => {
               ))}
             </ScrollView>
           </View>
-          <View key={"ContenedorDetalle"} style={styles.DetalleEvtContainer}>
-            {EjemploDetalleEvento.map((DatEvt) => (
+          {EjemploDetalleEvento.map((DatEvt) => (
+            <View key={"ContenedorDetalle"} style={styles.DetalleEvtContainer}>
               <View key="TituloDetalle">
                 <Text
                   key="TextoTituloDetalle"
@@ -84,188 +86,217 @@ const DetalleEvento = ({ navigation }) => {
                 >
                   {DatEvt.Titulo}
                 </Text>
-                <View key="DetalleTarjeta" style={styles.TarjetaDetalle}>
-                  <View
-                    key={"TarjetaDetalleTiempo"}
-                    style={styles.ContenedorColumnasTarjeta}
-                  >
-                    <View key={"DetalleFecha"} style={styles.ColumnaIzquierda}>
-                      <View
-                        key="TituloColumnaIzq"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: 8,
-                        }}
+              </View>
+              <View key="DetalleTarjeta" style={[CommonStyles.container]}>
+                <View
+                  key={"TarjetaDetalleTiempo"}
+                  style={styles.ContenedorColumnasTarjeta}
+                >
+                  <View key={"DetalleFecha"} style={styles.ColumnaIzquierda}>
+                    <View
+                      key="TituloColumnaIzq"
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: 8,
+                      }}
+                    >
+                      <SvgLogo
+                        key={"LogoFecha"}
+                        theme={"Calendario"}
+                        color={Colors.NightBlue_600}
+                      />
+                      <Text
+                        key={"TextoFecha"}
+                        style={CommonTextStyles.SemiBold_L}
                       >
-                        <SvgLogo
-                          key={"LogoFecha"}
-                          theme={"Calendario"}
-                          color={Colors.NightBlue_600}
-                        />
-                        <Text
-                          key={"TextoFecha"}
-                          style={CommonTextStyles.SemiBold_L}
-                        >
-                          Fecha
-                        </Text>
-                      </View>
-                      <View key={"fechaInicio"}>
-                        <Text
-                          key={"TituloFechaIni"}
-                          style={CommonTextStyles.SemiBold_M}
-                        >
-                          Inicio
-                        </Text>
-                        <Text
-                          key={"FechaIni"}
-                          style={CommonTextStyles.SemiBold_L}
-                        >
-                          {DatEvt.FechaInicio}
-                        </Text>
-                      </View>
-                      <View key={"fechaFin"}>
-                        <Text
-                          key={"TituloFechaFin"}
-                          style={CommonTextStyles.SemiBold_M}
-                        >
-                          Fin
-                        </Text>
-                        <Text
-                          key={"FechaFin"}
-                          style={CommonTextStyles.SemiBold_L}
-                        >
-                          {DatEvt.FechaFin}
-                        </Text>
-                      </View>
+                        Fecha
+                      </Text>
                     </View>
-                    <View key={"DetalleHora"} style={styles.ColumnaDerecha}>
-                      <View
-                        key="TituloColumnaDer"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: 8,
-                        }}
+                    <View key={"fechaInicio"}>
+                      <Text
+                        key={"TituloFechaIni"}
+                        style={CommonTextStyles.SemiBold_M}
                       >
-                        <SvgLogo
-                          key={"LogoHora"}
-                          theme={"Clock"}
-                          color={Colors.NightBlue_600}
-                        />
-                        <Text
-                          key={"TextoHora"}
-                          style={CommonTextStyles.SemiBold_L}
-                        >
-                          Hora
-                        </Text>
-                      </View>
-                      <View
-                        key={"horaInicio"}
-                        style={{ alignItems: "flex-end" }}
+                        Inicio
+                      </Text>
+                      <Text
+                        key={"FechaIni"}
+                        style={CommonTextStyles.SemiBold_L}
                       >
-                        <Text
-                          key={"TituloHoraIni"}
-                          style={CommonTextStyles.SemiBold_M}
-                        >
-                          Inicio
-                        </Text>
-                        <Text
-                          key={"HoraIni"}
-                          style={CommonTextStyles.SemiBold_L}
-                        >
-                          {DatEvt.FechaInicio}
-                        </Text>
-                      </View>
-                      <View key={"HoraFin"} style={{ alignItems: "flex-end" }}>
-                        <Text
-                          key={"TituloHoraFin"}
-                          style={CommonTextStyles.SemiBold_M}
-                        >
-                          Fin
-                        </Text>
-                        <Text
-                          key={"FechaFin"}
-                          style={CommonTextStyles.SemiBold_L}
-                        >
-                          {DatEvt.FechaFin}
-                        </Text>
-                      </View>
+                        {DatEvt.FechaInicio}
+                      </Text>
+                    </View>
+                    <View key={"fechaFin"}>
+                      <Text
+                        key={"TituloFechaFin"}
+                        style={CommonTextStyles.SemiBold_M}
+                      >
+                        Fin
+                      </Text>
+                      <Text
+                        key={"FechaFin"}
+                        style={CommonTextStyles.SemiBold_L}
+                      >
+                        {DatEvt.FechaFin}
+                      </Text>
                     </View>
                   </View>
-                  <View key="LineaSeparación1" style={styles.LineaSeparacion} />
-                  <View
-                    key={"DatosEvento"}
-                    style={styles.ContenedorColumnasTarjeta}
-                  >
+                  <View key={"DetalleHora"} style={styles.ColumnaDerecha}>
                     <View
-                      key={"ColumnaIzquierdDetall"}
-                      style={styles.ColumnaIzquierda}
+                      key="TituloColumnaDer"
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: 8,
+                      }}
                     >
-                      <CajaDetalleIzq
-                        key={"CategoriaDetall"}
-                        logo={"CategoriaLogo"}
-                        Titulo={"Categoria"}
-                        Valor={DatEvt.Categoria}
+                      <SvgLogo
+                        key={"LogoHora"}
+                        theme={"Clock"}
+                        color={Colors.NightBlue_600}
                       />
-                      <CajaDetalleIzq
-                        key={"AforoDetall"}
-                        logo={"Aforo"}
-                        Titulo={"Aforo"}
-                        Valor={DatEvt.Aforo}
-                      />
-                      <CajaDetalleIzq
-                        key={"TipoLugarDetall"}
-                        logo={"TipoLugar"}
-                        Titulo={"Tipo de lugar"}
-                        Valor={DatEvt.TipoLugar}
-                      />
+                      <Text
+                        key={"TextoHora"}
+                        style={CommonTextStyles.SemiBold_L}
+                      >
+                        Hora
+                      </Text>
                     </View>
-                    <View
-                      key={"ColumnaDerechaDetall"}
-                      style={styles.ColumnaDerecha}
-                    >
-                      <CajaDetalleDer
-                        key={"ClaseEventoDetall"}
-                        logo={"Sell"}
-                        Titulo={"Clase de evento"}
-                        Valor={DatEvt.ClaseEvento}
-                        ubicacionCol={true}
-                      />
-                      <CajaDetalleDer
-                        key={"AforoDispoDetall"}
-                        logo={"AforoDisponible"}
-                        Titulo={"Aforo disponible"}
-                        Valor={DatEvt.AforoDisponible}
-                        ubicacionCol={true}
-                      />
+                    <View key={"horaInicio"} style={{ alignItems: "flex-end" }}>
+                      <Text
+                        key={"TituloHoraIni"}
+                        style={CommonTextStyles.SemiBold_M}
+                      >
+                        Inicio
+                      </Text>
+                      <Text key={"HoraIni"} style={CommonTextStyles.SemiBold_L}>
+                        {DatEvt.FechaInicio}
+                      </Text>
                     </View>
-                  </View>
-                  <View key="LineaSeparación2" style={styles.LineaSeparacion} />
-                  <View
-                    key={"MasDetalle"}
-                    style={[CommonStyles.AmpliarInfo, { marginTop: 10 }]}
-                  >
-                    <Text style={CommonTextStyles.Subtitle_16}>
-                      Más detalle del evento
-                    </Text>
-                    <Text style={CommonTextStyles.Subtitle_16}>+</Text>
+                    <View key={"HoraFin"} style={{ alignItems: "flex-end" }}>
+                      <Text
+                        key={"TituloHoraFin"}
+                        style={CommonTextStyles.SemiBold_M}
+                      >
+                        Fin
+                      </Text>
+                      <Text
+                        key={"FechaFin"}
+                        style={CommonTextStyles.SemiBold_L}
+                      >
+                        {DatEvt.FechaFin}
+                      </Text>
+                    </View>
                   </View>
                 </View>
+                <View key="LineaSeparación1" style={styles.LineaSeparacion} />
                 <View
-                  key={"UbicacionDireccionador"}
-                  style={{ marginTop: 15, marginBottom: 15 }}
+                  key={"DatosEvento"}
+                  style={styles.ContenedorColumnasTarjeta}
                 >
-                  <Direccionador
-                    key={"UbicacionDetalle"}
-                    logo={"Ubicacion"}
-                    color={Colors.NightBlue_600}
-                    label={"Ubicación del evento"}
-                  />
+                  <View
+                    key={"ColumnaIzquierdDetall"}
+                    style={styles.ColumnaIzquierda}
+                  >
+                    <CajaDetalleIzq
+                      key={"CategoriaDetall"}
+                      logo={"CategoriaLogo"}
+                      Titulo={"Categoria"}
+                      Valor={DatEvt.Categoria}
+                    />
+                    <CajaDetalleIzq
+                      key={"AforoDetall"}
+                      logo={"Aforo"}
+                      Titulo={"Aforo"}
+                      Valor={DatEvt.Aforo}
+                    />
+                    <CajaDetalleIzq
+                      key={"TipoLugarDetall"}
+                      logo={"TipoLugar"}
+                      Titulo={"Tipo de lugar"}
+                      Valor={DatEvt.TipoLugar}
+                    />
+                  </View>
+                  <View
+                    key={"ColumnaDerechaDetall"}
+                    style={styles.ColumnaDerecha}
+                  >
+                    <CajaDetalleDer
+                      key={"ClaseEventoDetall"}
+                      logo={"Sell"}
+                      Titulo={"Clase de evento"}
+                      Valor={DatEvt.ClaseEvento}
+                      ubicacionCol={true}
+                    />
+                    <CajaDetalleDer
+                      key={"AforoDispoDetall"}
+                      logo={"AforoDisponible"}
+                      Titulo={"Aforo disponible"}
+                      Valor={DatEvt.AforoDisponible}
+                      ubicacionCol={true}
+                    />
+                  </View>
+                </View>
+                <View key="LineaSeparación2" style={styles.LineaSeparacion} />
+                <View key={"MasDetalle"} style={[CommonStyles.AmpliarInfo, {}]}>
+                  <Text style={CommonTextStyles.Subtitle_16}>
+                    Más detalle del evento
+                  </Text>
+                  <Text style={CommonTextStyles.Subtitle_16}>+</Text>
                 </View>
               </View>
-            ))}
-          </View>
+              <View key={"UbicacionDireccionador"}>
+                <Direccionador
+                  key={"UbicacionDetalle"}
+                  logo={"Ubicacion"}
+                  color={Colors.NightBlue_600}
+                  label={"Ubicación del evento"}
+                />
+              </View>
+              <View key={"TituloOrganizadorEvt"}>
+                <Text style={CommonTextStyles.SemiBold_L}>
+                  Organizador del evento
+                </Text>
+              </View>
+              <View key={"TarjetaOrganizador"}>
+                <TarjetaOrganizador
+                  Nombre={DatEvt.NombreOrganizador}
+                  Calificacion={DatEvt.CalificacionOrganizador}
+                  experiencia={DatEvt.ExpOrganizador}
+                  EventosRealizados={DatEvt.EventosRealizadorOrg}
+                />
+              </View>
+              <View key={"TituloAnfitrionEvt"}>
+                <Text style={CommonTextStyles.SemiBold_L}>
+                  Anfitrión del evento
+                </Text>
+              </View>
+              <View key={"TarjetaAnfitrion"}>
+                <TarjetaAnfitrion
+                  Nombre={DatEvt.NombreOrganizador}
+                  Correo={DatEvt.CorreoAnfitrion}
+                  Celular={DatEvt.CelularAnfitrion}
+                />
+              </View>
+              <View key={"DireccionadorPolitica"}>
+                <Direccionador
+                  key={"Politica"}
+                  logo={null}
+                  color={Colors.NightBlue_600}
+                  label={"Conoce nuestra politica de reembolso"}
+                />
+              </View>
+              <View key={"FaqDireccionador"}>
+                <Direccionador
+                  key={"PoliticaDir"}
+                  logo={null}
+                  color={Colors.NightBlue_600}
+                  label={"Preguntas frecuentes"}
+                />
+              </View>
+            </View>
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -324,10 +355,11 @@ const styles = StyleSheet.create({
   },
   DetalleEvtContainer: {
     marginTop: 20,
+    gap: 25,
     //paddingHorizontal: 16,
   },
   TarjetaDetalle: {
-    marginTop: 20,
+    //marginTop: 20,
     paddingBottom: 20,
     width: "100%",
     backgroundColor: Colors.Blanco,
@@ -340,22 +372,22 @@ const styles = StyleSheet.create({
 
     width: "100%",
     marginHorizontal: 15,
-    marginVertical: 20,
+    //marginVertical: 20,
   },
   ColumnaDerecha: {
-    width: "45%",
+    width: "50%",
     rowGap: 24,
     alignItems: "flex-end",
   },
   ColumnaIzquierda: {
-    width: "45%",
+    width: "50%",
     rowGap: 24,
     alignItems: "flex-start",
   },
   LineaSeparacion: {
     borderBottomWidth: 1,
     borderBottomColor: Colors.Grey_300,
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
   },
 });

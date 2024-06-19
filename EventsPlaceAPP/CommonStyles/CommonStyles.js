@@ -82,7 +82,7 @@ const CommonStyles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 24,
-    backgroundColor: "white",
+    backgroundColor: Colors.Blanco,
     // Android
     elevation: 5,
     // iOS

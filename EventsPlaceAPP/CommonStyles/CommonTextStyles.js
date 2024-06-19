@@ -22,6 +22,8 @@ const CommonTextStyles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 14,
     lineHeight: 16.8,
+
+    letterSpacing: 0.0044,
     color: Colors.Placeholder,
   },
   Subtitle_16: {
