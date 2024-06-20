@@ -20,6 +20,7 @@ export default [
     TipoLugar: "Salón social",
     ClaseEvento: "Publico - presencial",
     AforoDisponible: "100 Personas",
+    ValorEntrada: "70.000",
     Descripcion:
       "Lorem ipsum dolor sit amet consectetur. Nibh et ultricies amet iaculis a semper placerat. Vitae fringilla massa imperdiet elementum in dignissim fringilla amet lectus.",
   },

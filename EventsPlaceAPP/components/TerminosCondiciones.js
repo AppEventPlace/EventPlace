@@ -72,6 +72,7 @@ const TerminosCondiciones = ({
           theme="Terms"
           onPress={() => [
             navigation.navigate("VerifyIdentity"),
+            console.log(FechaNacimiento),
             CrearCuenta(
               Name,
               Lastname,

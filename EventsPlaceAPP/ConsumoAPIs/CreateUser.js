@@ -11,13 +11,13 @@ const CrearCuenta = async (
   contraseña
 ) => {
   await fetch(
-    "https://vx817uirmf.execute-api.us-east-1.amazonaws.com/createUser",
+    "https://v8gfptr7d7.execute-api.us-east-1.amazonaws.com/createUser",
     {
       method: "POST",
       headers: {
         //date: "Fri, 24 May 2024 00",
         "Content-Type": "application/json",
-        rquid: "fsdgf6854sahgdf5243",
+        //rquid: "fsdgf6854sahgdf5243",
         //"Access-Control-Allow-Origin": "http://localhost:8081",
       },
       body: JSON.stringify({

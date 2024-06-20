@@ -17,7 +17,7 @@ import BackCheckron from "../../components/BackCheckron";
 const FondImage = require("../../assets/adaptive-icon.png");
 
 const CreaCuenta = ({ navigation }) => {
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
   //Variable de estado que contenga el valor de la imagen seleccionada.
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -32,11 +32,7 @@ const CreaCuenta = ({ navigation }) => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    //setFechaNacimiento(selectedDate.toLocaleDateString());
-    CambiaFecha();
-  };
-  const CambiaFecha = () => {
-    setFechaNacimiento(selectedDate.toLocaleDateString());
+    setFechaNacimiento(date.toLocaleDateString());
   };
 
   /*----------------------------------------------------------------------------------
@@ -126,8 +122,8 @@ const CreaCuenta = ({ navigation }) => {
                   <View style={style.SubContainer3}>
                     <TextInput
                       placeholder={
-                        selectedDate
-                          ? selectedDate.toLocaleDateString()
+                        FechaNacimiento
+                          ? FechaNacimiento
                           : "Ingresa la fecha de nacimiento"
                       } //value={selectedDate.toLocaleDateString()}
                       editable={false}

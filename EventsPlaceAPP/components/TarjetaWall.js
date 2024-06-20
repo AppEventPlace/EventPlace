@@ -146,7 +146,7 @@ const TarjetaWall = ({
                 borderRadius: 12,
               },
             ]}
-            onPress={() => alert("Ir a detalle de evento")}
+            onPress={onPress}
           >
             <View
               style={{

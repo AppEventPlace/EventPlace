@@ -242,6 +242,7 @@ const WallScroll = ({ item, navigation }) => {
                 fecha={EvtCer.Fecha}
                 ubicacion={EvtCer.Ubicacion}
                 Descripcion={EvtCer.Descripcion}
+                onPress={() => navigation.navigate("Detalle Evento")}
               />
             ))}
           </ScrollView>
@@ -286,6 +287,7 @@ const WallScroll = ({ item, navigation }) => {
               fecha={EvtCer.Fecha}
               ubicacion={EvtCer.Ubicacion}
               Descripcion={EvtCer.Descripcion}
+              onPress={() => navigation.navigate("Detalle Evento")}
             />
           ))}
         </View>
@@ -333,7 +335,7 @@ const WallScroll = ({ item, navigation }) => {
             {TusEventos.length === 0 ? (
               <TarjetaSinEventos />
             ) : (
-              <TarjetasTusEventos />
+              <TarjetasTusEventos navigation={navigation} />
             )}
           </View>
           <View
@@ -446,7 +448,7 @@ const TarjetaSinEventos = () => {
     </View>
   );
 };
-const TarjetasTusEventos = () => {
+const TarjetasTusEventos = ({ navigation }) => {
   return (
     <View>
       {TusEventos.map((TusEvt) => (
@@ -458,6 +460,7 @@ const TarjetasTusEventos = () => {
           fecha={TusEvt.Fecha}
           ubicacion={TusEvt.Ubicacion}
           Descripcion={TusEvt.Descripcion}
+          onPress={() => navigation.navigate("Detalle Evento")}
         />
       ))}
     </View>

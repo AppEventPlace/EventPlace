@@ -18,9 +18,10 @@ import SvgLogo from "../../assets/LogoSVG";
 import Direccionador from "../../components/Direccionador";
 import TarjetaOrganizador from "../../components/TarjetaOrganizador";
 import TarjetaAnfitrion from "../../components/TarjetaAnfitrion";
+import TarjetaCompra from "../../components/TarjetaCompra";
 
 const DetalleEvento = ({ navigation }) => {
-  const Imagen_width = Dimensions.get("window").width * 0.85;
+  const Imagen_width = Dimensions.get("window").width * 0.91;
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView_Full, { backgroundColor: Colors.Grey_Top }]}
@@ -48,8 +49,10 @@ const DetalleEvento = ({ navigation }) => {
               horizontal={true}
               pagingEnabled={true}
               decelerationRate={0}
-              snapToInterval={Imagen_width + 20}
+              snapToInterval={Imagen_width}
               snapToAlignment="center"
+              persistentScrollbar={true}
+              showsHorizontalScrollIndicator={true}
             >
               {EventosCercanos.map((Galeria) => (
                 <View
@@ -57,19 +60,20 @@ const DetalleEvento = ({ navigation }) => {
                   style={{
                     borderRadius: 12,
                     width: Imagen_width,
-                    maxWidth: 348,
+                    //maxWidth: 390,
                     height: 151,
-                    marginRight: 16,
+                    //marginHorizontal: 8,
                   }}
                 >
                   <Image
                     key={"ImagenEvt" + Galeria.Id}
                     source={Galeria.Imagen}
                     style={{
-                      width: Imagen_width,
-                      maxWidth: 310,
+                      width: Imagen_width * 0.97,
+                      alignSelf: "center",
+                      // maxWidth: 390,
                       height: 151,
-                      marginHorizontal: 16,
+                      //marginHorizontal: 15,
                       borderRadius: 12,
                     }}
                   />
@@ -295,6 +299,9 @@ const DetalleEvento = ({ navigation }) => {
                   label={"Preguntas frecuentes"}
                 />
               </View>
+              <View>
+                <TarjetaCompra Valor={DatEvt.ValorEntrada} />
+              </View>
             </View>
           ))}
         </View>
@@ -350,7 +357,8 @@ const CajaDetalleDer = ({ logo, Titulo, Valor }) => {
 const styles = StyleSheet.create({
   ScrollGaleriaEvt: {
     height: 171,
-    paddingEnd: 16,
+    //paddingEnd: 16,
+    //justifyContent: "center",
     width: "100%",
   },
   DetalleEvtContainer: {
