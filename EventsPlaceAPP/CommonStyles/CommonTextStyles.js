@@ -32,6 +32,12 @@ const CommonTextStyles = StyleSheet.create({
     lineHeight: 19,
     color: Colors.NightBlue_600,
   },
+  Subtitle_18: {
+    fontSize: 18,
+    fontWeight: "700",
+    lineHeight: 21.6,
+    color: Colors.TexColor,
+  },
   Body_M: {
     fontWeight: "500",
     fontSize: 14,

@@ -93,7 +93,7 @@ const CuadroEstado = ({ label, cantidad, id }) => {
               </Text>
             </View>
             <View style={{ marginTop: 15, marginLeft: 15 }}>
-              <SvgLogo theme="Moneda" />
+              <SvgLogo theme="Moneda" color="#00C48C" />
             </View>
           </Pressable>
         </View>

@@ -29,7 +29,7 @@ const DetalleEvento = ({ navigation }) => {
       <ScrollView
         style={[
           CommonStyles.ScrollView,
-          { backgroundColor: Colors.Primary, marginTop: 20 },
+          { backgroundColor: Colors.Primary, marginTop: 30 },
         ]}
       >
         <View

@@ -1,34 +1,57 @@
 import React from "react";
 import { Text, View, StyleSheet, TextInput } from "react-native";
 import SvgLogo from "../assets/LogoSVG";
+import { Colors } from "../CommonStyles/CommonStyles";
 
-const Froms = ({ Title, SubTitle, Title_1, SubTitle_1, type }) => {
-  if (type) {
-    return (
-      <View style={styles.ViewStyle}>
+const Froms = ({
+  Title,
+  SubTitle,
+  Title_1,
+  SubTitle_1,
+  type,
+  logo1,
+  logo2,
+}) => {
+  switch (type) {
+    case "1":
+      return (
+        <View style={styles.ViewStyle}>
+          <View style={styles.SubContainer}>
+            <Text style={styles.TextContainer}>{Title}</Text>
+            <View style={styles.Container}>
+              <TextInput placeholder={SubTitle} style={styles.TextInput} />
+              <SvgLogo theme={logo1} color={Colors.NightBlue_600} />
+            </View>
+          </View>
+          <View style={styles.SubContainer}>
+            <Text style={styles.TextContainer}>{Title_1}</Text>
+            <View style={styles.Container}>
+              <TextInput placeholder={SubTitle_1} style={styles.TextInput} />
+              <SvgLogo theme={logo2} color={Colors.NightBlue_600} />
+            </View>
+          </View>
+        </View>
+      );
+    case "2":
+      return (
+        <View style={styles.ViewStyle}>
+          <View style={styles.SubContainer}>
+            <Text style={styles.TextContainer}>{Title}</Text>
+            <View style={styles.Container}>
+              <TextInput placeholder={SubTitle} style={styles.TextInput} />
+              <SvgLogo theme={logo1} color={Colors.NightBlue_600} />
+            </View>
+          </View>
+        </View>
+      );
+    default: {
+      return (
         <View style={styles.SubContainer}>
           <Text style={styles.TextContainer}>{Title}</Text>
-          <View style={styles.Container}>
-            <TextInput placeholder={SubTitle} style={styles.TextInput} />
-            <SvgLogo theme="Calendario" color="#6979F8" />
-          </View>
+          <TextInput placeholder={SubTitle} style={styles.TextInput} />
         </View>
-        <View style={styles.SubContainer}>
-          <Text style={styles.TextContainer}>{Title_1}</Text>
-          <View style={styles.Container}>
-            <TextInput placeholder={SubTitle_1} style={styles.TextInput} />
-            <SvgLogo theme="Clock" color="#6979F8" />
-          </View>
-        </View>
-      </View>
-    );
-  } else {
-    return (
-      <View style={styles.SubContainer}>
-        <Text style={styles.TextContainer}>{Title}</Text>
-        <TextInput placeholder={SubTitle} style={styles.TextInput} />
-      </View>
-    );
+      );
+    }
   }
 };
 

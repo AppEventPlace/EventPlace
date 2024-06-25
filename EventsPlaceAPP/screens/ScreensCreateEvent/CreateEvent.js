@@ -8,6 +8,7 @@ import Resumen from "./Step3";
 import WallPrincipal from "./WallPrincipal";
 import SearchPage from "./SearchPage";
 import DetalleEvento from "./DetalleEvento";
+import Filtros from "../Filtros";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,8 @@ const StackCreateEventNavigator = () => {
               ? SearchPage
               : Create.name === "DetalleEvento"
               ? DetalleEvento
+              : Create.name === "Filtros"
+              ? Filtros
               : Resumen
           }
         />

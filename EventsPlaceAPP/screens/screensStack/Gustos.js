@@ -21,6 +21,8 @@ import ImageViewer from "../../components/ImageViewer";
 import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
 import * as ImagePicker from "expo-image-picker";
+import Seleccionable from "../../components/Seleccionable";
+import SeleccionTags from "../../components/SeleccionTags";
 
 const Gustos = ({ navigation }) => {
   return (
@@ -52,7 +54,7 @@ const Gustos = ({ navigation }) => {
               Selecciona algunos eventos a los cuales te gusta ir o participar
             </Text>
             <View style={styles.ContainerSelecciones}>
-              <Seleccion />
+              <SeleccionTags OpcSeleccion={OpcionesSeleccion} />
             </View>
             <View style={styles.ContainerSeleccionesRad}>
               <View>
@@ -88,36 +90,6 @@ const Gustos = ({ navigation }) => {
 };
 
 //const selectedButton = ["0", "hola"];
-const PresionableSeleccion = ({ id, label }) => {
-  const [Seleccionado, setSeleccionado] = useState(false);
-  return (
-    <View
-      key={id}
-      style={Seleccionado ? styles.Seleccionable2 : styles.Seleccionable1}
-      //backgroundColor={Seleccionado ? "#6979F8" : "#E9EAFE"}
-      //color={Seleccionado ? "#0F172A" : "#FBFBFE"}
-    >
-      <Pressable
-        key={id}
-        style={styles.button}
-        //label={Selec.label}
-        onPress={() => {
-          //Escoger(label);
-          //setSeleccionado(true);
-          setSeleccionado((current) => !current);
-        }}
-      >
-        <Text
-          style={
-            Seleccionado ? styles.StyleButtonLabel1 : styles.StyleButtonLabel2
-          }
-        >
-          {label}
-        </Text>
-      </Pressable>
-    </View>
-  );
-};
 
 /*const Seleccionados = () => {
   const [selectedeButton, setSelectedButton] = useState([]);
@@ -139,11 +111,7 @@ const Seleccion = () => {
       }}
     >
       {OpcionesSeleccion.map((Selec) => (
-        <PresionableSeleccion
-          key={Selec.name}
-          id={Selec.name}
-          label={Selec.label}
-        />
+        <Seleccionable key={Selec.name} id={Selec.name} label={Selec.label} />
       ))}
     </View>
   );
@@ -338,56 +306,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     //justifyContent: "space-around",
-  },
-  Seleccionable1: {
-    //display: "flex",
-    height: 43,
-    borderRadius: 50,
-    //alignItems: "center",
-    alignSelf: "flex-start",
-    //justifyContent: "center",
-    padding: 3,
-    backgroundColor: "#E9EAFE",
-    marginTop: 10,
-    marginHorizontal: 3,
-  },
-  Seleccionable2: {
-    //display: "flex",
-    height: 43,
-    borderRadius: 50,
-    //alignItems: "center",
-    alignSelf: "flex-start",
-    //justifyContent: "center",
-    padding: 3,
-    backgroundColor: "#6979F8",
-    marginTop: 10,
-    marginHorizontal: 3,
-  },
-  button: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    //justifyContent: "center",
-    flexDirection: "row",
-    // borderWidth: 1,
-    borderRadius: 50,
-    marginHorizontal: 5,
-  },
-  StyleButtonLabel2: {
-    color: "#6979F8",
-
-    fontSize: 16,
-    fontWeight: "700",
-    lineHeight: 19,
-    textAlign: "center",
-  },
-  StyleButtonLabel1: {
-    color: "#FBFBFE",
-
-    fontSize: 16,
-    fontWeight: "700",
-    lineHeight: 19,
-    textAlign: "center",
   },
 });
 

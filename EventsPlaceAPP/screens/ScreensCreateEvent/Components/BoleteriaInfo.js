@@ -21,16 +21,20 @@ const Tiempo = [
   {
     Title: "Inicio de venta",
     SubTitle: "DD/MM/AAAA",
+    logo1: "Calendario",
     type: "1",
     Title_1: "Hora de inicio",
     SubTitle_1: "00:00 A.M",
+    logo2: "Clock",
   },
   {
     Title: "Cierre de venta",
     SubTitle: "DD/MM/AAAA",
+    logo1: "Calendario",
     type: "1",
     Title_1: "Hora de finalización",
     SubTitle_1: "00:00 A.M",
+    logo2: "Clock",
   },
 ];
 
@@ -98,6 +102,8 @@ Si no, se renderiza el componente Froms.
               key={index}
               Title={pregunta.Title}
               SubTitle={pregunta.SubTitle}
+              logo1={pregunta.logo1}
+              logo2={pregunta.logo2}
               Title_1={pregunta.Title_1}
               SubTitle_1={pregunta.SubTitle_1}
               type={pregunta.type}

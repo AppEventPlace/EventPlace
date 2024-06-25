@@ -20,5 +20,12 @@ export default [
     name: "SearchPage",
     label: "Pagina de busqueda",
   },
-  { name: "DetalleEvento", label: "Detalle Evento" },
+  {
+    name: "DetalleEvento",
+    label: "Detalle Evento",
+  },
+  {
+    name: "Filtros",
+    label: "Filtros",
+  },
 ];

@@ -93,7 +93,10 @@ const SearchPage = ({ navigation }) => {
                 </View>
 
                 <View style={{ marginLeft: 5, width: 41, height: 41 }}>
-                  <Button theme={"SearchButton"} />
+                  <Button
+                    theme={"SearchButton"}
+                    onPress={() => navigation.navigate("Filtros")}
+                  />
                 </View>
               </View>
             </View>

@@ -59,7 +59,7 @@ const CommonStyles = StyleSheet.create({
 
   AreaView_Full: {
     flex: 1,
-    paddingTop: 10,
+    //paddingTop: 10,
   },
 
   ScrollView: {
