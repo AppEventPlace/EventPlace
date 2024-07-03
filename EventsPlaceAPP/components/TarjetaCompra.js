@@ -40,7 +40,10 @@ const TarjetaCompra = ({ Valor }) => {
           <Text style={CommonTextStyles.SemiBold_L}>&#36;{Valor}</Text>
         </View>
       </View>
-      <View key={"BotonPago"} style={style.ContenedorBoton}>
+      <View
+        key={"BotonPago"}
+        style={[style.ContenedorBoton, { width: "100%", maxWidth: 320 }]}
+      >
         <Button
           theme={"StyleBoton"}
           label={"Conseguir entradas"}
@@ -61,8 +64,9 @@ const style = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 16,
     backgroundColor: Colors.NightBlue_200,
-    borderRadius: 12,
-    marginBottom: 16,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    //marginBottom: 16,
   },
   ContenedorHorizontal: {
     display: "flex",

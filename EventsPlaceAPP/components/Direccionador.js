@@ -1,23 +1,33 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
 import SvgLogo from "../assets/LogoSVG";
-const Direccionador = ({ label, logo, color }) => {
+import CommonStyles, { Colors } from "../CommonStyles/CommonStyles";
+const Direccionador = ({ label, logo, color, onPress }) => {
   return (
     <View
-      style={{
-        //display: "flex",
-        width: "100%",
-        maxWidth: 700,
-        height: 64,
-        backgroundColor: "#FBFBFB",
-        borderRadius: 12,
-        marginTop: 5,
-        // marginHorizontal: 10,
-        alignSelf: "center",
-        elevation: 5,
-      }}
+      style={({ pressed }) => [
+        {
+          //display: "flex",
+          width: "100%",
+          maxWidth: 700,
+          height: 64,
+
+          borderRadius: 12,
+          marginTop: 5,
+          // marginHorizontal: 10,
+          alignSelf: "center",
+          elevation: 5,
+        },
+      ]}
     >
-      <Pressable onPress={() => alert("prueba")}>
+      <Pressable
+        onPress={onPress}
+        style={({ pressed }) => [
+          CommonStyles.container,
+          { paddingVertical: 0 },
+          { backgroundColor: pressed ? Colors.Grey_04 : Colors.Blanco },
+        ]}
+      >
         <View
           style={{
             width: "100%",

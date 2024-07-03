@@ -6,6 +6,8 @@ import {
   SafeAreaView,
   ScrollView,
   Pressable,
+  Linking,
+  Platform,
 } from "react-native";
 import BackCheckron from "../components/BackCheckron";
 import CommonStyles, { Colors } from "../CommonStyles/CommonStyles";
@@ -91,6 +93,7 @@ const Filtros = ({ navigation }) => {
                     paddingHorizontal: 10,
                   },
                 ]}
+                onPress={() => navigation.navigate("Filtros")}
               >
                 <View>
                   <Text style={[CommonTextStyles.Subtitle_16]}>
@@ -145,7 +148,7 @@ const Filtros = ({ navigation }) => {
               <SvgLogo theme={"Ubicacion"} color={Colors.NightBlue_600} />
             </View>
             <View>
-              <Text style={CommonTextStyles.Subtitle_18}>Fecha y Hora</Text>
+              <Text style={CommonTextStyles.Subtitle_18}>Ubicación</Text>
             </View>
           </View>
           <View
@@ -210,6 +213,7 @@ const Filtros = ({ navigation }) => {
               theme={"StyleBoton"}
               label={"Aplicar filtros y buscar"}
               color={Colors.NightBlue_600}
+              onPress={() => alert("Buscar")}
             />
           </View>
         </View>
