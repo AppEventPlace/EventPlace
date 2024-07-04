@@ -7,7 +7,12 @@ import Froms from "../../../components/Form";
 import Boton from "../../../components/Button";
 import Dropdown from "../../../components/Dropdown";
 import SvgLogo from "../../../assets/LogoSVG";
+//import { LeafletView, LatLng } from "react-native-leaflet-view";
+/*import Mapbox from "@rnmapbox/maps";
 
+Mapbox.setAccessToken(
+  "pk.eyJ1IjoiYW5kcmVzZ29tZXoxMiIsImEiOiJjbHk2Z2toM2UwYWY5MmxuNjE0Zmg0ZGhoIn0.aZMV5nZulGYnmVEvFhCKag"
+);*/
 //Definición de preguntas:
 const preguntas = [
   {
@@ -69,6 +74,14 @@ en la lista:
   );
 };
 
+/* Codigo para llamar el mapa
+ <View style={style.page}>
+          <View style={style.container}>
+            <Mapbox.MapView style={style.map} />
+          </View>
+        </View>
+*/
+
 const style = StyleSheet.create({
   Container: {
     rowGap: 16,
@@ -110,6 +123,20 @@ const style = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: "#6979F8",
+  },
+  page: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+  },
+  container: {
+    height: 300,
+    width: 300,
+    backgroundColor: "tomato",
+  },
+  map: {
+    flex: 1,
   },
 });
 
