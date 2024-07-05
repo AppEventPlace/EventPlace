@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, ScrollView, Pressable } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+  Dimensions,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BackCheckron from "../../components/BackCheckron";
 import ProgressBar from "./Components/ProgressStep";
 import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
+import BotonFlotante from "../../components/BotonFlotante";
 
 const Opciones = [
   {
@@ -120,280 +128,297 @@ const Resumen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.PerfilContainer}>
-        <BackCheckron navigation={navigation} />
-        <ProgressBar step={3} />
-        <View style={styles.FullContainer}>
-          <View style={styles.optionsContainer}>
-            {Opciones.map((opcion, index) => (
-              <View style={styles.buttonContainer} key={index}>
-                <Pressable
-                  style={({ pressed }) => [
-                    styles.button,
-                    { backgroundColor: pressed ? "#EAEAEA" : "#FFFFFF" },
-                    {
-                      transform: [
-                        {
-                          scale:
-                            index === 0
-                              ? showInfo
+      <View style={{ flex: 1 }}>
+        <ScrollView style={styles.PerfilContainer}>
+          <BackCheckron navigation={navigation} />
+          <ProgressBar step={3} />
+          <View style={styles.FullContainer}>
+            <View style={styles.optionsContainer}>
+              {Opciones.map((opcion, index) => (
+                <View style={styles.buttonContainer} key={index}>
+                  <Pressable
+                    style={({ pressed }) => [
+                      styles.button,
+                      { backgroundColor: pressed ? "#EAEAEA" : "#FFFFFF" },
+                      {
+                        transform: [
+                          {
+                            scale:
+                              index === 0
+                                ? showInfo
+                                  ? 0.95
+                                  : 1
+                                : showTickets
                                 ? 0.95
-                                : 1
-                              : showTickets
-                              ? 0.95
-                              : 1,
-                        },
-                      ],
-                    },
-                  ]}
-                  onPress={() => handlePress(index)}
-                >
-                  <View style={styles.buttonContent}>
-                    <SvgLogo theme="Key" />
-                    <Text style={[styles.buttonText, { color: "#000000" }]}>
-                      {opcion.label}
-                    </Text>
-                  </View>
-                  <SvgLogo
-                    theme={
-                      index === 0
-                        ? showInfo
+                                : 1,
+                          },
+                        ],
+                      },
+                    ]}
+                    onPress={() => handlePress(index)}
+                  >
+                    <View style={styles.buttonContent}>
+                      <SvgLogo theme="Key" />
+                      <Text style={[styles.buttonText, { color: "#000000" }]}>
+                        {opcion.label}
+                      </Text>
+                    </View>
+                    <SvgLogo
+                      theme={
+                        index === 0
+                          ? showInfo
+                            ? "ExpandLess"
+                            : "ExpandMore"
+                          : showTickets
                           ? "ExpandLess"
                           : "ExpandMore"
-                        : showTickets
-                        ? "ExpandLess"
-                        : "ExpandMore"
-                    }
-                    color="#6979F8"
-                  />
-                </Pressable>
-                {index === 0 && showInfo && (
-                  <View style={styles.Container}>
-                    {Info.map((pregunta) => (
-                      <View style={styles.SubContainer}>
-                        <View style={styles.flex}>
-                          <Text style={styles.Title}>{pregunta.Title}</Text>
-                          <Text style={styles.Date}>{pregunta.Date}</Text>
-                        </View>
-                        <View style={styles.flex}>
-                          <Text style={styles.Title}>{pregunta.Title_1}</Text>
-                          <Text style={styles.Date}>{pregunta.Date_1}</Text>
-                        </View>
-                      </View>
-                    ))}
-                    {Tiempo.map((pregunta) => (
-                      <View style={styles.SubContainerIcon}>
-                        <View style={styles.flex}>
-                          <View style={styles.Direction}>
+                      }
+                      color="#6979F8"
+                    />
+                  </Pressable>
+                  {index === 0 && showInfo && (
+                    <View style={styles.Container}>
+                      {Info.map((pregunta) => (
+                        <View style={styles.SubContainer}>
+                          <View style={styles.flex}>
                             <Text style={styles.Title}>{pregunta.Title}</Text>
-                            <SvgLogo theme="Calendario" color="#6979F8" />
+                            <Text style={styles.Date}>{pregunta.Date}</Text>
                           </View>
-                          <Text style={styles.Date}>{pregunta.Date}</Text>
-                        </View>
-                        <View style={styles.flex}>
-                          <View style={styles.Direction}>
+                          <View style={styles.flex}>
                             <Text style={styles.Title}>{pregunta.Title_1}</Text>
-                            <SvgLogo theme="Clock" color="#6979F8" />
+                            <Text style={styles.Date}>{pregunta.Date_1}</Text>
                           </View>
-                          <Text style={styles.Date}>{pregunta.Date_1}</Text>
                         </View>
+                      ))}
+                      {Tiempo.map((pregunta) => (
+                        <View style={styles.SubContainerIcon}>
+                          <View style={styles.flex}>
+                            <View style={styles.Direction}>
+                              <Text style={styles.Title}>{pregunta.Title}</Text>
+                              <SvgLogo theme="Calendario" color="#6979F8" />
+                            </View>
+                            <Text style={styles.Date}>{pregunta.Date}</Text>
+                          </View>
+                          <View style={styles.flex}>
+                            <View style={styles.Direction}>
+                              <Text style={styles.Title}>
+                                {pregunta.Title_1}
+                              </Text>
+                              <SvgLogo theme="Clock" color="#6979F8" />
+                            </View>
+                            <Text style={styles.Date}>{pregunta.Date_1}</Text>
+                          </View>
+                        </View>
+                      ))}
+                      <View style={styles.Underscore} />
+                      <View style={styles.flex}>
+                        <Text style={styles.Title}>Descripción</Text>
+                        <Text style={styles.Descrip}>
+                          Lorem ipsum dolor sit amet consectetur. Suspendisse id
+                          netus arcu pulvinar porta molestie enim morbi commodo.
+                        </Text>
                       </View>
-                    ))}
-                    <View style={styles.Underscore} />
-                    <View style={styles.flex}>
-                      <Text style={styles.Title}>Descripción</Text>
-                      <Text style={styles.Descrip}>
-                        Lorem ipsum dolor sit amet consectetur. Suspendisse id
-                        netus arcu pulvinar porta molestie enim morbi commodo.
+                      <View style={styles.Underscore} />
+                      <Text style={styles.TitleStyle}>Organizador</Text>
+                      <View style={{ rowGap: 8 }}>
+                        {Organizador.map((pregunta) => (
+                          <View style={styles.SubContainer}>
+                            <View style={styles.flex}>
+                              <Text style={styles.Title}>{pregunta.Title}</Text>
+                              <Text style={styles.Date}>{pregunta.Date}</Text>
+                            </View>
+                          </View>
+                        ))}
+                      </View>
+                      <Text style={styles.TitleStyle}>Anfitrión</Text>
+                      <View style={{ rowGap: 8 }}>
+                        {Anfitrion.map((pregunta) => (
+                          <View style={styles.SubContainer}>
+                            <View style={styles.flex}>
+                              <Text style={styles.Title}>{pregunta.Title}</Text>
+                              <Text style={styles.Date}>{pregunta.Date}</Text>
+                            </View>
+                          </View>
+                        ))}
+                      </View>
+                      <View style={styles.Underscore} />
+                      <Text style={styles.TitleStyle}>
+                        Ubicación del evento
                       </Text>
-                    </View>
-                    <View style={styles.Underscore} />
-                    <Text style={styles.TitleStyle}>Organizador</Text>
-                    <View style={{ rowGap: 8 }}>
-                      {Organizador.map((pregunta) => (
-                        <View style={styles.SubContainer}>
-                          <View style={styles.flex}>
-                            <Text style={styles.Title}>{pregunta.Title}</Text>
-                            <Text style={styles.Date}>{pregunta.Date}</Text>
+                      <View style={{ rowGap: 8 }}>
+                        {Ubicacion.map((pregunta) => (
+                          <View style={styles.SubContainer}>
+                            <View style={styles.flex}>
+                              <Text style={styles.Title}>{pregunta.Title}</Text>
+                              <Text style={styles.Date}>{pregunta.Date}</Text>
+                            </View>
                           </View>
-                        </View>
-                      ))}
+                        ))}
+                      </View>
+                      <View style={styles.Anfitrion}>
+                        <Text style={styles.StyleText}>
+                          Ver ubicacion en el mapa
+                        </Text>
+                        <SvgLogo theme={"Map"} color={"#6979F8"} />
+                      </View>
+                      <View style={styles.Underscore} />
+                      <View style={styles.BotonContainer_1}>
+                        <Button
+                          label="Editar información principal"
+                          color="#F4F5FE"
+                          theme="StyleBoton_1"
+                          onPress={() => alert("Editar información principal")}
+                        />
+                      </View>
                     </View>
-                    <Text style={styles.TitleStyle}>Anfitrión</Text>
-                    <View style={{ rowGap: 8 }}>
-                      {Anfitrion.map((pregunta) => (
-                        <View style={styles.SubContainer}>
-                          <View style={styles.flex}>
-                            <Text style={styles.Title}>{pregunta.Title}</Text>
-                            <Text style={styles.Date}>{pregunta.Date}</Text>
-                          </View>
-                        </View>
-                      ))}
-                    </View>
-                    <View style={styles.Underscore} />
-                    <Text style={styles.TitleStyle}>Ubicación del evento</Text>
-                    <View style={{ rowGap: 8 }}>
-                      {Ubicacion.map((pregunta) => (
-                        <View style={styles.SubContainer}>
-                          <View style={styles.flex}>
-                            <Text style={styles.Title}>{pregunta.Title}</Text>
-                            <Text style={styles.Date}>{pregunta.Date}</Text>
-                          </View>
-                        </View>
-                      ))}
-                    </View>
-                    <View style={styles.Anfitrion}>
-                      <Text style={styles.StyleText}>
-                        Ver ubicacion en el mapa
-                      </Text>
-                      <SvgLogo theme={"Map"} color={"#6979F8"} />
-                    </View>
-                    <View style={styles.Underscore} />
-                    <View style={styles.BotonContainer_1}>
-                      <Button
-                        label="Editar información principal"
-                        color="#F4F5FE"
-                        theme="StyleBoton_1"
-                        onPress={() => alert("Editar información principal")}
-                      />
-                    </View>
-                  </View>
-                )}
-                {index === 1 && showTickets && (
-                  <View style={styles.Container}>
-                    <View
-                      style={{
-                        rowGap: 8,
-                      }}
-                    >
-                      <Text style={styles.TitleStyle}>VIP</Text>
+                  )}
+                  {index === 1 && showTickets && (
+                    <View style={styles.Container}>
                       <View
                         style={{
-                          justifyContent: "space-between",
-                          flexDirection: "row",
-                          alignItems: "center",
+                          rowGap: 8,
                         }}
                       >
-                        <Text style={styles.Title}>Cantidad</Text>
-                        <Text style={styles.Date}>150</Text>
+                        <Text style={styles.TitleStyle}>VIP</Text>
+                        <View
+                          style={{
+                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Text style={styles.Title}>Cantidad</Text>
+                          <Text style={styles.Date}>150</Text>
+                        </View>
+                        <Text style={styles.Title}>Descripción</Text>
+                        <Text style={styles.Title}>
+                          Lorem ipsum dolor sit amet consectetur. Eget at sed
+                          vel sit suscipit. Mauris platea molestie ornare libero
+                          aliquam proin elementum velit. Vel ipsum venenatis
+                          purus lectus amet et nibh morbi quis. Ultricies tellus
+                          at suspendisse sit in nascetur
+                        </Text>
+                        <View />
                       </View>
-                      <Text style={styles.Title}>Descripción</Text>
-                      <Text style={styles.Title}>
-                        Lorem ipsum dolor sit amet consectetur. Eget at sed vel
-                        sit suscipit. Mauris platea molestie ornare libero
-                        aliquam proin elementum velit. Vel ipsum venenatis purus
-                        lectus amet et nibh morbi quis. Ultricies tellus at
-                        suspendisse sit in nascetur
-                      </Text>
-                      <View />
-                    </View>
 
-                    <View
-                      style={{
-                        rowGap: 8,
-                      }}
-                    >
-                      <Text style={styles.TitleStyle}>Preferencial</Text>
                       <View
                         style={{
-                          justifyContent: "space-between",
-                          flexDirection: "row",
-                          alignItems: "center",
+                          rowGap: 8,
                         }}
                       >
-                        <Text style={styles.Title}>Cantidad</Text>
-                        <Text style={styles.Date}>150</Text>
+                        <Text style={styles.TitleStyle}>Preferencial</Text>
+                        <View
+                          style={{
+                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Text style={styles.Title}>Cantidad</Text>
+                          <Text style={styles.Date}>150</Text>
+                        </View>
+                        <Text style={styles.Title}>Descripción</Text>
+                        <Text style={styles.Title}>
+                          Lorem ipsum dolor sit amet consectetur. Eget at sed
+                          vel sit suscipit. Mauris platea molestie ornare libero
+                          aliquam proin elementum velit. Vel ipsum venenatis
+                          purus lectus amet et nibh morbi quis. Ultricies tellus
+                          at suspendisse sit in nascetur
+                        </Text>
+                        <View />
                       </View>
-                      <Text style={styles.Title}>Descripción</Text>
-                      <Text style={styles.Title}>
-                        Lorem ipsum dolor sit amet consectetur. Eget at sed vel
-                        sit suscipit. Mauris platea molestie ornare libero
-                        aliquam proin elementum velit. Vel ipsum venenatis purus
-                        lectus amet et nibh morbi quis. Ultricies tellus at
-                        suspendisse sit in nascetur
-                      </Text>
-                      <View />
-                    </View>
 
-                    <View
-                      style={{
-                        rowGap: 8,
-                      }}
-                    >
-                      <Text style={styles.TitleStyle}>Preferencial</Text>
                       <View
                         style={{
-                          justifyContent: "space-between",
-                          flexDirection: "row",
-                          alignItems: "center",
+                          rowGap: 8,
                         }}
                       >
-                        <Text style={styles.Title}>Cantidad</Text>
-                        <Text style={styles.Date}>150</Text>
+                        <Text style={styles.TitleStyle}>Preferencial</Text>
+                        <View
+                          style={{
+                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Text style={styles.Title}>Cantidad</Text>
+                          <Text style={styles.Date}>150</Text>
+                        </View>
+                        <Text style={styles.Title}>Descripción</Text>
+                        <Text style={styles.Title}>
+                          Lorem ipsum dolor sit amet consectetur. Eget at sed
+                          vel sit suscipit. Mauris platea molestie ornare libero
+                          aliquam proin elementum velit. Vel ipsum venenatis
+                          purus lectus amet et nibh morbi quis. Ultricies tellus
+                          at suspendisse sit in nascetur
+                        </Text>
+                        <View />
                       </View>
-                      <Text style={styles.Title}>Descripción</Text>
-                      <Text style={styles.Title}>
-                        Lorem ipsum dolor sit amet consectetur. Eget at sed vel
-                        sit suscipit. Mauris platea molestie ornare libero
-                        aliquam proin elementum velit. Vel ipsum venenatis purus
-                        lectus amet et nibh morbi quis. Ultricies tellus at
-                        suspendisse sit in nascetur
-                      </Text>
-                      <View />
-                    </View>
-                    <View
-                      style={{
-                        rowGap: 8,
-                      }}
-                    >
-                      <Text style={styles.TitleStyle}>General</Text>
                       <View
                         style={{
-                          justifyContent: "space-between",
-                          flexDirection: "row",
-                          alignItems: "center",
+                          rowGap: 8,
                         }}
                       >
-                        <Text style={styles.Title}>Cantidad</Text>
-                        <Text style={styles.Date}>150</Text>
+                        <Text style={styles.TitleStyle}>General</Text>
+                        <View
+                          style={{
+                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Text style={styles.Title}>Cantidad</Text>
+                          <Text style={styles.Date}>150</Text>
+                        </View>
+                        <Text style={styles.Title}>Descripción</Text>
+                        <Text style={styles.Title}>
+                          Lorem ipsum dolor sit amet consectetur. Eget at sed
+                          vel sit suscipit. Mauris platea molestie ornare libero
+                          aliquam proin elementum velit. Vel ipsum venenatis
+                          purus lectus amet et nibh morbi quis. Ultricies tellus
+                          at suspendisse sit in nascetur
+                        </Text>
+                        <View />
                       </View>
-                      <Text style={styles.Title}>Descripción</Text>
-                      <Text style={styles.Title}>
-                        Lorem ipsum dolor sit amet consectetur. Eget at sed vel
-                        sit suscipit. Mauris platea molestie ornare libero
-                        aliquam proin elementum velit. Vel ipsum venenatis purus
-                        lectus amet et nibh morbi quis. Ultricies tellus at
-                        suspendisse sit in nascetur
-                      </Text>
-                      <View />
+                      <View style={styles.Underscore} />
+                      {Tiempo.map((pregunta) => (
+                        <View style={styles.SubContainerIcon}>
+                          <View style={styles.flex}>
+                            <View style={styles.Direction}>
+                              <Text style={styles.Title}>{pregunta.Title}</Text>
+                              <SvgLogo theme="Calendario" color="#6979F8" />
+                            </View>
+                            <Text style={styles.Date}>{pregunta.Date}</Text>
+                          </View>
+                          <View style={styles.flex}>
+                            <View style={styles.Direction}>
+                              <Text style={styles.Title}>
+                                {pregunta.Title_1}
+                              </Text>
+                              <SvgLogo theme="Clock" color="#6979F8" />
+                            </View>
+                            <Text style={styles.Date}>{pregunta.Date_1}</Text>
+                          </View>
+                        </View>
+                      ))}
+                      <View style={styles.Underscore} />
                     </View>
-                    <View style={styles.Underscore} />
-                    {Tiempo.map((pregunta) => (
-                      <View style={styles.SubContainerIcon}>
-                        <View style={styles.flex}>
-                          <View style={styles.Direction}>
-                            <Text style={styles.Title}>{pregunta.Title}</Text>
-                            <SvgLogo theme="Calendario" color="#6979F8" />
-                          </View>
-                          <Text style={styles.Date}>{pregunta.Date}</Text>
-                        </View>
-                        <View style={styles.flex}>
-                          <View style={styles.Direction}>
-                            <Text style={styles.Title}>{pregunta.Title_1}</Text>
-                            <SvgLogo theme="Clock" color="#6979F8" />
-                          </View>
-                          <Text style={styles.Date}>{pregunta.Date_1}</Text>
-                        </View>
-                      </View>
-                    ))}
-                    <View style={styles.Underscore} />
-                  </View>
-                )}
-              </View>
-            ))}
+                  )}
+                </View>
+              ))}
+            </View>
           </View>
+        </ScrollView>
+        <View
+          style={{
+            position: "absolute",
+            right: 16,
+            bottom: Dimensions.get("window").height * 0.4,
+          }}
+        >
+          <BotonFlotante navigation={navigation} />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

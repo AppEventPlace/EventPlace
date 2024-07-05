@@ -1,37 +1,56 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  useWindowDimensions,
+  Dimensions,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BackCheckron from "../../components/BackCheckron";
 import ProgressBar from "./Components/ProgressStep";
 import BoleteriaInfo from "./Components/BoleteriaInfo";
 import Button from "../../components/Button";
+import BotonFlotante from "../../components/BotonFlotante";
 
 const Boleteria = ({ navigation }) => {
   return (
     <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
-      <ScrollView style={style.PerfilContainer}>
-        <BackCheckron navigation={navigation} />
-        <ProgressBar step={2} />
-        <View style={style.FullContainer}>
-          <Text style={style.Info}>Boleteria</Text>
-          <Text style={style.TextInfo}>
-            Define la categoría, cantidad y el valor de las boletas para tu
-            evento
-          </Text>
+      <View style={{ flex: 1 }}>
+        <ScrollView style={style.PerfilContainer}>
+          <BackCheckron navigation={navigation} />
+          <ProgressBar step={2} />
+          <View style={style.FullContainer}>
+            <Text style={style.Info}>Boleteria</Text>
+            <Text style={style.TextInfo}>
+              Define la categoría, cantidad y el valor de las boletas para tu
+              evento
+            </Text>
 
-          <BoleteriaInfo />
+            <BoleteriaInfo />
 
-          <View style={style.BotonContainer}>
-            <Button
-              label="Continuar"
-              color="#6979F8"
-              theme="StyleBoton"
-              onPress={() => navigation.navigate("Resumen del evento")}
-            />
+            <View style={style.BotonContainer}>
+              <Button
+                label="Continuar"
+                color="#6979F8"
+                theme="StyleBoton"
+                onPress={() => navigation.navigate("Resumen del evento")}
+              />
+            </View>
           </View>
+        </ScrollView>
+        <View
+          style={{
+            position: "absolute",
+            right: 16,
+            bottom: Dimensions.get("window").height * 0.4,
+          }}
+        >
+          <BotonFlotante navigation={navigation} />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
