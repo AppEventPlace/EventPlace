@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useDebugValue, useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -9,6 +9,8 @@ import {
   Image,
   Alert,
   Pressable,
+  Platform,
+  ToastAndroid,
 } from "react-native";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import Categorias from "../../constants/Categorias";
@@ -18,6 +20,7 @@ import TarjetaWall from "../../components/TarjetaWall";
 import TusEventos from "../../constants/TusEventos";
 import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
+import Toast from "react-native-simple-toast";
 
 const OpcionesWall = [
   {
@@ -40,6 +43,24 @@ const OpcionesWall = [
 ];
 
 const WallPrincipal = ({ navigation }) => {
+  useEffect(() => {
+    if (Platform.OS === "ios") {
+      Toast.showWithGravity(
+        "Nos alegra que hagas parte de esta red de Eventers",
+        Toast.SHORT,
+        Toast.TOP,
+        { backgroundColor: "Green" }
+      );
+    } else if (Platform.OS === "android") {
+      ToastAndroid.showWithGravityAndOffset(
+        "Nos alegra s",
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        50,
+        500
+      );
+    }
+  }, []);
   return (
     <View style={{ flex: 1, marginTop: 0, backgroundColor: "#032030" }}>
       <SafeAreaView

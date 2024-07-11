@@ -28,4 +28,16 @@ export default [
     name: "Filtros",
     label: "Filtros",
   },
+  {
+    name: "FAQ",
+    label: "FAQ",
+  },
+  {
+    name: "Politica",
+    label: "Politica",
+  },
+  {
+    name: "ConfirmacionBoleta",
+    label: "ConfirmacionBoleta",
+  },
 ];
