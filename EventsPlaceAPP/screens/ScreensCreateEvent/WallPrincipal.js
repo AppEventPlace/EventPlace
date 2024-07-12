@@ -20,7 +20,7 @@ import TarjetaWall from "../../components/TarjetaWall";
 import TusEventos from "../../constants/TusEventos";
 import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
-import Toast from "react-native-simple-toast";
+//*import Toast from "react-native-simple-toast";
 
 const OpcionesWall = [
   {
@@ -44,7 +44,7 @@ const OpcionesWall = [
 
 const WallPrincipal = ({ navigation }) => {
   useEffect(() => {
-    if (Platform.OS === "ios") {
+    /* if (Platform.OS === "ios") {
       Toast.showWithGravity(
         "Nos alegra que hagas parte de esta red de Eventers",
         Toast.SHORT,
@@ -59,7 +59,7 @@ const WallPrincipal = ({ navigation }) => {
         50,
         500
       );
-    }
+    }*/
   }, []);
   return (
     <View style={{ flex: 1, marginTop: 0, backgroundColor: "#032030" }}>
@@ -116,6 +116,7 @@ const WallScroll = ({ item, navigation }) => {
                   marginHorizontal: 5,
                   marginLeft: 10,
                   alignContent: "center",
+
                   //backgroundColor: "#FBFBFB",
                 }}
               >
