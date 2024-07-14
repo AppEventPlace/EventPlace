@@ -413,7 +413,7 @@ const Resumen = ({ navigation }) => {
           style={{
             position: "absolute",
             right: 16,
-            bottom: Dimensions.get("window").height * 0.4,
+            bottom: Dimensions.get("window").height * 0.02,
           }}
         >
           <BotonFlotante navigation={navigation} />

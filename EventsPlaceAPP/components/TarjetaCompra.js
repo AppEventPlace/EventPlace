@@ -5,7 +5,7 @@ import SvgLogo from "../assets/LogoSVG";
 import CommonTextStyles from "../CommonStyles/CommonTextStyles";
 import Button from "./Button";
 
-const TarjetaCompra = ({ Valor }) => {
+const TarjetaCompra = ({ Valor, onPress }) => {
   return (
     <View key={"ContenedorTarjCompr"} style={style.ContenedorTarjeta}>
       <View key={"LogoExpandir"}>
@@ -19,7 +19,7 @@ const TarjetaCompra = ({ Valor }) => {
           key={"Info"}
           style={[
             style.ContenedorHorizontal,
-            { alignSelfs: "flex-start", width: "50%", gap: 8 },
+            { alignSelf: "flex-start", width: "50%", gap: 8 },
           ]}
         >
           <View key={"logoInfo"}>
@@ -48,6 +48,7 @@ const TarjetaCompra = ({ Valor }) => {
           theme={"StyleBoton"}
           label={"Conseguir entradas"}
           color={Colors.NightBlue_600}
+          onPress={onPress}
         />
       </View>
     </View>

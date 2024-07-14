@@ -11,7 +11,7 @@ const BotonFlotante = ({ navigation }) => {
       {presionado && (
         <View
           style={{
-            width: 157,
+            width: 128,
             height: 184,
             backgroundColor: Colors.Primary,
             borderRadius: 12,
@@ -38,7 +38,7 @@ const BotonFlotante = ({ navigation }) => {
           <Botones
             label={"Previsualizar"}
             logo={"Previsualizar"}
-            onPress={() => navigation.navigate("Filtros")}
+            onPress={() => navigation.navigate("Detalle Evento")}
           />
           <Botones
             label={"Publicar"}
@@ -49,7 +49,7 @@ const BotonFlotante = ({ navigation }) => {
       )}
       <View
         style={{
-          width: 44,
+          width: 128,
           height: 44,
           borderRadius: 48,
           elevation: 5,
@@ -71,7 +71,7 @@ const BotonFlotante = ({ navigation }) => {
                 : Colors.NightBlue_600,
             },
             {
-              width: 44,
+              width: 128,
               height: 44,
               borderRadius: 48,
               justifyContent: "center",
@@ -79,11 +79,22 @@ const BotonFlotante = ({ navigation }) => {
           ]}
           onPress={() => [setPresionado(!presionado)]}
         >
-          <View style={{ alignSelf: "center" }}>
+          <View
+            style={{
+              alignSelf: "center",
+              display: "flex",
+              flexDirection: "row-reverse",
+
+              gap: 16,
+            }}
+          >
             <SvgLogo
-              theme={presionado ? "Menos" : "Mas"}
+              theme={presionado ? "ExpandMore" : "ExpandLess"}
               color={Colors.Blanco}
             />
+            <Text style={[CommonTextStyles.Body_M, { color: Colors.Blanco }]}>
+              Acciones
+            </Text>
           </View>
         </Pressable>
       </View>

@@ -49,7 +49,7 @@ const DetalleEvento = ({ navigation }) => {
         >
           <View
             key={"PaginaPrincipalDetalleEvt"}
-            style={[CommonStyles.FullContainer, { marginTop: 20 }]}
+            style={[CommonStyles.FullContainer, { marginTop: 10 }]}
           >
             <View key={"BotonVolver"}>
               <BackCheckron
@@ -317,6 +317,7 @@ const DetalleEvento = ({ navigation }) => {
                     logo={null}
                     color={Colors.NightBlue_600}
                     label={"Conoce nuestra politica de reembolso"}
+                    onPress={() => navigation.navigate("Politica")}
                   />
                 </View>
                 <View key={"FaqDireccionador"} style={{ marginBottom: 165 }}>
@@ -325,6 +326,7 @@ const DetalleEvento = ({ navigation }) => {
                     logo={null}
                     color={Colors.NightBlue_600}
                     label={"Preguntas frecuentes"}
+                    onPress={() => navigation.navigate("FAQ")}
                   />
                 </View>
               </View>
@@ -340,7 +342,10 @@ const DetalleEvento = ({ navigation }) => {
           }}
         >
           {EjemploDetalleEvento.map((DatEvt) => (
-            <TarjetaCompra Valor={DatEvt.ValorEntrada} />
+            <TarjetaCompra
+              Valor={DatEvt.ValorEntrada}
+              onPress={() => navigation.navigate("ConfirmacionBoleta")}
+            />
           ))}
         </View>
       </View>

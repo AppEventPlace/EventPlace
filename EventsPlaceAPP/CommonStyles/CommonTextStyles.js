@@ -87,6 +87,24 @@ const CommonTextStyles = StyleSheet.create({
     lineHeight: 21.6,
     color: Colors.TexColor,
   },
+  Body_M: {
+    fontWeight: "500",
+    fontSize: 14,
+    lineHeight: 20,
+    color: Colors.TexColor,
+  },
+  Body_S: {
+    fontWeight: "500",
+    fontSize: 12,
+    lineHeight: 15,
+    color: Colors.TexColor,
+  },
+  Body_L: {
+    fontWeight: "500",
+    fontSize: 16,
+    lineHeight: 22,
+    color: Colors.Placeholder,
+  },
 });
 
 export default CommonTextStyles;

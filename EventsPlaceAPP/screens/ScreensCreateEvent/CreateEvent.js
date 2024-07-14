@@ -9,6 +9,9 @@ import WallPrincipal from "./WallPrincipal";
 import SearchPage from "./SearchPage";
 import DetalleEvento from "./DetalleEvento";
 import Filtros from "../Filtros";
+import FAQ from "./FAQ";
+import Politica from "./Politica";
+import ConfirmacionBoleta from "./ConfirmacionBoleta";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +39,12 @@ const StackCreateEventNavigator = () => {
               ? DetalleEvento
               : Create.name === "Filtros"
               ? Filtros
+              : Create.name === "FAQ"
+              ? FAQ
+              : Create.name === "Politica"
+              ? Politica
+              : Create.name === "ConfirmacionBoleta"
+              ? ConfirmacionBoleta
               : Resumen
           }
         />

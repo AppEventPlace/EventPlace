@@ -14,13 +14,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import SvgLogo from "../../assets/LogoSVG";
 
 import OpcionesSeleccion from "../../constants/OpcionesSeleccion";
-import { Picker } from "react-native-web";
+
 import { RadioButton } from "react-native-paper";
-import DatosClientePrueba from "../../constants/DatosClientePrueba";
-import ImageViewer from "../../components/ImageViewer";
-import CalificacionEst from "../../components/CalificacionEst";
-import CuadroEstado from "../../components/CuadroEstado";
-import * as ImagePicker from "expo-image-picker";
+
 import Seleccionable from "../../components/Seleccionable";
 import SeleccionTags from "../../components/SeleccionTags";
 
