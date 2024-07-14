@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const CrearCuenta = async (
+const CreateUser = async (
   nombre,
   apellido,
   fechaNacimiento,
@@ -36,4 +36,4 @@ const CrearCuenta = async (
   return null;
 };
 
-export default CrearCuenta;
+export default CreateUser;

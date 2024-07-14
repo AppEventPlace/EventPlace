@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 Importar componentes propios requeridos para el Loguin / creación de usuario
 ---------------------------------------------------------------------------*/
 import Loguin from "../screens/screensStack/Loguin";
-import CreaCuenta from "../screens/screensStack/CreaCuenta";
+import CreateAccount from "../screens/screensStack/CreateAccount";
 import TermsAndConditions from "../screens/screensStack/TermsAndConditions";
 import VerifyIdentity from "../screens/screensStack/VerifyIdentity";
 import Gustos from "../screens/screensStack/Gustos";
@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 const CreacionStack = () => {
   const screens = {
     Loguin: Loguin,
-    CreaCuenta: CreaCuenta,
+    CreateAccount: CreateAccount,
     TermsAndConditions: TermsAndConditions,
     VerifyIdentity: VerifyIdentity,
     Gustos: Gustos,

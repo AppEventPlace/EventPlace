@@ -8,9 +8,13 @@ export const Colors = {
   TexColor: "#0F172A",
   Placeholder: "#72767A",
   Line: "#A1A5A9",
-  // -->
+  // --> NightBlue
   NightBlue_200: "#E9EAFE",
+  NightBlue_300: "#D0D4FC",
+  NightBlue_400: "#B5BBFB",
+  NightBlue_500: "#949DF9",
   NightBlue_600: "#6979F8",
+  NightBlue_700: "#5E6CDE",
   NightBlue_800: "#515EC0",
   // --> Azul
   Azul_Facebook: "#1877F2",
@@ -22,6 +26,7 @@ export const Colors = {
   Blanco: "#FBFBFE",
   // -->
   Negro: "#000000",
+  Rojo: "red",
   Grey_Top: "#032030",
 };
 
@@ -37,6 +42,7 @@ export const FontSizes = {
   medium_19: 19,
   large: 20,
   extraLarge: 24,
+  megaLarge: 34,
 };
 
 // Color BackCheckron
@@ -52,22 +58,16 @@ const CommonStyles = StyleSheet.create({
   // --> Estilo definido para <SafeAreaView>
   AreaView: {
     flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 24,
+    paddingTop: 30,
   },
 
-  AreaView_Full: {
-    flex: 1,
-    //paddingTop: 10,
-  },
-
+  // --> Estilo definido para <ScrollView>
   ScrollView: {
     flex: 1,
     width: "100%",
   },
 
-  // -->
+  // --> Contenedro principal
   FullContainer: {
     backgroundColor: Colors.Primary,
     width: "100%",
@@ -100,33 +100,63 @@ const CommonStyles = StyleSheet.create({
   // --> Contenedor principal del diseño de Input Text
   SubContainer: {
     rowGap: 8,
-    height: 82,
     width: "100%",
     alignItems: "flex-start",
   },
 
+  // --> Contenedor secundario par el diseño de Input Text (Usar Para agregar iconos en el Input Text)
+  SubContainer_2: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    borderBottomColor: Colors.Line,
+    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+  },
+
+  // --> Contenedor secundario par el diseño de Input Text (Contenedor del icono )
+  SubContainer_3: {
+    marginHorizontal: 10,
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   // --> Stilo  de Texto - Titulo:  Usar en conjunto con SubContainer
   TexContainer: {
-    height: 22,
-    fontSize: FontSizes.medium,
+    height: 17,
     width: "100%",
-    lineHeight: 22,
+    fontWeight: "600",
+    fontSize: FontSizes.small_14,
+    lineHeight: 17,
     color: Colors.TexColor,
-    fontWeight: "500",
   },
 
   // --> Estilo de Texto – Contenido del Input Text
   TexInput: {
     flex: 1,
-    minWidth: "100%",
-    fontSize: FontSizes.small_14,
-    lineHeight: 20,
-    color: Colors.Placeholder,
+    width: "100%",
     fontWeight: "500",
+    fontSize: FontSizes.medium,
+    lineHeight: 22,
+    color: Colors.Placeholder,
     paddingVertical: 16,
     paddingHorizontal: 8,
     borderBottomColor: Colors.Line,
     borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+  },
+
+  // --> Estilo de Texto – Contenido en el SubContainer_2
+  TexInput_1: {
+    flex: 1,
+    width: "100%",
+    fontWeight: "500",
+    fontSize: FontSizes.medium,
+    lineHeight: 22,
+    color: Colors.Placeholder,
+    paddingVertical: 16,
+    paddingHorizontal: 8,
   },
 
   // --> Estilo predeterminado para (Button theme="StyleBoton") botón principal .
@@ -150,12 +180,23 @@ const CommonStyles = StyleSheet.create({
     backgroundColor: Colors.Grey_04,
   },
 
-  // --> Contenedor parala  barra de progreso
-  ProgressBar: {
+  // --> Contenedor para la  barra de progreso ViewProgressBar y ProgressBar
+  ViewProgressBar: {
     width: "100%",
-    height: 10,
+    height: 16,
     alignItems: "center",
+    flexDirection: "row",
+    columnGap: 8,
   },
+  // --> Estilo para el progreso bar
+  ProgressBar: {
+    marginVertical: 10,
+    borderRadius: 20,
+    height: 4,
+    flex: 1,
+  },
+
+  // -->
   AmpliarInfo: {
     width: "100%",
     paddingHorizontal: 12,

@@ -90,7 +90,7 @@ const Menu = () => {
 //fin creacion stack
 //constante autenticacion
 
-let isUserAuthenticated = true;
+let isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (
@@ -103,14 +103,3 @@ const Pantalla = () => {
 export default function App() {
   return <Pantalla />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-
-//Iconos que se muestran en el menú inferior
