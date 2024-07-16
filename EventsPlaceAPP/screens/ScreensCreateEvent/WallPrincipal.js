@@ -62,26 +62,22 @@ const WallPrincipal = ({ navigation }) => {
     }*/
   }, []);
   return (
-    <View style={{ flex: 1, marginTop: 0, backgroundColor: "#032030" }}>
-      <SafeAreaView
-        style={{ backgroundColor: "#032030", flex: 1, marginTop: 30 }}
-      >
-        <FlatList
-          key={"ScrollInfinite"}
-          stickyHeaderIndices={[1]}
-          style={{
-            backgroundColor: "#F4F5FE",
+    <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
+      <FlatList
+        key={"ScrollInfinite"}
+        stickyHeaderIndices={[1]}
+        style={{
+          backgroundColor: "#F4F5FE",
 
-            width: "100%", // Ancho de a imagen
-            height: "100%",
-          }}
-          data={OpcionesWall}
-          renderItem={({ item }) => (
-            <WallScroll item={item} navigation={navigation} />
-          )}
-        />
-      </SafeAreaView>
-    </View>
+          width: "100%", // Ancho de a imagen
+          height: "100%",
+        }}
+        data={OpcionesWall}
+        renderItem={({ item }) => (
+          <WallScroll item={item} navigation={navigation} />
+        )}
+      />
+    </SafeAreaView>
   );
 };
 
