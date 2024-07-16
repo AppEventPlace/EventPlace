@@ -1,39 +1,73 @@
-import React from "react";
-import { Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 
-const CreateUser = async (
-  nombre,
-  apellido,
-  fechaNacimiento,
-  celular,
-  email,
-  usuario,
-  contraseña
-) => {
-  await fetch(
-    "https://v8gfptr7d7.execute-api.us-east-1.amazonaws.com/createUser",
-    {
-      method: "POST",
-      headers: {
-        //date: "Fri, 24 May 2024 00",
-        "Content-Type": "application/json",
-        //rquid: "fsdgf6854sahgdf5243",
-        //"Access-Control-Allow-Origin": "http://localhost:8081",
-      },
-      body: JSON.stringify({
-        nombre,
-        apellido,
-        fechaNacimiento,
-        celular,
-        email,
-        usuario,
-        contraseña,
-      }),
+const CreateUser = async (stateJson) => {
+  try {
+    const response = await fetch(
+      "https://v8gfptr7d7.execute-api.us-east-1.amazonaws.com/createUser",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // rquid: "fsdgf6854sahgdf5243",
+        },
+        body: stateJson, // Asegúrate de stringify el cuerpo JSON
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-  )
-    .then((response) => response.json())
-    .then((result) => [console.log(result), alert("Creacion hecha")]);
-  return null;
+
+    const result = await response.json();
+    console.log(result);
+
+    // Mostrar mensaje de éxito
+    Toast.show({
+      type: "success",
+      text1: "Creación exitosa",
+      visibilityTime: 2000, // Duración en milisegundos
+    });
+
+    console.log(stateJson);
+  } catch (error) {
+    // console.error("Error al crear usuario:", error);
+
+    // Mostrar mensaje de error
+    Toast.show({
+      type: "error",
+      text1: "Error al crear usuario",
+      text2: error.message, // Detalles del error
+      visibilityTime: 3000,
+    });
+  }
 };
 
 export default CreateUser;
+
+// import { ToastAndroid } from "react-native";
+
+// const CreateUser = async (stateJson) => {
+//   try {
+//     const response = await fetch(
+//       "https://v8gfptr7d7.execute-api.us-east-1.amazonaws.com/createUser",
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           // rquid: "fsdgf6854sahgdf5243",
+//         },
+//         body: stateJson,
+//       }
+//     );
+
+//     const result = await response.json();
+//     console.log(result);
+//     ToastAndroid.show("Creacion hecha", ToastAndroid.SHORT);
+//     console.log(stateJson);
+//   } catch (error) {
+//     console.error("Error al crear usuario:", error);
+//     ToastAndroid.show("Error al crear usuario", ToastAndroid.SHORT);
+//   }
+// };
+
+// export default CreateUser;

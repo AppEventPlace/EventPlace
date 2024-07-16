@@ -4,6 +4,7 @@ import { Text, Platform, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import CreacionStack from "./Navigation/LoginStack";
+import Toast from "react-native-toast-message";
 
 //import MenuWeb from "./src/menu/MenuWeb";
 import {
@@ -90,12 +91,13 @@ const Menu = () => {
 //fin creacion stack
 //constante autenticacion
 
-let isUserAuthenticated = true;
+let isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (
     <NavigationContainer style={{ flex: 1 }}>
       {isUserAuthenticated ? <Menu /> : <CreacionStack />}
+      <Toast />
     </NavigationContainer>
   );
 };
