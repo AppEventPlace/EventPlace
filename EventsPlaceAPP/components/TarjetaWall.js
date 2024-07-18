@@ -1,5 +1,7 @@
 import React from "react";
 import { Text, View, Image, Pressable } from "react-native";
+import CommonTextStyles from "../CommonStyles/CommonTextStyles";
+import { Colors } from "../CommonStyles/CommonStyles";
 
 const TarjetaWall = ({
   source,
@@ -15,7 +17,7 @@ const TarjetaWall = ({
       return (
         <View
           style={{
-            width: "55%",
+            //width: "55%",
             borderRadius: 12,
             height: 370,
             maxWidth: 179,
@@ -34,7 +36,7 @@ const TarjetaWall = ({
         >
           <Pressable
             style={({ pressed }) => [
-              { backgroundColor: pressed ? "#C6C7C8" : null },
+              { backgroundColor: pressed ? Colors.Grey_300 : null },
               { width: "100%", height: "100%", borderRadius: 12 },
             ]}
             onPress={onPress}
@@ -66,33 +68,19 @@ const TarjetaWall = ({
               style={{ width: "95%", marginTop: 15, marginLeft: 7, height: 40 }}
             >
               <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: "600",
-                  color: "#0F172A",
-                }}
+                style={[CommonTextStyles.SemiBold_M, { color: Colors.Negro }]}
               >
                 {Titulo}
               </Text>
             </View>
             <View style={{ width: "95%", marginTop: 10, marginLeft: 7 }}>
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: "500",
-                  color: "#0F172A",
-                }}
-              >
+              <Text style={[CommonTextStyles.Body_S, { color: Colors.Negro }]}>
                 {fecha}
               </Text>
             </View>
             <View style={{ width: "95%", marginTop: 15, marginLeft: 7 }}>
               <Text
-                style={{
-                  fontSize: 12,
-                  fontWeight: "500",
-                  color: "#828282",
-                }}
+                style={[CommonTextStyles.Body_XS, { color: Colors.Grey_Soft }]}
               >
                 {ubicacion}
               </Text>
@@ -101,22 +89,24 @@ const TarjetaWall = ({
               style={{
                 width: "100%",
                 marginTop: 10,
-                marginHorizontal: 7,
+                paddingHorizontal: 7,
                 flexDirection: "row",
                 height: "25%",
                 marginBottom: 10,
                 flexShrink: 1,
+                alignItems: "center",
               }}
             >
               <Text
-                style={{
-                  //fontSize: 12,
-                  fontWeight: "500",
-                  color: "#333333",
-                  lineHeight: 16,
-                  flexShrink: 1,
-                  textAlign: "auto",
-                }}
+                style={[
+                  CommonTextStyles.Body_XS,
+                  {
+                    color: Colors.Grey_07,
+                    flexShrink: 1,
+                    textAlign: "auto",
+                    letterSpacing: 0.015,
+                  },
+                ]}
               >
                 {Descripcion}
               </Text>
@@ -150,7 +140,7 @@ const TarjetaWall = ({
         >
           <Pressable
             style={({ pressed }) => [
-              { backgroundColor: pressed ? "#C6C7C8" : null },
+              { backgroundColor: pressed ? Colors.Grey_300 : null },
               {
                 width: "100%",
                 height: "100%",
@@ -165,7 +155,7 @@ const TarjetaWall = ({
             <View
               style={{
                 //width: "45%",
-                width: "25%",
+                //width: "30%",
                 maxWidth: 90,
                 height: 193,
                 maxWidth: 179,
@@ -189,47 +179,32 @@ const TarjetaWall = ({
             <View
               style={{
                 width: "75%",
-                marginRight: 10,
+                paddingHorizontal: 16,
                 height: 193,
 
-                marginBottom: 10,
+                paddingVertical: 16,
               }}
             >
-              <View
-                style={{ width: "95%", marginTop: 5, marginHorizontal: 15 }}
-              >
+              <View style={{ width: "95%", marginTop: 5 }}>
                 <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: "600",
-                    color: "#0F172A",
-                  }}
+                  style={[CommonTextStyles.SemiBold_M, { color: Colors.Negro }]}
                 >
                   {Titulo}
                 </Text>
               </View>
-              <View
-                style={{ width: "95%", marginTop: 30, marginHorizontal: 15 }}
-              >
+              <View style={{ width: "95%", marginTop: 30 }}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "500",
-                    color: "#0F172A",
-                  }}
+                  style={[CommonTextStyles.Body_S, { color: Colors.Negro }]}
                 >
                   {fecha}
                 </Text>
               </View>
-              <View
-                style={{ width: "95%", marginTop: 15, marginHorizontal: 15 }}
-              >
+              <View style={{ width: "95%", marginTop: 15 }}>
                 <Text
-                  style={{
-                    fontSize: 12,
-                    fontWeight: "500",
-                    color: "#828282",
-                  }}
+                  style={[
+                    CommonTextStyles.Body_XS,
+                    { color: Colors.Grey_Soft },
+                  ]}
                 >
                   {ubicacion}
                 </Text>
@@ -238,23 +213,26 @@ const TarjetaWall = ({
                 style={{
                   //height: 60,
                   marginTop: 10,
-                  marginHorizontal: 15,
-                  marginBottom: 10,
+                  //marginHorizontal: 15,
+                  //marginBottom: 10,
 
-                  //width: "95%",
+                  width: "98%",
 
                   //flexDirection: "row",
                   flexShrink: 1,
+                  //justifyContent: "center",
                 }}
               >
                 <Text
-                  style={{
-                    //fontSize: 12,
-                    fontWeight: "500",
-                    color: "#333333",
-                    lineHeight: 16,
-                    flexShrink: 1,
-                  }}
+                  style={[
+                    CommonTextStyles.Body_XS,
+                    {
+                      color: Colors.Grey_07,
+                      flexShrink: 1,
+                      textAlign: "auto",
+                      letterSpacing: 0.015,
+                    },
+                  ]}
                 >
                   {Descripcion}
                 </Text>

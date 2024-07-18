@@ -22,8 +22,9 @@ export const Colors = {
   Azul_Facebook: "#1877F2",
   // --> Gris
   Grey_04: "#BDBDBD",
-  Grey_300: "#c6c7c8",
+  Grey_300: "#C6C7C8",
   Grey_07: "#333333",
+  Grey_Soft: "#828282",
   // -->
   Blanco: "#FBFBFE",
   // -->
@@ -34,6 +35,7 @@ export const Colors = {
 
 // Lista de tamaños de fuente
 export const FontSizes = {
+  extrasmall: 10,
   small: 12,
   small_13: 13,
   small_14: 14,

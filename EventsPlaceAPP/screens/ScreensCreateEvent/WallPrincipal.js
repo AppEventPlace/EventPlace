@@ -92,10 +92,10 @@ const WallScroll = ({ item, navigation }) => {
             width: "100%",
             //maxWidth: 700,
             marginLeft: 0,
-            marginRight: 15,
+            marginRight: 16,
             backgroundColor: Colors.Primary,
             borderBottomWidth: 0.5,
-            borderBottomColor: "#C6C7C8",
+            borderBottomColor: Colors.Grey_300,
           }}
         >
           <Text style={[style.SubTitulo, { marginLeft: 10, marginTop: 10 }]}>
@@ -144,7 +144,7 @@ const WallScroll = ({ item, navigation }) => {
                         width: 48,
                         height: 48,
                         borderWidth: 2,
-                        borderColor: "#D0D4FC",
+                        borderColor: Colors.NightBlue_300,
                       }}
                     />
                   </View>
@@ -152,11 +152,10 @@ const WallScroll = ({ item, navigation }) => {
                     style={{ width: 80, marginTop: 5, alignItems: "center" }}
                   >
                     <Text
-                      style={{
-                        fontSize: 14,
-                        fontWeight: "500",
-                        color: "#0F172A",
-                      }}
+                      style={[
+                        CommonTextStyles.Body_S,
+                        { color: Colors.TexColor },
+                      ]}
                     >
                       {Categorias.Categoría}
                     </Text>
@@ -178,32 +177,15 @@ const WallScroll = ({ item, navigation }) => {
             paddingHorizontal: 16,
           }}
         >
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginBottom: 8,
-            }}
+          <CabeceraSeccion
+            navigation={navigation}
+            label={"Eventos cercanos a tu ubicación"}
+          />
+          <ScrollView
+            horizontal={true}
+            //style={{ width: "100%", paddingRight: 16 }}
+            persistentScrollbar={true}
           >
-            <View
-              style={{
-                width: "50%",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
-            >
-              <Text style={CommonTextStyles.Subtitle_18}>
-                Eventos cercanos a tu ubicación
-              </Text>
-            </View>
-            <View style={{ width: "50%", alignItems: "flex-end" }}>
-              <Boton
-                theme={"VerMas"}
-                onPress={() => navigation.navigate("SearchPage")}
-              />
-            </View>
-          </View>
-          <ScrollView horizontal={true}>
             {EventosCercanos.map((EvtCer) => (
               <TarjetaWall
                 theme={"Vertical"}
@@ -229,37 +211,11 @@ const WallScroll = ({ item, navigation }) => {
             paddingHorizontal: 16,
           }}
         >
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginBottom: 8,
-            }}
-          >
-            <View
-              style={{
-                width: "50%",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
-            >
-              <Text style={CommonTextStyles.Subtitle_18}>
-                Eventos recomendados
-              </Text>
-            </View>
-            <View
-              style={{
-                width: "50%",
-                alignItems: "flex-end",
-              }}
-            >
-              <Boton
-                theme={"VerMas"}
-                onPress={() => navigation.navigate("SearchPage")}
-              />
-            </View>
-          </View>
-          <ScrollView horizontal={true}>
+          <CabeceraSeccion
+            navigation={navigation}
+            label={"Eventos recomendados"}
+          />
+          <ScrollView horizontal={true} persistentScrollbar={true}>
             {EventosCercanos.map((EvtCer) => (
               <TarjetaWall
                 theme={"Vertical"}
@@ -282,46 +238,31 @@ const WallScroll = ({ item, navigation }) => {
             marginTop: 30,
             width: "100%",
             maxWidth: 1700,
+            //alignSelf: "center",
             //marginLeft: 10,
             paddingHorizontal: 16,
           }}
         >
+          <CabeceraSeccion navigation={navigation} label={"Otros eventos"} />
           <View
             style={{
-              display: "flex",
-              flexDirection: "row",
-              marginBottom: 8,
+              alignSelf: "center",
+              justifyContent: "space-around",
             }}
           >
-            <View
-              style={{
-                width: "50%",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
-            >
-              <Text style={CommonTextStyles.Subtitle_18}>Otros eventos</Text>
-            </View>
-            <View style={{ width: "50%", alignItems: "flex-end" }}>
-              <Boton
-                theme={"VerMas"}
-                onPress={() => navigation.navigate("SearchPage")}
+            {EventosCercanos.map((EvtCer) => (
+              <TarjetaWall
+                theme={"Horizontal"}
+                key={EvtCer.Id}
+                source={EvtCer.Imagen}
+                Titulo={EvtCer.Titulo}
+                fecha={EvtCer.Fecha}
+                ubicacion={EvtCer.Ubicacion}
+                Descripcion={EvtCer.Descripcion}
+                onPress={() => navigation.navigate("DetalleEvento")}
               />
-            </View>
+            ))}
           </View>
-
-          {EventosCercanos.map((EvtCer) => (
-            <TarjetaWall
-              theme={"Horizontal"}
-              key={EvtCer.Id}
-              source={EvtCer.Imagen}
-              Titulo={EvtCer.Titulo}
-              fecha={EvtCer.Fecha}
-              ubicacion={EvtCer.Ubicacion}
-              Descripcion={EvtCer.Descripcion}
-              onPress={() => navigation.navigate("DetalleEvento")}
-            />
-          ))}
         </View>
       );
     case "Tus Eventos":
@@ -382,7 +323,7 @@ const WallScroll = ({ item, navigation }) => {
           <View key={"ContenedorBoton"} style={CommonStyles.BotonContainer}>
             <Boton
               theme={"StyleBoton"}
-              color={"#6979F8"}
+              color={Colors.NightBlue_600}
               label={"Crear evento"}
               onPress={() => navigation.navigate("CreateEvent")}
             />
@@ -399,7 +340,7 @@ const WallScroll = ({ item, navigation }) => {
 };
 const Cabecera = ({ navigation }) => {
   return (
-    <View style={{ backgroundColor: Colors.Primary }}>
+    <View style={{ backgroundColor: Colors.Primary, marginBottom: 10 }}>
       <View
         style={{
           display: "flex",
@@ -410,7 +351,7 @@ const Cabecera = ({ navigation }) => {
           style={{ alignSelf: "center", marginTop: 25 }}
         >
           {DatosClientePrueba.map((DCliente) => (
-            <Text style={[CommonTextStyles.Heding_H5, {}]}>
+            <Text style={[CommonTextStyles.Heding_H5]}>
               Hola {DCliente.UserName}
             </Text>
           ))}
@@ -426,6 +367,33 @@ const Cabecera = ({ navigation }) => {
         <Text style={[CommonTextStyles.Body_L, { color: Colors.TexColor }]}>
           Estos son algunos eventos que te pueden interesar.
         </Text>
+      </View>
+    </View>
+  );
+};
+const CabeceraSeccion = ({ navigation, label }) => {
+  return (
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        marginBottom: 8,
+      }}
+    >
+      <View
+        style={{
+          width: "50%",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <Text style={CommonTextStyles.Subtitle_18}>{label}</Text>
+      </View>
+      <View style={{ width: "50%", alignItems: "flex-end" }}>
+        <Boton
+          theme={"VerMas"}
+          onPress={() => navigation.navigate("SearchPage")}
+        />
       </View>
     </View>
   );

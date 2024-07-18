@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
 import IconSVG from "../assets/LogoSVG";
 import { Colors } from "../CommonStyles/CommonStyles";
+import CommonTextStyles from "../CommonStyles/CommonTextStyles";
 
 export default function Button({
   label,
@@ -156,19 +157,23 @@ export default function Button({
             {
               display: "flex",
               flexDirection: "row",
-              width: 110,
+              //width: 110,
               height: 40,
               borderRadius: 12,
+              paddingHorizontal: 16,
+              gap: 18,
             },
           ]}
           onPress={onPress}
         >
-          <View style={{ justifyContent: "center", marginLeft: 15 }}>
-            <Text style={{ fontSize: 18, color: "#6979F8", fontWeight: "700" }}>
-              Ver más
-            </Text>
+          <View style={{ justifyContent: "center" }}>
+            <Text style={CommonTextStyles.Subtitle_16}>Ver más</Text>
           </View>
-          <View style={{ justifyContent: "center", width: 25, marginLeft: 20 }}>
+          <View
+            style={{
+              justifyContent: "center",
+            }}
+          >
             <IconSVG theme={"ArrowForward"} />
           </View>
         </Pressable>
