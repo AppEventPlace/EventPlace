@@ -6,7 +6,9 @@ import CommonTextStyles from "../../CommonStyles/CommonTextStyles";
 
 const Politica = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+    >
       <ScrollView
         style={[
           CommonStyles.ScrollView,

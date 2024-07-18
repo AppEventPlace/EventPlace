@@ -20,6 +20,8 @@ import TarjetaWall from "../../components/TarjetaWall";
 import TusEventos from "../../constants/TusEventos";
 import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
+import CommonStyles, { Colors } from "../../CommonStyles/CommonStyles";
+import CommonTextStyles from "../../CommonStyles/CommonTextStyles";
 //*import Toast from "react-native-simple-toast";
 
 const OpcionesWall = [
@@ -62,16 +64,13 @@ const WallPrincipal = ({ navigation }) => {
     }*/
   }, []);
   return (
-    <SafeAreaView style={{ backgroundColor: "#032030", flex: 1 }}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+    >
       <FlatList
         key={"ScrollInfinite"}
         stickyHeaderIndices={[1]}
-        style={{
-          backgroundColor: "#F4F5FE",
-
-          width: "100%", // Ancho de a imagen
-          height: "100%",
-        }}
+        style={[CommonStyles.ScrollView, { backgroundColor: Colors.Primary }]}
         data={OpcionesWall}
         renderItem={({ item }) => (
           <WallScroll item={item} navigation={navigation} />
@@ -94,7 +93,7 @@ const WallScroll = ({ item, navigation }) => {
             //maxWidth: 700,
             marginLeft: 0,
             marginRight: 15,
-            backgroundColor: "#F4F5FE",
+            backgroundColor: Colors.Primary,
             borderBottomWidth: 0.5,
             borderBottomColor: "#C6C7C8",
           }}
@@ -118,14 +117,14 @@ const WallScroll = ({ item, navigation }) => {
               >
                 <Pressable
                   style={({ pressed }) => [
-                    { backgroundColor: pressed ? "#A8A6F2" : null },
+                    { backgroundColor: pressed ? Colors.FondoPressed : null },
                     {
                       width: "100%",
                       height: 80, //position: "absolute"
                       borderRadius: 12,
                     },
                   ]}
-                  onPress={() => navigation.navigate("Pagina de busqueda")}
+                  onPress={() => navigation.navigate("SearchPage")}
                 >
                   <View
                     style={{
@@ -176,27 +175,31 @@ const WallScroll = ({ item, navigation }) => {
             marginTop: 30,
             width: "100%",
             maxWidth: 1700,
-            marginLeft: 10,
-            marginRight: 15,
+            paddingHorizontal: 16,
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "row",
-              marginHorizontal: 5,
-              justifyContent: "space-around",
+              marginBottom: 8,
             }}
           >
-            <View style={{ width: "60%" }}>
-              <Text style={style.SubTitulo}>
+            <View
+              style={{
+                width: "50%",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <Text style={CommonTextStyles.Subtitle_18}>
                 Eventos cercanos a tu ubicación
               </Text>
             </View>
-            <View style={{ marginLeft: 0, marginRight: 10 }}>
+            <View style={{ width: "50%", alignItems: "flex-end" }}>
               <Boton
                 theme={"VerMas"}
-                onPress={() => navigation.navigate("Pagina de busqueda")}
+                onPress={() => navigation.navigate("SearchPage")}
               />
             </View>
           </View>
@@ -210,7 +213,7 @@ const WallScroll = ({ item, navigation }) => {
                 fecha={EvtCer.Fecha}
                 ubicacion={EvtCer.Ubicacion}
                 Descripcion={EvtCer.Descripcion}
-                onPress={() => navigation.navigate("Detalle Evento")}
+                onPress={() => navigation.navigate("DetalleEvento")}
               />
             ))}
           </ScrollView>
@@ -223,30 +226,36 @@ const WallScroll = ({ item, navigation }) => {
             marginTop: 30,
             width: "100%",
             maxWidth: 1700,
-            marginLeft: 10,
-            marginRight: 15,
+            paddingHorizontal: 16,
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "row",
-              marginHorizontal: 5,
+              marginBottom: 8,
             }}
           >
-            <View style={{ width: "60%" }}>
-              <Text style={style.SubTitulo}>Eventos recomendados</Text>
+            <View
+              style={{
+                width: "50%",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <Text style={CommonTextStyles.Subtitle_18}>
+                Eventos recomendados
+              </Text>
             </View>
             <View
               style={{
-                marginLeft: 10,
-                marginRight: 10,
-                marginTop: -10,
+                width: "50%",
+                alignItems: "flex-end",
               }}
             >
               <Boton
                 theme={"VerMas"}
-                onPress={() => navigation.navigate("Pagina de busqueda")}
+                onPress={() => navigation.navigate("SearchPage")}
               />
             </View>
           </View>
@@ -260,7 +269,7 @@ const WallScroll = ({ item, navigation }) => {
                 fecha={EvtCer.Fecha}
                 ubicacion={EvtCer.Ubicacion}
                 Descripcion={EvtCer.Descripcion}
-                onPress={() => navigation.navigate("Detalle Evento")}
+                onPress={() => navigation.navigate("DetalleEvento")}
               />
             ))}
           </ScrollView>
@@ -274,24 +283,29 @@ const WallScroll = ({ item, navigation }) => {
             width: "100%",
             maxWidth: 1700,
             //marginLeft: 10,
-            //marginHorizontal: 16,
+            paddingHorizontal: 16,
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "row",
-              marginHorizontal: 5,
-              justifyContent: "space-around",
+              marginBottom: 8,
             }}
           >
-            <View style={{ width: "60%" }}>
-              <Text style={style.SubTitulo}>Otros eventos</Text>
+            <View
+              style={{
+                width: "50%",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <Text style={CommonTextStyles.Subtitle_18}>Otros eventos</Text>
             </View>
-            <View style={{ marginLeft: 0, marginRight: 15, marginTop: -10 }}>
+            <View style={{ width: "50%", alignItems: "flex-end" }}>
               <Boton
                 theme={"VerMas"}
-                onPress={() => navigation.navigate("Pagina de busqueda")}
+                onPress={() => navigation.navigate("SearchPage")}
               />
             </View>
           </View>
@@ -305,7 +319,7 @@ const WallScroll = ({ item, navigation }) => {
               fecha={EvtCer.Fecha}
               ubicacion={EvtCer.Ubicacion}
               Descripcion={EvtCer.Descripcion}
-              onPress={() => navigation.navigate("Detalle Evento")}
+              onPress={() => navigation.navigate("DetalleEvento")}
             />
           ))}
         </View>
@@ -317,25 +331,34 @@ const WallScroll = ({ item, navigation }) => {
             marginTop: 30,
             width: "100%",
             maxWidth: 1700,
-            //marginLeft: 10,
-            //marginRight: 15,
+            gap: 16,
+            paddingHorizontal: 16,
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "row",
-              marginLeft: 15,
-
-              justifyContent: "space-around",
             }}
           >
-            <View style={{ width: "60%" }}>
-              <Text style={style.SubTitulo}>Tus eventos</Text>
+            <View
+              style={{
+                width: "50%",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <Text style={CommonTextStyles.Subtitle_18}>Tus eventos</Text>
             </View>
-            <View style={{ marginLeft: 10, marginRight: 10, marginTop: -10 }}>
+            <View
+              style={{
+                width: "50%",
+                alignItems: "flex-end",
+                //justifyContent: "center",
+              }}
+            >
               {TusEventos.length === 0 ? (
-                <View style={{ width: 110 }}></View>
+                <View></View>
               ) : (
                 <Boton
                   theme={"VerMas"}
@@ -356,22 +379,12 @@ const WallScroll = ({ item, navigation }) => {
               <TarjetasTusEventos navigation={navigation} />
             )}
           </View>
-          <View
-            key={"ContenedorBoton"}
-            style={{
-              marginTop: 5,
-              marginBottom: 15,
-              alignSelf: "center",
-              width: "100%",
-              maxWidth: 320,
-              height: 43,
-            }}
-          >
+          <View key={"ContenedorBoton"} style={CommonStyles.BotonContainer}>
             <Boton
               theme={"StyleBoton"}
               color={"#6979F8"}
               label={"Crear evento"}
-              onPress={() => navigation.navigate("Crear Evento")}
+              onPress={() => navigation.navigate("CreateEvent")}
             />
           </View>
           <View
@@ -386,7 +399,7 @@ const WallScroll = ({ item, navigation }) => {
 };
 const Cabecera = ({ navigation }) => {
   return (
-    <View style={{ backgroundColor: "F4F5FE" }}>
+    <View style={{ backgroundColor: Colors.Primary }}>
       <View
         style={{
           display: "flex",
@@ -394,30 +407,23 @@ const Cabecera = ({ navigation }) => {
       >
         <View
           key={"ContenedorNombrePrincipal"}
-          style={{ alignSelf: "center", marginTop: 15 }}
+          style={{ alignSelf: "center", marginTop: 25 }}
         >
           {DatosClientePrueba.map((DCliente) => (
-            <Text style={style.Titulo}>Hola {DCliente.UserName}</Text>
+            <Text style={[CommonTextStyles.Heding_H5, {}]}>
+              Hola {DCliente.UserName}
+            </Text>
           ))}
         </View>
-        <View
-          style={{
-            width: 25,
-            height: 25,
-            position: "absolute",
-            top: 25,
-            right: 25,
-            justifyContent: "center",
-          }}
-        >
+        <View style={style.BotonBuscar}>
           <Boton
             theme={"BuscarEventos"}
-            onPress={() => navigation.navigate("Pagina de busqueda")}
+            onPress={() => navigation.navigate("SearchPage")}
           />
         </View>
       </View>
       <View style={style.SubText}>
-        <Text style={{ fontSize: 19, color: "#0F172A", fontWeight: "400" }}>
+        <Text style={[CommonTextStyles.Body_L, { color: Colors.TexColor }]}>
           Estos son algunos eventos que te pueden interesar.
         </Text>
       </View>
@@ -432,32 +438,28 @@ const TarjetaSinEventos = () => {
         alignItems: "center",
         alignSelf: "center",
         maxWidth: 330,
+
+        gap: 28,
       }}
     >
-      <View style={{ marginTop: 20 }}>
+      <View style={{}}>
         <SvgLogo
           theme="Celebracion"
           ancho={"57"}
           alto={"54"}
-          color={"#72767A"}
+          color={Colors.Placeholder}
         />
       </View>
-      <View style={{ maxWidth: 300, marginVertical: 20 }}>
-        <Text
-          style={{
-            fontWeight: 500,
-            color: "#72767A",
-            fontSize: 18,
-            textAlign: "center",
-          }}
-        >
+      <View style={{ maxWidth: 300 }}>
+        <Text style={[CommonTextStyles.Body_XL, { textAlign: "center" }]}>
           Crea tu primer evento y haste conocer en nuestra red de{" "}
           <Text
-            style={{
-              fontWeight: 700,
-              color: "#72767A",
-              fontSize: 18,
-            }}
+            style={[
+              CommonTextStyles.Body_XL,
+              {
+                fontWeight: 700,
+              },
+            ]}
           >
             eventers
           </Text>
@@ -478,7 +480,7 @@ const TarjetasTusEventos = ({ navigation }) => {
           fecha={TusEvt.Fecha}
           ubicacion={TusEvt.Ubicacion}
           Descripcion={TusEvt.Descripcion}
-          onPress={() => navigation.navigate("Detalle Evento")}
+          onPress={() => navigation.navigate("DetalleEvento")}
         />
       ))}
     </View>
@@ -489,15 +491,16 @@ const style = StyleSheet.create({
     backgroundColor: "#666666",
     flex: 1,
   },
-  Titulo: {
-    alignContent: "center",
-    fontSize: 24,
-    marginTop: 10,
-    fontWeight: "700",
-    color: "#515EC0",
+  BotonBuscar: {
+    width: 25,
+    height: 25,
+    position: "absolute",
+    top: 25,
+    right: 30,
+    justifyContent: "center",
   },
   SubTitulo: {
-    alignContent: "center",
+    justifyContent: "center",
     fontSize: 20,
     marginBottom: 15,
     fontWeight: "700",
@@ -506,7 +509,7 @@ const style = StyleSheet.create({
   SubText: {
     width: "100%",
     maxWidth: 700,
-    marginHorizontal: 15,
+    marginHorizontal: 16,
     marginTop: 30,
   },
   lineaSeparacion: {
@@ -515,7 +518,6 @@ const style = StyleSheet.create({
     width: "90%",
     //maxWidth: 294,
     alignSelf: "center",
-    marginTop: 20,
   },
 });
 

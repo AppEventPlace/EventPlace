@@ -8,11 +8,13 @@ import SvgLogo from "../../assets/LogoSVG";
 
 const ConfirmacionBoleta = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+    >
       <ScrollView
         style={[
           CommonStyles.ScrollView,
-          { backgroundColor: Colors.Primary, marginTop: 30 },
+          { backgroundColor: Colors.Primary, marginTop: 0 },
         ]}
       >
         <View

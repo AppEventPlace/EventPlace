@@ -8,6 +8,7 @@ export const Colors = {
   TexColor: "#0F172A",
   Placeholder: "#72767A",
   Line: "#A1A5A9",
+  FondoPressed: "#E3E2FC",
   // --> NightBlue
   NightBlue_200: "#E9EAFE",
   NightBlue_300: "#D0D4FC",
@@ -16,6 +17,7 @@ export const Colors = {
   NightBlue_600: "#6979F8",
   NightBlue_700: "#5E6CDE",
   NightBlue_800: "#515EC0",
+
   // --> Azul
   Azul_Facebook: "#1877F2",
   // --> Gris

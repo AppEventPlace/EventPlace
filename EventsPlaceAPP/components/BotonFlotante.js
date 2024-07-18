@@ -119,7 +119,9 @@ const Botones = ({ logo, label, onPress }) => {
         ]}
         onPress={onPress}
       >
-        <Text style={CommonTextStyles.Body_S}>{label}</Text>
+        <Text style={[CommonTextStyles.Body_S, { color: Colors.TexColor }]}>
+          {label}
+        </Text>
         <View
           style={{
             width: 40,

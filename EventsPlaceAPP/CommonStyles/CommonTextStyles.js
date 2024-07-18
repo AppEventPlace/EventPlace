@@ -54,6 +54,13 @@ const CommonTextStyles = StyleSheet.create({
     color: Colors.Placeholder,
     letterSpacing: 0.0044,
   },
+  Body_XL: {
+    fontWeight: "500",
+    fontSize: FontSizes.medium_18,
+    lineHeight: 24,
+    color: Colors.Placeholder,
+    letterSpacing: 0.0044,
+  },
 
   // --> SemiBold-M
   SemiBold_M: {

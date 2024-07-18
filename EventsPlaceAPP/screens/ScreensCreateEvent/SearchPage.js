@@ -15,7 +15,7 @@ import SvgLogo from "../../assets/LogoSVG";
 import EventosCercanos from "../../constants/EventosCercanos";
 import TarjetaWall from "../../components/TarjetaWall";
 import { Switch } from "react-native-web";
-import { Colors } from "../../CommonStyles/CommonStyles";
+import CommonStyles, { Colors } from "../../CommonStyles/CommonStyles";
 
 const SearchPage = ({ navigation }) => {
   const [busqueda, setBusqueda] = useState("");
@@ -23,7 +23,9 @@ const SearchPage = ({ navigation }) => {
   const Datos = [{ type: "Tarjetas" }];
   let numColumn = 3;
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+    >
       <View style={style.PageContainer}>
         <View style={{ height: 150, marginHorizontal: 10 }}>
           <View style={style.HeaderContainer}>
@@ -152,7 +154,7 @@ const BusquedaScroll = ({ item }) => {
             flexWrap: "wrap",
             width: "99.5%",
             //maxWidth: 400,
-            marginHorizontal: 0,
+            paddingHorizontal: 16,
             justifyContent: "space-evenly",
             //maxWidth: 1700,
           }}

@@ -23,6 +23,13 @@ const TarjetaWall = ({
             backgroundColor: "#FBFBFB",
             elevation: 2,
             marginBottom: 15,
+            shadowColor: "#000", // -->  Sombra
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.27,
+            shadowRadius: 4.65,
           }}
         >
           <Pressable
@@ -131,7 +138,14 @@ const TarjetaWall = ({
             marginBottom: 15,
             display: "flex",
             flexDirection: "row",
-            marginHorizontal: 16,
+            shadowColor: "#000", // -->  Sombra
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.27,
+            shadowRadius: 4.65,
+            //marginHorizontal: 16,
           }}
         >
           <Pressable

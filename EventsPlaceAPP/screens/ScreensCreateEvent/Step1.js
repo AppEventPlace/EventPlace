@@ -8,26 +8,34 @@ import EventInfo from "./Components/EventInfo";
 import Organizador from "./Components/Organizador";
 import UbicaciónDelEvento from "./Components/UbicaciónDelEvento";
 import Button from "../../components/Button";
+import CommonStyles, { Colors } from "../../CommonStyles/CommonStyles";
 
 const CreateEvent = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
-      <ScrollView style={style.PerfilContainer}>
-        <BackCheckron navigation={navigation} />
-        <Text style={style.TexCreateEvent}>Crear evento</Text>
-        <ProgressBar step={1} />
-        <View style={style.FullContainer}>
-          <Text style={style.Info}>Información principal</Text>
-          <EventInfo />
-          <Organizador />
-          <UbicaciónDelEvento />
-          <View style={style.BotonContainer}>
-            <Button
-              label="Continuar"
-              color="#6979F8"
-              theme="StyleBoton"
-              onPress={() => navigation.navigate("Boleteria")}
-            />
+    <SafeAreaView
+      style={[
+        CommonStyles.AreaView,
+        { backgroundColor: Colors.Grey_Top, marginTop: -30 },
+      ]}
+    >
+      <ScrollView style={CommonStyles.ScrollView}>
+        <View style={CommonStyles.FullContainer}>
+          <BackCheckron navigation={navigation} />
+          <Text style={style.TexCreateEvent}>Crear evento</Text>
+          <ProgressBar step={1} />
+          <View style={style.FullContainer}>
+            <Text style={style.Info}>Información principal</Text>
+            <EventInfo />
+            <Organizador />
+            <UbicaciónDelEvento />
+            <View style={style.BotonContainer}>
+              <Button
+                label="Continuar"
+                color="#6979F8"
+                theme="StyleBoton"
+                onPress={() => navigation.navigate("Boleteria")}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>

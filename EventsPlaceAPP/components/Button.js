@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
 import IconSVG from "../assets/LogoSVG";
+import { Colors } from "../CommonStyles/CommonStyles";
 
 export default function Button({
   label,
@@ -151,11 +152,11 @@ export default function Button({
       return (
         <Pressable
           style={({ pressed }) => [
-            { backgroundColor: pressed ? "#E3E2FC" : null },
+            { backgroundColor: pressed ? Colors.FondoPressed : null },
             {
               display: "flex",
               flexDirection: "row",
-              width: "100%",
+              width: 110,
               height: 40,
               borderRadius: 12,
             },

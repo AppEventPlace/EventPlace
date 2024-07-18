@@ -9,15 +9,15 @@ import {
   Linking,
   Platform,
 } from "react-native";
-import BackCheckron from "../components/BackCheckron";
-import CommonStyles, { Colors } from "../CommonStyles/CommonStyles";
-import CommonTextStyles from "../CommonStyles/CommonTextStyles";
-import SeleccionTags from "../components/SeleccionTags";
-import OpcionesSeleccion from "../constants/OpcionesSeleccion";
-import SvgLogo from "../assets/LogoSVG";
-import Froms from "../components/Form";
-import Dropdown from "../components/Dropdown";
-import Button from "../components/Button";
+import BackCheckron from "../../components/BackCheckron";
+import CommonStyles, { Colors } from "../../CommonStyles/CommonStyles";
+import CommonTextStyles from "../../CommonStyles/CommonTextStyles";
+import SeleccionTags from "../../components/SeleccionTags";
+import OpcionesSeleccion from "../../constants/OpcionesSeleccion";
+import SvgLogo from "../../assets/LogoSVG";
+import Froms from "../../components/Form";
+import Dropdown from "../../components/Dropdown";
+import Button from "../../components/Button";
 
 const Filtros = ({ navigation }) => {
   const preguntas = [
@@ -38,7 +38,9 @@ const Filtros = ({ navigation }) => {
     },
   ];
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+    >
       <ScrollView
         style={[
           CommonStyles.ScrollView,

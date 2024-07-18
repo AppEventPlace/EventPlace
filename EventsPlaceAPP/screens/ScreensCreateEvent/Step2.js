@@ -14,30 +14,38 @@ import ProgressBar from "./Components/ProgressStep";
 import BoleteriaInfo from "./Components/BoleteriaInfo";
 import Button from "../../components/Button";
 import BotonFlotante from "../../components/BotonFlotante";
+import CommonStyles, { Colors } from "../../CommonStyles/CommonStyles";
 
 const Boleteria = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ backgroundColor: "#F4F5FE", flex: 1 }}>
+    <SafeAreaView
+      style={[
+        CommonStyles.AreaView,
+        { backgroundColor: Colors.Grey_Top, marginTop: -30 },
+      ]}
+    >
       <View style={{ flex: 1 }}>
-        <ScrollView style={style.PerfilContainer}>
-          <BackCheckron navigation={navigation} />
-          <ProgressBar step={2} />
-          <View style={style.FullContainer}>
-            <Text style={style.Info}>Boleteria</Text>
-            <Text style={style.TextInfo}>
-              Define la categoría, cantidad y el valor de las boletas para tu
-              evento
-            </Text>
+        <ScrollView style={CommonStyles.ScrollView}>
+          <View style={CommonStyles.FullContainer}>
+            <BackCheckron navigation={navigation} />
+            <ProgressBar step={2} />
+            <View style={style.FullContainer}>
+              <Text style={style.Info}>Boleteria</Text>
+              <Text style={style.TextInfo}>
+                Define la categoría, cantidad y el valor de las boletas para tu
+                evento
+              </Text>
 
-            <BoleteriaInfo />
+              <BoleteriaInfo />
 
-            <View style={style.BotonContainer}>
-              <Button
-                label="Continuar"
-                color="#6979F8"
-                theme="StyleBoton"
-                onPress={() => navigation.navigate("Resumen del evento")}
-              />
+              <View style={style.BotonContainer}>
+                <Button
+                  label="Continuar"
+                  color="#6979F8"
+                  theme="StyleBoton"
+                  onPress={() => navigation.navigate("Resumen")}
+                />
+              </View>
             </View>
           </View>
         </ScrollView>

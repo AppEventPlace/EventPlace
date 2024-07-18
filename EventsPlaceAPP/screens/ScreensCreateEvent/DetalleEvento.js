@@ -37,7 +37,9 @@ const DetalleEvento = ({ navigation }) => {
 
   const Imagen_width = Dimensions.get("window").width * 0.91;
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+    >
       <View key={"ContenedorPrincipal"} style={{ flex: 1 }}>
         <ScrollView
           style={[
