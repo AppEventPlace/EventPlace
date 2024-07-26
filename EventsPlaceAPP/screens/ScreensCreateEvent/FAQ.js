@@ -20,7 +20,7 @@ const FAQ = ({ navigation }) => {
           key={"PaginaPolitica"}
           style={[
             CommonStyles.FullContainer,
-            { marginTop: 10, gap: 25, flex: 1 },
+            { marginTop: 10, gap: 16, flex: 1, marginBottom: 16 },
           ]}
         >
           <View key={"BotonVolver"}>

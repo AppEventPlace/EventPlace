@@ -2,10 +2,11 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import SvgLogo from "../assets/LogoSVG";
 import CommonStyles, { Colors } from "../CommonStyles/CommonStyles";
+import CommonTextStyles from "../CommonStyles/CommonTextStyles";
 const Direccionador = ({ label, logo, color, onPress }) => {
   return (
     <View
-      style={({ pressed }) => [
+      style={[
         {
           //display: "flex",
           width: "100%",
@@ -31,7 +32,7 @@ const Direccionador = ({ label, logo, color, onPress }) => {
         <View
           style={{
             width: "100%",
-            marginLeft: 15,
+            //paddingHorizontal: 0,
 
             alignItems: "center",
             maxHeight: 64,
@@ -39,13 +40,21 @@ const Direccionador = ({ label, logo, color, onPress }) => {
             flexDirection: "row",
             height: 64,
             gap: 8,
+            //justifyContent: "space-between",
           }}
         >
-          <SvgLogo theme={logo} color={color} />
-          <View style={{ marginTop: -2, width: "70%", marginLeft: 10 }}>
-            <Text style={{ fontSize: 16, fontWeight: "500" }}>{label}</Text>
+          <View style={{}}>
+            <SvgLogo theme={logo} color={color} />
           </View>
-          <SvgLogo theme={"Next"} color={color} />
+          <View style={{}}>
+            <Text style={[CommonTextStyles.Body_S, { color: Colors.Negro }]}>
+              {label}
+            </Text>
+          </View>
+
+          <View style={{ position: "absolute", right: 10 }}>
+            <SvgLogo theme={"Next"} color={color} />
+          </View>
         </View>
       </Pressable>
     </View>

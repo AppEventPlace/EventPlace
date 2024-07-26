@@ -25,6 +25,7 @@ export const Colors = {
   Grey_300: "#C6C7C8",
   Grey_07: "#333333",
   Grey_Soft: "#828282",
+  MidnightDreams_200: "#E4E5E5",
   // -->
   Blanco: "#FBFBFE",
   // -->

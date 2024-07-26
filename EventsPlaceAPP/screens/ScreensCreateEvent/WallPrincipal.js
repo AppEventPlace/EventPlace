@@ -22,6 +22,7 @@ import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
 import CommonStyles, { Colors } from "../../CommonStyles/CommonStyles";
 import CommonTextStyles from "../../CommonStyles/CommonTextStyles";
+import Toast from "react-native-toast-message";
 //*import Toast from "react-native-simple-toast";
 
 const OpcionesWall = [
@@ -46,6 +47,11 @@ const OpcionesWall = [
 
 const WallPrincipal = ({ navigation }) => {
   useEffect(() => {
+    Toast.show({
+      type: "success",
+      text1: "Nos alegra que hagas parte de esta red de Eventers",
+      visibilityTime: 5000, // Duración en milisegundos
+    });
     /* if (Platform.OS === "ios") {
       Toast.showWithGravity(
         "Nos alegra que hagas parte de esta red de Eventers",

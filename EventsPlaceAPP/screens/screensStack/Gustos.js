@@ -1,14 +1,5 @@
-import React, { useRef, useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  ScrollView,
-  Pressable,
-  Dimensions,
-  FlatList,
-} from "react-native";
+import React from "react";
+import { Text, View, ScrollView } from "react-native";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SvgLogo from "../../assets/LogoSVG";

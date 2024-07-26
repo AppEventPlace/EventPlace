@@ -22,6 +22,7 @@ import TabItems from "./constants/TabItems";
 //import isUserAuthenticated from "./src/EstadoAuth";
 import SvgLogo from "./assets/LogoSVG";
 import StackInit from "./constants/StackInit";
+import { Colors } from "./CommonStyles/CommonStyles";
 
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
@@ -36,14 +37,14 @@ const MenuMovil = () => {
           options={{
             headerShown: false,
             tabBarShowLabel: true,
-            tabBarActiveBackgroundColor: "#E4E5E5",
+            tabBarActiveBackgroundColor: Colors.MidnightDreams_200,
             tabBarStyle: {
               height: 60,
             },
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{
-                  color: focused ? "#6979F8" : "#000000",
+                  color: focused ? Colors.NightBlue_600 : Colors.Negro,
                   fontSize: 10,
                   marginBottom: 10,
                 }}
@@ -55,7 +56,7 @@ const MenuMovil = () => {
             tabBarIcon: ({ focused }) => (
               <SvgLogo
                 theme={Items.source}
-                color={focused ? "#6979F8" : "#0F172A"}
+                color={focused ? Colors.NightBlue_600 : Colors.TexColor}
                 ancho="24"
                 alto="24"
               />

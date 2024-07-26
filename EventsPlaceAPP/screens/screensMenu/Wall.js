@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, FlatList } from "react-native";
-//Import de screens del flujo del wall
+
 import { createStackNavigator } from "@react-navigation/stack";
-//import StackCreateEvent from "../../constants/StackCreateEvent";
+
 import CreateEvent from "../ScreensCreateEvent/Step1";
 import Boleteria from "../ScreensCreateEvent/Step2";
 import Resumen from "../ScreensCreateEvent/Step3";
@@ -14,13 +14,6 @@ import FAQ from "../ScreensCreateEvent/FAQ";
 import Politica from "../ScreensCreateEvent/Politica";
 import ConfirmacionBoleta from "../ScreensCreateEvent/ConfirmacionBoleta";
 
-//import { FlatList } from "react-native-web";
-
-// ------------------- Eliminar -------------------
-//import CreateEvent from "../ScreensCreateEvent/Step1";
-//import StackCreateEventNavigator from "../ScreensCreateEvent/CreateEvent";
-
-// ------------------- Eliminar -------------------
 const Stack = createStackNavigator();
 
 const WallScreen = () => {
