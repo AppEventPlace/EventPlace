@@ -3,7 +3,7 @@ import React from "react";
 import { Text, Platform, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-import CreacionStack from "./Navigation/LoginStack";
+import CreacionStack from "./src/screens/CreateUserStack/LoginStack";
 import Toast from "react-native-toast-message";
 
 //import MenuWeb from "./src/menu/MenuWeb";
@@ -12,17 +12,17 @@ import {
   focused,
   color,
 } from "@react-navigation/bottom-tabs";
-import PerfilScreen from "./screens/screensMenu/Perfil";
-import NotificacionesScreen from "./screens/screensMenu/Notificaciones";
-import WallScreen from "./screens/screensMenu/Wall";
-import BoletasScreen from "./screens/screensMenu/Boletas";
-import ChatScreen from "./screens/screensMenu/Chat";
-import TabItems from "./constants/TabItems";
+import PerfilScreen from "./src/screens/screensMenu/Perfil";
+import NotificacionesScreen from "./src/screens/screensMenu/Notificaciones";
+import WallScreen from "./src/screens/screensMenu/Wall";
+import BoletasScreen from "./src/screens/screensMenu/Boletas";
+import ChatScreen from "./src/screens/screensMenu/Chat";
+import TabItems from "./src/constants/TabItems";
 
 //import isUserAuthenticated from "./src/EstadoAuth";
-import SvgLogo from "./assets/LogoSVG";
-import StackInit from "./constants/StackInit";
-import { Colors } from "./CommonStyles/CommonStyles";
+import SvgLogo from "./src/components/assets/LogoSVG";
+import StackInit from "./src/constants/StackInit";
+import { Colors } from "./src/components/CommonStyles/CommonStyles";
 
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
