@@ -15,13 +15,12 @@ import {
 import PerfilScreen from "./src/screens/screensMenu/Perfil";
 import NotificacionesScreen from "./src/screens/screensMenu/Notificaciones";
 import WallScreen from "./src/screens/screensMenu/Wall";
+import Chat from "./src/screens/screensMenu/ChatScreens/chatScreen";
 import BoletasScreen from "./src/screens/screensMenu/Boletas";
-import ChatScreen from "./src/screens/screensMenu/Chat";
 import TabItems from "./src/constants/TabItems";
 
 //import isUserAuthenticated from "./src/EstadoAuth";
 import SvgLogo from "./src/components/assets/LogoSVG";
-import StackInit from "./src/constants/StackInit";
 import { Colors } from "./src/components/CommonStyles/CommonStyles";
 
 //Creación de menú a partir --------------------
@@ -66,7 +65,7 @@ const MenuMovil = () => {
             Items.name === "Notificaciones"
               ? NotificacionesScreen
               : Items.name === "Chat"
-              ? ChatScreen
+              ? Chat
               : Items.name === "Wall"
               ? WallScreen
               : Items.name === "Mis Boletas"
