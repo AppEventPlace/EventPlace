@@ -29,6 +29,7 @@ const ChatScreenView: React.FC = () => {
       <View>
         <View>
           <IconButton
+            key={"back-button"}
             onPress={() => console.log('Back pressed')}
             iconName='chevron-back'
             title='Volver'
@@ -41,10 +42,14 @@ const ChatScreenView: React.FC = () => {
         <View>
         </View>
         <View>
-          <NavigationScreens menuButtons={menuButtons} />
+          <NavigationScreens
+            menuButtons={menuButtons}
+            key="navigation-screens"
+          />
         </View>
         <View>
           <EventAssistants
+            key="event-assistants"
             title="Asistentes del Evento"
             assistants={assistants}
             backgroundColor='rgba(244, 245, 254, 0)'
@@ -53,6 +58,7 @@ const ChatScreenView: React.FC = () => {
         </View>
         <View>
           <MessageInput
+            key="message-input"
             onSendPress={() => { }}
             containerBackgroundColor='#F4F5FE'
             inputBorderColor='#ddd'
