@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 interface NavButtonProps {
   title: string;
@@ -8,17 +7,33 @@ interface NavButtonProps {
 }
 
 const NavButton: React.FC<NavButtonProps> = ({ title, onPress }) => (
-  <View style={{ alignItems: 'center' }}>
-    <Button
-      title={title}
-      onPress={onPress}
-      type="clear" 
-      containerStyle={{ width: '100%' }}
-      buttonStyle={{ backgroundColor: 'transparent' }}
-      titleStyle={{ color: '#6979F8' }}
-    />
-    <View style={{ height: 2, backgroundColor: '#6979F8', width: '100%', marginTop: 5 }} />
+  <View style={styles.container}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.title}>{title}</Text>
+    </TouchableOpacity>
+    <View style={styles.underline} />
   </View>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
+  button: {
+    width: '100%',
+    paddingVertical: 10,
+    backgroundColor: 'transparent',
+  },
+  title: {
+    color: '#6979F8',
+    textAlign: 'center',
+  },
+  underline: {
+    height: 2,
+    backgroundColor: '#6979F8',
+    width: '100%',
+    marginTop: 5,
+  },
+});
 
 export default NavButton;

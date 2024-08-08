@@ -13,6 +13,7 @@ import Filtros from "../ScreensCreateEvent/Filtros";
 import FAQ from "../ScreensCreateEvent/FAQ";
 import Politica from "../ScreensCreateEvent/Politica";
 import ConfirmacionBoleta from "../ScreensCreateEvent/ConfirmacionBoleta";
+import ChatScreen from "../screensMenu/ChatScreens/chatScreen";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,7 @@ const WallScreen = () => {
     Politica: Politica,
     ConfirmacionBoleta: ConfirmacionBoleta,
     Resumen: Resumen,
+    Chat: ChatScreen,
   };
   return (
     <Stack.Navigator
