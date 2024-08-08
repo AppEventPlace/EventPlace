@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import { Button } from 'react-native-elements';
 import NavButton from '../atoms/NavButton';
 
 interface NavMenuProps {
-  buttons: { title: string; onPress: () => void }[];
+  buttons: { title: string; onPress: () => void; active?: boolean }[];
 }
 
 const NavMenu: React.FC<NavMenuProps> = ({ buttons }) => {
@@ -11,24 +12,21 @@ const NavMenu: React.FC<NavMenuProps> = ({ buttons }) => {
   const buttonWidth = 100 / buttonCount;
 
   return (
-    <View style={styles.container}>
+    <View style={{ flexDirection: 'row', flex: 1 }}>
       {buttons.map((button, index) => (
-        <View key={index} style={[styles.buttonWrapper, { width: `${buttonWidth}%` }]}>
-          <NavButton title={button.title} onPress={button.onPress} />
+        <View
+          key={index}
+          style={{ width: `${buttonWidth}%`, justifyContent: 'center' }}
+        >
+          <NavButton
+            title={button.title}
+            onPress={button.onPress}
+            active={true}
+          />
         </View>
       ))}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flex: 1,
-  },
-  buttonWrapper: {
-    justifyContent: 'center',
-  },
-});
 
 export default NavMenu;

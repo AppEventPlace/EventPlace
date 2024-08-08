@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import NavigationScreens from '../../../components/organisms/NavigationScreens';
-import BackButton from '../../../components/atoms/BackButton'; 
-import MessageInput from '../../../components/organisms/MessageInput'; 
+import MessageInput from '../../../components/organisms/MessageInput';
+
+import { useNavigation } from '@react-navigation/native';
 import EventAssistants from '@/components/organisms/EventAssistans';
+import IconButton from '@/components/atoms/IconButton';
 
 const assistants = [
-  { name: 'Alexander Hamilton', photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHPuXM85d8UIGI9Pf0mv3ek_EYAzHOzu_7Zw&s' },
+  { name: 'Alexander Hamilton Alexander Hamilton', photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHPuXM85d8UIGI9Pf0mv3ek_EYAzHOzu_7Zw&s' },
   { name: 'Elizabeth Bennet', photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVKpkkOyD3T5ABULBihOhWv1YuC1lgUYrJDw&s' },
   { name: 'Benjamin Franklin', photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGXC623IXvv6Z0atJJiSDFWh0HfMmHdh8KuA&s' },
   { name: 'Charlotte Brontë', photoUrl: 'https://img.freepik.com/fotos-premium/hotel-zona-relajacion-hermosa-mujer-madura-cuidado-piel-antes-despues-procedimientos-spa-bienestar-feliz_1019437-5494.jpg' },
@@ -15,58 +17,52 @@ const assistants = [
 ];
 
 const ChatScreenView: React.FC = () => {
+  const navigation = useNavigation<any>();
+
   const menuButtons = [
-    { title: 'Chat', onPress: () => console.log('Chat clicked') },
-    { title: 'Photos & Videos', onPress: () => console.log('Photos & Videos clicked') }
+    { title: 'Chat', onPress: () => navigation.navigate('Chat') },
+    { title: 'Photos & Videos', onPress: () => navigation.navigate('PhotosVideos') }
   ];
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <View style={styles.backButtonContainer}>
-          <BackButton onPress={() => console.log('Back pressed')} />
+    <SafeAreaView>
+      <View>
+        <View>
+          <IconButton
+            onPress={() => console.log('Back pressed')}
+            iconName='chevron-back'
+            title='Volver'
+            IconColor='#000000'
+            backgroundColor='transparent'
+            borderColor='transparent'
+            textColor='#000000'
+          />
         </View>
-        <View style={styles.navigationContainer}>
-          <NavigationScreens
-            menuButtons={menuButtons}
-            backButton={undefined}
-          >
-            <EventAssistants title="Asistentes del Evento" assistants={assistants} />
-          </NavigationScreens>
+        <View>
         </View>
-        <View style={styles.messageInputContainer}>
-          <MessageInput />
+        <View>
+          <NavigationScreens menuButtons={menuButtons} />
+        </View>
+        <View>
+          <EventAssistants
+            title="Asistentes del Evento"
+            assistants={assistants}
+            backgroundColor='rgba(244, 245, 254, 0)'
+            borderColor='rgba(244, 245, 254, 0)'
+          />
+        </View>
+        <View>
+          <MessageInput
+            onSendPress={() => { }}
+            containerBackgroundColor='#F4F5FE'
+            inputBorderColor='#ddd'
+            inputBackgroundColor='#FFFFFF'
+            inputTextColor='#000000'
+          />
         </View>
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  backButtonContainer: {
-    width: '100%',
-    position: 'absolute',
-    top: 0,
-    zIndex: 1, 
-  },
-  navigationContainer: {
-    flex: 1,
-    paddingTop: 50, 
-  },
-  messageInputContainer: {
-    padding: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-    width: '100%',
-    backgroundColor: '#F4F5FE', 
-  },
-});
 
 export default ChatScreenView;
