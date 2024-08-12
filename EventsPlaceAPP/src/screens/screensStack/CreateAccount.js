@@ -64,6 +64,10 @@ const CreateAccount = ({ navigation }) => {
     else {
       alert("No seleccionaste ninguna imagen.");
     }
+    handleChange(
+      "fotoPerfilBase64",
+      "UklGRvYpBQBXRUJQVlA4INIiAwCQ+wedASoABAAEPjEUiUMiISEU+e5EIAMEtDduYTMPssKVm0GDTRHGnThVA7kQ5qnGkQYreUXp5f+i/w37J/vf3lHmvB/4n/M/4b+5/97/TfL5w31D+Cvuv+Q/tP9y/5n+e+XX/D/z37tf4D2D6w/5/+q/dT/AfDj5b+s/53+8/5X/qf4D///+n7sf8P/jf5v9xf3/+2X6u/5n+n/dj9///N+gf8V/ln+R/tP+T/6n+B///r+tr9wveJ/kP/P/4/2x+An9N/wX/c/0H+q/+n+y+oT/df9r/WfvB8vP7x/uf+//nf9R/9/oD/n3+H/8H+e/1//w/3vzzf//3Lf3l//vuEf1r/Yf+3/afv/8vX/L/+f+1/3n///832h/07/V/+3/Tf7X/+/+H7Ef59/dv+f+0H/+/3v0Af+j/+f9n4of4B/2f///4PcA/4P/59hfuV/i/8Z+znvk+Sfx/+N/wn+Z/z3"
+    );
   };
 
   /*----------------------------------------------------------------------------------
@@ -76,6 +80,7 @@ const CreateAccount = ({ navigation }) => {
     email: "",
     contraseña: "",
     confirmarContraseña: "",
+
     //  Agregar aquí los campos restantes...
   };
 
