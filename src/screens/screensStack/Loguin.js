@@ -13,7 +13,7 @@ import { Color_Button } from "../../components/CommonStyles/CommonButtonStyles";
 import IconSvg from "../../components/assets/IconSvg";
 import Button from "../../components/CommonComponents/Button";
 import AnotherLoginMethod from "../../components/CommonComponents/AnotherLoginMethod";
-
+import Boton from "../../components/Button";
 const Loguin = ({ navigation }) => {
   return (
     <SafeAreaView
@@ -55,7 +55,11 @@ const Loguin = ({ navigation }) => {
           />
         </View>
         <View style={styles.ForgetPassword}>
-          <Button theme="Generico" label="Olvide mi contraseña" />
+          <Boton
+            theme="botonSubRay"
+            label="Olvide mi contraseña"
+            onPress={() => navigation.navigate("ForgPassword")}
+          />
         </View>
       </View>
       <View style={styles.AnotherLogin}>

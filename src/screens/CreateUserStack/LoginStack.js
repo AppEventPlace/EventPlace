@@ -10,6 +10,8 @@ import TermsAndConditions from "../screensStack/TermsAndConditions";
 import VerifyIdentity from "../screensStack/VerifyIdentity";
 import Gustos from "../screensStack/Gustos";
 import Successful from "../screensStack/Successful";
+import ForgPassword from "../screensStack/ForgetPassword/ForgetPassScreen/ForgPassword";
+import OtpAdviceRecOtp from "../screensStack/RecoverPssAdviceOTP/OtpAdviceRecOtp";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,8 @@ const CreacionStack = () => {
     VerifyIdentity: VerifyIdentity,
     Gustos: Gustos,
     Successful: Successful,
+    ForgPassword: ForgPassword,
+    OtpAdviceRecOtp: OtpAdviceRecOtp,
   };
 
   const getScreenComponent = (name) => {

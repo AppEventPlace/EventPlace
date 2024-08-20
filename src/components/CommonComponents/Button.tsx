@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { StyleSheet, Pressable, Text, View } from "react-native";
 
 // --> Importar estilos comunes
@@ -17,8 +17,19 @@ Componente  Diseñado renderizar botones de forma predeterminada.
 - Icon:     Nombre del Icono a mostrar dentro del botón (Usar IconSvg)
 - disabled: Estado del botón tru = activo o false = inactivo
 ---------------------------------------------------------------------------*/
-
-export default function Button({
+interface ButtonProps {
+  theme?: string;
+  label: string;
+  color: string;
+  onPress: () => void;
+  Icon?: string;
+  IconColor?: string;
+  disabled?: string;
+}
+interface getStyleProp {
+  color: string;
+}
+const Button: React.FC<ButtonProps> = ({
   theme,
   label,
   color,
@@ -26,7 +37,7 @@ export default function Button({
   Icon,
   IconColor,
   disabled,
-}) {
+}) => {
   const styler = getStyles(color);
   switch (theme) {
     // --> Botón principal
@@ -62,7 +73,7 @@ export default function Button({
           style={[styles.AnotherLoginButton, { backgroundColor: color }]}
           onPress={() => alert("You pressed a button1.")}
         >
-          <IconSvg theme={Icon} />
+          <IconSvg theme={Icon} progress={0} />
         </Pressable>
       );
 
@@ -90,7 +101,11 @@ export default function Button({
     case "BackCheckron":
       return (
         <Pressable style={styles.BackButton} onPress={onPress}>
-          <IconSvg theme="BackCheckron" IconColor={BackCheckron.Color} />
+          <IconSvg
+            theme="BackCheckron"
+            IconColor={BackCheckron.Color}
+            progress={0}
+          />
           <Text style={styles.BackButtonTex}>{label}</Text>
         </Pressable>
       );
@@ -135,8 +150,8 @@ export default function Button({
         </Pressable>
       );
   }
-}
-const getStyles = (color) => {
+};
+const getStyles = (color: string) => {
   return StyleSheet.create({
     StyleButtonLabel_3: {
       color: color || Text_Button.StyleButtonLabel_3,
@@ -205,3 +220,4 @@ const styles = StyleSheet.create({
     letterSpacing: 0.0044,
   },
 });
+export default Button;

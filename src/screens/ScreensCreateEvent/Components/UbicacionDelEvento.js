@@ -39,7 +39,7 @@ Organizador es un componente funcional que toma navigation como una propiedad.
 Este componente renderiza el formulario en pantalla.
 -------------------------------------------------------------------------*/
 
-const UbicaciónDelEvento = ({ navigation }) => {
+const UbicacionDelEvento = ({ navigation }) => {
   /*-------------------------------------------------------------------------
 Iteramr sobre la lista preguntas utilizando el método map(). Para cada pregunta 
 en la lista:
@@ -140,4 +140,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default UbicaciónDelEvento;
+export default UbicacionDelEvento;

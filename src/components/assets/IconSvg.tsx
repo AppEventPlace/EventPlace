@@ -9,7 +9,21 @@ import Svg, {
   Rect,
 } from "react-native-svg";
 
-function IconSvg({ theme, IconColor, progress, Icon_Height, Icon_width }) {
+interface IconSvgProps {
+  theme?: string;
+  IconColor?: string;
+  progress: number;
+  Icon_Height?: string;
+  Icon_width?: string;
+}
+
+const IconSvg: React.FC<IconSvgProps> = ({
+  theme,
+  IconColor,
+  progress,
+  Icon_Height,
+  Icon_width,
+}) => {
   switch (theme) {
     case "LogoSvg":
       return (
@@ -275,7 +289,22 @@ function IconSvg({ theme, IconColor, progress, Icon_Height, Icon_width }) {
           />
         </Svg>
       );
+    case "Send":
+      return (
+        <Svg
+          width={Icon_width}
+          height={Icon_Height}
+          viewBox="0 0 70 61"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <Path
+            d="M67.2 34.2L5.6 60.2C4.26667 60.7333 3 60.6167 1.8 59.85C0.6 59.0833 0 57.9667 0 56.5V4.50001C0 3.03334 0.6 1.91667 1.8 1.15001C3 0.38334 4.26667 0.266674 5.6 0.800007L67.2 26.8C68.8667 27.5333 69.7 28.7667 69.7 30.5C69.7 32.2333 68.8667 33.4667 67.2 34.2ZM8 50.5L55.4 30.5L8 10.5V24.5L32 30.5L8 36.5V50.5Z"
+            fill="#008B63"
+          />
+        </Svg>
+      );
   }
-}
+};
 
 export default IconSvg;

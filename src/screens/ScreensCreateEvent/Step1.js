@@ -6,7 +6,7 @@ import BackCheckron from "../../components/BackCheckron";
 import ProgressBar from "./Components/ProgressStep";
 import EventInfo from "./Components/EventInfo";
 import Organizador from "./Components/Organizador";
-import UbicaciónDelEvento from "./Components/UbicaciónDelEvento";
+import UbicacionDelEvento from "./Components/UbicacionDelEvento";
 import Button from "../../components/Button";
 import CommonStyles, {
   Colors,
@@ -29,7 +29,7 @@ const CreateEvent = ({ navigation }) => {
             <Text style={style.Info}>Información principal</Text>
             <EventInfo />
             <Organizador />
-            <UbicaciónDelEvento />
+            <UbicacionDelEvento />
             <View style={style.BotonContainer}>
               <Button
                 label="Continuar"
