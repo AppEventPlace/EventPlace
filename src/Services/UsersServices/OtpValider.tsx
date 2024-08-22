@@ -1,10 +1,11 @@
 import React from "react";
+import Toast from "react-native-toast-message";
 
 interface OtpConsumerProp {
   correo: string;
 }
 
-const OtpConsumer = async (correo: string) => {
+const OtpValidate = async (correo: string, otp: string) => {
   try {
     const response = await fetch(
       "https://vvq67ontm5.execute-api.us-east-1.amazonaws.com/generateOtp",
@@ -17,15 +18,23 @@ const OtpConsumer = async (correo: string) => {
           // rquid: "fsdgf6854sahgdf5243",
         },
         body: JSON.stringify({
-          action: "generate",
+          action: "verify",
           email: correo,
           userId: correo,
+          otp: otp,
         }),
       }
     );
     const result = await response.json();
     console.log(result);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Mostrar mensaje de éxito
+
+    console.log(response);
   } catch (error) {}
 };
-
-export default OtpConsumer;
+export default OtpValidate;

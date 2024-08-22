@@ -60,7 +60,7 @@ const OtpAdviceRecOtp = () => {
             <Button
               theme="StyleBoton"
               label="Continuar"
-              onPress={() => [navigation.navigate("VerifyIdentity")]}
+              onPress={() => [navigation.navigate("OtpValidatorPassword")]}
               color={Colors.NightBlue_600}
             />
           </View>

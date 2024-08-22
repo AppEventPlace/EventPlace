@@ -12,6 +12,8 @@ import Gustos from "../screensStack/Gustos";
 import Successful from "../screensStack/Successful";
 import ForgPassword from "../screensStack/ForgetPassword/ForgetPassScreen/ForgPassword";
 import OtpAdviceRecOtp from "../screensStack/RecoverPssAdviceOTP/OtpAdviceRecOtp";
+import OtpValidatorPassword from "../screensStack/OtpValidator/OtpValidatorScreen/OtpValidatorPassword";
+import NewPass from "../screensStack/NewPassw/NewPassScreen/NewPass";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +27,8 @@ const CreacionStack = () => {
     Successful: Successful,
     ForgPassword: ForgPassword,
     OtpAdviceRecOtp: OtpAdviceRecOtp,
+    OtpValidatorPassword: OtpValidatorPassword,
+    NewPass: NewPass,
   };
 
   const getScreenComponent = (name) => {
