@@ -9,8 +9,12 @@ import IconSvg from "@/components/assets/IconSvg";
 import CommonTextStyles from "@/components/CommonStyles/CommonTextStyles";
 import Button from "@/components/CommonComponents/Button";
 
-const OtpAdviceRecOtp = () => {
-  const navigation = useNavigation<any>();
+const OtpAdviceRecOtp = ({ route }) => {
+  const navigation = useNavigation();
+
+  const { email } = route.params;
+
+  console.log(email);
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
@@ -60,7 +64,9 @@ const OtpAdviceRecOtp = () => {
             <Button
               theme="StyleBoton"
               label="Continuar"
-              onPress={() => [navigation.navigate("OtpValidatorPassword")]}
+              onPress={() => [
+                navigation.navigate("OtpValidatorPassword", { email: email }),
+              ]}
               color={Colors.NightBlue_600}
             />
           </View>

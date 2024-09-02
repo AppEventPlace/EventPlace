@@ -7,8 +7,16 @@ import { Color_Button } from "../CommonStyles/CommonButtonStyles";
 import CommonStyles from "../CommonStyles/CommonStyles";
 import { useNavigation } from "@react-navigation/native";
 import OtpValidate from "@/Services/UsersServices/OtpValider";
+import Toast from "react-native-toast-message";
 
-const OtpCard = ({ onPressReload, Title, label, onPressNav, navigation }) => {
+const OtpCard = ({
+  onPressReload,
+  Title,
+  label,
+  onPressNav,
+  navigation,
+  email,
+}) => {
   const inputRefs = useRef([]);
   const [otp, setOtp] = useState("");
   const [validado, setValidado] = useState(false);
@@ -19,7 +27,26 @@ const OtpCard = ({ onPressReload, Title, label, onPressNav, navigation }) => {
     }
   };
 
-  const Validacion = ({ correo, otp }) => {};
+  const Validacion = (estado) => {
+    //setValidado(estado);
+    console.log(estado);
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+        text1: "Validación de OTP Exitosa",
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate(onPressNav);
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: "OTP no valida",
+        //text2: error.message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
+  };
+
   return (
     <View style={CommonStyles.container}>
       <View style={CommonSpacingStyles.VerticalSpacing_56}>
@@ -70,10 +97,7 @@ const OtpCard = ({ onPressReload, Title, label, onPressNav, navigation }) => {
             label="Continuar"
             color={Color_Button.Default}
             theme="StyleBoton"
-            onPress={() => [
-              navigation.navigate(onPressNav),
-              OtpValidate("appeventplace@gmail.com", otp),
-            ]}
+            onPress={() => [OtpValidate(email, otp, Validacion)]}
           />
         </View>
       </View>

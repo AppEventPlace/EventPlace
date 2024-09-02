@@ -74,12 +74,12 @@ const CreateAccount = ({ navigation }) => {
   Inicializar variables para validar la estructura y obligatoriedad del campo 
   ----------------------------------------------------------------------------------*/
   const initialState = {
-    nombre: "",
-    apellido: "",
-    celular: "",
+    name: "",
+    lastName: "",
+    phone: "",
     email: "",
-    contraseña: "",
-    confirmarContraseña: "",
+    password: "",
+    confirmPassword: "",
 
     //  Agregar aquí los campos restantes...
   };
@@ -182,16 +182,16 @@ const CreateAccount = ({ navigation }) => {
                 <Text style={CommonStyles.TexContainer}>Nombre(s)</Text>
                 <TextInput
                   placeholder="Ingresa tu(s) nombre(s)"
-                  value={state.nombre}
-                  onChangeText={(value) => handleChange("nombre", value)}
+                  value={state.name}
+                  onChangeText={(value) => handleChange("name", value)}
                   style={[
                     CommonStyles.TexInput,
-                    errors.nombre && styles.inputError,
+                    errors.name && styles.inputError,
                     ,
                   ]}
                 />
-                {errors.nombre ? (
-                  <Text style={CommonTextStyles.Body_S}>{errors.nombre}</Text>
+                {errors.name ? (
+                  <Text style={CommonTextStyles.Body_S}>{errors.name}</Text>
                 ) : null}
               </View>
 
@@ -199,15 +199,15 @@ const CreateAccount = ({ navigation }) => {
                 <Text style={CommonStyles.TexContainer}>Apellido(s)</Text>
                 <TextInput
                   placeholder="Ingresa tu(s) apellido(s)"
-                  value={state.apellido}
-                  onChangeText={(value) => handleChange("apellido", value)}
+                  value={state.lastName}
+                  onChangeText={(value) => handleChange("lastName", value)}
                   style={[
                     CommonStyles.TexInput,
-                    errors.apellido && styles.inputError,
+                    errors.lastName && styles.inputError,
                   ]}
                 />
-                {errors.apellido ? (
-                  <Text style={CommonTextStyles.Body_S}>{errors.apellido}</Text>
+                {errors.lastName ? (
+                  <Text style={CommonTextStyles.Body_S}>{errors.lastName}</Text>
                 ) : null}
               </View>
 
@@ -218,25 +218,21 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
-                    errors.fechaNacimiento && styles.inputError,
+                    errors.date && styles.inputError,
                   ]}
                 >
                   <TextInput
-                    placeholder="YYY/MM/DD"
-                    value={state.fechaNacimiento}
-                    onChangeText={(value) =>
-                      handleChange("fechaNacimiento", value)
-                    }
+                    placeholder="YYYY/MM/DD"
+                    value={state.date}
+                    onChangeText={(value) => handleChange("date", value)}
                     style={CommonStyles.TexInput_1}
                   />
                   <View style={CommonStyles.SubContainer_3}>
                     <IconSvg theme={"Calendario"}></IconSvg>
                   </View>
                 </View>
-                {errors.fechaNacimiento ? (
-                  <Text style={CommonTextStyles.Body_S}>
-                    {errors.fechaNacimiento}
-                  </Text>
+                {errors.date ? (
+                  <Text style={CommonTextStyles.Body_S}>{errors.date}</Text>
                 ) : null}
               </View>
 
@@ -244,15 +240,15 @@ const CreateAccount = ({ navigation }) => {
                 <Text style={CommonStyles.TexContainer}>Número de celular</Text>
                 <TextInput
                   placeholder="Ingresa tu número de celular"
-                  value={state.celular}
-                  onChangeText={(value) => handleChange("celular", value)}
+                  value={state.phone}
+                  onChangeText={(value) => handleChange("phone", value)}
                   style={[
                     CommonStyles.TexInput,
-                    errors.celular && styles.inputError,
+                    errors.phone && styles.inputError,
                   ]}
                 />
-                {errors.celular ? (
-                  <Text style={CommonTextStyles.Body_S}>{errors.celular}</Text>
+                {errors.phone ? (
+                  <Text style={CommonTextStyles.Body_S}>{errors.phone}</Text>
                 ) : null}
               </View>
 
@@ -281,21 +277,21 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
-                    errors.usuario && styles.inputError,
+                    errors.user && styles.inputError,
                   ]}
                 >
                   <TextInput
                     placeholder="Ingresa un nombre de usuario"
-                    value={state.usuario}
-                    onChangeText={(value) => handleChange("usuario", value)}
+                    value={state.user}
+                    onChangeText={(value) => handleChange("user", value)}
                     style={CommonStyles.TexInput_1}
                   />
                   <View style={CommonStyles.SubContainer_3}>
                     <IconSvg theme={"Check"}></IconSvg>
                   </View>
                 </View>
-                {errors.usuario ? (
-                  <Text style={CommonTextStyles.Body_S}>{errors.usuario}</Text>
+                {errors.user ? (
+                  <Text style={CommonTextStyles.Body_S}>{errors.user}</Text>
                 ) : null}
               </View>
 
@@ -304,13 +300,13 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
-                    errors.contraseña && styles.inputError,
+                    errors.password && styles.inputError,
                   ]}
                 >
                   <TextInput
                     placeholder="Ingresa tu contraseña"
-                    value={state.contraseña}
-                    onChangeText={(value) => handleChange("contraseña", value)}
+                    value={state.password}
+                    onChangeText={(value) => handleChange("password", value)}
                     secureTextEntry={true}
                     style={CommonStyles.TexInput_1}
                   />
@@ -318,10 +314,8 @@ const CreateAccount = ({ navigation }) => {
                     <IconSvg theme={"Check"}></IconSvg>
                   </View>
                 </View>
-                {errors.contraseña ? (
-                  <Text style={CommonTextStyles.Body_S}>
-                    {errors.contraseña}
-                  </Text>
+                {errors.password ? (
+                  <Text style={CommonTextStyles.Body_S}>{errors.password}</Text>
                 ) : null}
               </View>
 
@@ -332,14 +326,14 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
-                    errors.confirmarContraseña && styles.inputError,
+                    errors.confirmPassword && styles.inputError,
                   ]}
                 >
                   <TextInput
                     placeholder="Confirma tu contraseña"
-                    value={state.confirmarContraseña}
+                    value={state.confirmPassword}
                     onChangeText={(value) =>
-                      handleChange("confirmarContraseña", value)
+                      handleChange("confirmPassword", value)
                     }
                     secureTextEntry={true}
                     style={CommonStyles.TexInput_1}
@@ -348,9 +342,9 @@ const CreateAccount = ({ navigation }) => {
                     <IconSvg theme={"Check"}></IconSvg>
                   </View>
                 </View>
-                {errors.confirmarContraseña ? (
+                {errors.confirmPassword ? (
                   <Text style={CommonTextStyles.Body_S}>
-                    {errors.confirmarContraseña}
+                    {errors.confirmPassword}
                   </Text>
                 ) : null}
               </View>

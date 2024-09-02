@@ -5,7 +5,11 @@ interface OtpConsumerProp {
   correo: string;
 }
 
-const OtpValidate = async (correo: string, otp: string) => {
+const OtpValidate = async (
+  correo: string,
+  otp: string,
+  validado: (estado: boolean) => void
+) => {
   try {
     const response = await fetch(
       "https://vvq67ontm5.execute-api.us-east-1.amazonaws.com/generateOtp",
@@ -31,10 +35,13 @@ const OtpValidate = async (correo: string, otp: string) => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
+    validado(true);
+    return result;
     // Mostrar mensaje de éxito
 
     console.log(response);
-  } catch (error) {}
+  } catch (error) {
+    validado(false);
+  }
 };
 export default OtpValidate;

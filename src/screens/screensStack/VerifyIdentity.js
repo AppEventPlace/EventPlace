@@ -18,7 +18,8 @@ const VerifyIdentity = ({ navigation }) => {
       <View style={CommonStyles.FullContainer}>
         <OtpCard
           onPressReload={""}
-          onPressNav={() => navigation.navigate("Gustos")}
+          navigation={navigation}
+          onPressNav={"Gustos"}
           Title={"Para verificar tu identidad"}
           label={
             "Hemos enviado al número +57 3018451234 o/y al correo" +
