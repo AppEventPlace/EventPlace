@@ -17,30 +17,32 @@ const OtpCard = ({
   navigation,
   email,
 }) => {
+  let datosIni = ["", "", "", "", "", ""];
   const inputRefs = useRef([]);
-  const [otp, setOtp] = useState("");
+  const [otp, setOtp] = useState(datosIni);
   const [validado, setValidado] = useState(false);
   const handleTextChange = (text, index) => {
     // Mover automáticamente el foco al siguiente input si se ha ingresado un carácter
     if (text.length === 1 && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1].focus();
+      // setOtp((otp[index] = text));
     }
   };
 
-  const Validacion = (estado) => {
+  const Validacion = (estado, message) => {
     //setValidado(estado);
     console.log(estado);
     if (estado === true) {
       Toast.show({
         type: "success",
-        text1: "Validación de OTP Exitosa",
+        text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
       navigation.navigate(onPressNav);
     } else if (estado === false) {
       Toast.show({
         type: "error",
-        text1: "OTP no valida",
+        text1: message,
         //text2: error.message, // Detalles del error
         visibilityTime: 4000, // Duración en milisegundos
       });
@@ -65,14 +67,15 @@ const OtpCard = ({
         </View>
         <View style={CommonSpacingStyles.VerticalSpacing_16}>
           <View style={styles.InputContainer}>
-            {Array.from({ length: 6 }).map((_, index) => (
+            {otp.map((_, index) => (
               <TextInput
                 key={index}
                 ref={(ref) => (inputRefs.current[index] = ref)}
                 style={styles.input}
                 onChangeText={(text) => [
                   handleTextChange(text, index),
-                  setOtp(otp + text),
+
+                  (otp[index] = text),
                   console.log(otp),
                 ]}
                 keyboardType="numeric"
@@ -97,7 +100,14 @@ const OtpCard = ({
             label="Continuar"
             color={Color_Button.Default}
             theme="StyleBoton"
-            onPress={() => [OtpValidate(email, otp, Validacion)]}
+            onPress={() => [
+              OtpValidate(
+                email,
+                otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5],
+                Validacion
+              ),
+              console.log(otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5]),
+            ]}
           />
         </View>
       </View>

@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 import useValidation from "../../ValidationCreateAccount";
 import { err } from "react-native-svg";
+import Toast from "react-native-toast-message";
 
 interface ForgPassProps {
   navigation: any;
@@ -27,24 +28,26 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
   const handleChange = (name: string, value: any) => {
     setState((prevState: JSON) => ({ ...prevState, [name]: value }));
   };
-  const handleSubmit = () => {
-    let newErrors = { ...errors };
 
-    for (let key in state) {
-      if (!state[key]) {
-        newErrors[key] = "Este campo no puede estar vacío";
-      }
+  const Validacion = (estado: boolean, message?: string) => {
+    //setValidado(estado);
+    //console.log(estado);
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+
+        text1: message,
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate("OtpAdviceRecOtp", { email: state.email });
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
     }
-
-    setErrors(newErrors);
-
-    const errorCount = Object.keys(newErrors).length;
-    console.log("Número de errores:", errorCount);
-    const stateJson = getStateAsJson();
-    console.log("Datos enviados:", stateJson);
-    //CreateUser(stateJson);
   };
-
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
@@ -94,10 +97,7 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
               theme="Checked"
               label="Enviar"
               disabled={state.email !== "" && !errors.email}
-              onPress={() => [
-                navigation.navigate("OtpAdviceRecOtp", { email: state.email }),
-                OtpConsumer(state.email),
-              ]}
+              onPress={() => [OtpConsumer(state.email, Validacion)]}
               color={Colors.NightBlue_600}
             />
           </View>

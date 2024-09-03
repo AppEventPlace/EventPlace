@@ -14,7 +14,6 @@ const OtpAdviceRecOtp = ({ route }) => {
 
   const { email } = route.params;
 
-  console.log(email);
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
