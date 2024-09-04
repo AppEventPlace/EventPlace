@@ -26,6 +26,12 @@ const OtpCard = ({
     if (text.length === 1 && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1].focus();
       // setOtp((otp[index] = text));
+    } else if (
+      text.length === 0 &&
+      index !== 0 &&
+      index < inputRefs.current.length
+    ) {
+      inputRefs.current[index - 1].focus();
     }
   };
 
@@ -49,6 +55,9 @@ const OtpCard = ({
     }
   };
 
+  const ValidaciondDiligencia = () => {
+    setValidado(!otp.includes(""));
+  };
   return (
     <View style={CommonStyles.container}>
       <View style={CommonSpacingStyles.VerticalSpacing_56}>
@@ -77,6 +86,8 @@ const OtpCard = ({
 
                   (otp[index] = text),
                   console.log(otp),
+                  ValidaciondDiligencia(),
+                  console.log(validado),
                 ]}
                 keyboardType="numeric"
                 maxLength={1}
@@ -99,7 +110,8 @@ const OtpCard = ({
           <Button
             label="Continuar"
             color={Color_Button.Default}
-            theme="StyleBoton"
+            theme="Checked"
+            disabled={validado}
             onPress={() => [
               OtpValidate(
                 email,
@@ -107,6 +119,7 @@ const OtpCard = ({
                 Validacion
               ),
               console.log(otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5]),
+              console.log(validado),
             ]}
           />
         </View>

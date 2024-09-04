@@ -133,7 +133,16 @@ const Button: React.FC<ButtonProps> = ({
           ]}
         >
           <Pressable
-            style={styles.button}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: pressed
+                  ? Colors.NightBlue_800
+                  : disabled
+                  ? Colors.NightBlue_600
+                  : Colors.NightBlue_300,
+              },
+            ]}
             onPress={onPress}
             disabled={!disabled}
           >
