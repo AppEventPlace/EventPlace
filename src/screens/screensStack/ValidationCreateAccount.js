@@ -22,6 +22,11 @@ const useValidation = (initialState) => {
     },
     password: passwordValidation,
     confirmPassword: passwordValidation,
+    date: {
+      regex:
+        /^(19|20)(((([02468][048])|([13579][26]))(\/)02(\/)29)|(\d{2})(\/)((02(\/)((0[1-9])|1\d|2[0-8]))|((((0[13456789])|1[012]))(\/)((0[1-9])|((1|2)\d)|30))|(((0[13578])|(1[02]))(\/)31)))$/,
+      message: "La fecha no coincide con el formato YYYY/MM/DD",
+    },
     default: {
       regex: /^[a-zA-ZñÑ\s]*$/,
       message: "Este campo solo puede contener letras",
@@ -41,6 +46,11 @@ const useValidation = (initialState) => {
         if (state[key] && !regex.test(state[key])) {
           newErrors[key] = message;
         }
+      } else if (key === "date") {
+        if (state[key] && !regex.test(state[key])) {
+          newErrors[key] = message;
+        }
+      } else if (key === "fotoPerfilBase64") {
       } else {
         if (!regex.test(state[key])) {
           newErrors[key] = message;

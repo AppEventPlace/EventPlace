@@ -34,7 +34,7 @@ const OtpConsumer = async (
     Validacion(true, result.message);
     return result;
     // Mostrar mensaje de éxito
-  } catch (error: any) {
+  } catch (error) {
     //console.log(result.message);
 
     Validacion(false, result.message);

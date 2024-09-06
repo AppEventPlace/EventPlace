@@ -44,7 +44,7 @@ const OtpCard = ({
         text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
-      navigation.navigate(onPressNav);
+      navigation.navigate(onPressNav, { email: email });
     } else if (estado === false) {
       Toast.show({
         type: "error",
@@ -118,8 +118,6 @@ const OtpCard = ({
                 otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5],
                 Validacion
               ),
-              console.log(otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5]),
-              console.log(validado),
             ]}
           />
         </View>

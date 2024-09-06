@@ -36,6 +36,7 @@ import CreateUser from "../../Services/UsersServices/CreateUser";
 
 // --> Importar Api para registrar o crear un nuevo Usuario
 import { LinearProgress } from "@rneui/themed";
+import Toast from "react-native-toast-message";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
 const FondImage = require("../../components/assets/Seleccionar_Foto.jpg");
@@ -46,28 +47,28 @@ Componente Diseñado para crear un formulario de registro de nuevos usuarios
 ---------------------------------------------------------------------------*/
 const CreateAccount = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [imageB64, setImageB64] = useState(null);
   /*----------------------------------------------------------------------------------
   Componente ImageViewer permite el acceso a la interfaz de usuario para seleccionar 
-  la imagen de perfil. 
+  la imagen de perfil. y guardarla en base 64 para envío en la peticion
   ----------------------------------------------------------------------------------*/
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       //Opciones del selector de imágenes a launchImageLibraryAsync()
       allowsEditing: true,
+      base64: true,
       quality: 1,
     });
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
+
+      setImageB64(result.assets[0].base64);
+      handleChange("fotoPerfilBase64", result.assets[0].base64);
     }
     //Si el usuario no elige una imagen, muestra una alerta.
     else {
       alert("No seleccionaste ninguna imagen.");
     }
-    handleChange(
-      "fotoPerfilBase64",
-      "UklGRvYpBQBXRUJQVlA4INIiAwCQ+wedASoABAAEPjEUiUMiISEU+e5EIAMEtDduYTMPssKVm0GDTRHGnThVA7kQ5qnGkQYreUXp5f+i/w37J/vf3lHmvB/4n/M/4b+5/97/TfL5w31D+Cvuv+Q/tP9y/5n+e+XX/D/z37tf4D2D6w/5/+q/dT/AfDj5b+s/53+8/5X/qf4D///+n7sf8P/jf5v9xf3/+2X6u/5n+n/dj9///N+gf8V/ln+R/tP+T/6n+B///r+tr9wveJ/kP/P/4/2x+An9N/wX/c/0H+q/+n+y+oT/df9r/WfvB8vP7x/uf+//nf9R/9/oD/n3+H/8H+e/1//w/3vzzf//3Lf3l//vuEf1r/Yf+3/afv/8vX/L/+f+1/3n///832h/07/V/+3/Tf7X/+/+H7Ef59/dv+f+0H/+/3v0Af+j/+f9n4of4B/2f///4PcA/4P/59hfuV/i/8Z+znvk+Sfx/+N/wn+Z/z3"
-    );
   };
 
   /*----------------------------------------------------------------------------------
@@ -80,6 +81,8 @@ const CreateAccount = ({ navigation }) => {
     email: "",
     password: "",
     confirmPassword: "",
+    fotoPerfilBase64:
+      "iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVKSURBVHgB7Zzfb9tUFMdP3PRHIlHKitAkQHiaNqG9tBUF0ReWwQMPIFFeKiVVNfoXbP0L1v0FZX9BO7Vp+kb2F5DBw5B4aIL21DHqQkFl0kpWpPVHqnbn611ni2NndhxfO/Y+Umov9trcb84599zrc2+CJLG4uKj29fVl+HQ0kUh8gKO4pJpu1fhVPT09rfKxwveu83llenq6TBJIkE+wAEMswCSfXuZG4ThE3oBAJX4VDw8P78zOzlbJBzouyPLyckZRlEkW4Sp5F8EW/v1LJycntzptOR0TRAhxgz9ohiTC7lRiYW7OzMyUqAN4FiSfzyMWLMgWwgz//eLBwcEcu5JGHmhbEMSIgYGBa/wNzVOIYGHms9nsTWqTtgRBj9Hf3/8DvegpwobGgfdKO9aikEtWV1evshjrFF4xAL6wdf6s18klrgQpFAo3+LBEPvYeHQSfcUF8Zsc4dhn84rDFC6e4iSuOBOlmMQycivJKQaIghoETUVoKsra2do2Tnu8pWnyXy+Vu2120FUR0rehNuiGAuqHKXfKYXZds28uwGD9S9MQAQ8ihkFhaXbQURHRVKkWXUR6JW+YoTS4jXGWTYgB3FmPm0XKThbAYCxQfmtraIAiG8HyYpJiAEbpoc50GQTCfQTHD3Oa6IBw7RoOe0wgCs5XUBeHY4XpkGBUw5Wmc670M+mQW5D+KL0jWzmHiWrcQMTseZ4wnBJTED/ajbygAarUabWp/0vb23/T06T6lUil6e/gMXbhwntLpFMmE3eYyH5aMGJIhyUCAn36+Rxsbv+vnYH9/n/5ice798mv9PVlwkqZbSAK9ixjESaVSua833o6zZ9+h8Y/GSCbsKecU9h3pc6O12nFLMcDOziPdpWTCUx0ZuIx8QY6dNRQuJJlRCDJCIQVBViYcWFWF/Ub6nEeaGzrMvUkrBgffoN7eXpIJB9YRWEggk0CXLn1IyWTS8hreHx+XG1ANIIhKAfAmW8DExCdNbjF85i39/bRkdxGoSQoQiPLF55/Rk73/6Zh7FIgjOyEzE6ggBhAmLAQuCDLS3d1d/TzJQTSdGuCAOkhBAUE0CiCO/LG5RZq2ZZmiw3UuXjxP77/3LklGk24hEKDy2316/HjX9h4kZEjtNzYe0sSnH8uMK/rwX0p1H4AYGLi1EuNlIAzul5XCo/JR4R9bJIkHDx66Tsd1a2GLkkRFmoXAKl41oLMDAz2nVuUF1MRy+q6USALb2/+QF3b+fUR+wxlyRclmsxo9L4r1lSd7e+QFWInPVKempsrGjNkd8pk9zka94PdUALvLXRz1bhfFr6Ly2De+/upLCjOsAaoqnz+XOTo6KpIEtwkzqJ/HURcEzyNYodsUU1A3bywmqD+54/nEIsWUnp6eW8Z5XRAUzyOWUMxAm9G7GP9uePqPVQUUM8xtbhAkhlZSNC8rsaoxm6OYwMG0qa1NgqDmiq0k8q6DNoosvQHLKkTOS1CsK21aIAA0/uLnrS5YCoI+mc3pW4pmsoa2XbG7aFu4C3Nis4piPLF0FYOW62XYrJaiFE/Qllwu17J239HykHw+P89m1tUVihDDLm68jOMFRN0silMxgKtFiN0oihsxgOtVmSsrK9dFsWvYV0pgBD+HOOjmP7W1TLVQKKj8x7B8RKVwUkba0Ko3scPTyu4wuhBcBIllu5sleF7qLqwFqwoCrXUVg9I5r5sjvN4MwUTHt8vA5ggsCurm/Zy01qc8McvXKSEMfN9QRVRJZ6gDG6qwCJjmvItJ8a7ZUMUOsa2G8RoRxX54qaZbNXEsi+fOZRag5HUbDKc8A7wyPuDbnAlUAAAAAElFTkSuQmCC",
 
     //  Agregar aquí los campos restantes...
   };
@@ -90,21 +93,6 @@ const CreateAccount = ({ navigation }) => {
   const handleChange = (name, value) => {
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
-
-  // const handleSubmit = () => {
-  //   console.log(state);
-  //   if (validarCampos()) {
-  //     console.log("Datos enviados:", {
-  //       nombres,
-  //       apellidos,
-  //       celular,
-  //       correo,
-  //       usuario,
-  //       contrasena,
-  //     });
-  //     // Acción de registro, por ejemplo, enviar los datos a un servidor
-  //   }
-  // };
 
   const handleSubmit = () => {
     let newErrors = { ...errors };
@@ -118,14 +106,43 @@ const CreateAccount = ({ navigation }) => {
     setErrors(newErrors);
 
     const errorCount = Object.keys(newErrors).length;
+
     console.log("Número de errores:", errorCount);
-    const stateJson = getStateAsJson();
-    console.log("Datos enviados:", stateJson);
-    CreateUser(stateJson);
+    if (errorCount === 0) {
+      const stateJson = getStateAsJson();
+      console.log("Datos enviados:", stateJson);
+      CreateUser(stateJson, Validacion);
+    } else {
+      Toast.show({
+        type: "error",
+        text1: "Existen errores en el formulario",
+        //text2: error.message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
   };
 
   const Progress = 0.4;
 
+  const Validacion = (estado, message) => {
+    //setValidado(estado);
+    console.log(estado);
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+        text1: message,
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate("VerifyIdentity", { email: state.email });
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: message,
+        //text2: error.message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
+  };
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
@@ -224,6 +241,7 @@ const CreateAccount = ({ navigation }) => {
                   <TextInput
                     placeholder="YYYY/MM/DD"
                     value={state.date}
+                    maxLength={10}
                     onChangeText={(value) => handleChange("date", value)}
                     style={CommonStyles.TexInput_1}
                   />
@@ -349,7 +367,11 @@ const CreateAccount = ({ navigation }) => {
                 ) : null}
               </View>
             </View>
-            <CheckedTerms navigation={navigation} onPres={handleSubmit} />
+            <CheckedTerms
+              navigation={navigation}
+              onPres={handleSubmit}
+              disabled={!errors}
+            />
             {/* <Button title="Registrarse" onPress={handleSubmit} /> */}
           </View>
         </View>
