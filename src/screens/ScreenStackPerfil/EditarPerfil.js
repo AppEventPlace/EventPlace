@@ -178,7 +178,9 @@ const EditarPerfilScreen = ({ navigation }) => {
                   key={"ActualizarContraseña"}
                   logo={"Key"}
                   label={"Cambiar Contraseña"}
-                  color={Colors.TexColor}
+                  color={Colors.NightBlue_600}
+                  ancho={30.1}
+                  alto={16}
                 />
               </View>
               <View style={{ marginTop: 20 }}>

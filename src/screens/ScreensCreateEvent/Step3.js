@@ -191,6 +191,8 @@ const Resumen = ({ navigation }) => {
                             : "ExpandMore"
                         }
                         color="#6979F8"
+                        ancho={"20"}
+                        alto={"12"}
                       />
                     </Pressable>
                     {index === 0 && showInfo && (

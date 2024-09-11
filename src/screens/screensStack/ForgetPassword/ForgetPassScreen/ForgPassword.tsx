@@ -73,7 +73,7 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
             electrónico.
           </Text>
         </View>
-        <View style={[CommonStyles.container, { gap: 32 }]}>
+        <View style={[CommonStyles.container, { gap: 28 }]}>
           <Text
             style={[CommonTextStyles.SemiBold_M, { alignSelf: "flex-start" }]}
           >
@@ -83,8 +83,10 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
             placeholder="Ingresa tu correo electrónico"
             value={state.email}
             onChangeText={(value) => [handleChange("email", value)]}
+            inputContainerStyle={{ borderBottomWidth: 0 }}
             style={[
               CommonStyles.TexInput,
+
               errors.email && styles.inputError,
               ,
             ]}

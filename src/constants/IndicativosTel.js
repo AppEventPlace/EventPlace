@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
-import SvgLogo from "../components/assets/IconSvg";
+
+import { Colors } from "../components/CommonStyles/CommonStyles";
+import SvgLogo from "@/components/assets/LogoSVG";
 
 const SelectorIndicativo = () => {
   const [selected, setSelected] = useState("");
@@ -25,14 +27,20 @@ const SelectorIndicativo = () => {
       placeholder="+57"
       arrowicon={
         <View style={{ width: 15, marginLeft: 20, marginTop: 5 }}>
-          <SvgLogo theme={"ExpandMore"} color={"#6979F8"} />
+          <SvgLogo
+            theme={"ExpandMore"}
+            color={Colors.NightBlue_600}
+            progress={0}
+            ancho={"14"}
+            alto={"8"}
+          />
         </View>
       }
       boxStyles={{
         borderWidth: 0,
         position: "absolute",
-
-        top: 12,
+        width: "100%",
+        top: 12.5,
         borderBottomWidth: 1.5,
         borderColor: "#A1A5A9",
         borderRadius: 0,

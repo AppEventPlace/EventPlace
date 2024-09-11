@@ -15,21 +15,24 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
 import * as ImagePicker from "expo-image-picker";
-import ImageViewer from "../../components/ImageViewer";
+import ImageViewer from "../../components/CommonComponents/ImageViewer";
 import SvgLogo from "../../components/assets/LogoSVG";
 import TerminosYPoliticas from "../../constants/TerminosYPoliticas";
 import CommonStyles, {
   Colors,
 } from "../../components/CommonStyles/CommonStyles";
+import Button from "../../components/CommonComponents/Button";
 //import Autenticar from "../../App";
 const FondImage = require("../../components/assets/PerfilGenerico.png");
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       //Opciones del selector de imágenes a launchImageLibraryAsync()
       allowsEditing: true,
+      base64: true,
       quality: 1,
     });
     if (!result.canceled) {
@@ -63,6 +66,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                 Mi perfil{" "}
               </Text>
             </View>
+
             {DatosClientePrueba.map((DCliente) => (
               <View key={"ContenedorInfoPerfil"}>
                 <View style={styles.TarjetaPerfil} key={DCliente.UserName}>
@@ -87,12 +91,13 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                         ancho={68}
                         alto={68}
                       />
-                      <Boton
-                        key={"BotonImagen"}
-                        theme="Imagen"
+                      <Button
+                        key={"ImagePicker"}
+                        theme="ImagePicker"
                         onPress={pickImageAsync}
                       />
                     </View>
+
                     <View
                       style={{
                         position: "absolute",
@@ -100,7 +105,7 @@ const PerfilPrincipalScreen = ({ navigation }) => {
                         top: 52,
                       }}
                     >
-                      <SvgLogo theme="photoCamera" />
+                      <SvgLogo theme="photoCamera" ancho={14} alto={12} />
                     </View>
                   </View>
                   <View key={"Cabecera tarjeta"}>

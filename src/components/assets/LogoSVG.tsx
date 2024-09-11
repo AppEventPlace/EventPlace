@@ -509,8 +509,8 @@ const SvgLogo: React.FC<IconSvgProps> = ({
     case "photoCamera":
       return (
         <Svg
-          width="14"
-          height="12"
+          width={ancho}
+          height={alto}
           viewBox="0 0 14 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -650,8 +650,8 @@ const SvgLogo: React.FC<IconSvgProps> = ({
     case "ExpandMore":
       return (
         <Svg
-          width={20}
-          height={12}
+          width={ancho}
+          height={alto}
           viewBox="0 0 20 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -666,8 +666,8 @@ const SvgLogo: React.FC<IconSvgProps> = ({
     case "ExpandLess":
       return (
         <Svg
-          width={20}
-          height={12}
+          width={ancho}
+          height={alto}
           viewBox="0 0 20 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

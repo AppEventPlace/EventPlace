@@ -6,7 +6,7 @@ export const Colors = {
   // -->
   Primary: "#F4F5FE",
   TexColor: "#0F172A",
-  Placeholder: "#72767A",
+  Placeholder: "#7A828A",
   Line: "#A1A5A9",
   FondoPressed: "#E3E2FC",
   // --> NightBlue
@@ -150,7 +150,7 @@ const CommonStyles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 8,
     borderBottomColor: Colors.Line,
-    borderBottomWidth: (StyleSheet.hairlineWidth = 1),
+    borderBottomWidth: (StyleSheet.hairlineWidth = 1.5),
   },
 
   // --> Estilo de Texto – Contenido en el SubContainer_2

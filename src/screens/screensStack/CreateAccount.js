@@ -37,6 +37,8 @@ import CreateUser from "../../Services/UsersServices/CreateUser";
 // --> Importar Api para registrar o crear un nuevo Usuario
 import { LinearProgress } from "@rneui/themed";
 import Toast from "react-native-toast-message";
+import SvgLogo from "@/components/assets/LogoSVG";
+import SelectorIndicativo from "@/constants/IndicativosTel";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
 const FondImage = require("../../components/assets/Seleccionar_Foto.jpg");
@@ -184,7 +186,7 @@ const CreateAccount = ({ navigation }) => {
               <View style={CommonStyles.Underscore} />
             </View>
             <View style={CommonStyles.container}>
-              <View style={{ marginTop: 24 }}>
+              <View style={{}}>
                 <ImageViewer
                   //Pase el URI de la imagen seleccionada al componente ImageViewer.
                   placeholderImageSource={FondImage}
@@ -193,6 +195,15 @@ const CreateAccount = ({ navigation }) => {
                   alto={96}
                 ></ImageViewer>
                 <Button theme="ImagePicker" onPress={pickImageAsync} />
+                <View
+                  style={{
+                    position: "absolute",
+                    alignSelf: "center",
+                    top: 73.41,
+                  }}
+                >
+                  <SvgLogo theme="photoCamera" ancho={18.82} alto={16.94} />
+                </View>
               </View>
 
               <View style={CommonStyles.SubContainer}>
@@ -200,6 +211,7 @@ const CreateAccount = ({ navigation }) => {
                 <TextInput
                   placeholder="Ingresa tu(s) nombre(s)"
                   value={state.name}
+                  keyboardType="ascii-capable"
                   onChangeText={(value) => handleChange("name", value)}
                   style={[
                     CommonStyles.TexInput,
@@ -217,6 +229,7 @@ const CreateAccount = ({ navigation }) => {
                 <TextInput
                   placeholder="Ingresa tu(s) apellido(s)"
                   value={state.lastName}
+                  keyboardType="ascii-capable"
                   onChangeText={(value) => handleChange("lastName", value)}
                   style={[
                     CommonStyles.TexInput,
@@ -235,6 +248,7 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
+                    { borderBottomWidth: 1.5 },
                     errors.date && styles.inputError,
                   ]}
                 >
@@ -242,6 +256,7 @@ const CreateAccount = ({ navigation }) => {
                     placeholder="YYYY/MM/DD"
                     value={state.date}
                     maxLength={10}
+                    keyboardType="phone-pad"
                     onChangeText={(value) => handleChange("date", value)}
                     style={CommonStyles.TexInput_1}
                   />
@@ -253,21 +268,50 @@ const CreateAccount = ({ navigation }) => {
                   <Text style={CommonTextStyles.Body_S}>{errors.date}</Text>
                 ) : null}
               </View>
-
-              <View style={CommonStyles.SubContainer}>
-                <Text style={CommonStyles.TexContainer}>Número de celular</Text>
-                <TextInput
-                  placeholder="Ingresa tu número de celular"
-                  value={state.phone}
-                  onChangeText={(value) => handleChange("phone", value)}
-                  style={[
-                    CommonStyles.TexInput,
-                    errors.phone && styles.inputError,
-                  ]}
-                />
-                {errors.phone ? (
-                  <Text style={CommonTextStyles.Body_S}>{errors.phone}</Text>
-                ) : null}
+              <View style={{ width: "100%" }}>
+                <View
+                  key={"TelefonoCelular1"}
+                  style={{
+                    //width: "95%",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  <Text style={CommonStyles.TexContainer}>
+                    Número de celular
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View
+                    style={{
+                      width: "30%",
+                      left: -15,
+                    }}
+                  >
+                    <SelectorIndicativo />
+                  </View>
+                  <View style={[, { right: 0 }]}>
+                    <TextInput
+                      placeholder="Ingresa tu número de celular"
+                      value={state.phone}
+                      keyboardType="phone-pad"
+                      onChangeText={(value) => handleChange("phone", value)}
+                      style={[
+                        CommonStyles.TexInput,
+                        errors.phone && styles.inputError,
+                      ]}
+                    />
+                    {errors.phone ? (
+                      <Text style={CommonTextStyles.Body_S}>
+                        {errors.phone}
+                      </Text>
+                    ) : null}
+                  </View>
+                </View>
               </View>
 
               <View style={CommonStyles.SubContainer}>
@@ -277,6 +321,7 @@ const CreateAccount = ({ navigation }) => {
                 <TextInput
                   placeholder="Ingresa tu correo electrónico"
                   value={state.email}
+                  keyboardType="email-address"
                   onChangeText={(value) => handleChange("email", value)}
                   style={[
                     CommonStyles.TexInput,
@@ -295,12 +340,14 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
+                    { borderBottomWidth: 1.5 },
                     errors.user && styles.inputError,
                   ]}
                 >
                   <TextInput
                     placeholder="Ingresa un nombre de usuario"
                     value={state.user}
+                    keyboardType="ascii-capable"
                     onChangeText={(value) => handleChange("user", value)}
                     style={CommonStyles.TexInput_1}
                   />
@@ -318,6 +365,7 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
+                    { borderBottomWidth: 1.5 },
                     errors.password && styles.inputError,
                   ]}
                 >
@@ -344,6 +392,7 @@ const CreateAccount = ({ navigation }) => {
                 <View
                   style={[
                     CommonStyles.SubContainer_2,
+                    { borderBottomWidth: 1.5 },
                     errors.confirmPassword && styles.inputError,
                   ]}
                 >
