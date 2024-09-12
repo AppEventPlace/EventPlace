@@ -43,7 +43,7 @@ const Loguin = ({ navigation }) => {
             label="Iniciar sesión"
             color={Color_Button.Default}
             theme="StyleBoton"
-            onPress={() => alert("Iniciar sesión")}
+            onPress={() => navigation.navigate("Gustos")}
           />
         </View>
         <View style={CommonStyles.BotonContainer_1}>
