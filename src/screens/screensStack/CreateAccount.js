@@ -284,6 +284,7 @@ const CreateAccount = ({ navigation }) => {
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
+                    height: 49,
                   }}
                 >
                   <View
