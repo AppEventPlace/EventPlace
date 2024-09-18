@@ -7,7 +7,11 @@ import CommonStyles, {
 } from "../../components/CommonStyles/CommonStyles";
 import OtpCard from "@/components/organisms/OtpCard";
 
-const VerifyIdentity = ({ navigation }) => {
+const VerifyIdentity = ({ route, navigation }) => {
+  const { email } = route.params;
+  const { phone } = route.params;
+  console.log(email, phone);
+
   return (
     <SafeAreaView
       style={[
@@ -22,10 +26,14 @@ const VerifyIdentity = ({ navigation }) => {
           onPressNav={"Gustos"}
           Title={"Para verificar tu identidad"}
           label={
-            "Hemos enviado al número +57 3018451234 o/y al correo" +
-            "mail@mail.com un mensaje que contiene el código de seguridad de" +
+            "Hemos enviado al número  " +
+            phone +
+            " o/y al correo " +
+            email +
+            " un mensaje que contiene el código de seguridad de " +
             "6 dígitos el cual debes ingresar a continuación."
           }
+          email={email}
         />
       </View>
       <StatusBar style="auto" />

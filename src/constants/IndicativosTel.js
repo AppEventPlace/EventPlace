@@ -94,7 +94,7 @@ const SelectorIndicativo = () => {
 
       <CountryPicker
         show={show}
-        inputPlaceholder="co"
+        inputPlaceholder="Search"
         // when picker button press you will get the country object with dial code
         pickerButtonOnPress={(item) => {
           setCountryCode(item.dial_code);
@@ -102,6 +102,7 @@ const SelectorIndicativo = () => {
           console.log(item);
           setShow(false);
         }}
+        onBackdropPress={() => setShow(false)}
         style={{
           modal: {
             width: "80%",
@@ -116,10 +117,10 @@ const SelectorIndicativo = () => {
             alignSelf: "center",
           },
         }}
-        enableModalAvoiding={false}
+        enableModalAvoiding={true}
         ListHeaderComponent={ListHeaderComponent}
         popularCountries={["en", "co", "do", "gb"]}
-      />
+      ></CountryPicker>
     </View>
   );
 };

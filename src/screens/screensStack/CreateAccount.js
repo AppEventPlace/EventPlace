@@ -39,6 +39,8 @@ import { LinearProgress } from "@rneui/themed";
 import Toast from "react-native-toast-message";
 import SvgLogo from "@/components/assets/LogoSVG";
 import SelectorIndicativo from "@/constants/IndicativosTel";
+import { startGeofencingAsync } from "expo-location";
+import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
 const FondImage = require("../../components/assets/Seleccionar_Foto.jpg");
@@ -135,7 +137,29 @@ const CreateAccount = ({ navigation }) => {
         text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
-      navigation.navigate("VerifyIdentity", { email: state.email });
+      OtpConsumer(state.email, ValidacionEnvioOtp);
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: message,
+        //text2: error.message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
+  };
+  const ValidacionEnvioOtp = (estado, message) => {
+    //setValidado(estado);
+    console.log(estado);
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+        text1: message,
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate("VerifyIdentity", {
+        email: state.email,
+        phone: state.phone,
+      });
     } else if (estado === false) {
       Toast.show({
         type: "error",
