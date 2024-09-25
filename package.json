@@ -19,7 +19,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "@rneui/themed": "^4.0.0-rc.8",
     "@rnmapbox/maps": "^10.1.27",
-    "axios": "^1.7.4",
+    "axios": "^1.7.7",
     "expo": "~51.0.28",
     "expo-asset": "^10.0.10",
     "expo-checkbox": "~3.0.0",
