@@ -9,7 +9,9 @@ import { SelectList } from "react-native-dropdown-select-list";
 import SelectorIndicativo from "../../constants/IndicativosTel";
 import SvgLogo from "../../components/assets/LogoSVG";
 import Direccionador from "../../components/Direccionador";
-import { Colors } from "../../components/CommonStyles/CommonStyles";
+import CommonStyles, {
+  Colors,
+} from "../../components/CommonStyles/CommonStyles";
 
 const EditarPerfilScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -94,33 +96,41 @@ const EditarPerfilScreen = ({ navigation }) => {
                     key={"TelefonoCelular1"}
                     style={{
                       marginTop: 20,
-                      //width: "95%",
+                      // width: "95%",
                       marginLeft: 15,
                       marginRight: 15,
                     }}
                   >
                     <Text style={style.SubFormsTitulo}>Número de celular</Text>
                   </View>
-                  <View style={style.SubContainer5}>
-                    <SelectorIndicativo />
-                  </View>
-
-                  <View style={style.SubContainer2}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      height: 49,
+                      marginLeft: 15,
+                      marginRight: 15,
+                    }}
+                  >
                     <View
                       style={{
-                        width: "60%",
-                        height: "100%",
-                        //borderWidth: 1,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderBottomWidth: 1.5,
-                        borderBottomColor: "#A1A5A9",
-                        marginLeft: 100,
+                        width: "30%",
+                        left: -15,
                       }}
                     >
+                      <SelectorIndicativo />
+                    </View>
+
+                    <View style={{ width: "65%" }}>
                       <TextInput
+                        //value={state.phone}
+                        keyboardType="phone-pad"
+                        //onChangeText={(value) => handleChange("phone", value)}
+                        style={[
+                          CommonStyles.TexInput,
+                          // errors.phone && styles.inputError,
+                        ]}
                         placeholder={DCliente.Celular}
-                        style={style.TexInput}
                         placeholderTextColor="#0F172A"
                       />
                     </View>
@@ -178,7 +188,9 @@ const EditarPerfilScreen = ({ navigation }) => {
                   key={"ActualizarContraseña"}
                   logo={"Key"}
                   label={"Cambiar Contraseña"}
-                  color={Colors.TexColor}
+                  color={Colors.NightBlue_600}
+                  ancho={30.1}
+                  alto={16}
                 />
               </View>
               <View style={{ marginTop: 20 }}>

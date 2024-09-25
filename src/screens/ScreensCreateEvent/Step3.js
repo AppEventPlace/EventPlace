@@ -169,7 +169,13 @@ const Resumen = ({ navigation }) => {
                       onPress={() => handlePress(index)}
                     >
                       <View style={styles.buttonContent}>
-                        <SvgLogo theme="Key" />
+                        <SvgLogo
+                          theme="Key"
+                          color={Colors.NightBlue_600}
+                          ancho="31"
+                          alto="16"
+                          progress={0}
+                        />
                         <Text style={[styles.buttonText, { color: "#000000" }]}>
                           {opcion.label}
                         </Text>
@@ -185,6 +191,8 @@ const Resumen = ({ navigation }) => {
                             : "ExpandMore"
                         }
                         color="#6979F8"
+                        ancho={"20"}
+                        alto={"12"}
                       />
                     </Pressable>
                     {index === 0 && showInfo && (

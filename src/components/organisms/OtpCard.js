@@ -7,19 +7,57 @@ import { Color_Button } from "../CommonStyles/CommonButtonStyles";
 import CommonStyles from "../CommonStyles/CommonStyles";
 import { useNavigation } from "@react-navigation/native";
 import OtpValidate from "@/Services/UsersServices/OtpValider";
+import Toast from "react-native-toast-message";
 
-const OtpCard = ({ onPressReload, Title, label, onPressNav, navigation }) => {
+const OtpCard = ({
+  onPressReload,
+  Title,
+  label,
+  onPressNav,
+  navigation,
+  email,
+}) => {
+  let datosIni = ["", "", "", "", "", ""];
   const inputRefs = useRef([]);
-  const [otp, setOtp] = useState("");
+  const [otp, setOtp] = useState(datosIni);
   const [validado, setValidado] = useState(false);
   const handleTextChange = (text, index) => {
     // Mover automáticamente el foco al siguiente input si se ha ingresado un carácter
     if (text.length === 1 && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1].focus();
+      // setOtp((otp[index] = text));
+    } else if (
+      text.length === 0 &&
+      index !== 0 &&
+      index < inputRefs.current.length
+    ) {
+      inputRefs.current[index - 1].focus();
     }
   };
 
-  const Validacion = ({ correo, otp }) => {};
+  const Validacion = (estado, message) => {
+    //setValidado(estado);
+    console.log(estado);
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+        text1: message,
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate(onPressNav, { email: email });
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: message,
+        //text2: error.message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
+  };
+
+  const ValidaciondDiligencia = () => {
+    setValidado(!otp.includes(""));
+  };
   return (
     <View style={CommonStyles.container}>
       <View style={CommonSpacingStyles.VerticalSpacing_56}>
@@ -38,15 +76,18 @@ const OtpCard = ({ onPressReload, Title, label, onPressNav, navigation }) => {
         </View>
         <View style={CommonSpacingStyles.VerticalSpacing_16}>
           <View style={styles.InputContainer}>
-            {Array.from({ length: 6 }).map((_, index) => (
+            {otp.map((_, index) => (
               <TextInput
                 key={index}
                 ref={(ref) => (inputRefs.current[index] = ref)}
                 style={styles.input}
                 onChangeText={(text) => [
                   handleTextChange(text, index),
-                  setOtp(otp + text),
+
+                  (otp[index] = text),
                   console.log(otp),
+                  ValidaciondDiligencia(),
+                  console.log(validado),
                 ]}
                 keyboardType="numeric"
                 maxLength={1}
@@ -69,10 +110,14 @@ const OtpCard = ({ onPressReload, Title, label, onPressNav, navigation }) => {
           <Button
             label="Continuar"
             color={Color_Button.Default}
-            theme="StyleBoton"
+            theme="Checked"
+            disabled={validado}
             onPress={() => [
-              navigation.navigate(onPressNav),
-              OtpValidate("appeventplace@gmail.com", otp),
+              OtpValidate(
+                email,
+                otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5],
+                Validacion
+              ),
             ]}
           />
         </View>

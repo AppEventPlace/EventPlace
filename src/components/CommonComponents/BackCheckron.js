@@ -18,7 +18,7 @@ const BackCheckron = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   HeaderContainer: {
-    height: 25,
+    height: 35,
     width: "100%",
   },
 });

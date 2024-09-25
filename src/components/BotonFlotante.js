@@ -92,6 +92,8 @@ const BotonFlotante = ({ navigation }) => {
             <SvgLogo
               theme={presionado ? "ExpandMore" : "ExpandLess"}
               color={Colors.Blanco}
+              ancho={"20"}
+              alto={"12"}
             />
             <Text style={[CommonTextStyles.Body_M, { color: Colors.Blanco }]}>
               Acciones

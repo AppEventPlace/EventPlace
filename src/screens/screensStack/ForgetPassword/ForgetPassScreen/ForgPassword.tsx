@@ -8,13 +8,46 @@ import { SafeAreaView, Text, View, StyleSheet, TextInput } from "react-native";
 import { Input } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
+import useValidation from "../../ValidationCreateAccount";
+import { err } from "react-native-svg";
+import Toast from "react-native-toast-message";
 
 interface ForgPassProps {
   navigation: any;
 }
 
 const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
-  const [correo, setCorreo] = useState("");
+  const ValidateEmail = {
+    email: "",
+  };
+  const [activo, setActivo] = useState(false);
+
+  const { state, setState, errors, validarCampos, setErrors, getStateAsJson } =
+    useValidation(ValidateEmail);
+
+  const handleChange = (name: string, value: any) => {
+    setState((prevState: JSON) => ({ ...prevState, [name]: value }));
+  };
+
+  const Validacion = (estado: boolean, message?: string) => {
+    //setValidado(estado);
+    //console.log(estado);
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+
+        text1: message,
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate("OtpAdviceRecOtp", { email: state.email });
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
+  };
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
@@ -40,7 +73,7 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
             electrónico.
           </Text>
         </View>
-        <View style={[CommonStyles.container, { gap: 32 }]}>
+        <View style={[CommonStyles.container, { gap: 28 }]}>
           <Text
             style={[CommonTextStyles.SemiBold_M, { alignSelf: "flex-start" }]}
           >
@@ -48,16 +81,25 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
           </Text>
           <Input
             placeholder="Ingresa tu correo electrónico"
-            onChangeText={(value) => setCorreo(value)}
+            value={state.email}
+            onChangeText={(value) => [handleChange("email", value)]}
+            inputContainerStyle={{ borderBottomWidth: 0 }}
+            style={[
+              CommonStyles.TexInput,
+
+              errors.email && styles.inputError,
+              ,
+            ]}
           />
+          {errors.email ? (
+            <Text style={CommonTextStyles.Body_S}>{errors.email}</Text>
+          ) : null}
           <View style={{ height: 43 }}>
             <Button
-              theme="StyleBoton"
+              theme="Checked"
               label="Enviar"
-              onPress={() => [
-                navigation.navigate("OtpAdviceRecOtp"),
-                OtpConsumer(correo),
-              ]}
+              disabled={state.email !== "" && !errors.email}
+              onPress={() => [OtpConsumer(state.email, Validacion)]}
               color={Colors.NightBlue_600}
             />
           </View>
@@ -66,4 +108,10 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  inputError: {
+    borderColor: "red",
+  },
+});
 export default ForgPassword;

@@ -24,7 +24,7 @@ interface ButtonProps {
   onPress: () => void;
   Icon?: string;
   IconColor?: string;
-  disabled?: string;
+  disabled?: boolean;
 }
 interface getStyleProp {
   color: string;
@@ -90,8 +90,11 @@ const Button: React.FC<ButtonProps> = ({
     case "Generico":
       return (
         <Pressable
-          style={styles.button}
-          onPress={() => alert("You pressed a button1.")}
+          style={({ pressed }) => [
+            styles.button,
+            { backgroundColor: pressed ? Colors.FondoPressed : Colors.Blanco },
+          ]}
+          onPress={onPress}
         >
           <Text style={styles.StyleButtonLabel_3}>{label}</Text>
         </Pressable>
@@ -121,7 +124,7 @@ const Button: React.FC<ButtonProps> = ({
       return (
         <View
           style={[
-            styles.StyleBoton,
+            styles.button,
             {
               backgroundColor: disabled
                 ? Colors.NightBlue_600
@@ -130,7 +133,16 @@ const Button: React.FC<ButtonProps> = ({
           ]}
         >
           <Pressable
-            style={styles.button}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: pressed
+                  ? Colors.NightBlue_800
+                  : disabled
+                  ? Colors.NightBlue_600
+                  : Colors.NightBlue_300,
+              },
+            ]}
             onPress={onPress}
             disabled={!disabled}
           >

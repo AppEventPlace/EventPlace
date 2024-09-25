@@ -18,10 +18,22 @@ const Dropdown = ({ Title, SubTitle }) => {
         placeholder={SubTitle}
         arrowicon={
           <View style={{ justifyContent: "center" }}>
-            <SvgLogo theme={"ExpandMore"} color={"#6979F8"} />
+            <SvgLogo
+              theme={"ExpandMore"}
+              color={"#6979F8"}
+              ancho={"20"}
+              alto={"12"}
+            />
           </View>
         }
-        closeicon={<SvgLogo theme={"ExpandMore"} color={"#6979F8"} />}
+        closeicon={
+          <SvgLogo
+            theme={"ExpandLess"}
+            color={"#6979F8"}
+            ancho={"20"}
+            alto={"12"}
+          />
+        }
         boxStyles={{
           flex: 1,
           width: "100%",

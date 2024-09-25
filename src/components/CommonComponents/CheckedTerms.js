@@ -26,7 +26,7 @@ import CommonSpacingStyles from "../CommonStyles/CommonSpacingStyles";
   ----------------------------------------------------------------------------------
   */
 
-const CheckedTerms = ({ navigation, onPres }) => {
+const CheckedTerms = ({ navigation, onPres, disabled }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckChange = () => {
@@ -60,10 +60,9 @@ const CheckedTerms = ({ navigation, onPres }) => {
         <Button
           theme="Checked"
           label="Continuar"
-          disabled={isChecked}
+          disabled={isChecked && !disabled}
           color={Color_Button.Default}
           onPress={() => {
-            navigation.navigate("VerifyIdentity");
             onPres();
           }}
         />

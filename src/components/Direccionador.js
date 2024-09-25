@@ -3,7 +3,7 @@ import { View, Text, Pressable } from "react-native";
 import SvgLogo from "../components/assets/LogoSVG";
 import CommonStyles, { Colors } from "../components/CommonStyles/CommonStyles";
 import CommonTextStyles from "../components/CommonStyles/CommonTextStyles";
-const Direccionador = ({ label, logo, color, onPress }) => {
+const Direccionador = ({ label, logo, color, onPress, ancho, alto }) => {
   return (
     <View
       style={[
@@ -44,7 +44,7 @@ const Direccionador = ({ label, logo, color, onPress }) => {
           }}
         >
           <View style={{}}>
-            <SvgLogo theme={logo} color={color} />
+            <SvgLogo theme={logo} color={color} ancho={ancho} alto={alto} />
           </View>
           <View style={{}}>
             <Text style={[CommonTextStyles.Body_S, { color: Colors.Negro }]}>
