@@ -43,9 +43,9 @@ const CheckedTerms = ({ navigation, onPres, disabled }) => {
           containerStyle={styles.CheckBox}
           checkedColor={Colors.NightBlue_600}
           uncheckedColor={Colors.NightBlue_600}
-          // iconType="material-community"
-          // checkedIcon="checkbox-marked"
-          // uncheckedIcon="checkbox-blank-outline"
+          iconType="material-community"
+          checkedIcon="checkbox-marked"
+          uncheckedIcon="checkbox-blank-outline"
         />
         <View style={styles.BotonContainer}>
           <Button

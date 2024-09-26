@@ -8,6 +8,7 @@ import CommonStyles from "../CommonStyles/CommonStyles";
 import { useNavigation } from "@react-navigation/native";
 import OtpValidate from "@/Services/UsersServices/OtpValider";
 import Toast from "react-native-toast-message";
+import Timer from "../atoms/Timer";
 
 const OtpCard = ({
   onPressReload,
@@ -96,6 +97,9 @@ const OtpCard = ({
                 // Permitir seleccionar texto al enfocar
               />
             ))}
+          </View>
+          <View style={{ alignSelf: "center" }}>
+            <Timer />
           </View>
           <View style={styles.Height}>
             <Button

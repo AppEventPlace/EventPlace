@@ -65,7 +65,7 @@ const CreateAccount = ({ navigation }) => {
     });
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
-
+      console.log(result.assets[0].uri);
       setImageB64(result.assets[0].base64);
       handleChange("fotoPerfilBase64", result.assets[0].base64);
     }
