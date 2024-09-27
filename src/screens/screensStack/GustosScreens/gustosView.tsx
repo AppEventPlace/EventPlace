@@ -1,29 +1,33 @@
-// GustosView.tsx
 import React, { useState } from "react";
 import { ScrollView, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearProgress } from "@rneui/themed";
 import Boton from "@/components/Button";
 import BackCheckron from "@/components/CommonComponents/BackCheckron";
-import SeleccionTags from "@/components/SeleccionTags";
+import SeleccionTags from "@/components/organisms/SeleccionTags";
 import CommonSpacingStyles from "@/components/CommonStyles/CommonSpacingStyles";
 import CommonStyles, { Colors } from "@/components/CommonStyles/CommonStyles";
 import CommonTextStyles from "@/components/CommonStyles/CommonTextStyles";
 import OpcionesSeleccion from "@/constants/OpcionesSeleccion";
-import { Checkbox } from "react-native-paper";
+import { Checkbox, RadioButton } from "react-native-paper";
 import { IPreference } from "@/interfaces/IPreference";
+import { StyleSheet } from "react-native";
+import Button from "@/components/CommonComponents/Button";
 
 export interface IGustosViewProps {
   preferences: IPreference[];
 }
 
 const GustosView: React.FC<IGustosViewProps> = ({ preferences }) => {
-  // Estado para manejar los checkboxes
-  const [checkedCrearEventos, setCheckedCrearEventos] =
-    useState<boolean>(false);
-  const [checkedPrestarServicios, setCheckedPrestarServicios] =
-    useState<boolean>(false);
-  const [checkedTenerLugar, setCheckedTenerLugar] = useState<boolean>(false);
+  const [responseCreateEvents, setResponseCreateEvents] = useState<
+    string | null
+  >(null);
+  const [responseProvideServices, setResponseProvideServices] = useState<
+    string | null
+  >(null);
+  const [responseHavePlace, setResponseHavePlace] = useState<string | null>(
+    null
+  );
 
   const Progress = 0.6;
 
@@ -40,11 +44,6 @@ const GustosView: React.FC<IGustosViewProps> = ({ preferences }) => {
         <View style={{ flex: 2 }}>
           <BackCheckron navigation={navigator} />
         </View>
-        {/* eliminar botón saltar*/}
-        <View style={{ width: 60, alignItems: "flex-end" }}>
-          <Boton theme={"botonSubRay"} label={"Saltar"} onPress={() => {}} />
-        </View>
-        {/* */}
       </View>
 
       <ScrollView style={CommonStyles.ScrollView}>
@@ -79,33 +78,86 @@ const GustosView: React.FC<IGustosViewProps> = ({ preferences }) => {
                   { paddingHorizontal: 10, paddingVertical: 10 },
                 ]}
               >
-                <SeleccionTags OpcSeleccion={OpcionesSeleccion} />
+                <SeleccionTags OpcSeleccion={preferences} />
               </View>
 
               {/* Selección de Preferencias */}
-              <View
-                style={[
-                  CommonStyles.container,
-                  { paddingHorizontal: 10, paddingVertical: 10 },
-                ]}
-              >
-                <Checkbox.Item
-                  label="¿Te gusta crear eventos?"
-                  status={checkedCrearEventos ? "checked" : "unchecked"}
-                  onPress={() => setCheckedCrearEventos(!checkedCrearEventos)}
-                />
-                <Checkbox.Item
-                  label="¿Prestas servicios para eventos?"
-                  status={checkedPrestarServicios ? "checked" : "unchecked"}
-                  onPress={() =>
-                    setCheckedPrestarServicios(!checkedPrestarServicios)
-                  }
-                />
-                <Checkbox.Item
-                  label="¿Cuentas con un lugar/sitio/negocio para realizar eventos?"
-                  status={checkedTenerLugar ? "checked" : "unchecked"}
-                  onPress={() => setCheckedTenerLugar(!checkedTenerLugar)}
-                />
+              <View style={styles.container}>
+                <View style={styles.questionContainer}>
+                  <Text style={CommonTextStyles.SemiBold_L}>
+                    ¿Te gustaría crear eventos?
+                  </Text>
+                  <View style={styles.radioContainer}>
+                    <RadioButton
+                      value="Si"
+                      status={
+                        responseCreateEvents === "Si" ? "checked" : "unchecked"
+                      }
+                      onPress={() => setResponseCreateEvents("Si")}
+                    />
+                    <Text style={styles.radioLabel}>Si</Text>
+                    <RadioButton
+                      value="No"
+                      status={
+                        responseCreateEvents === "No" ? "checked" : "unchecked"
+                      }
+                      onPress={() => setResponseCreateEvents("No")}
+                    />
+                    <Text style={styles.radioLabel}>No</Text>
+                  </View>
+                </View>
+
+                <View style={styles.questionContainer}>
+                  <Text style={CommonTextStyles.SemiBold_L}>
+                    ¿Prestas servicios para eventos?
+                  </Text>
+                  <View style={styles.radioContainer}>
+                    <RadioButton
+                      value="Si"
+                      status={
+                        responseProvideServices === "Si"
+                          ? "checked"
+                          : "unchecked"
+                      }
+                      onPress={() => setResponseProvideServices("Si")}
+                    />
+                    <Text style={styles.radioLabel}>Si</Text>
+                    <RadioButton
+                      value="No"
+                      status={
+                        responseProvideServices === "No"
+                          ? "checked"
+                          : "unchecked"
+                      }
+                      onPress={() => setResponseProvideServices("No")}
+                    />
+                    <Text style={styles.radioLabel}>No</Text>
+                  </View>
+                </View>
+
+                <View style={styles.questionContainer}>
+                  <Text style={CommonTextStyles.SemiBold_L}>
+                    ¿Cuentas con un lugar/sitio/negocio para realizar eventos?
+                  </Text>
+                  <View style={styles.radioContainer}>
+                    <RadioButton
+                      value="Si"
+                      status={
+                        responseHavePlace === "Si" ? "checked" : "unchecked"
+                      }
+                      onPress={() => setResponseHavePlace("Si")}
+                    />
+                    <Text style={styles.radioLabel}>Si</Text>
+                    <RadioButton
+                      value="No"
+                      status={
+                        responseHavePlace === "No" ? "checked" : "unchecked"
+                      }
+                      onPress={() => setResponseHavePlace("No")}
+                    />
+                    <Text style={styles.radioLabel}>No</Text>
+                  </View>
+                </View>
               </View>
             </View>
 
@@ -116,12 +168,19 @@ const GustosView: React.FC<IGustosViewProps> = ({ preferences }) => {
                 maxWidth: 330,
                 minWidth: 320,
                 alignSelf: "center",
+                height: 43,
               }}
             >
-              <Boton
-                theme={"Seleccionable"}
-                label={"Continuar"}
-                onPress={() => {}}
+              {/* <Boton theme={"Seleccionable"} label={"Continuar"} onPress={() => { }} /> */}
+
+              <Button
+                theme="Checked"
+                label="Continuar"
+                color={Colors.Primary}
+                onPress={() => {
+                  console.log("Botón presionado");
+                }}
+                disabled={false}
               />
             </View>
           </View>
@@ -130,5 +189,27 @@ const GustosView: React.FC<IGustosViewProps> = ({ preferences }) => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  },
+  questionContainer: {
+    marginBottom: 20,
+  },
+  question: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  radioContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  radioLabel: {
+    marginHorizontal: 5,
+    paddingHorizontal: 10,
+  },
+});
 
 export default GustosView;

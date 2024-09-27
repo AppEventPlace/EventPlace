@@ -13,12 +13,10 @@ const Gustos: React.FC = () => {
       try {
         const response: IResponse = await PreferencesService.getPreferences();
         setPreferences(response.data);
-        console.log(response.data, "response.data")
       } catch (error) {
         console.error("Error fetching preferences:", error);
       }
     };
-
     fetchPreferences(); 
   }, []); 
 

@@ -287,7 +287,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    //borderWidth: 1,
     borderRadius: 50,
     columnGap: 5,
   },
@@ -327,7 +326,6 @@ const styles = StyleSheet.create({
   BackButton: {
     width: 70,
     height: 25,
-    //borderWidth: 1,
     gap: 8,
     flexDirection: "row",
     alignItems: "center",
