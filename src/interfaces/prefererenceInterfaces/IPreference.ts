@@ -6,7 +6,6 @@ export interface IPreference {
   preference_description: string;
 }
 
-// Initial state for IPreference
 export const initialStatePreference: IPreference = {
   preference_id: 0,
   preference_name_en: '',

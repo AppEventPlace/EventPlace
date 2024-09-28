@@ -1,4 +1,4 @@
-import { IPreference } from './IPreference'; 
+import { IPreference } from './prefererenceInterfaces/IPreference';
 
 export interface IResponse {
   success: boolean;

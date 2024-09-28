@@ -8,10 +8,11 @@ import CommonSpacingStyles from "@/components/CommonStyles/CommonSpacingStyles";
 import CommonStyles, { Colors } from "@/components/CommonStyles/CommonStyles";
 import CommonTextStyles from "@/components/CommonStyles/CommonTextStyles";
 import { RadioButton } from "react-native-paper";
-import { IPreference } from "@/interfaces/IPreference";
+import { IPreference } from "@/interfaces/prefererenceInterfaces/IPreference";
 import { StyleSheet } from "react-native";
 import Button from "@/components/CommonComponents/Button";
-import { IUserPreferenceQuestion } from "@/interfaces/IUserPreferenceQuestion";
+import { IUserPreferenceQuestion } from "@/interfaces/prefererenceInterfaces/IUserPreferenceQuestion";
+
 
 export interface IGustosViewProps {
   preferences: IPreference[];

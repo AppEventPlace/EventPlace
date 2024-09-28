@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import GustosView from "./gustosView";
-import { IPreference } from "@/interfaces/IPreference";
+import { IPreference } from "@/interfaces/prefererenceInterfaces/IPreference";
 import PreferencesService from "@/Services/PreferencesServices/preferencesService";
 import { IResponse } from "@/interfaces/IResponse";
-import { initialUserPreferences, IUserPreference } from "@/interfaces/IUserPreference";
+import { initialUserPreferences, IUserPreference } from "@/interfaces/prefererenceInterfaces/IUserPreference";
 import UserPreferencesService from "@/Services/PreferencesServices/userPreferenceServices";
 import Loader from "@/components/atoms/Loader";
-import { initialUserPreferenceQuestion, IUserPreferenceQuestion } from "@/interfaces/IUserPreferenceQuestion";
+import { initialUserPreferenceQuestion, IUserPreferenceQuestion } from "@/interfaces/prefererenceInterfaces/IUserPreferenceQuestion";
+
 
 
 const Gustos: React.FC = () => {
@@ -25,14 +26,14 @@ const Gustos: React.FC = () => {
       } catch (error) {
         console.error("Error fetching preferences:", error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
     fetchPreferences();
   }, []);
 
   if (loading) {
-    return <Loader />; 
+    return <Loader />;
   }
 
 
@@ -59,7 +60,7 @@ const Gustos: React.FC = () => {
       console.error('Error saving user preferences:', error);
     }
   };
-  
+
 
   const handleResponseChange = (key: keyof IUserPreferenceQuestion, value: string) => {
     setResponses((prev) => ({ ...prev, [key]: value }));
