@@ -19,6 +19,7 @@ export const Colors = {
   NightBlue_800: "#515EC0",
   // --> Verde
   WellDoneGreen: "#008B63",
+  WellDoneGreen_200: "#B4E3CE",
   // --> Azul
   Azul_Facebook: "#1877F2",
   // --> Gris

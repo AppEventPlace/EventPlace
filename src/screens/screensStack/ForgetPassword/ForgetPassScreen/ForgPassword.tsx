@@ -10,13 +10,31 @@ import { useNavigation } from "@react-navigation/native";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 import useValidation from "../../ValidationCreateAccount";
 import { err } from "react-native-svg";
-import Toast from "react-native-toast-message";
+import Toast, { BaseToast } from "react-native-toast-message";
 
 interface ForgPassProps {
   navigation: any;
 }
 
 const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
+  const toastConfig = {
+    /*
+      Overwrite 'success' type,
+      by modifying the existing `BaseToast` component
+    */
+    success: () => (
+      <BaseToast
+        //{...props}
+        style={{ borderLeftColor: "pink" }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        text1Style={{
+          fontSize: 15,
+          fontWeight: "400",
+        }}
+      />
+    ),
+  };
+
   const ValidateEmail = {
     email: "",
   };
@@ -35,8 +53,9 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
     if (estado === true) {
       Toast.show({
         type: "success",
-
+        swipeable: true,
         text1: message,
+
         visibilityTime: 4000, // Duración en milisegundos
       });
       navigation.navigate("OtpAdviceRecOtp", { email: state.email });
