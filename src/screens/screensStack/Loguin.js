@@ -10,7 +10,7 @@ import CommonStyles, {
 import { Color_Button } from "../../components/CommonStyles/CommonButtonStyles";
 
 // --> Importar componentes propios
-import IconSvg from "../../components/assets/IconSvg";
+import IconSvg from "../../assets/IconSvg";
 import Button from "../../components/CommonComponents/Button";
 import AnotherLoginMethod from "../../components/CommonComponents/AnotherLoginMethod";
 import Boton from "../../components/Button";

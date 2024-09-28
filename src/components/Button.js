@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Pressable, Text, Switch } from "react-native";
-import IconSVG from "../components/assets/LogoSVG";
+import IconSVG from "../assets/LogoSVG";
 import { Colors } from "../components/CommonStyles/CommonStyles";
 import CommonTextStyles from "../components/CommonStyles/CommonTextStyles";
 

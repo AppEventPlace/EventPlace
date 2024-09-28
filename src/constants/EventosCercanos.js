@@ -2,7 +2,7 @@ export default [
   {
     Id: "1",
     Titulo: "Festival de baile",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:
@@ -11,7 +11,7 @@ export default [
   {
     Id: "2",
     Titulo: "Gastronomía para todos",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:
@@ -20,7 +20,7 @@ export default [
   {
     Id: "3",
     Titulo: "Fiesta",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:
@@ -29,7 +29,7 @@ export default [
   {
     Id: "4",
     Titulo: "Evento de la esquina",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:
@@ -38,7 +38,7 @@ export default [
   {
     Id: "5",
     Titulo: "Lorem",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:
@@ -47,7 +47,7 @@ export default [
   {
     Id: "6",
     Titulo: "Ipsum",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:

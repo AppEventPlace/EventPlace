@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import BackCheckron from "../../components/BackCheckron";
 import Button from "../../components/Button";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import EventosCercanos from "../../constants/EventosCercanos";
 import TarjetaWall from "../../components/TarjetaWall";
 import CommonStyles, {

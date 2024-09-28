@@ -6,7 +6,7 @@ import { Text, View, StyleSheet } from "react-native";
 import Froms from "../../../components/Form";
 import Boton from "../../../components/Button";
 import Dropdown from "../../../components/Dropdown";
-import SvgLogo from "../../../components/assets/LogoSVG";
+import SvgLogo from "../../../assets/LogoSVG";
 //import { LeafletView, LatLng } from "react-native-leaflet-view";
 /*import Mapbox from "@rnmapbox/maps";
 
@@ -50,8 +50,8 @@ en la lista:
       <View style={style.InfoContainer}>
         {preguntas.map((pregunta, index) =>
           pregunta.Title === "Departamento" ||
-          pregunta.Title === "Ciudad o municipio" ||
-          pregunta.Title === "Tipo de lugar" ? (
+            pregunta.Title === "Ciudad o municipio" ||
+            pregunta.Title === "Tipo de lugar" ? (
             <Dropdown
               key={index}
               Title={pregunta.Title}

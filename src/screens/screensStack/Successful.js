@@ -10,7 +10,7 @@ import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 import { Color_Button } from "../../components/CommonStyles/CommonButtonStyles";
 
 import Button from "../../components/CommonComponents/Button";
-import IconSvg from "../../components/assets/IconSvg";
+import IconSvg from "../../assets/IconSvg";
 
 // --> Importar Api para registrar o crear un nuevo Usuario
 import { LinearProgress } from "@rneui/themed";

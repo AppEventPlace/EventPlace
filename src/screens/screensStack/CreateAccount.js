@@ -22,7 +22,7 @@ import CommonSpacingStyles from "../../components/CommonStyles/CommonSpacingStyl
 import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 
 // --> Importar Componentes comunes
-import IconSvg from "../../components/assets/IconSvg";
+import IconSvg from "../../assets/IconSvg";
 import Button from "../../components/CommonComponents/Button";
 import CheckedTerms from "../../components/CommonComponents/CheckedTerms";
 import BackCheckron from "../../components/CommonComponents/BackCheckron";
@@ -37,13 +37,13 @@ import CreateUser from "../../Services/UsersServices/CreateUser";
 // --> Importar Api para registrar o crear un nuevo Usuario
 import { LinearProgress } from "@rneui/themed";
 import Toast from "react-native-toast-message";
-import SvgLogo from "@/components/assets/LogoSVG";
+import SvgLogo from "@/assets/LogoSVG";
 import SelectorIndicativo from "@/constants/IndicativosTel";
 import { startGeofencingAsync } from "expo-location";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
-const FondImage = require("../../components/assets/Seleccionar_Foto.jpg");
+const FondImage = require("../../assets/Seleccionar_Foto.jpg");
 /*----------------------------------------------------------------------------------*/
 
 /*----------------------------  CreateAccount  -----------------------------

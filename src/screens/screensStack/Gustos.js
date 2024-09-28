@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 
 import OpcionesSeleccion from "../../constants/OpcionesSeleccion";
 

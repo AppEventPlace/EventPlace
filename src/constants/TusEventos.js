@@ -2,7 +2,7 @@ export default [
   {
     Id: "1",
     Titulo: "Mi primer evento",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:
@@ -11,7 +11,7 @@ export default [
   {
     Id: "2",
     Titulo: "Mi segundo evento",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     Descripcion:

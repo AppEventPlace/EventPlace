@@ -18,7 +18,7 @@ import Boton from "../../components/Button";
 import EventosCercanos from "../../constants/EventosCercanos";
 import TarjetaWall from "../../components/TarjetaWall";
 import TusEventos from "../../constants/TusEventos";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
 import CommonStyles, {
   Colors,

@@ -1,4 +1,4 @@
-import IconSvg from "@/components/assets/IconSvg";
+import IconSvg from "@/assets/IconSvg";
 import BackCheckron from "@/components/CommonComponents/BackCheckron";
 import Button from "@/components/CommonComponents/Button";
 import CommonSpacingStyles from "@/components/CommonStyles/CommonSpacingStyles";
@@ -13,7 +13,7 @@ import Loguin from "../../Loguin";
 import PasswUpdate from "@/Services/UsersServices/PasswUpdate";
 import { useNavigation } from "@react-navigation/native";
 import useValidation from "../../ValidationCreateAccount";
-import SvgLogo from "@/components/assets/LogoSVG";
+import SvgLogo from "@/assets/LogoSVG";
 
 interface ForgPassProps {
   navigation: any;

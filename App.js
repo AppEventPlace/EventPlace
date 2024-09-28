@@ -20,7 +20,7 @@ import BoletasScreen from "./src/screens/screensMenu/Boletas";
 import TabItems from "./src/constants/TabItems";
 
 //import isUserAuthenticated from "./src/EstadoAuth";
-import SvgLogo from "./src/components/assets/LogoSVG";
+import SvgLogo from "./src/assets/LogoSVG";
 import { Colors } from "./src/components/CommonStyles/CommonStyles";
 
 //Creación de menú a partir --------------------
@@ -65,12 +65,12 @@ const MenuMovil = () => {
             Items.name === "Notificaciones"
               ? NotificacionesScreen
               : Items.name === "Chat"
-              ? Chat
-              : Items.name === "Wall"
-              ? WallScreen
-              : Items.name === "Mis Boletas"
-              ? BoletasScreen
-              : PerfilScreen
+                ? Chat
+                : Items.name === "Wall"
+                  ? WallScreen
+                  : Items.name === "Mis Boletas"
+                    ? BoletasScreen
+                    : PerfilScreen
           }
         />
       ))}

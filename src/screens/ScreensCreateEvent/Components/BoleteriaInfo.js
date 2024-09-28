@@ -8,7 +8,7 @@ import Dropdown from "../../../components/Dropdown";
 import SimpleCheckBox from "../../../components/SimpleCheckBox";
 import Boton from "../../../components/Button";
 
-import SvgLogo from "../../../components/assets/LogoSVG";
+import SvgLogo from "../../../assets/LogoSVG";
 
 //Definición de preguntas:
 const preguntas = [

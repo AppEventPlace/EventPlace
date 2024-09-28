@@ -5,7 +5,7 @@ import React from "react";
 import { Dimensions, SafeAreaView, Text, View } from "react-native";
 import NavButton from "../../../components/atoms/NavButton";
 import { useNavigation } from "@react-navigation/native";
-import IconSvg from "@/components/assets/IconSvg";
+import IconSvg from "@/assets/IconSvg";
 import CommonTextStyles from "@/components/CommonStyles/CommonTextStyles";
 import Button from "@/components/CommonComponents/Button";
 

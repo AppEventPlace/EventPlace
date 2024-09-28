@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
 
 import { SelectList } from "react-native-dropdown-select-list";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 import EventType from "../constants/EventType";
 
 const Dropdown = ({ Title, SubTitle }) => {

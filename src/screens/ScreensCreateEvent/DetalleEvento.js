@@ -18,7 +18,7 @@ import BackCheckron from "../../components/BackCheckron";
 import EventosCercanos from "../../constants/EventosCercanos";
 import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 import EjemploDetalleEvento from "../../constants/EjemploDetalleEvento";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import Direccionador from "../../components/Direccionador";
 import TarjetaOrganizador from "../../components/TarjetaOrganizador";
 import TarjetaAnfitrion from "../../components/TarjetaAnfitrion";

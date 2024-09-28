@@ -7,7 +7,7 @@ import CommonStyles, { Colors } from "@/components/CommonStyles/CommonStyles";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
-import SvgLogo from "@/components/assets/LogoSVG";
+import SvgLogo from "@/assets/LogoSVG";
 
 const OtpValidatorPassword = ({ route }) => {
   const navigation = useNavigation();

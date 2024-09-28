@@ -16,7 +16,7 @@ import CommonStyles, {
 import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 import SeleccionTags from "../../components/SeleccionTags";
 import OpcionesSeleccion from "../../constants/OpcionesSeleccion";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import Froms from "../../components/Form";
 import Dropdown from "../../components/Dropdown";
 import Button from "../../components/Button";

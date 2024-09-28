@@ -8,7 +8,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
-import IconSVG from "../../components/assets/LogoSVG";
+import IconSVG from "../../assets/LogoSVG";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import Boton from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,14 +16,14 @@ import CalificacionEst from "../../components/CalificacionEst";
 import CuadroEstado from "../../components/CuadroEstado";
 import * as ImagePicker from "expo-image-picker";
 import ImageViewer from "../../components/CommonComponents/ImageViewer";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import TerminosYPoliticas from "../../constants/TerminosYPoliticas";
 import CommonStyles, {
   Colors,
 } from "../../components/CommonStyles/CommonStyles";
 import Button from "../../components/CommonComponents/Button";
 //import Autenticar from "../../App";
-const FondImage = require("../../components/assets/PerfilGenerico.png");
+const FondImage = require("../../assets/PerfilGenerico.png");
 
 const PerfilPrincipalScreen = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);

@@ -11,7 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import BackCheckron from "../../components/BackCheckron";
 import ProgressBar from "./Components/ProgressStep";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import Button from "../../components/Button";
 import BotonFlotante from "../../components/BotonFlotante";
 import CommonStyles, {
@@ -160,8 +160,8 @@ const Resumen = ({ navigation }) => {
                                     ? 0.95
                                     : 1
                                   : showTickets
-                                  ? 0.95
-                                  : 1,
+                                    ? 0.95
+                                    : 1,
                             },
                           ],
                         },
@@ -187,8 +187,8 @@ const Resumen = ({ navigation }) => {
                               ? "ExpandLess"
                               : "ExpandMore"
                             : showTickets
-                            ? "ExpandLess"
-                            : "ExpandMore"
+                              ? "ExpandLess"
+                              : "ExpandMore"
                         }
                         color="#6979F8"
                         ancho={"20"}

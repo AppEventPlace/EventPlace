@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 const CuadroEstado = ({ label, cantidad, id }) => {
   switch (id) {
     case "EventoCreado":

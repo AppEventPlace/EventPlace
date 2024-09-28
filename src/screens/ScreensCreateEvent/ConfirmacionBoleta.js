@@ -6,7 +6,7 @@ import CommonStyles, {
 import BackCheckron from "../../components/BackCheckron";
 import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 import BoletasDisp from "../../constants/BoletasDisp";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 
 const ConfirmacionBoleta = ({ navigation }) => {
   return (

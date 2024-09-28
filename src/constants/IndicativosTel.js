@@ -10,7 +10,7 @@ import {
 import { SelectList } from "react-native-dropdown-select-list";
 
 import { Colors } from "../components/CommonStyles/CommonStyles";
-import SvgLogo from "@/components/assets/LogoSVG";
+import SvgLogo from "@/assets/LogoSVG";
 import {
   CountryPicker,
   CountryList,

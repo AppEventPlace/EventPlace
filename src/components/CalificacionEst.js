@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 
 const CalificacionEst = ({ califi }) => {
   return (

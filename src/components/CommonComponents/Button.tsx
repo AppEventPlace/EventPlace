@@ -6,7 +6,7 @@ import { Colors } from "../CommonStyles/CommonStyles";
 import { BackCheckron } from "../CommonStyles/CommonStyles";
 
 import { Text_Button } from "../CommonStyles/CommonButtonStyles";
-import IconSvg from "../assets/IconSvg";
+import IconSvg from "../../assets/IconSvg";
 
 /*---------------------------------------------------------------------------
 Componente  Diseñado renderizar botones de forma predeterminada.
@@ -139,8 +139,8 @@ const Button: React.FC<ButtonProps> = ({
                 backgroundColor: pressed
                   ? Colors.NightBlue_800
                   : disabled
-                  ? Colors.NightBlue_600
-                  : Colors.NightBlue_300,
+                    ? Colors.NightBlue_600
+                    : Colors.NightBlue_300,
               },
             ]}
             onPress={onPress}

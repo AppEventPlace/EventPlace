@@ -8,7 +8,7 @@ export default [
     ExpOrganizador: 50,
     CorreoAnfitrion: "ejemplo@gmail.com",
     CelularAnfitrion: "+ 57 3200987654",
-    Imagen: require("../components/assets/Ejemplo.jpg"),
+    Imagen: require("../assets/Ejemplo.jpg"),
     Fecha: "Jul 02 del 2024 - 6:00 P.M",
     Ubicacion: "Medellin - Antioquia",
     FechaInicio: "24/06/2024",
