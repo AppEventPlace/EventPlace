@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
-import Seleccionable from "../Seleccionable";
+import Seleccionable from "../atoms/Seleccionable";
+
 
 interface IPreference {
   preference_id: number;
@@ -12,9 +13,21 @@ interface IPreference {
 
 interface SeleccionTagsProps {
   OpcSeleccion: IPreference[];
+  onSelectionChange: (selectedIds: number[]) => void; 
 }
 
-const SeleccionTags: React.FC<SeleccionTagsProps> = ({ OpcSeleccion }) => {
+const SeleccionTags: React.FC<SeleccionTagsProps> = ({ OpcSeleccion, onSelectionChange }) => {
+  const [selectedIds, setSelectedIds] = useState<number[]>([]); 
+
+  const handleSelectionToggle = (id: number) => {
+    const newSelectedIds = selectedIds.includes(id)
+      ? selectedIds.filter(selectedId => selectedId !== id) 
+      : [...selectedIds, id]; 
+
+    setSelectedIds(newSelectedIds);
+    onSelectionChange(newSelectedIds);
+  };
+
   return (
     <View
       style={{
@@ -31,7 +44,9 @@ const SeleccionTags: React.FC<SeleccionTagsProps> = ({ OpcSeleccion }) => {
           <Seleccionable
             key={Selec.preference_id}
             id={Selec.preference_id.toString()}
-            label={Selec.preference_name_es} 
+            label={Selec.preference_name_es}
+            selected={selectedIds.includes(Selec.preference_id)} 
+            onToggle={() => handleSelectionToggle(Selec.preference_id)} 
           />
         ))}
     </View>
