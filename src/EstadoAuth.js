@@ -1,5 +1,20 @@
-import React, { useState } from "react";
-/*
+export default [
+  {
+    isUserAuthenticated: true,
+  },
+];
+/*import React, { useState } from "react";
+
+const MenuState = () => {
+  const [isUserAuthenticated, setIsUserAuth] = useState(true);
+
+  const ChangeState = ({ state }) => {
+    setIsUserAuth(state);
+  };
+  //return isUserAuthenticated;
+};
+export default MenuState;
+
 import { Text, View } from "react-native";
 
 const [isUserAuthenticated, setIsUserAuth] = useState(false);

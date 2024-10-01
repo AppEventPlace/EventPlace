@@ -36,7 +36,7 @@ const CreacionStack = () => {
   };
 
   return (
-    <Stack.Navigator>
+    <Stack.Group>
       {Object.keys(screens).map((name) => (
         <Stack.Screen
           options={{
@@ -48,7 +48,7 @@ const CreacionStack = () => {
           component={getScreenComponent(name)}
         />
       ))}
-    </Stack.Navigator>
+    </Stack.Group>
   );
 };
 

@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Text, Platform, StyleSheet, View } from "react-native";
+import {
+  Text,
+  Platform,
+  StyleSheet,
+  View,
+  useAnimatedValue,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import CreacionStack from "./src/screens/CreateUserStack/LoginStack";
@@ -22,6 +28,8 @@ import TabItems from "./src/constants/TabItems";
 //import isUserAuthenticated from "./src/EstadoAuth";
 import SvgLogo from "./src/components/assets/LogoSVG";
 import { Colors } from "./src/components/CommonStyles/CommonStyles";
+import ConstAuthentic from "src/ConstAuthentic";
+import EstadoAuth from "@/EstadoAuth";
 
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
@@ -78,7 +86,7 @@ const MenuMovil = () => {
   );
 };
 
-const Menu = () => {
+const Menu = ({}) => {
   if (Platform.OS === "android") {
     return <MenuMovil />;
   } else {
@@ -91,17 +99,36 @@ const Menu = () => {
 //fin creacion stack
 //constante autenticacion
 
-let isUserAuthenticated = false;
-
-const Pantalla = () => {
+/*const [isUserAuthenticated, setIsUserAuth] = useState(true);
+const ChangeState = ({ state }) => {
+  setIsUserAuth(state);
+};*/
+//let isUserAuthenticated = true;
+const Pantalla = ({ IsUserAuthenticated, ChangeState }) => {
   return (
     <NavigationContainer style={{ flex: 1 }}>
-      {isUserAuthenticated ? <Menu /> : <CreacionStack />}
+      {IsUserAuthenticated ? (
+        <Menu ChangeState={ChangeState} />
+      ) : (
+        <CreacionStack />
+      )}
+
       <Toast />
     </NavigationContainer>
   );
 };
 //fin constante autenticacion
 export default function App() {
-  return <Pantalla />;
+  const [IsUserAuthenticated, setIsUserAuth] = useState(true);
+
+  const ChangeState = ({ state }) => {
+    setIsUserAuth(state);
+  };
+
+  return (
+    <Pantalla
+      IsUserAuthenticated={IsUserAuthenticated}
+      ChangeState={ChangeState}
+    />
+  );
 }
