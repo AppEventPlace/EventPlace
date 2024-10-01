@@ -1,16 +1,10 @@
 import React from "react";
-
 import { Text, Platform, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
-import CreacionStack from "./src/screens/CreateUserStack/LoginStack";
+import CreacionStack from "./src/screens/CreateUserStack/CreacionStack";
 import Toast from "react-native-toast-message";
-
-//import MenuWeb from "./src/menu/MenuWeb";
 import {
   createBottomTabNavigator,
-  focused,
-  color,
 } from "@react-navigation/bottom-tabs";
 import PerfilScreen from "./src/screens/screensMenu/Perfil";
 import NotificacionesScreen from "./src/screens/screensMenu/Notificaciones";
@@ -18,21 +12,23 @@ import WallScreen from "./src/screens/screensMenu/Wall";
 import Chat from "./src/screens/screensMenu/ChatScreens/chatScreen";
 import BoletasScreen from "./src/screens/screensMenu/Boletas";
 import TabItems from "./src/constants/TabItems";
-
-//import isUserAuthenticated from "./src/EstadoAuth";
 import SvgLogo from "./src/assets/LogoSVG";
 import { Colors } from "./src/components/CommonStyles/CommonStyles";
 
-//Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
+
+type TabItem = {
+  name: string;
+  source: string; 
+};
 
 const MenuMovil = () => {
   return (
     <Tab.Navigator initialRouteName="Wall">
-      {TabItems.map((Items) => (
+      {TabItems.map((item: TabItem) => (
         <Tab.Screen
-          key={Items.name}
-          name={Items.name}
+          key={item.name}
+          name={item.name}
           options={{
             headerShown: false,
             tabBarShowLabel: true,
@@ -48,29 +44,28 @@ const MenuMovil = () => {
                   marginBottom: 10,
                 }}
               >
-                {Items.name}
+                {item.name}
               </Text>
             ),
-
             tabBarIcon: ({ focused }) => (
               <SvgLogo
-                theme={Items.source}
+                theme={item.source}
                 color={focused ? Colors.NightBlue_600 : Colors.TexColor}
                 ancho="24"
-                alto="24"
-              />
+                alto="24" progress={0}              
+                />
             ),
           }}
           component={
-            Items.name === "Notificaciones"
+            item.name === "Notificaciones"
               ? NotificacionesScreen
-              : Items.name === "Chat"
-                ? Chat
-                : Items.name === "Wall"
-                  ? WallScreen
-                  : Items.name === "Mis Boletas"
-                    ? BoletasScreen
-                    : PerfilScreen
+              : item.name === "Chat"
+              ? Chat
+              : item.name === "Wall"
+              ? WallScreen
+              : item.name === "Mis Boletas"
+              ? BoletasScreen
+              : PerfilScreen
           }
         />
       ))}
@@ -79,29 +74,20 @@ const MenuMovil = () => {
 };
 
 const Menu = () => {
-  if (Platform.OS === "android") {
-    return <MenuMovil />;
-  } else {
-    return <MenuMovil />;
-  }
+  return <MenuMovil />;
 };
-//fin de creación menú ---------------------
-//Creación de stack de screens--------------
-
-//fin creacion stack
-//constante autenticacion
 
 let isUserAuthenticated = false;
 
 const Pantalla = () => {
   return (
-    <NavigationContainer style={{ flex: 1 }}>
+    <NavigationContainer>
       {isUserAuthenticated ? <Menu /> : <CreacionStack />}
       <Toast />
     </NavigationContainer>
   );
 };
-//fin constante autenticacion
+
 export default function App() {
   return <Pantalla />;
 }

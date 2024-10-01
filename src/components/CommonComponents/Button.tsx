@@ -76,6 +76,12 @@ const Button: React.FC<ButtonProps> = ({
           <IconSvg theme={Icon} progress={0} />
         </Pressable>
       );
+    case "botonSubRay":
+      return (
+        <Pressable style={styles.button} onPress={onPress}>
+          <Text style={styles.buttonLabel_1}>{label}</Text>
+        </Pressable>
+      );
 
     // --> ImagePicker
     case "ImagePicker":
@@ -230,6 +236,14 @@ const styles = StyleSheet.create({
     color: Text_Button.BackButtonTex,
     lineHeight: 22,
     letterSpacing: 0.0044,
+  },
+  buttonLabel_1: {
+    display: "flex",
+    fontSize: 16,
+    fontWeight: "500",
+    lineHeight: 19,
+    textDecorationLine: "underline",
+    color: "#515EC0",
   },
 });
 export default Button;
