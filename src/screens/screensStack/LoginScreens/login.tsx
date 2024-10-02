@@ -18,7 +18,7 @@ const Login: React.FC = () => {
     const [login, setLogin] = React.useState<Ilogin>(initialLoginState);
 
     // Función constante para manejar el login
-    const handleLogin = async () => {
+    const LoginauthenticateUser = async () => {
         try {
             const response = await LoginService.LoginauthenticateUser(login);  
             console.log('Token recibido:', response.token);  
@@ -30,7 +30,7 @@ const Login: React.FC = () => {
     return (
         <LoginView
             navigation={navigation}
-            handleLogin={handleLogin}
+            LoginauthenticateUser={LoginauthenticateUser}
             login={login}
             setLogin={setLogin}
         />

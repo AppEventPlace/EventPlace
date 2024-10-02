@@ -11,7 +11,7 @@ import { Text_Button } from "@/components/CommonStyles/CommonButtonStyles";
 
 interface LoginViewProps {
     navigation: NativeStackNavigationProp<RootParamList, 'Login'>;
-    handleLogin: () => Promise<void>;
+    LoginauthenticateUser: () => Promise<void>;
     login: Ilogin;
     setLogin: React.Dispatch<React.SetStateAction<Ilogin>>;
 }
@@ -20,7 +20,7 @@ const LoginView: React.FC<LoginViewProps> = ({
     navigation,
     login,
     setLogin,
-    handleLogin
+    LoginauthenticateUser,
 }) => {
     const isButtonEnabled = login.email.trim() !== "" && login.password.trim() !== "";
     return (
@@ -51,7 +51,7 @@ const LoginView: React.FC<LoginViewProps> = ({
                 <View style={CommonStyles.BotonContainer}>
                     <TouchableOpacity
                         style={[styles.LoginButton, { backgroundColor: isButtonEnabled ? Colors.NightBlue_600 : 'grey' }]}
-                        onPress={handleLogin}
+                        onPress={LoginauthenticateUser}
                         disabled={!isButtonEnabled}
                     >
                         <Text style={styles.LoginButtonText}>Iniciar sesión</Text>
