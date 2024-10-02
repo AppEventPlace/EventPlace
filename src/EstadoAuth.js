@@ -1,8 +1,8 @@
-export default [
+/*export default [
   {
     isUserAuthenticated: true,
   },
-];
+];*/
 /*import React, { useState } from "react";
 
 const MenuState = () => {

@@ -14,53 +14,24 @@ import FAQ from "../ScreensCreateEvent/FAQ";
 import Politica from "../ScreensCreateEvent/Politica";
 import ConfirmacionBoleta from "../ScreensCreateEvent/ConfirmacionBoleta";
 import ChatScreen from "../screensMenu/ChatScreens/chatScreen";
-import ConstAuthentic from "@/ConstAuthentic";
-import CreacionStack from "../CreateUserStack/LoginStack";
-import WallScreenAuth from "./WallAuth";
-import Loguin from "../screensStack/Loguin";
-import CreateAccount from "../screensStack/CreateAccount";
-import TermsAndConditions from "../screensStack/TermsAndConditions";
-import VerifyIdentity from "../screensStack/VerifyIdentity";
-import Successful from "../screensStack/Successful";
-import ForgPassword from "../screensStack/ForgetPassword/ForgetPassScreen/ForgPassword";
-import Gustos from "../screensStack/GustosScreens/gustos";
-import OtpAdviceRecOtp from "../screensStack/RecoverPssAdviceOTP/OtpAdviceRecOtp";
-import OtpValidatorPassword from "../screensStack/OtpValidator/OtpValidatorScreen/OtpValidatorPassword";
-import NewPass from "../screensStack/NewPassw/NewPassScreen/NewPass";
 
 const Stack = createStackNavigator();
 let isAuthenticated = false;
-const WallScreen = () => {
+const WallScreen = ({ navigation, route }) => {
   const screens = {
     WallPrincipal: WallPrincipal,
-    //CreateEvent: CreateEvent,
-    //Boleteria: Boleteria,
+    CreateEvent: CreateEvent,
+    Boleteria: Boleteria,
     SearchPage: SearchPage,
     DetalleEvento: DetalleEvento,
     Filtros: Filtros,
     FAQ: FAQ,
     Politica: Politica,
     ConfirmacionBoleta: ConfirmacionBoleta,
-    //Resumen: Resumen,
+    Resumen: Resumen,
     Chat: ChatScreen,
   };
-  const screensAuth = {
-    CreateEvent: CreateEvent,
-    Boleteria: Boleteria,
-    Resumen: Resumen,
-  };
-  const screensCreate = {
-    Loguin: Loguin,
-    CreateAccount: CreateAccount,
-    TermsAndConditions: TermsAndConditions,
-    VerifyIdentity: VerifyIdentity,
-    Gustos: Gustos,
-    Successful: Successful,
-    ForgPassword: ForgPassword,
-    OtpAdviceRecOtp: OtpAdviceRecOtp,
-    OtpValidatorPassword: OtpValidatorPassword,
-    NewPass: NewPass,
-  };
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -69,24 +40,6 @@ const WallScreen = () => {
       }}
       initialRouteName="WallPrincipal"
     >
-      {ConstAuthentic.map((c) =>
-        c.isAuthenticated
-          ? Object.keys(screensAuth).map((name) => (
-              <Stack.Screen
-                key={name}
-                name={name}
-                component={screensAuth[name]}
-              ></Stack.Screen>
-            ))
-          : Object.keys(screensCreate).map((name) => (
-              <Stack.Screen
-                key={name}
-                name={name}
-                component={screensCreate[name]}
-              ></Stack.Screen>
-            ))
-      )}
-
       {Object.keys(screens).map((name) => (
         <Stack.Screen
           key={name}

@@ -8,7 +8,7 @@ import {
   useAnimatedValue,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
+import { createStackNavigator } from "@react-navigation/stack";
 import CreacionStack from "./src/screens/CreateUserStack/LoginStack";
 import Toast from "react-native-toast-message";
 
@@ -33,6 +33,7 @@ import EstadoAuth from "@/EstadoAuth";
 
 //Creación de menú a partir --------------------
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const MenuMovil = () => {
   return (
@@ -46,7 +47,9 @@ const MenuMovil = () => {
             tabBarShowLabel: true,
             tabBarActiveBackgroundColor: Colors.MidnightDreams_200,
             tabBarStyle: {
-              height: 60,
+              //height: 80,
+
+              gap: 10,
             },
             tabBarLabel: ({ focused }) => (
               <Text
@@ -93,42 +96,34 @@ const Menu = ({}) => {
     return <MenuMovil />;
   }
 };
-//fin de creación menú ---------------------
-//Creación de stack de screens--------------
 
-//fin creacion stack
-//constante autenticacion
-
-/*const [isUserAuthenticated, setIsUserAuth] = useState(true);
-const ChangeState = ({ state }) => {
-  setIsUserAuth(state);
-};*/
-//let isUserAuthenticated = true;
 const Pantalla = ({ IsUserAuthenticated, ChangeState }) => {
   return (
     <NavigationContainer style={{ flex: 1 }}>
-      {IsUserAuthenticated ? (
-        <Menu ChangeState={ChangeState} />
-      ) : (
-        <CreacionStack />
-      )}
+      <Stack.Navigator initialRouteName="Menu" options={{ headerShown: false }}>
+        <Stack.Screen
+          name="Menu"
+          component={Menu}
+          options={{
+            headerShown: false,
+            cardStyle: { flex: 1 },
+          }}
+        />
+        <Stack.Screen
+          name="CreationStack"
+          component={CreacionStack}
+          options={{
+            headerShown: false,
+            cardStyle: { flex: 1 },
+          }}
+        />
+      </Stack.Navigator>
 
       <Toast />
     </NavigationContainer>
   );
 };
-//fin constante autenticacion
+
 export default function App() {
-  const [IsUserAuthenticated, setIsUserAuth] = useState(true);
-
-  const ChangeState = ({ state }) => {
-    setIsUserAuth(state);
-  };
-
-  return (
-    <Pantalla
-      IsUserAuthenticated={IsUserAuthenticated}
-      ChangeState={ChangeState}
-    />
-  );
+  return <Pantalla />;
 }

@@ -27,8 +27,7 @@ import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 import Toast from "react-native-toast-message";
 import ConstAuthentic from "@/ConstAuthentic";
 //import ChangeState from "App";
-import isUserAuthenticated from "App";
-import EstadoAuth from "@/EstadoAuth";
+
 //*import Toast from "react-native-simple-toast";
 
 const OpcionesWall = [
@@ -341,7 +340,7 @@ const WallScroll = ({ item, navigation }) => {
                 onPress={() =>
                   C.isAuthenticated
                     ? navigation.navigate("CreateEvent")
-                    : navigation.navigate("Loguin")
+                    : navigation.navigate("CreationStack")
                 }
               />
             </View>
