@@ -3,13 +3,11 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
 import CommonStyles, { Colors, TexColor } from "@/components/CommonStyles/CommonStyles";
 import IconSvg from "@/assets/IconSvg";
-import Button from "@/components/CommonComponents/Button";
-import { Color_Button } from "@/components/CommonStyles/CommonButtonStyles";
 import AnotherLoginMethod from "@/components/CommonComponents/AnotherLoginMethod";
-import Boton from "../../../components/CommonComponents/Button";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootParamList } from "./login";
 import { Ilogin } from "@/interfaces/Login-Interfaces/ILogin";
+import { Text_Button } from "@/components/CommonStyles/CommonButtonStyles";
 
 interface LoginViewProps {
     navigation: NativeStackNavigationProp<RootParamList, 'Login'>;
@@ -52,36 +50,25 @@ const LoginView: React.FC<LoginViewProps> = ({
                 </View>
                 <View style={CommonStyles.BotonContainer}>
                     <TouchableOpacity
-                        style={[styles.button, { backgroundColor: isButtonEnabled ? Color_Button.Default : 'grey' }]}
+                        style={[styles.LoginButton, { backgroundColor: isButtonEnabled ? Colors.NightBlue_600 : 'grey' }]}
                         onPress={handleLogin}
                         disabled={!isButtonEnabled}
                     >
-                        <Text style={styles.buttonText}>Iniciar sesión</Text>
+                        <Text style={styles.LoginButtonText}>Iniciar sesión</Text>
                     </TouchableOpacity>
                 </View>
-                {/* <View style={CommonStyles.BotonContainer}>
-                    <Button
-                        label="Iniciar sesión"
-                        color={Color_Button.Default}
-                        theme="StyleBoton"
-                        onPress={() => navigation.navigate("Gustos")} 
-                    />
-                </View> */}
-                <View style={CommonStyles.BotonContainer_1}>
-                    <Button
-                        label="Crear cuenta"
-                        color={Color_Button.Secondary}
-                        theme="StyleBoton_1"
+                <View style={CommonStyles.BotonContainer}>
+                    <TouchableOpacity
+                        style={styles.CreateAccountButtonContainer}
                         onPress={() => navigation.navigate("CreateAccount")}
-                    />
+                    >
+                        <Text style={styles.CreateAccountButtonText}>Crear cuenta</Text>
+                    </TouchableOpacity>
                 </View>
-                <View style={styles.ForgetPassword}>
-                    <Boton
-                        theme="botonSubRay"
-                        label="Olvide mi contraseña"
-                        onPress={() => navigation.navigate("ForgPassword")}
-                        color={Color_Button.Secondary}
-                    />
+                <View style={styles.ForgotPasswordContainer}>
+                    <TouchableOpacity onPress={() => navigation.navigate("ForgPassword")}>
+                        <Text style={styles.ForgotPasswordText}>Olvide mi contraseña</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.AnotherLogin}>
@@ -129,12 +116,6 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         borderRadius: 12,
     },
-    ForgetPassword: {
-        width: 200,
-        height: 19,
-        alignItems: "center",
-        justifyContent: "center",
-    },
     AnotherLogin: {
         marginTop: 24,
         alignSelf: "center",
@@ -162,17 +143,43 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignSelf: "center",
     },
-    button: {
+    LoginButton: {
         width: '100%',
         paddingVertical: 12,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 28,
     },
-    buttonText: {
+    LoginButtonText: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 16,
+    },
+    CreateAccountButtonContainer: {
+        width: "100%",
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 50,
+        borderWidth: 1,
+        borderColor: Colors.NightBlue_600,
+        backgroundColor: 'transparent',
+    },
+    CreateAccountButtonText: {
+        fontSize: Text_Button.FontSizesButton,
+        fontWeight: "700",
+        lineHeight: 19,
+        color: Colors.NightBlue_600,
+    },
+    ForgotPasswordContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        marginVertical: 10,
+    },
+    ForgotPasswordText: {
+        fontSize: Text_Button.FontSizesButton,
+        color: Colors.NightBlue_600,
+        textDecorationLine: "underline",
     },
 });
 
