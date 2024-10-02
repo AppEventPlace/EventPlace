@@ -1,11 +1,9 @@
 import React from "react";
-import { Text, Platform, StyleSheet, View } from "react-native";
+import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import CreacionStack from "./src/screens/CreateUserStack/CreacionStack";
 import Toast from "react-native-toast-message";
-import {
-  createBottomTabNavigator,
-} from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PerfilScreen from "./src/screens/screensMenu/Perfil";
 import NotificacionesScreen from "./src/screens/screensMenu/Notificaciones";
 import WallScreen from "./src/screens/screensMenu/Wall";
@@ -17,72 +15,59 @@ import { Colors } from "./src/components/CommonStyles/CommonStyles";
 
 const Tab = createBottomTabNavigator();
 
-type TabItem = {
-  name: string;
-  source: string; 
-};
+const renderTabLabel = (focused: boolean, name: string) => (
+  <Text style={{
+    color: focused ? Colors.NightBlue_600 : Colors.Negro,
+    fontSize: 10,
+    marginBottom: 10,
+  }}>
+    {name}
+  </Text>
+);
 
-const MenuMovil = () => {
-  return (
-    <Tab.Navigator initialRouteName="Wall">
-      {TabItems.map((item: TabItem) => (
-        <Tab.Screen
-          key={item.name}
-          name={item.name}
-          options={{
-            headerShown: false,
-            tabBarShowLabel: true,
-            tabBarActiveBackgroundColor: Colors.MidnightDreams_200,
-            tabBarStyle: {
-              height: 60,
-            },
-            tabBarLabel: ({ focused }) => (
-              <Text
-                style={{
-                  color: focused ? Colors.NightBlue_600 : Colors.Negro,
-                  fontSize: 10,
-                  marginBottom: 10,
-                }}
-              >
-                {item.name}
-              </Text>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <SvgLogo
-                theme={item.source}
-                color={focused ? Colors.NightBlue_600 : Colors.TexColor}
-                ancho="24"
-                alto="24" progress={0}              
-                />
-            ),
-          }}
-          component={
-            item.name === "Notificaciones"
-              ? NotificacionesScreen
-              : item.name === "Chat"
-              ? Chat
-              : item.name === "Wall"
-              ? WallScreen
-              : item.name === "Mis Boletas"
-              ? BoletasScreen
-              : PerfilScreen
-          }
-        />
-      ))}
-    </Tab.Navigator>
-  );
-};
+const renderTabIcon = (focused: boolean, source: string) => (
+  <SvgLogo
+    theme={source}
+    color={focused ? Colors.NightBlue_600 : Colors.TexColor}
+    ancho="24"
+    alto="24"
+    progress={0}
+  />
+);
 
-const Menu = () => {
-  return <MenuMovil />;
-};
+const MenuMovil = () => (
+  <Tab.Navigator initialRouteName="Wall">
+    {TabItems.map(({ name, source }) => (
+      <Tab.Screen
+        key={name}
+        name={name}
+        component={
+          name === "Notificaciones" ? NotificacionesScreen :
+          name === "Chat" ? Chat :
+          name === "Wall" ? WallScreen :
+          name === "Mis Boletas" ? BoletasScreen :
+          PerfilScreen
+        }
+        options={{
+          headerShown: false,
+          tabBarShowLabel: true,
+          tabBarActiveBackgroundColor: Colors.MidnightDreams_200,
+          tabBarStyle: { height: 60 },
+          tabBarLabel: ({ focused }) => renderTabLabel(focused, name),
+          tabBarIcon: ({ focused }) => renderTabIcon(focused, source),
+        }}
+      />
+    ))}
+  </Tab.Navigator>
+);
 
-let isUserAuthenticated = false;
 
 const Pantalla = () => {
+  const isUserAuthenticated = false; // Cambiar a true si se necesita autenticación
+
   return (
     <NavigationContainer>
-      {isUserAuthenticated ? <Menu /> : <CreacionStack />}
+      {isUserAuthenticated ? <MenuMovil /> : <CreacionStack />}
       <Toast />
     </NavigationContainer>
   );

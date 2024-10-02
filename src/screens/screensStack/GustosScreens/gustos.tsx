@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import GustosView from "./gustosView";
-import { IPreference } from "@/interfaces/prefererenceInterfaces/IPreference";
+import { IPreference } from "@/interfaces/prefererence-Interfaces/IPreference";
 import PreferencesService from "@/Services/PreferencesServices/preferencesService";
 import { IResponse } from "@/interfaces/IResponse";
-import { initialUserPreferences, IUserPreference } from "@/interfaces/prefererenceInterfaces/IUserPreference";
+import { initialUserPreferences, IUserPreference } from "@/interfaces/prefererence-Interfaces/IUserPreference";
 import UserPreferencesService from "@/Services/PreferencesServices/userPreferenceServices";
 import Loader from "@/components/atoms/Loader";
-import { initialUserPreferenceQuestion, IUserPreferenceQuestion } from "@/interfaces/prefererenceInterfaces/IUserPreferenceQuestion";
+import { initialUserPreferenceQuestion, IUserPreferenceQuestion } from "@/interfaces/prefererence-Interfaces/IUserPreferenceQuestion";
 
 
 
@@ -21,7 +21,7 @@ const Gustos: React.FC = () => {
   useEffect(() => {
     const fetchPreferences = async () => {
       try {
-        const response: IResponse = await PreferencesService.getPreferences();
+        const response: IResponse = await PreferencesService.ObtainPreferences();
         setPreferences(response.data);
       } catch (error) {
         console.error("Error fetching preferences:", error);
@@ -54,7 +54,7 @@ const Gustos: React.FC = () => {
 
   const handleSubmitPreferences = async () => {
     try {
-      const response = await UserPreferencesService.postUserPreferences(userPreferences);
+      const response = await UserPreferencesService.SaveUserPreferences(userPreferences);
       console.log('User preferences saved successfully:', response.message);
     } catch (error) {
       console.error('Error saving user preferences:', error);

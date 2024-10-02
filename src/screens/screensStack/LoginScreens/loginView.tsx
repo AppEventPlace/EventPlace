@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView, TextInput } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
 import CommonStyles, { Colors, TexColor } from "@/components/CommonStyles/CommonStyles";
 import IconSvg from "@/assets/IconSvg";
 import Button from "@/components/CommonComponents/Button";
@@ -9,13 +9,22 @@ import AnotherLoginMethod from "@/components/CommonComponents/AnotherLoginMethod
 import Boton from "../../../components/CommonComponents/Button";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootParamList } from "./login";
-
+import { Ilogin } from "@/interfaces/Login-Interfaces/ILogin";
 
 interface LoginViewProps {
-    navigation: NativeStackNavigationProp<RootParamList, 'Login'>; 
+    navigation: NativeStackNavigationProp<RootParamList, 'Login'>;
+    handleLogin: () => Promise<void>;
+    login: Ilogin;
+    setLogin: React.Dispatch<React.SetStateAction<Ilogin>>;
 }
 
-const LoginView: React.FC<LoginViewProps> = ({ navigation }) => {
+const LoginView: React.FC<LoginViewProps> = ({
+    navigation,
+    login,
+    setLogin,
+    handleLogin
+}) => {
+    const isButtonEnabled = login.email.trim() !== "" && login.password.trim() !== "";
     return (
         <SafeAreaView style={[styles.AreaView, { backgroundColor: Colors.Primary }]}>
             <View style={styles.LogoContainer}>
@@ -24,26 +33,46 @@ const LoginView: React.FC<LoginViewProps> = ({ navigation }) => {
             <View style={styles.Container}>
                 <View style={[CommonStyles.SubContainer, { height: 79 }]}>
                     <Text style={CommonStyles.TexContainer}>Correo electrónico</Text>
-                    <TextInput placeholder="Ingresa tu correo electrónico" style={CommonStyles.TexInput} />
+                    <TextInput
+                        placeholder="Ingresa tu correo electrónico"
+                        style={CommonStyles.TexInput}
+                        value={login.email}
+                        onChangeText={(text) => setLogin({ ...login, email: text })}
+                    />
                 </View>
                 <View style={[CommonStyles.SubContainer, { height: 79 }]}>
                     <Text style={CommonStyles.TexContainer}>Contraseña</Text>
-                    <TextInput placeholder="Ingresa la contraseña" style={CommonStyles.TexInput} secureTextEntry={true} />
+                    <TextInput
+                        placeholder="Ingresa la contraseña"
+                        style={CommonStyles.TexInput}
+                        secureTextEntry={true}
+                        value={login.password}
+                        onChangeText={(text) => setLogin({ ...login, password: text })}
+                    />
                 </View>
                 <View style={CommonStyles.BotonContainer}>
+                    <TouchableOpacity
+                        style={[styles.button, { backgroundColor: isButtonEnabled ? Color_Button.Default : 'grey' }]}
+                        onPress={handleLogin}
+                        disabled={!isButtonEnabled}
+                    >
+                        <Text style={styles.buttonText}>Iniciar sesión</Text>
+                    </TouchableOpacity>
+                </View>
+                {/* <View style={CommonStyles.BotonContainer}>
                     <Button
                         label="Iniciar sesión"
                         color={Color_Button.Default}
                         theme="StyleBoton"
                         onPress={() => navigation.navigate("Gustos")} 
                     />
-                </View>
+                </View> */}
                 <View style={CommonStyles.BotonContainer_1}>
                     <Button
                         label="Crear cuenta"
                         color={Color_Button.Secondary}
                         theme="StyleBoton_1"
-                        onPress={() => navigation.navigate("CreateAccount")} 
+                        onPress={() => navigation.navigate("CreateAccount")}
                     />
                 </View>
                 <View style={styles.ForgetPassword}>
@@ -81,17 +110,17 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     Container: {
-        rowGap: 24,
-        marginTop: "5%",
+        gap: 24,
+        marginTop: 24,
         width: "100%",
-        maxWidth: 358, 
+        maxWidth: 358,
         alignSelf: "center",
         alignItems: "center",
         paddingHorizontal: 16,
         paddingVertical: 24,
         backgroundColor: "white",
-        elevation: 5, 
-        shadowColor: "#000", 
+        elevation: 5,
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 3,
@@ -107,12 +136,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     AnotherLogin: {
-        marginTop: "5%",
+        marginTop: 24,
         alignSelf: "center",
         flexDirection: "row",
         alignItems: "center",
         width: "100%",
-        maxWidth: 358, 
+        maxWidth: 358,
     },
     TexAnotherLogin: {
         fontWeight: "500",
@@ -126,14 +155,25 @@ const styles = StyleSheet.create({
     },
     AnotherLoginContainer: {
         justifyContent: "center",
-        columnGap: 12,
+        gap: 12,
         width: "100%",
-        maxWidth: 358, 
-        marginTop: "3%",
+        maxWidth: 358,
+        marginTop: 24,
         flexDirection: "row",
         alignSelf: "center",
     },
-
+    button: {
+        width: '100%',
+        paddingVertical: 12,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 28,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
 });
 
 export default LoginView;

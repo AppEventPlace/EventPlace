@@ -5,7 +5,7 @@ import axios from 'axios';
 const urlPreferences = 'https://jjn44qyoab.execute-api.us-east-1.amazonaws.com'; 
 
 const PreferencesService = {
-    async getPreferences(): Promise<IResponse> {
+    async ObtainPreferences(): Promise<IResponse> {
         try {
             const response = await axios.get<IResponse>(`${urlPreferences}/preference`);
             return response.data; 

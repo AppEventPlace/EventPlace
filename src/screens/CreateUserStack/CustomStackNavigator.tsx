@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 const CustomStackNavigator: React.FC<CustomStackNavigatorProps> = ({ screens, defaultScreen, options }) => {
   const getScreenComponent = (name: string) => {
-    return screens[name] || screens[defaultScreen || Object.keys(screens)[0]]; // Si no se encuentra, usa la pantalla por defecto
+    return screens[name] || screens[defaultScreen || Object.keys(screens)[0]];
   };
 
   return (
@@ -23,7 +23,7 @@ const CustomStackNavigator: React.FC<CustomStackNavigatorProps> = ({ screens, de
           component={getScreenComponent(name)}
           options={{
             headerShown: false,
-            ...options, // Permite agregar más opciones si se pasan como prop
+            ...options, 
           }}
         />
       ))}

@@ -1,4 +1,4 @@
-import { IUserPreference } from '@/interfaces/prefererenceInterfaces/IUserPreference';
+import { IUserPreference } from '@/interfaces/prefererence-Interfaces/IUserPreference';
 import axios from 'axios';
 
 
@@ -6,7 +6,7 @@ const urlUserPreferences = 'https://vdde3o2p7k.execute-api.us-east-1.amazonaws.c
 
 const UserPreferencesService = {
 
-    async postUserPreferences(UserPreferences: IUserPreference): Promise<{ message: string }> {
+    async SaveUserPreferences(UserPreferences: IUserPreference): Promise<{ message: string }> {
         try {
             const response = await axios.post<{ message: string }>(`${urlUserPreferences}/userPreference`, UserPreferences);
             return response.data;
