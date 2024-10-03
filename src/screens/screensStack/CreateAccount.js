@@ -280,7 +280,7 @@ const CreateAccount = ({ navigation }) => {
                     placeholder="YYYY/MM/DD"
                     value={state.date}
                     maxLength={10}
-                    keyboardType="phone-pad"
+                    keyboardType="numbers-and-punctuation"
                     onChangeText={(value) => handleChange("date", value)}
                     style={CommonStyles.TexInput_1}
                   />
