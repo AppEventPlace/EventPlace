@@ -14,40 +14,32 @@ import FAQ from "../ScreensCreateEvent/FAQ";
 import Politica from "../ScreensCreateEvent/Politica";
 import ConfirmacionBoleta from "../ScreensCreateEvent/ConfirmacionBoleta";
 import ChatScreen from "../screensMenu/ChatScreens/chatScreen";
+import ConstAuthentic from "@/ConstAuthentic";
+import CreacionStack from "../CreateUserStack/LoginStack";
 
 const Stack = createStackNavigator();
-let isAuthenticated = false;
-const WallScreen = ({ navigation, route }) => {
-  const screens = {
-    WallPrincipal: WallPrincipal,
+
+const WallScreenAuth = () => {
+  const screensAuth = {
     CreateEvent: CreateEvent,
     Boleteria: Boleteria,
-    SearchPage: SearchPage,
-    DetalleEvento: DetalleEvento,
-    Filtros: Filtros,
-    FAQ: FAQ,
-    Politica: Politica,
-    ConfirmacionBoleta: ConfirmacionBoleta,
     Resumen: Resumen,
-    Chat: ChatScreen,
   };
-
   return (
-    <Stack.Navigator
+    <Stack.Group
       screenOptions={{
         headerShown: false,
         cardStyle: { flex: 1 },
       }}
-      initialRouteName="WallPrincipal"
     >
-      {Object.keys(screens).map((name) => (
+      {Object.keys(screensAuth).map((name) => (
         <Stack.Screen
           key={name}
           name={name}
-          component={screens[name]}
+          component={screensAuth[name]}
         ></Stack.Screen>
       ))}
-    </Stack.Navigator>
+    </Stack.Group>
   );
 };
 
@@ -63,4 +55,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default WallScreen;
+export default WallScreenAuth;

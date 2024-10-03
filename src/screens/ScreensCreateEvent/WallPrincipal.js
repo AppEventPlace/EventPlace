@@ -25,6 +25,9 @@ import CommonStyles, {
 } from "../../components/CommonStyles/CommonStyles";
 import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
 import Toast from "react-native-toast-message";
+import ConstAuthentic from "@/ConstAuthentic";
+//import ChangeState from "App";
+
 //*import Toast from "react-native-simple-toast";
 
 const OpcionesWall = [
@@ -328,14 +331,20 @@ const WallScroll = ({ item, navigation }) => {
               <TarjetasTusEventos navigation={navigation} />
             )}
           </View>
-          <View key={"ContenedorBoton"} style={CommonStyles.BotonContainer}>
-            <Boton
-              theme={"StyleBoton"}
-              color={Colors.NightBlue_600}
-              label={"Crear evento"}
-              onPress={() => navigation.navigate("CreateEvent")}
-            />
-          </View>
+          {ConstAuthentic.map((C) => (
+            <View key={"ContenedorBoton"} style={CommonStyles.BotonContainer}>
+              <Boton
+                theme={"StyleBoton"}
+                color={Colors.NightBlue_600}
+                label={"Crear evento"}
+                onPress={() =>
+                  C.isAuthenticated
+                    ? navigation.navigate("CreateEvent")
+                    : navigation.navigate("CreationStack")
+                }
+              />
+            </View>
+          ))}
           <View
             key={"LineaSeparacionPerfil"}
             style={style.lineaSeparacion}
