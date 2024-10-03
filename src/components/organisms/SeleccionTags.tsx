@@ -1,46 +1,32 @@
-import React from "react";
-import { View, StyleProp, ViewStyle } from "react-native";
-import Seleccionable from "../Seleccionable";
+import React, { useState } from "react";
+import { View } from "react-native";
+import Seleccionable from "../atoms/Seleccionable";
+
 
 interface IPreference {
   preference_id: number;
-  preference_name: string;
+  preference_name_en: string;
+  preference_name_es: string;
   preference_status: boolean;
-  created_at: string;
-  updated_at: string;
+  preference_description: string;
 }
 
 interface SeleccionTagsProps {
   OpcSeleccion: IPreference[];
+  onSelectionChange: (selectedIds: number[]) => void; 
 }
 
-const preferenceLabels: Record<number, string> = {
-  1001: "Familia",
-  1002: "Comunidad y Cultura",
-  1003: "Iniciativa Social",
-  1004: "Autos, Barcos y Aeronáutica",
-  1005: "Cine, Medios y Entretenimiento",
-  1006: "Gobierno y Política",
-  1007: "Salud y Bienestar",
-  1008: "Pasatiempos e Intereses Especiales",
-  1009: "Música",
-  1010: "Artes Escénicas",
-  1011: "Moda y Belleza",
-  1012: "Comida y Bebidas",
-  1013: "Hogar y Estilo de Vida",
-  1014: "Actividades Escolares",
-  1015: "Educación",
-  1016: "Ciencia y Tecnología",
-  1017: "Deportes y Ejercicio",
-  1018: "Viajes y Actividades al Aire Libre",
-  1019: "Festivales y Actividades Estacionales",
-};
+const SeleccionTags: React.FC<SeleccionTagsProps> = ({ OpcSeleccion, onSelectionChange }) => {
+  const [selectedIds, setSelectedIds] = useState<number[]>([]); 
 
-const getLabelByPreferenceId = (preferenceId: number): string => {
-  return preferenceLabels[preferenceId] || "Unknown Preference";
-};
+  const handleSelectionToggle = (id: number) => {
+    const newSelectedIds = selectedIds.includes(id)
+      ? selectedIds.filter(selectedId => selectedId !== id) 
+      : [...selectedIds, id]; 
 
-const SeleccionTags: React.FC<SeleccionTagsProps> = ({ OpcSeleccion }) => {
+    setSelectedIds(newSelectedIds);
+    onSelectionChange(newSelectedIds);
+  };
 
   return (
     <View
@@ -52,13 +38,17 @@ const SeleccionTags: React.FC<SeleccionTagsProps> = ({ OpcSeleccion }) => {
         width: "100%",
       }}
     >
-      {OpcSeleccion.map((Selec) => (
-        <Seleccionable
-          key={Selec.preference_id}
-          id={Selec.preference_id.toString()}
-          label={getLabelByPreferenceId(Selec.preference_id)}
-        />
-      ))}
+      {OpcSeleccion
+        .filter((Selec) => Selec.preference_status) 
+        .map((Selec) => (
+          <Seleccionable
+            key={Selec.preference_id}
+            id={Selec.preference_id.toString()}
+            label={Selec.preference_name_es}
+            selected={selectedIds.includes(Selec.preference_id)} 
+            onToggle={() => handleSelectionToggle(Selec.preference_id)} 
+          />
+        ))}
     </View>
   );
 };

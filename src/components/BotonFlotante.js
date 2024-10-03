@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { Colors } from "../components/CommonStyles/CommonStyles";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 import CommonTextStyles from "../components/CommonStyles/CommonTextStyles";
 
 const BotonFlotante = ({ navigation }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, TextInput } from "react-native";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 import { Colors } from "../components/CommonStyles/CommonStyles";
 
 const Froms = ({

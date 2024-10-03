@@ -24,7 +24,7 @@
       "package": "com.anonymous.EventsPlaceAPP"
     },
     "web": {
-      "favicon": "./src/components/assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
       "expo-asset",

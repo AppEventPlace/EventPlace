@@ -1,6 +1,6 @@
 export interface IUserPreference {
     userId: string;
-    preferences: [];
+    preferences: number[];
 }
 
 

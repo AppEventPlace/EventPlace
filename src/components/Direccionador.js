@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 import CommonStyles, { Colors } from "../components/CommonStyles/CommonStyles";
 import CommonTextStyles from "../components/CommonStyles/CommonTextStyles";
 const Direccionador = ({ label, logo, color, onPress, ancho, alto }) => {

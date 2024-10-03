@@ -4,7 +4,7 @@ import CommonStyles from "../components/CommonStyles/CommonStyles";
 import CommonTextStyles from "../components/CommonStyles/CommonTextStyles";
 
 const TarjetaAnfitrion = ({ imagen, Nombre, Correo, Celular }) => {
-  const FondImage = require("../components/assets/PerfilGenerico.png");
+  const FondImage = require("../assets/PerfilGenerico.png");
   return (
     <View
       key={"TarjetaAnfitrion"}

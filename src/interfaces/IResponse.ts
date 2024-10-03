@@ -1,14 +1,12 @@
-import { IPreference } from './IPreference'; 
-
 export interface IResponse {
   success: boolean;
   message: string;
-  data: IPreference[];
+  data: [];
 }
 
 // Initial state for IResponse
 export const initialStateResponse: IResponse = {
   success: true,
-  message: "Preferences fetched successfully!",
+  message: "",
   data: [],
 };

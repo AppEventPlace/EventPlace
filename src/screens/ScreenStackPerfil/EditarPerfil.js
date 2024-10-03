@@ -7,7 +7,7 @@ import DatePickerComponent from "../../components/datepicke";
 import IndicativosTel from "../../constants/IndicativosTel";
 import { SelectList } from "react-native-dropdown-select-list";
 import SelectorIndicativo from "../../constants/IndicativosTel";
-import SvgLogo from "../../components/assets/LogoSVG";
+import SvgLogo from "../../assets/LogoSVG";
 import Direccionador from "../../components/Direccionador";
 import CommonStyles, {
   Colors,

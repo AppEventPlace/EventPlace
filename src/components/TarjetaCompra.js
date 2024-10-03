@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Colors } from "../components/CommonStyles/CommonStyles";
-import SvgLogo from "../components/assets/LogoSVG";
+import SvgLogo from "../assets/LogoSVG";
 import CommonTextStyles from "../components/CommonStyles/CommonTextStyles";
 import Button from "./Button";
 

@@ -11,7 +11,7 @@ const TarjetaOrganizador = ({
   EventosRealizados,
   experiencia,
 }) => {
-  const FondImage = require("../components/assets/PerfilGenerico.png");
+  const FondImage = require("../assets/PerfilGenerico.png");
   return (
     <View
       key={"Tarjeta"}
