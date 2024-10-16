@@ -1,0 +1,27 @@
+const EventType = [
+  { key: 1, value: "Ceremonia" },
+  { key: 2, value: "Fiesta, reunión social o encuentro" },
+  { key: 3, value: "Cena o Gala" },
+  { key: 4, value: "Canto o presentación musical" },
+  { key: 5, value: "Concierto, actuacion, teatro" },
+  { key: 6, value: "Stand up comedy" },
+  { key: 7, value: "Conferencia" },
+  { key: 8, value: "Convención" },
+  { key: 9, value: "Congreso" },
+  { key: 10, value: "Cumbre" },
+  { key: 11, value: "Debate" },
+  { key: 12, value: "Premiación" },
+  { key: 13, value: "Recorrido o Tour" },
+  { key: 14, value: "Campamento, viaje o retiro" },
+  { key: 15, value: "Capacitación, curso o entrenamiento" },
+  { key: 16, value: "Seminario o charla" },
+  { key: 17, value: "Festival o feria" },
+  { key: 18, value: "Reunión o evento de networking" },
+  { key: 19, value: "Feria comercial, feria de consumidores o exposición" },
+  { key: 20, value: "Juego o evento deportivo" },
+  { key: 21, value: "Carrera o evento de resistencia" },
+  { key: 22, value: "Torneo" },
+  { key: 23, value: "Otro. Cual?" },
+];
+
+export default EventType;
