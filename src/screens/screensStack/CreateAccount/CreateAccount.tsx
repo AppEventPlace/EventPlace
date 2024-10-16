@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-} from "react-native";
-
+import { ScrollView, StyleSheet, View, Text, TextInput } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 // --> Importar ImagePicker
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
 import ImageViewer from "../../../components/CommonComponents/ImageViewer";

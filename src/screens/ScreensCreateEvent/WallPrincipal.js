@@ -3,7 +3,6 @@ import {
   Text,
   View,
   StyleSheet,
-  SafeAreaView,
   FlatList,
   ScrollView,
   Image,
@@ -12,6 +11,7 @@ import {
   Platform,
   ToastAndroid,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import DatosClientePrueba from "../../constants/DatosClientePrueba";
 import Categorias from "../../constants/Categorias";
 import Boton from "../../components/Button";

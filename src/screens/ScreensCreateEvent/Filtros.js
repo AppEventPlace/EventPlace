@@ -3,12 +3,12 @@ import {
   Text,
   StyleSheet,
   View,
-  SafeAreaView,
   ScrollView,
   Pressable,
   Linking,
   Platform,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import BackCheckron from "../../components/BackCheckron";
 import CommonStyles, {
   Colors,
@@ -52,17 +52,10 @@ const Filtros = ({ navigation }) => {
       >
         <View
           key={"PaginaPrincipalDetalleEvt"}
-          style={[
-            CommonStyles.FullContainer,
-            { marginTop: 10, gap: 24, marginBottom: 10 },
-          ]}
+          style={[CommonStyles.FullContainer, { gap: 24, marginBottom: 10 }]}
         >
           <View key={"BotonVolver"}>
-            <BackCheckron
-              theme={"BackCheckron"}
-              label={"Volver"}
-              navigation={navigation}
-            />
+            <BackCheckron navigation={navigation} />
           </View>
           <View
             key={"CabeceraFiltros"}

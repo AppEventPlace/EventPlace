@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import {
   Text,
   View,
-  SafeAreaView,
   StyleSheet,
   TextInput,
   Pressable,
   FlatList,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import BackCheckron from "../../components/BackCheckron";
 import Button from "../../components/Button";
 import SvgLogo from "../../assets/LogoSVG";
@@ -20,23 +20,22 @@ import CommonStyles, {
 const SearchPage = ({ navigation }) => {
   const [resultado, setResultado] = useState([]);
   const Datos = [{ type: "Tarjetas" }];
-  let numColumn = 3;
+
   return (
     <SafeAreaView
       edges={["top", "left", "right"]}
-      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+      style={[CommonStyles.AreaView]}
     >
       <View style={style.PageContainer}>
-        <View style={{ height: 150, marginHorizontal: 10 }}>
-          <View style={style.HeaderContainer}>
-            <BackCheckron navigation={navigation} />
-            <Buscador navigation={navigation} />
-          </View>
+        <View style={[CommonStyles.FullContainer, { height: 120 }]}>
+          <BackCheckron navigation={navigation} />
+          <Buscador navigation={navigation} />
         </View>
+
         <View
           key={"ResultadosBusqueda"}
           style={{
-            marginTop: -30,
+            //marginTop: -30,
             flex: 1,
             alignItems: "center",
             alignSelf: "center",
@@ -45,29 +44,21 @@ const SearchPage = ({ navigation }) => {
             //marginHorizontal: 16,
           }}
         >
-          <SafeAreaView
+          <FlatList
+            key={"ScrollBusqueda"}
+            numColumns={3}
+            horizontal={false}
             style={{
-              flex: 1,
-              marginTop: 30,
+              backgroundColor: Colors.Primary,
+              //height: 1000,
               width: "100%",
-              maxWidth: 1700,
+              maxWidth: 1700, // Ancho de a imagen
+              //marginTop: 5,
+              // marginHorizontal: -16,
             }}
-          >
-            <FlatList
-              key={"ScrollBusqueda"}
-              numColumns={3}
-              horizontal={false}
-              style={{
-                backgroundColor: Colors.Primary,
-                //height: 1000,
-                width: "100%", // Ancho de a imagen
-                //marginTop: 5,
-                // marginHorizontal: 16,
-              }}
-              data={Datos}
-              renderItem={({ item }) => <BusquedaScroll item={item} />}
-            />
-          </SafeAreaView>
+            data={Datos}
+            renderItem={({ item }) => <BusquedaScroll item={item} />}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -189,7 +180,8 @@ const style = StyleSheet.create({
   },
   HeaderContainer: {
     width: "100%",
-    height: 60,
+
+    height: 120,
     ////borderWidth: 1,
     //position: 'absolute',
   },

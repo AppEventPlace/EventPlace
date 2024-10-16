@@ -132,7 +132,7 @@ const Resumen = ({ navigation }) => {
   return (
     <SafeAreaView
       edges={["top", "left", "right"]}
-      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+      style={[CommonStyles.AreaView]}
     >
       <View style={{ flex: 1 }}>
         <ScrollView

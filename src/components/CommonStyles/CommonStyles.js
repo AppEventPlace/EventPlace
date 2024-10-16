@@ -64,8 +64,8 @@ export const TexColor = {
 const CommonStyles = StyleSheet.create({
   // --> Estilo definido para <SafeAreaView>
   AreaView: {
+    backgroundColor: Colors.Grey_Top,
     flex: 1,
-    //paddingTop: 30,
   },
 
   // --> Estilo definido para <ScrollView>

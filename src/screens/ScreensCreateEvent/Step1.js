@@ -16,7 +16,7 @@ const CreateEvent = ({ navigation }) => {
   return (
     <SafeAreaView
       edges={["top", "left", "right"]}
-      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+      style={[CommonStyles.AreaView]}
     >
       <ScrollView style={CommonStyles.ScrollView}>
         <View style={CommonStyles.FullContainer}>

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  SafeAreaView,
   ScrollView,
   Text,
   View,
@@ -10,6 +9,7 @@ import {
   Platform,
   Linking,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../../components/Button";
 import CommonStyles, {
   Colors,
