@@ -6,6 +6,7 @@ interface OtpConsumerProp {
 
 const OtpConsumer = async (
   email: string,
+  userID: string,
   Validacion: (estado: boolean, message: string) => void
 ) => {
   let result;
@@ -22,7 +23,7 @@ const OtpConsumer = async (
         body: JSON.stringify({
           action: "generate",
           email: email,
-          userId: email,
+          userId: userID,
         }),
       }
     );

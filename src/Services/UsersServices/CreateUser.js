@@ -26,8 +26,8 @@ const CreateUser = async (stateJson, Validacion) => {
 
     // Mostrar mensaje de éxito
 
-    Validacion(true, result.statusDesc);
-    console.log(stateJson);
+    Validacion(true, result.statusDesc, result.userID);
+    //console.log(stateJson);
   } catch (error) {
     // console.error("Error al crear usuario:", error);
     Validacion(false, result.statusDesc);

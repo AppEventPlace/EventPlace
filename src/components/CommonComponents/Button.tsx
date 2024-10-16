@@ -19,8 +19,8 @@ Componente  Diseñado renderizar botones de forma predeterminada.
 ---------------------------------------------------------------------------*/
 interface ButtonProps {
   theme?: string;
-  label: string;
-  color: string;
+  label?: string;
+  color?: string;
   onPress: () => void;
   Icon?: string;
   IconColor?: string;
@@ -38,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
   IconColor,
   disabled,
 }) => {
-  const styler = getStyles(color);
+  const styler = getStyles(color!);
   switch (theme) {
     // --> Botón principal
     case "StyleBoton":
@@ -145,8 +145,8 @@ const Button: React.FC<ButtonProps> = ({
                 backgroundColor: pressed
                   ? Colors.NightBlue_800
                   : disabled
-                    ? Colors.NightBlue_600
-                    : Colors.NightBlue_300,
+                  ? Colors.NightBlue_600
+                  : Colors.NightBlue_300,
               },
             ]}
             onPress={onPress}

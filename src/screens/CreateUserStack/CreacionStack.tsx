@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "../screensStack/LoginScreens/login";
-import CreateAccount from "../screensStack/CreateAccount";
+import CreateAccount from "../screensStack/CreateAccount/CreateAccount";
 import TermsAndConditions from "../screensStack/TermsAndConditions";
 import VerifyIdentity from "../screensStack/VerifyIdentity";
 import Successful from "../screensStack/Successful";
@@ -11,7 +11,6 @@ import OtpValidatorPassword from "../screensStack/OtpValidator/OtpValidatorScree
 import NewPass from "../screensStack/NewPassw/NewPassScreen/NewPass";
 
 import CustomStackNavigator from "./CustomStackNavigator";
-
 
 const CreacionStack = () => {
   const screens = {

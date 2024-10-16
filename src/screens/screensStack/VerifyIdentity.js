@@ -10,6 +10,7 @@ import OtpCard from "@/components/organisms/OtpCard";
 const VerifyIdentity = ({ route, navigation }) => {
   const { email } = route.params;
   const { phone } = route.params;
+  const { UserID } = route.params;
   console.log(email, phone);
 
   return (

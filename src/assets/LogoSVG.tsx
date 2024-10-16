@@ -12,7 +12,7 @@ import Svg, {
 interface IconSvgProps {
   theme?: string;
   color?: string;
-  progress: number;
+  progress?: number;
   ancho?: string;
   alto?: string;
 }
@@ -172,7 +172,7 @@ const SvgLogo: React.FC<IconSvgProps> = ({
         >
           <Rect width={400} height={4} rx={2} fill="#E9EAFE" />
 
-          <Rect width={progress * 3.56} height={4} rx={2} fill="#515EC0" />
+          <Rect width={progress! * 3.56} height={4} rx={2} fill="#515EC0" />
         </Svg>
       );
 

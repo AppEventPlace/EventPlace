@@ -16,7 +16,7 @@ import ConfirmacionBoleta from "../ScreensCreateEvent/ConfirmacionBoleta";
 import ChatScreen from "../screensMenu/ChatScreens/chatScreen";
 
 const Stack = createStackNavigator();
-let isAuthenticated = false;
+
 const WallScreen = ({ navigation, route }) => {
   const screens = {
     WallPrincipal: WallPrincipal,

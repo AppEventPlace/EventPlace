@@ -12,6 +12,7 @@ import SvgLogo from "@/assets/LogoSVG";
 const OtpValidatorPassword = ({ route }) => {
   const navigation = useNavigation();
   const { email } = route.params;
+  const { UserID } = route.params;
 
   const Validacion = (estado, message) => {
     if (estado === true) {
@@ -54,7 +55,7 @@ const OtpValidatorPassword = ({ route }) => {
           />
         </View>
         <OtpCard
-          onPressReload={() => [OtpConsumer(email, Validacion)]}
+          onPressReload={() => [OtpConsumer(email, UserID, Validacion)]}
           navigation={navigation}
           onPressNav={"NewPass"}
           Title={"Ingreso de Token"}

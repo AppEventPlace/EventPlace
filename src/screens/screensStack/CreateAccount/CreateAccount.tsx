@@ -11,28 +11,28 @@ import {
 
 // --> Importar ImagePicker
 import * as ImagePicker from "expo-image-picker"; // Lib para el acceso a la interfaz de usuario
-import ImageViewer from "../../components/CommonComponents/ImageViewer";
+import ImageViewer from "../../../components/CommonComponents/ImageViewer";
 
 // --> Importar Estilos comunes
 import CommonStyles, {
   Colors,
   TexColor,
-} from "../../components/CommonStyles/CommonStyles";
-import CommonSpacingStyles from "../../components/CommonStyles/CommonSpacingStyles";
-import CommonTextStyles from "../../components/CommonStyles/CommonTextStyles";
+} from "../../../components/CommonStyles/CommonStyles";
+import CommonSpacingStyles from "../../../components/CommonStyles/CommonSpacingStyles";
+import CommonTextStyles from "../../../components/CommonStyles/CommonTextStyles";
 
 // --> Importar Componentes comunes
-import IconSvg from "../../assets/IconSvg";
-import Button from "../../components/CommonComponents/Button";
-import CheckedTerms from "../../components/CommonComponents/CheckedTerms";
-import BackCheckron from "../../components/CommonComponents/BackCheckron";
-import AnotherLoginMethod from "../../components/CommonComponents/AnotherLoginMethod";
+import IconSvg from "../../../assets/IconSvg";
+import Button from "../../../components/CommonComponents/Button";
+import CheckedTerms from "../../../components/CommonComponents/CheckedTerms";
+import BackCheckron from "../../../components/CommonComponents/BackCheckron";
+import AnotherLoginMethod from "../../../components/CommonComponents/AnotherLoginMethod";
 
 // --> Importar Validación de estructura
-import useValidation from "./ValidationCreateAccount";
+import useValidation from "../ValidationCreateAccount";
 
 // --> Importar Validación de estructura
-import CreateUser from "../../Services/UsersServices/CreateUser";
+import CreateUser from "../../../Services/UsersServices/CreateUser";
 
 // --> Importar Api para registrar o crear un nuevo Usuario
 import { LinearProgress } from "@rneui/themed";
@@ -41,20 +41,46 @@ import SvgLogo from "@/assets/LogoSVG";
 import SelectorIndicativo from "@/constants/IndicativosTel";
 import { startGeofencingAsync } from "expo-location";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import {
+  ICreateAccount,
+  InitialState,
+} from "@/interfaces/CreateAccount-Interface/ICreateAccount";
+import { setAuthData } from "@/Redux/slices/authSlice";
+//import CreateAccountView from "./CreateAccountView";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
-const FondImage = require("../../assets/Seleccionar_Foto.jpg");
+const FondImage = require("../../../assets/Seleccionar_Foto.jpg");
 /*----------------------------------------------------------------------------------*/
 
 /*----------------------------  CreateAccount  -----------------------------
 Componente Diseñado para crear un formulario de registro de nuevos usuarios 
 ---------------------------------------------------------------------------*/
-const CreateAccount = ({ navigation }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageB64, setImageB64] = useState(null);
+export type RootParamList = {
+  CreateAccount: undefined;
+  email: object;
+  phone: object;
+};
+
+interface CreateAccountProps {
+  //navigation: NativeStackNavigationProp<RootParamList;
+}
+const CreateAccount: React.FC = () => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const [initialState, setInitialState] =
+    React.useState<ICreateAccount>(InitialState);
+
+  const [selectedImage, setSelectedImage] = useState("");
+  const [imageB64, setImageB64] = useState("");
   /*----------------------------------------------------------------------------------
   Componente ImageViewer permite el acceso a la interfaz de usuario para seleccionar 
-  la imagen de perfil. y guardarla en base 64 para envío en la peticion
+  la imagen de perfil. y guardala en base 64 para envío en la peticion
   ----------------------------------------------------------------------------------*/
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -66,8 +92,8 @@ const CreateAccount = ({ navigation }) => {
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
       console.log(result.assets[0].uri);
-      setImageB64(result.assets[0].base64);
-      handleChange("fotoPerfilBase64", result.assets[0].base64);
+      setImageB64(result.assets[0].base64!);
+      handleChange("fotoPerfilBase64", result.assets[0].base64!);
     }
     //Si el usuario no elige una imagen, muestra una alerta.
     else {
@@ -78,7 +104,7 @@ const CreateAccount = ({ navigation }) => {
   /*----------------------------------------------------------------------------------
   Inicializar variables para validar la estructura y obligatoriedad del campo 
   ----------------------------------------------------------------------------------*/
-  const initialState = {
+  /* const initialState = {
     name: "",
     lastName: "",
     phone: "",
@@ -89,13 +115,13 @@ const CreateAccount = ({ navigation }) => {
       "iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVKSURBVHgB7Zzfb9tUFMdP3PRHIlHKitAkQHiaNqG9tBUF0ReWwQMPIFFeKiVVNfoXbP0L1v0FZX9BO7Vp+kb2F5DBw5B4aIL21DHqQkFl0kpWpPVHqnbn611ni2NndhxfO/Y+Umov9trcb84599zrc2+CJLG4uKj29fVl+HQ0kUh8gKO4pJpu1fhVPT09rfKxwveu83llenq6TBJIkE+wAEMswCSfXuZG4ThE3oBAJX4VDw8P78zOzlbJBzouyPLyckZRlEkW4Sp5F8EW/v1LJycntzptOR0TRAhxgz9ohiTC7lRiYW7OzMyUqAN4FiSfzyMWLMgWwgz//eLBwcEcu5JGHmhbEMSIgYGBa/wNzVOIYGHms9nsTWqTtgRBj9Hf3/8DvegpwobGgfdKO9aikEtWV1evshjrFF4xAL6wdf6s18klrgQpFAo3+LBEPvYeHQSfcUF8Zsc4dhn84rDFC6e4iSuOBOlmMQycivJKQaIghoETUVoKsra2do2Tnu8pWnyXy+Vu2120FUR0rehNuiGAuqHKXfKYXZds28uwGD9S9MQAQ8ihkFhaXbQURHRVKkWXUR6JW+YoTS4jXGWTYgB3FmPm0XKThbAYCxQfmtraIAiG8HyYpJiAEbpoc50GQTCfQTHD3Oa6IBw7RoOe0wgCs5XUBeHY4XpkGBUw5Wmc670M+mQW5D+KL0jWzmHiWrcQMTseZ4wnBJTED/ajbygAarUabWp/0vb23/T06T6lUil6e/gMXbhwntLpFMmE3eYyH5aMGJIhyUCAn36+Rxsbv+vnYH9/n/5ice798mv9PVlwkqZbSAK9ixjESaVSua833o6zZ9+h8Y/GSCbsKecU9h3pc6O12nFLMcDOziPdpWTCUx0ZuIx8QY6dNRQuJJlRCDJCIQVBViYcWFWF/Ub6nEeaGzrMvUkrBgffoN7eXpIJB9YRWEggk0CXLn1IyWTS8hreHx+XG1ANIIhKAfAmW8DExCdNbjF85i39/bRkdxGoSQoQiPLF55/Rk73/6Zh7FIgjOyEzE6ggBhAmLAQuCDLS3d1d/TzJQTSdGuCAOkhBAUE0CiCO/LG5RZq2ZZmiw3UuXjxP77/3LklGk24hEKDy2316/HjX9h4kZEjtNzYe0sSnH8uMK/rwX0p1H4AYGLi1EuNlIAzul5XCo/JR4R9bJIkHDx66Tsd1a2GLkkRFmoXAKl41oLMDAz2nVuUF1MRy+q6USALb2/+QF3b+fUR+wxlyRclmsxo9L4r1lSd7e+QFWInPVKempsrGjNkd8pk9zka94PdUALvLXRz1bhfFr6Ly2De+/upLCjOsAaoqnz+XOTo6KpIEtwkzqJ/HURcEzyNYodsUU1A3bywmqD+54/nEIsWUnp6eW8Z5XRAUzyOWUMxAm9G7GP9uePqPVQUUM8xtbhAkhlZSNC8rsaoxm6OYwMG0qa1NgqDmiq0k8q6DNoosvQHLKkTOS1CsK21aIAA0/uLnrS5YCoI+mc3pW4pmsoa2XbG7aFu4C3Nis4piPLF0FYOW62XYrJaiFE/Qllwu17J239HykHw+P89m1tUVihDDLm68jOMFRN0silMxgKtFiN0oihsxgOtVmSsrK9dFsWvYV0pgBD+HOOjmP7W1TLVQKKj8x7B8RKVwUkba0Ko3scPTyu4wuhBcBIllu5sleF7qLqwFqwoCrXUVg9I5r5sjvN4MwUTHt8vA5ggsCurm/Zy01qc8McvXKSEMfN9QRVRJZ6gDG6qwCJjmvItJ8a7ZUMUOsa2G8RoRxX54qaZbNXEsi+fOZRag5HUbDKc8A7wyPuDbnAlUAAAAAElFTkSuQmCC",
 
     //  Agregar aquí los campos restantes...
-  };
+  };*/
 
   const { state, setState, errors, validarCampos, setErrors, getStateAsJson } =
     useValidation(initialState);
 
-  const handleChange = (name, value) => {
-    setState((prevState) => ({ ...prevState, [name]: value }));
+  const handleChange = (name: string, value: string) => {
+    setState((prevState: any) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = () => {
@@ -114,7 +140,7 @@ const CreateAccount = ({ navigation }) => {
     console.log("Número de errores:", errorCount);
     if (errorCount === 0) {
       const stateJson = getStateAsJson();
-      console.log("Datos enviados:", stateJson);
+      //console.log("Datos enviados:", stateJson);
       CreateUser(stateJson, Validacion);
     } else {
       Toast.show({
@@ -128,16 +154,17 @@ const CreateAccount = ({ navigation }) => {
 
   const Progress = 0.4;
 
-  const Validacion = (estado, message) => {
+  const Validacion = (estado: boolean, message: string, UserID: string) => {
     //setValidado(estado);
-    console.log(estado);
+    setAuthData({ token: "", idUser: UserID });
+    console.log(estado, UserID);
     if (estado === true) {
       Toast.show({
         type: "success",
         text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
-      OtpConsumer(state.email, ValidacionEnvioOtp);
+      OtpConsumer(state.email, UserID, ValidacionEnvioOtp);
     } else if (estado === false) {
       Toast.show({
         type: "error",
@@ -147,7 +174,7 @@ const CreateAccount = ({ navigation }) => {
       });
     }
   };
-  const ValidacionEnvioOtp = (estado, message) => {
+  const ValidacionEnvioOtp = (estado: boolean, message: string) => {
     //setValidado(estado);
     console.log(estado);
     if (estado === true) {
@@ -226,7 +253,7 @@ const CreateAccount = ({ navigation }) => {
                     top: 73.41,
                   }}
                 >
-                  <SvgLogo theme="photoCamera" ancho={18.82} alto={16.94} />
+                  <SvgLogo theme="photoCamera" ancho={"18.82"} alto={"16.94"} />
                 </View>
               </View>
 

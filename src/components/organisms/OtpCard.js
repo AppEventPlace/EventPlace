@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import { Text, View, StyleSheet, TextInput, Keyboard } from "react-native";
 import CommonTextStyles from "../CommonStyles/CommonTextStyles";
 import CommonSpacingStyles from "../CommonStyles/CommonSpacingStyles";
 import Button from "../CommonComponents/Button";
@@ -94,6 +94,7 @@ const OtpCard = ({
                 maxLength={1}
                 selectTextOnFocus={true}
                 secureTextEntry={true}
+                onBlur={() => Keyboard.dismiss()}
                 // Permitir seleccionar texto al enfocar
               />
             ))}
