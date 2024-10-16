@@ -75,19 +75,22 @@ const WallPrincipal = ({ navigation }) => {
     }*/
   }, []);
   return (
-    <SafeAreaView
-      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
-    >
-      <FlatList
-        key={"ScrollInfinite"}
-        stickyHeaderIndices={[1]}
-        style={[CommonStyles.ScrollView, { backgroundColor: Colors.Primary }]}
-        data={OpcionesWall}
-        renderItem={({ item }) => (
-          <WallScroll item={item} navigation={navigation} />
-        )}
-      />
-    </SafeAreaView>
+    <View style={{ flex: 1 }}>
+      <SafeAreaView
+        edges={["top", "left", "right"]}
+        style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
+      >
+        <FlatList
+          key={"ScrollInfinite"}
+          stickyHeaderIndices={[1]}
+          style={[CommonStyles.ScrollView, { backgroundColor: Colors.Primary }]}
+          data={OpcionesWall}
+          renderItem={({ item }) => (
+            <WallScroll item={item} navigation={navigation} />
+          )}
+        />
+      </SafeAreaView>
+    </View>
   );
 };
 

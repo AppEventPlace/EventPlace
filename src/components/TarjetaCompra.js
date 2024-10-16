@@ -9,7 +9,12 @@ const TarjetaCompra = ({ Valor, onPress }) => {
   return (
     <View key={"ContenedorTarjCompr"} style={style.ContenedorTarjeta}>
       <View key={"LogoExpandir"}>
-        <SvgLogo theme={"ExpandLess"} color={Colors.NightBlue_600} />
+        <SvgLogo
+          theme={"ExpandLess"}
+          color={Colors.NightBlue_600}
+          ancho={"20"}
+          alto={"12"}
+        />
       </View>
       <View
         key={"informacionPago"}

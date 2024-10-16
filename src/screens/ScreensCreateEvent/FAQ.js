@@ -10,6 +10,7 @@ import PreguntasFrecuentes from "../../constants/PreguntasFrecuentes";
 const FAQ = ({ navigation }) => {
   return (
     <SafeAreaView
+      edges={["top", "left", "right"]}
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <ScrollView

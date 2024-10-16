@@ -46,10 +46,8 @@ const PerfilPrincipalScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView
-        style={[
-          CommonStyles.AreaView,
-          { paddingTop: 0, backgroundColor: Colors.Grey_Top },
-        ]}
+        edges={["top", "left", "right"]}
+        style={{ backgroundColor: Colors.Grey_Top, flex: 1 }}
       >
         <ScrollView style={CommonStyles.ScrollView}>
           <View key={"ContenedorPagina"} style={styles.PerfilContainer}>

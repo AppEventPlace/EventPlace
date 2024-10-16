@@ -21,10 +21,8 @@ import CommonStyles, {
 const Boleteria = ({ navigation }) => {
   return (
     <SafeAreaView
-      style={[
-        CommonStyles.AreaView,
-        { backgroundColor: Colors.Grey_Top, marginTop: -30 },
-      ]}
+      edges={["top", "left", "right"]}
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <View style={{ flex: 1 }}>
         <ScrollView style={CommonStyles.ScrollView}>

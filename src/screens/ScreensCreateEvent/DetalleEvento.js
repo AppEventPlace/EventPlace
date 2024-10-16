@@ -40,6 +40,7 @@ const DetalleEvento = ({ navigation }) => {
   const Imagen_width = Dimensions.get("window").width * 0.91;
   return (
     <SafeAreaView
+      edges={["top", "left", "right"]}
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <View key={"ContenedorPrincipal"} style={{ flex: 1 }}>

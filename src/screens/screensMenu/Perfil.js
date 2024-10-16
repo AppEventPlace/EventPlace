@@ -9,16 +9,25 @@ import PerfilPrincipalScreen from "../ScreenStackPerfil/PerfilPrincipal";
 
 const Stack = createStackNavigator();
 
-const StackPerfilScreen = () => {
+const StackPerfilScreen = () => {};
+
+const PerfilScreen = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        //cardStyle: { flex: 1 },
+      }}
+    >
       {StackPerfil.map((Perfil) => (
         <Stack.Screen
-          options={{
-            headerShown: false,
-          }}
           key={Perfil.name}
           name={Perfil.label}
+          screenOptions={
+            {
+              // cardStyle: { flex: 1 },
+            }
+          }
           component={
             Perfil.name === "PerfilPrincipal"
               ? PerfilPrincipalScreen
@@ -32,10 +41,6 @@ const StackPerfilScreen = () => {
       ))}
     </Stack.Navigator>
   );
-};
-
-const PerfilScreen = () => {
-  return <StackPerfilScreen />;
 };
 
 const style = StyleSheet.create({

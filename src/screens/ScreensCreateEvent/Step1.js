@@ -15,10 +15,8 @@ import CommonStyles, {
 const CreateEvent = ({ navigation }) => {
   return (
     <SafeAreaView
-      style={[
-        CommonStyles.AreaView,
-        { backgroundColor: Colors.Grey_Top, marginTop: -30 },
-      ]}
+      edges={["top", "left", "right"]}
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <ScrollView style={CommonStyles.ScrollView}>
         <View style={CommonStyles.FullContainer}>

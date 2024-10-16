@@ -11,6 +11,7 @@ import SvgLogo from "../../assets/LogoSVG";
 const ConfirmacionBoleta = ({ navigation }) => {
   return (
     <SafeAreaView
+      edges={["top", "left", "right"]}
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <ScrollView

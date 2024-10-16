@@ -23,6 +23,7 @@ const SearchPage = ({ navigation }) => {
   let numColumn = 3;
   return (
     <SafeAreaView
+      edges={["top", "left", "right"]}
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <View style={style.PageContainer}>

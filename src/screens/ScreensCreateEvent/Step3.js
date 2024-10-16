@@ -131,10 +131,8 @@ const Resumen = ({ navigation }) => {
 
   return (
     <SafeAreaView
-      style={[
-        CommonStyles.AreaView,
-        { backgroundColor: Colors.Grey_Top, marginTop: -30 },
-      ]}
+      edges={["top", "left", "right"]}
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <View style={{ flex: 1 }}>
         <ScrollView
@@ -160,8 +158,8 @@ const Resumen = ({ navigation }) => {
                                     ? 0.95
                                     : 1
                                   : showTickets
-                                    ? 0.95
-                                    : 1,
+                                  ? 0.95
+                                  : 1,
                             },
                           ],
                         },
@@ -187,8 +185,8 @@ const Resumen = ({ navigation }) => {
                               ? "ExpandLess"
                               : "ExpandMore"
                             : showTickets
-                              ? "ExpandLess"
-                              : "ExpandMore"
+                            ? "ExpandLess"
+                            : "ExpandMore"
                         }
                         color="#6979F8"
                         ancho={"20"}

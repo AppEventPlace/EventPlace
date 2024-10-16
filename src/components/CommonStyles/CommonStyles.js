@@ -65,13 +65,14 @@ const CommonStyles = StyleSheet.create({
   // --> Estilo definido para <SafeAreaView>
   AreaView: {
     flex: 1,
-    paddingTop: 30,
+    //paddingTop: 30,
   },
 
   // --> Estilo definido para <ScrollView>
   ScrollView: {
     flex: 1,
     width: "100%",
+    paddingTop: 0,
   },
 
   // --> Contenedro principal

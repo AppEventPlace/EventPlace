@@ -41,6 +41,7 @@ const Filtros = ({ navigation }) => {
   ];
   return (
     <SafeAreaView
+      edges={["top", "left", "right"]}
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Grey_Top }]}
     >
       <ScrollView
