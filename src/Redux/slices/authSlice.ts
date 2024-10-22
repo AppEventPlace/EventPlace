@@ -24,15 +24,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 */
 
 interface AuthState {
-    token: string | null;
-    idUser: string | null;
+    token: string;
+    idUser: string;
     isAuthenticated: boolean;
 }
 
 // Estado inicial donde no hay token ni idUser, y el usuario no está autenticado
 const initialState: AuthState = {
-    token: null,
-    idUser: null,
+    token: '',
+    idUser: '',
     isAuthenticated: false,
 };
 
@@ -49,8 +49,8 @@ const authSlice = createSlice({
         },
         // Reducer para limpiar los datos de autenticación, reseteando el estado
         clearAuthData: (state) => {
-            state.token = null; // Elimina el token
-            state.idUser = null; // Elimina el idUser
+            state.token = ''; // Elimina el token
+            state.idUser = ''; // Elimina el idUser
             state.isAuthenticated = false; // Marca al usuario como no autenticado
         }
     }
