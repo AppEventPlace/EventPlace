@@ -70,7 +70,7 @@ const MenuMovil = () => (
 );
 
 const Pantalla = () => {
-  const isUserAuthenticated = false; // Cambiar a true si se necesita autenticación
+  //const isUserAuthenticated = false; // Cambiar a true si se necesita autenticación
 
   return (
     <NavigationContainer>
