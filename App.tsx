@@ -1,7 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import CreacionStack from "./src/screens/CreateUserStack/CreacionStack";
 import Toast from "react-native-toast-message";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -13,9 +12,10 @@ import BoletasScreen from "./src/screens/screensMenu/Boletas";
 import TabItems from "./src/constants/TabItems";
 import SvgLogo from "./src/assets/LogoSVG";
 import { Colors } from "./src/components/CommonStyles/CommonStyles";
+import { Provider } from "react-redux";
+import { store } from "@/Redux/store";
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 const renderTabLabel = (focused: boolean, name: string) => (
   <Text
@@ -60,7 +60,7 @@ const MenuMovil = () => (
           headerShown: false,
           tabBarShowLabel: true,
           tabBarActiveBackgroundColor: Colors.MidnightDreams_200,
-          tabBarStyle: { gap: 10 },
+          tabBarStyle: { height: 60 },
           tabBarLabel: ({ focused }) => renderTabLabel(focused, name),
           tabBarIcon: ({ focused }) => renderTabIcon(focused, source),
         }}
@@ -70,36 +70,20 @@ const MenuMovil = () => (
 );
 
 const Pantalla = () => {
-  //const isUserAuthenticated = false; // Cambiar a true si se necesita autenticación
+  const isUserAuthenticated = false; // Cambiar a true si se necesita autenticación
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Menu"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen
-          name="Menu"
-          component={MenuMovil}
-          options={{
-            headerShown: false,
-            cardStyle: { flex: 1 },
-          }}
-        />
-        <Stack.Screen
-          name="CreationStack"
-          component={CreacionStack}
-          options={{
-            headerShown: false,
-            cardStyle: { flex: 1 },
-          }}
-        />
-      </Stack.Navigator>
+      {isUserAuthenticated ? <MenuMovil /> : <CreacionStack />}
       <Toast />
     </NavigationContainer>
   );
 };
 
 export default function App() {
-  return <Pantalla />;
+  return (
+    <Provider store={store}>
+      <Pantalla />
+    </Provider>
+  );
 }
