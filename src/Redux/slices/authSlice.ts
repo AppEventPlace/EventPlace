@@ -1,16 +1,5 @@
+import { initialState } from '@/interfaces/Redux-Interfaces/AuthState';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface AuthState {
-    token: string;
-    idUser: string;
-    isAuthenticated: boolean;
-}
-
-const initialState: AuthState = {
-    token: '',
-    idUser: '',
-    isAuthenticated: false,
-};
 
 const authSlice = createSlice({
     name: 'auth',
