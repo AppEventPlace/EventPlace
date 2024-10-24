@@ -25,7 +25,6 @@ const CreacionStack = () => {
     OtpAdviceRecOtp: OtpAdviceRecOtp,
     OtpValidatorPassword: OtpValidatorPassword,
     NewPass: NewPass,
-    WallPrincipal: WallPrincipal,
   };
 
   return (
