@@ -18,11 +18,13 @@ import { store } from "@/Redux/store";
 const Tab = createBottomTabNavigator();
 
 const renderTabLabel = (focused: boolean, name: string) => (
-  <Text style={{
-    color: focused ? Colors.NightBlue_600 : Colors.Negro,
-    fontSize: 10,
-    marginBottom: 10,
-  }}>
+  <Text
+    style={{
+      color: focused ? Colors.NightBlue_600 : Colors.Negro,
+      fontSize: 10,
+      marginBottom: 10,
+    }}
+  >
     {name}
   </Text>
 );
@@ -44,11 +46,15 @@ const MenuMovil = () => (
         key={name}
         name={name}
         component={
-          name === "Notificaciones" ? NotificacionesScreen :
-          name === "Chat" ? Chat :
-          name === "Wall" ? WallScreen :
-          name === "Mis Boletas" ? BoletasScreen :
-          PerfilScreen
+          name === "Notificaciones"
+            ? NotificacionesScreen
+            : name === "Chat"
+            ? Chat
+            : name === "Wall"
+            ? WallScreen
+            : name === "Mis Boletas"
+            ? BoletasScreen
+            : PerfilScreen
         }
         options={{
           headerShown: false,
@@ -63,7 +69,6 @@ const MenuMovil = () => (
   </Tab.Navigator>
 );
 
-
 const Pantalla = () => {
   const isUserAuthenticated = false; // Cambiar a true si se necesita autenticación
 
@@ -77,7 +82,7 @@ const Pantalla = () => {
 
 export default function App() {
   return (
-    <Provider store={store}> 
+    <Provider store={store}>
       <Pantalla />
     </Provider>
   );
