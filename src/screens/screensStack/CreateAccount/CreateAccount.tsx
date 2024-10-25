@@ -44,9 +44,11 @@ import {
   ICreateAccount,
   InitialState,
 } from "@/interfaces/CreateAccount-Interface/ICreateAccount";
-import { setAuthData } from "@/Redux/slices/authSlice";
+import authSlice, { setAuthData } from "@/Redux/slices/authSlice";
 //import CreateAccountView from "./CreateAccountView";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { useDispatch, Provider } from "react-redux";
+import { store } from "@/Redux/store";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
 const FondImage = require("../../../assets/Seleccionar_Foto.jpg");
@@ -60,11 +62,12 @@ export type RootParamList = {
   email: object;
   phone: object;
 };
-
+//
 interface CreateAccountProps {
   //navigation: NativeStackNavigationProp<RootParamList;
 }
 const CreateAccount: React.FC = () => {
+  const dispatch = useDispatch();
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [initialState, setInitialState] =
     React.useState<ICreateAccount>(InitialState);
@@ -149,8 +152,8 @@ const CreateAccount: React.FC = () => {
 
   const Validacion = (estado: boolean, message: string, UserID: string) => {
     //setValidado(estado);
-    setAuthData({ token: "", idUser: UserID });
-    console.log(estado, UserID);
+    dispatch(setAuthData({ token: "", idUser: UserID }));
+    //console.log(UserID);
     if (estado === true) {
       Toast.show({
         type: "success",
@@ -169,6 +172,7 @@ const CreateAccount: React.FC = () => {
   };
   const ValidacionEnvioOtp = (estado: boolean, message: string) => {
     //setValidado(estado);
+    console.log(store.getState().auth.idUser);
     console.log(estado);
     if (estado === true) {
       Toast.show({
