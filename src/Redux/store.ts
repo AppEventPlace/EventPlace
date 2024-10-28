@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './slices/authSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./slices/authSlice";
+import secureDataReducer from "./slices/secureDataSlice";
 
 /*
   Este archivo configura el store de Redux, que es el contenedor global del estado de la aplicación. 
@@ -20,10 +21,11 @@ import authReducer from './slices/authSlice';
 */
 
 export const store = configureStore({
-    // Definición de los reducers. Aquí solo tenemos el authReducer para manejar el estado de autenticación.
-    reducer: {
-        auth: authReducer,
-    },
+  // Definición de los reducers. Aquí solo tenemos el authReducer para manejar el estado de autenticación.
+  reducer: {
+    auth: authReducer,
+    secureData: secureDataReducer,
+  },
 });
 
 // Tipos que se utilizan en otras partes de la aplicación para tipar correctamente el estado y el dispatch
