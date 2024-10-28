@@ -47,9 +47,10 @@ import {
 import authSlice, { setAuthData } from "@/Redux/slices/authSlice";
 //import CreateAccountView from "./CreateAccountView";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { useDispatch, Provider } from "react-redux";
+//import { useDispatch, Provider } from "react-redux";
 import { store } from "@/Redux/store";
 import { setSecureData } from "@/Redux/slices/secureDataSlice";
+import { useDispatch } from "react-redux";
 
 /*--------    FondImage= Imagen inicial, Requerida para usar ImageViewer   --------*/
 const FondImage = require("../../../assets/Seleccionar_Foto.jpg");
@@ -138,7 +139,7 @@ const CreateAccount: React.FC = () => {
     if (errorCount === 0) {
       const stateJson = getStateAsJson();
       //console.log("Datos enviados:", stateJson);
-      // dispatch(setSecureData({ email: state.email, phone: state.phone }));
+      dispatch(setSecureData({ email: state.email, phone: state.phone }));
       CreateUser(stateJson, Validacion);
     } else {
       Toast.show({
@@ -162,7 +163,7 @@ const CreateAccount: React.FC = () => {
         text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
-      //console.log(store.getState().secureData.email);
+      console.log(store.getState().secureData.email);
       OtpConsumer(state.email, UserID, ValidacionEnvioOtp);
     } else if (estado === false) {
       Toast.show({
