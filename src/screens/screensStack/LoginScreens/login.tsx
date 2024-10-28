@@ -1,40 +1,43 @@
 import React from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import LoginView from "./loginView";
 import LoginService from "@/Services/LoginServices/loginService";
-import { Ilogin, initialLoginState } from "@/interfaces/Login-Interfaces/ILogin";
-
+import {
+  Ilogin,
+  initialLoginState,
+} from "@/interfaces/Login-Interfaces/ILogin";
 
 export type RootParamList = {
-    Login: undefined;
-    CreateAccount: undefined;
-    Gustos: undefined;
-    ForgPassword: undefined;
+  Login: undefined;
+  CreateAccount: undefined;
+  Gustos: undefined;
+  ForgPassword: undefined;
 };
 
 const Login: React.FC = () => {
-    const navigation = useNavigation<NativeStackNavigationProp<RootParamList, 'Login'>>();
-    const [login, setLogin] = React.useState<Ilogin>(initialLoginState);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootParamList, "Login">>();
+  const [login, setLogin] = React.useState<Ilogin>(initialLoginState);
 
-    // Función constante para manejar el login
-    const LoginauthenticateUser = async () => {
-        try {
-            const response = await LoginService.LoginauthenticateUser(login);  
-            console.log('Token recibido:', response.token);  
-        } catch (error: any) {
-            console.error('Error al iniciar sesión:', error.message);
-        }
-    };
+  // Función constante para manejar el login
+  const LoginauthenticateUser = async () => {
+    try {
+      const response = await LoginService.LoginauthenticateUser(login);
+      console.log("Token recibido:", response.token);
+    } catch (error: any) {
+      console.error("Error al iniciar sesión:", error.message);
+    }
+  };
 
-    return (
-        <LoginView
-            navigation={navigation}
-            LoginauthenticateUser={LoginauthenticateUser}
-            login={login}
-            setLogin={setLogin}
-        />
-    );
+  return (
+    <LoginView
+      navigation={navigation}
+      LoginauthenticateUser={LoginauthenticateUser}
+      login={login}
+      setLogin={setLogin}
+    />
+  );
 };
 
 export default Login;
