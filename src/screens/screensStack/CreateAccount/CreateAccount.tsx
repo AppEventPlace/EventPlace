@@ -164,7 +164,7 @@ const CreateAccount: React.FC = () => {
         visibilityTime: 4000, // Duración en milisegundos
       });
       console.log(store.getState().secureData.email);
-      OtpConsumer(state.email, UserID, ValidacionEnvioOtp);
+      OtpConsumer(ValidacionEnvioOtp);
     } else if (estado === false) {
       Toast.show({
         type: "error",
@@ -184,10 +184,7 @@ const CreateAccount: React.FC = () => {
         text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
-      navigation.navigate("VerifyIdentity", {
-        email: state.email,
-        phone: state.phone,
-      });
+      navigation.navigate("VerifyIdentity");
     } else if (estado === false) {
       Toast.show({
         type: "error",

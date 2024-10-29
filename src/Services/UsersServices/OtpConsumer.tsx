@@ -1,14 +1,11 @@
+import { store } from "@/Redux/store";
 import React, { useState, useSyncExternalStore } from "react";
 
-interface OtpConsumerProp {
-  correo: string;
-}
-
 const OtpConsumer = async (
-  email: string,
-  userID: string,
   Validacion: (estado: boolean, message: string) => void
 ) => {
+  const email = store.getState().secureData.email!;
+  const userID = store.getState().auth.idUser;
   let result;
   try {
     const response = await fetch(

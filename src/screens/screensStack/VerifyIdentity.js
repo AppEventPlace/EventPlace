@@ -6,11 +6,12 @@ import CommonStyles, {
   Colors,
 } from "../../components/CommonStyles/CommonStyles";
 import OtpCard from "@/components/organisms/OtpCard";
+import { store } from "@/Redux/store";
 
 const VerifyIdentity = ({ route, navigation }) => {
-  const { email } = route.params;
-  const { phone } = route.params;
-  const { UserID } = route.params;
+  const email = store.getState().secureData.email;
+  const phone = store.getState().secureData.phone;
+
   console.log(email, phone);
 
   return (
@@ -27,7 +28,7 @@ const VerifyIdentity = ({ route, navigation }) => {
           onPressNav={"Gustos"}
           Title={"Para verificar tu identidad"}
           label={
-            "Hemos enviado al número  " +
+            "Hemos enviado al número " +
             phone +
             " o/y al correo " +
             email +

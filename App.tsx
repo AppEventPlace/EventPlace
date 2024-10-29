@@ -13,6 +13,8 @@ import BoletasScreen from "./src/screens/screensMenu/Boletas";
 import TabItems from "./src/constants/TabItems";
 import SvgLogo from "./src/assets/LogoSVG";
 import { Colors } from "./src/components/CommonStyles/CommonStyles";
+import { Provider } from "react-redux";
+import { store } from "@/Redux/store";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -49,12 +51,12 @@ const MenuMovil = () => (
           name === "Notificaciones"
             ? NotificacionesScreen
             : name === "Chat"
-            ? Chat
-            : name === "Wall"
-            ? WallScreen
-            : name === "Mis Boletas"
-            ? BoletasScreen
-            : PerfilScreen
+              ? Chat
+              : name === "Wall"
+                ? WallScreen
+                : name === "Mis Boletas"
+                  ? BoletasScreen
+                  : PerfilScreen
         }
         options={{
           headerShown: false,
@@ -101,5 +103,9 @@ const Pantalla = () => {
 };
 
 export default function App() {
-  return <Pantalla />;
+  return (
+    <Provider store={store}>
+      <Pantalla />
+    </Provider>
+  );
 }

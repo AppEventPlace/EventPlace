@@ -11,6 +11,7 @@ import OtpValidatorPassword from "../screensStack/OtpValidator/OtpValidatorScree
 import NewPass from "../screensStack/NewPassw/NewPassScreen/NewPass";
 
 import CustomStackNavigator from "./CustomStackNavigator";
+import WallPrincipal from "../ScreensCreateEvent/WallPrincipal";
 
 const CreacionStack = () => {
   const screens = {

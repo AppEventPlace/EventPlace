@@ -28,6 +28,5 @@ export const store = configureStore({
   },
 });
 
-// Tipos que se utilizan en otras partes de la aplicación para tipar correctamente el estado y el dispatch
-export type RootState = ReturnType<typeof store.getState>; // Infiere el tipo del estado global
-export type AppDispatch = typeof store.dispatch; // Infiere el tipo del dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

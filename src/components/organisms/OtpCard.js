@@ -90,11 +90,12 @@ const OtpCard = ({
                   ValidaciondDiligencia(),
                   console.log(validado),
                 ]}
-                keyboardType="numeric"
+                keyboardType="phone-pad"
                 maxLength={1}
                 selectTextOnFocus={true}
                 secureTextEntry={true}
-                onBlur={() => Keyboard.dismiss()}
+                onTouchMove={Keyboard.dismiss()}
+                //onBlur={() => Keyboard.dismiss()}
                 // Permitir seleccionar texto al enfocar
               />
             ))}
