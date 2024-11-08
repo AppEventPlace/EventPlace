@@ -9,11 +9,15 @@ import IconSvg from "@/assets/IconSvg";
 import CommonTextStyles from "@/components/CommonStyles/CommonTextStyles";
 import Button from "@/components/CommonComponents/Button";
 
-const OtpAdviceRecOtp = ({ route }) => {
-  const navigation = useNavigation();
+interface ForgPassProps {
+  navigation: any;
+}
 
-  const { email } = route.params;
-  console.log(email);
+const OtpAdviceRecOtp: React.FC<ForgPassProps> = ({ navigation }) => {
+  // const navigation = useNavigation();
+
+  //const { email } = route.params;
+  //console.log(email);F
   return (
     <SafeAreaView
       style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
@@ -63,9 +67,7 @@ const OtpAdviceRecOtp = ({ route }) => {
             <Button
               theme="StyleBoton"
               label="Continuar"
-              onPress={() => [
-                navigation.navigate("OtpValidatorPassword", { email: email }),
-              ]}
+              onPress={() => [navigation.navigate("OtpValidatorPassword")]}
               color={Colors.NightBlue_600}
             />
           </View>

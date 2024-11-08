@@ -4,7 +4,7 @@ const CreateUser = async (stateJson, Validacion) => {
   let result;
   try {
     const response = await fetch(
-      "https://5yofmbz7k8.execute-api.us-east-1.amazonaws.com/createUser",
+      "https://dxskui0le8.execute-api.us-east-1.amazonaws.com/createUser",
       {
         method: "POST",
         headers: {

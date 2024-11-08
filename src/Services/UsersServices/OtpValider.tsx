@@ -1,3 +1,4 @@
+import { store } from "@/Redux/store";
 import React from "react";
 import Toast from "react-native-toast-message";
 
@@ -7,10 +8,13 @@ interface OtpConsumerProp {
 
 const OtpValidate = async (
   correo: string,
+  userId: string,
   otp: string,
   validado: (estado: boolean, message: string) => void
 ) => {
   let result;
+
+  console.log(otp);
   try {
     const response = await fetch(
       "https://vvq67ontm5.execute-api.us-east-1.amazonaws.com/generateOtp",
@@ -25,7 +29,7 @@ const OtpValidate = async (
         body: JSON.stringify({
           action: "verify",
           email: correo,
-          userId: correo,
+          userId: userId,
           otp: otp,
         }),
       }

@@ -8,11 +8,13 @@ import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
 import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 import SvgLogo from "@/assets/LogoSVG";
+import { store } from "@/Redux/store";
 
 const OtpValidatorPassword = ({ route }) => {
   const navigation = useNavigation();
-  const { email } = route.params;
-  const { UserID } = route.params;
+  const email = store.getState().secureData.email;
+  const phone = store.getState().secureData.phone;
+  const UserID = store.getState().auth.idUser;
 
   const Validacion = (estado, message) => {
     if (estado === true) {

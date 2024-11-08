@@ -11,12 +11,21 @@ import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 import useValidation from "../../ValidationCreateAccount";
 import { err } from "react-native-svg";
 import Toast, { BaseToast } from "react-native-toast-message";
+import ForgPasswordView from "./ForgPasswordView";
+import { IResponse } from "@/interfaces/IResponse";
+import GetUserByEmail from "@/Services/UsersServices/getUserByEmail";
+import { setSecureData } from "@/Redux/slices/secureDataSlice";
+import { useDispatch } from "react-redux";
+import { setAuthData } from "@/Redux/slices/authSlice";
+import { IUserDataInterface } from "@/interfaces/UserDataInterfaces/IUserDataInterface";
 
 interface ForgPassProps {
   navigation: any;
 }
 
 const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const [userData, setUserData] = useState<IUserDataInterface[]>([]);
   const toastConfig = {
     /*
       Overwrite 'success' type,
@@ -35,7 +44,7 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
     ),
   };
 
-  const ValidateEmail = {
+  /*const ValidateEmail = {
     email: "",
   };
   const [activo, setActivo] = useState(false);
@@ -45,7 +54,7 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
 
   const handleChange = (name: string, value: any) => {
     setState((prevState: JSON) => ({ ...prevState, [name]: value }));
-  };
+  };*/
 
   const Validacion = (estado: boolean, message?: string) => {
     //setValidado(estado);
@@ -58,7 +67,7 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
 
         visibilityTime: 4000, // Duración en milisegundos
       });
-      navigation.navigate("OtpAdviceRecOtp", { email: state.email });
+      navigation.navigate("OtpAdviceRecOtp");
     } else if (estado === false) {
       Toast.show({
         type: "error",
@@ -67,64 +76,35 @@ const ForgPassword: React.FC<ForgPassProps> = ({ navigation }) => {
       });
     }
   };
-  return (
-    <SafeAreaView
-      style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
-    >
-      <View
-        style={[
-          CommonSpacingStyles.VerticalSpacing_10_16,
-          { display: "flex", flexDirection: "row", height: 30, width: "100%" },
-        ]}
-      >
-        <View style={{ flex: 2 }}>
-          <BackCheckron navigation={navigation} />
-        </View>
-      </View>
-      <View
-        style={[CommonStyles.FullContainer, { paddingVertical: 10, gap: 28 }]}
-      >
-        <View style={{ gap: 28 }}>
-          <Text style={CommonTextStyles.Heding_H5}>Olvide mi contraseña</Text>
-          <Text style={CommonTextStyles.Body_L}>
-            Recuerda que este proceso restablecerá la contraseña y
-            posteriormente enviaremos un código de seguridad a tu correo
-            electrónico.
-          </Text>
-        </View>
-        <View style={[CommonStyles.container, { gap: 28 }]}>
-          <Text
-            style={[CommonTextStyles.SemiBold_M, { alignSelf: "flex-start" }]}
-          >
-            Correo electronico
-          </Text>
-          <Input
-            placeholder="Ingresa tu correo electrónico"
-            value={state.email}
-            onChangeText={(value) => [handleChange("email", value)]}
-            inputContainerStyle={{ borderBottomWidth: 0 }}
-            style={[
-              CommonStyles.TexInput,
+  const getUserId = async (email: string) => {
+    console.log(email);
+    try {
+      const response = await GetUserByEmail.ObtainUserDataByEmail(email);
+      const idUser = response.map((obj: any) => obj.id);
+      //setUserData(response);
+      console.log(idUser.toString());
+      dispatch(setSecureData({ email: email, phone: "" }));
+      dispatch(setAuthData({ token: "", idUser: idUser.toString() }));
+      console.log(idUser);
+      OtpConsumer(Validacion);
+      //setId();
+      //dispatch(setAuthData({token:"", idUser:}))
+    } catch (error) {
+      console.error("Error fetching userID:", error);
+    }
+  };
+  const setId = () => {
+    const idUser = userData.map((obj) => obj.id);
 
-              errors.email && styles.inputError,
-              ,
-            ]}
-          />
-          {errors.email ? (
-            <Text style={CommonTextStyles.Body_S}>{errors.email}</Text>
-          ) : null}
-          <View style={{ height: 43 }}>
-            <Button
-              theme="Checked"
-              label="Enviar"
-              disabled={state.email !== "" && !errors.email}
-              onPress={() => [OtpConsumer(state.email, Validacion)]}
-              color={Colors.NightBlue_600}
-            />
-          </View>
-        </View>
-      </View>
-    </SafeAreaView>
+    console.log(idUser);
+    OtpConsumer(Validacion);
+  };
+  return (
+    <ForgPasswordView
+      navigation={navigation}
+      Validacion={Validacion}
+      getUserId={getUserId}
+    />
   );
 };
 

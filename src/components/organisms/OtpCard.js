@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Text, View, StyleSheet, TextInput, Keyboard } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import CommonTextStyles from "../CommonStyles/CommonTextStyles";
 import CommonSpacingStyles from "../CommonStyles/CommonSpacingStyles";
 import Button from "../CommonComponents/Button";
@@ -9,6 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import OtpValidate from "@/Services/UsersServices/OtpValider";
 import Toast from "react-native-toast-message";
 import Timer from "../atoms/Timer";
+import { store } from "@/Redux/store";
 
 const OtpCard = ({
   onPressReload,
@@ -19,6 +27,7 @@ const OtpCard = ({
   email,
 }) => {
   let datosIni = ["", "", "", "", "", ""];
+  const userId = store.getState().auth.idUser;
   const inputRefs = useRef([]);
   const [otp, setOtp] = useState(datosIni);
   const [validado, setValidado] = useState(false);
@@ -45,7 +54,7 @@ const OtpCard = ({
         text1: message,
         visibilityTime: 4000, // Duración en milisegundos
       });
-      navigation.navigate(onPressNav, { email: email });
+      navigation.navigate(onPressNav);
     } else if (estado === false) {
       Toast.show({
         type: "error",
@@ -61,73 +70,77 @@ const OtpCard = ({
   };
   return (
     <View style={CommonStyles.container}>
-      <View style={CommonSpacingStyles.VerticalSpacing_56}>
-        <View style={CommonSpacingStyles.VerticalSpacing_24}>
-          <Text style={[CommonTextStyles.Heding_H5, { alignSelf: "center" }]}>
-            {Title}
-          </Text>
-          <Text
-            style={[
-              CommonTextStyles.Body_L,
-              { alignSelf: "center", textAlign: "center" },
-            ]}
-          >
-            {label}
-          </Text>
-        </View>
-        <View style={CommonSpacingStyles.VerticalSpacing_16}>
-          <View style={styles.InputContainer}>
-            {otp.map((_, index) => (
-              <TextInput
-                key={index}
-                ref={(ref) => (inputRefs.current[index] = ref)}
-                style={styles.input}
-                onChangeText={(text) => [
-                  handleTextChange(text, index),
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accesible={false}>
+        <View style={CommonSpacingStyles.VerticalSpacing_56}>
+          <View style={CommonSpacingStyles.VerticalSpacing_24}>
+            <Text style={[CommonTextStyles.Heding_H5, { alignSelf: "center" }]}>
+              {Title}
+            </Text>
+            <Text
+              style={[
+                CommonTextStyles.Body_L,
+                { alignSelf: "center", textAlign: "center" },
+              ]}
+            >
+              {label}
+            </Text>
+          </View>
+          <View style={CommonSpacingStyles.VerticalSpacing_16}>
+            <View style={styles.InputContainer}>
+              {otp.map((_, index) => (
+                <TextInput
+                  key={index}
+                  ref={(ref) => (inputRefs.current[index] = ref)}
+                  style={styles.input}
+                  onChangeText={(text) => [
+                    handleTextChange(text, index),
 
-                  (otp[index] = text),
-                  console.log(otp),
-                  ValidaciondDiligencia(),
-                  console.log(validado),
-                ]}
-                keyboardType="phone-pad"
-                maxLength={1}
-                selectTextOnFocus={true}
-                secureTextEntry={true}
-                onTouchMove={Keyboard.dismiss()}
-                //onBlur={() => Keyboard.dismiss()}
-                // Permitir seleccionar texto al enfocar
+                    (otp[index] = text),
+                    console.log(otp),
+                    ValidaciondDiligencia(),
+                    console.log(validado),
+                  ]}
+                  keyboardType="number-pad"
+                  maxLength={1}
+                  selectTextOnFocus={true}
+                  secureTextEntry={true}
+                  //onTouchMove={Keyboard.dismiss()}
+                  //onBlur={() => Keyboard.dismiss()}
+                  // Permitir seleccionar texto al enfocar
+                />
+              ))}
+            </View>
+
+            <View style={{ alignSelf: "center" }}>
+              <Timer />
+            </View>
+            <View style={styles.Height}>
+              <Button
+                theme="Generico"
+                label="Solicitar nuevo código"
+                onPress={onPressReload}
+                color={Color_Button.Default}
               />
-            ))}
+            </View>
           </View>
-          <View style={{ alignSelf: "center" }}>
-            <Timer />
-          </View>
-          <View style={styles.Height}>
+          <View style={CommonStyles.BotonContainer}>
             <Button
-              theme="Generico"
-              label="Solicitar nuevo código"
-              onPress={onPressReload}
+              label="Continuar"
               color={Color_Button.Default}
+              theme="Checked"
+              disabled={validado}
+              onPress={() => [
+                OtpValidate(
+                  email,
+                  userId,
+                  otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5],
+                  Validacion
+                ),
+              ]}
             />
           </View>
         </View>
-        <View style={CommonStyles.BotonContainer}>
-          <Button
-            label="Continuar"
-            color={Color_Button.Default}
-            theme="Checked"
-            disabled={validado}
-            onPress={() => [
-              OtpValidate(
-                email,
-                otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5],
-                Validacion
-              ),
-            ]}
-          />
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 };

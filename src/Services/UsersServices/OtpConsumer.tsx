@@ -5,8 +5,9 @@ const OtpConsumer = async (
   Validacion: (estado: boolean, message: string) => void
 ) => {
   const email = store.getState().secureData.email!;
-  const userID = store.getState().auth.idUser;
+  const userID = store.getState().auth.idUser!;
   let result;
+  console.log(email, userID);
   try {
     const response = await fetch(
       "https://vvq67ontm5.execute-api.us-east-1.amazonaws.com/generateOtp",
