@@ -100,9 +100,21 @@ const Button: React.FC<ButtonProps> = ({
             styles.button,
             { backgroundColor: pressed ? Colors.FondoPressed : Colors.Blanco },
           ]}
+          disabled={disabled}
           onPress={onPress}
         >
-          <Text style={styles.StyleButtonLabel_3}>{label}</Text>
+          <Text
+            style={[
+              styles.StyleButtonLabel_3,
+              {
+                color: disabled
+                  ? Colors.NightBlue_300
+                  : Text_Button.StyleButtonLabel_3,
+              },
+            ]}
+          >
+            {label}
+          </Text>
         </Pressable>
       );
 

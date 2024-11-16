@@ -41,7 +41,7 @@ const VerifyIdentity = ({ route, navigation }) => {
     >
       <View style={CommonStyles.FullContainer}>
         <OtpCard
-          onPressReload={() => [OtpConsumer(email, UserID, Validacion)]}
+          onPressReload={() => [OtpConsumer(Validacion)]}
           navigation={navigation}
           onPressNav={"Gustos"}
           Title={"Para verificar tu identidad"}

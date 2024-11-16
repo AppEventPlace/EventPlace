@@ -151,7 +151,7 @@ const CreateAccount: React.FC = () => {
     }
   };
 
-  const Progress = 0.4;
+  const Progress = 40;
 
   const Validacion = (estado: boolean, message: string, UserID: string) => {
     //setValidado(estado);
@@ -206,13 +206,13 @@ const CreateAccount: React.FC = () => {
           <View style={[CommonStyles.ViewProgressBar, { marginVertical: 12 }]}>
             <LinearProgress
               style={CommonStyles.ProgressBar}
-              value={Progress}
+              value={1}
               color={Colors.NightBlue_800}
               variant="determinate"
               trackColor={Colors.NightBlue_200}
               animation={{ duration: 1500 }}
             />
-            <Text>{Progress * 100}%</Text>
+            <Text>{Progress}%</Text>
           </View>
           <View style={CommonSpacingStyles.VerticalSpacing_16}>
             <Text style={CommonTextStyles.Heding_H5}>Crear cuenta</Text>

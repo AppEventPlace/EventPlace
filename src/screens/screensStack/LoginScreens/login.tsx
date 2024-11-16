@@ -11,6 +11,8 @@ import Toast from "react-native-toast-message";
 import { setAuthData } from "@/Redux/slices/authSlice";
 import { useDispatch } from "react-redux";
 import Loader from "@/components/atoms/Loader";
+import { setSecureData } from "@/Redux/slices/secureDataSlice";
+import OtpConsumer from "@/Services/UsersServices/OtpConsumer";
 
 export type RootParamList = {
   Login: undefined;
@@ -18,6 +20,7 @@ export type RootParamList = {
   Gustos: undefined;
   ForgPassword: undefined;
   WallPrincipal: undefined;
+  VerifyIdentity: undefined;
 };
 
 const Login: React.FC = () => {
@@ -49,6 +52,22 @@ const Login: React.FC = () => {
         text1: "Error al iniciar sesión",
         text2: error.response?.data?.message,
       });
+      const codigoRespuesta = error.response.data.data.codigoRespuesta;
+      if (codigoRespuesta == 2) {
+        const userId = error.response.data.data.userId;
+        const phone = error.response.data.data.phone;
+        const email = error.response.data.data.email;
+        console.log(userId);
+        dispatch(setAuthData({ token: "", idUser: userId }));
+        dispatch(setSecureData({ phone: phone, email: email }));
+        OtpConsumer(ValidacionEnvioOtp);
+      }
+      if (codigoRespuesta == 3) {
+        navigation.navigate("Gustos");
+        const userId = error.response.data.data.userId;
+
+        dispatch(setAuthData({ token: "", idUser: userId }));
+      }
     } finally {
       setLoading(false);
     }
@@ -57,7 +76,25 @@ const Login: React.FC = () => {
   if (loading) {
     return <Loader />;
   }
+  const ValidacionEnvioOtp = (estado: boolean, message: string) => {
+    //setValidado(estado);
 
+    if (estado === true) {
+      Toast.show({
+        type: "success",
+        text1: message,
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+      navigation.navigate("VerifyIdentity");
+    } else if (estado === false) {
+      Toast.show({
+        type: "error",
+        text1: message,
+        //text2: error.message, // Detalles del error
+        visibilityTime: 4000, // Duración en milisegundos
+      });
+    }
+  };
   return (
     <LoginView
       navigation={navigation}

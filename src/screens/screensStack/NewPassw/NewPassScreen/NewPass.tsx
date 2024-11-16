@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SafeAreaView, Text, View } from "react-native";
 import { Input } from "react-native-elements";
 import { useNavigation, RouteProp } from "@react-navigation/native";
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp } from "@react-navigation/stack";
 import Toast from "react-native-toast-message";
 import PasswordUpdateService from "@/Services/UsersServices/PasswUpdate";
 import SvgLogo from "@/assets/LogoSVG";
@@ -12,10 +12,11 @@ import CommonTextStyles from "@/components/CommonStyles/CommonTextStyles";
 import BackButton from "@/components/CommonComponents/BackCheckron";
 import CustomButton from "@/components/CommonComponents/Button";
 import useFormValidation from "../../ValidationCreateAccount";
+import { store } from "@/Redux/store";
 
 interface ForgotPasswordProps {
   navigation: StackNavigationProp<any>;
-  route: RouteProp<{ params: { email: string } }, 'params'>;
+  //route: RouteProp<{ params: { email: string } }, 'params'>;
 }
 
 const initialFormState = {
@@ -23,9 +24,9 @@ const initialFormState = {
   confirmPassword: "",
 };
 
-const NewPasswordScreen: React.FC<ForgotPasswordProps> = ({ route }) => {
+const NewPasswordScreen: React.FC<ForgotPasswordProps> = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const { email } = route.params;
+  const email = store.getState().secureData.email;
   const { state, setState, errors } = useFormValidation(initialFormState);
 
   const handleInputChange = (fieldName: string, value: any) => {
@@ -45,15 +46,32 @@ const NewPasswordScreen: React.FC<ForgotPasswordProps> = ({ route }) => {
   };
 
   return (
-    <SafeAreaView style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}>
-      <View style={[CommonSpacingStyles.VerticalSpacing_10_16, { display: "flex", flexDirection: "row", height: 30, width: "100%" }]}>
+    <SafeAreaView
+      style={[CommonStyles.AreaView, { backgroundColor: Colors.Primary }]}
+    >
+      <View
+        style={[
+          CommonSpacingStyles.VerticalSpacing_10_16,
+          { display: "flex", flexDirection: "row", height: 30, width: "100%" },
+        ]}
+      >
         <View style={{ flex: 2 }}>
           <BackButton navigation={navigation} />
         </View>
       </View>
-      <View style={[CommonStyles.FullContainer, { paddingVertical: 10, gap: 28 }]}>
-        <View style={{ gap: 28, width: "100%", height: 96, alignItems: "center" }}>
-          <SvgLogo theme="Key" progress={0} color={Colors.WellDoneGreen} ancho="96" alto="96" />
+      <View
+        style={[CommonStyles.FullContainer, { paddingVertical: 10, gap: 28 }]}
+      >
+        <View
+          style={{ gap: 28, width: "100%", height: 96, alignItems: "center" }}
+        >
+          <SvgLogo
+            theme="Key"
+            progress={0}
+            color={Colors.WellDoneGreen}
+            ancho="96"
+            alto="96"
+          />
         </View>
         <View style={[CommonStyles.container, { gap: 32 }]}>
           <InputField
@@ -79,14 +97,20 @@ const NewPasswordScreen: React.FC<ForgotPasswordProps> = ({ route }) => {
               theme="Checked"
               label="Generar contraseña"
               disabled={
-                state.password === "" ||
-                state.confirmPassword === "" ||
-                errors.password ||
-                errors.confirmPassword
+                !(
+                  state.password === "" ||
+                  state.confirmPassword === "" ||
+                  errors.password ||
+                  errors.confirmPassword
+                )
               }
               onPress={() => {
                 console.log(email, state.password);
-                PasswordUpdateService(email, state.password, handleValidationResponse);
+                PasswordUpdateService(
+                  email!,
+                  state.password,
+                  handleValidationResponse
+                );
               }}
               color={Colors.NightBlue_600}
             />
@@ -128,7 +152,10 @@ const InputField: React.FC<InputFieldProps> = ({
         secureTextEntry={true}
       />
       <Text
-        style={[CommonTextStyles.Body_S, { color: errors ? Colors.Rojo : Colors.TexColor }]}
+        style={[
+          CommonTextStyles.Body_S,
+          { color: errors ? Colors.Rojo : Colors.TexColor },
+        ]}
       >
         {errors ? errors : label}
       </Text>

@@ -7,11 +7,13 @@ interface OtpConsumerProp {
 }
 
 const OtpValidate = async (
-  correo: string,
-  userId: string,
+  email: string,
+  userID: string,
   otp: string,
   validado: (estado: boolean, message: string) => void
 ) => {
+  email = store.getState().secureData.email!;
+  userID = store.getState().auth.idUser!;
   let result;
 
   console.log(otp);
@@ -28,8 +30,8 @@ const OtpValidate = async (
         },
         body: JSON.stringify({
           action: "verify",
-          email: correo,
-          userId: userId,
+          email: email,
+          userId: userID,
           otp: otp,
         }),
       }

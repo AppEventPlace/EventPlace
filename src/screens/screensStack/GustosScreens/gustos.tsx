@@ -3,25 +3,34 @@ import GustosView from "./gustosView";
 import { IPreference } from "@/interfaces/prefererence-Interfaces/IPreference";
 import PreferencesService from "@/Services/PreferencesServices/preferencesService";
 import { IResponse } from "@/interfaces/IResponse";
-import { initialUserPreferences, IUserPreference } from "@/interfaces/prefererence-Interfaces/IUserPreference";
+import {
+  initialUserPreferences,
+  IUserPreference,
+} from "@/interfaces/prefererence-Interfaces/IUserPreference";
 import UserPreferencesService from "@/Services/PreferencesServices/userPreferenceServices";
 import Loader from "@/components/atoms/Loader";
-import { initialUserPreferenceQuestion, IUserPreferenceQuestion } from "@/interfaces/prefererence-Interfaces/IUserPreferenceQuestion";
-
-
+import {
+  initialUserPreferenceQuestion,
+  IUserPreferenceQuestion,
+} from "@/interfaces/prefererence-Interfaces/IUserPreferenceQuestion";
+import { store } from "@/Redux/store";
 
 const Gustos: React.FC = () => {
   const [preferences, setPreferences] = useState<IPreference[]>([]);
   const [selectedPreferences, setSelectedPreferences] = useState<number[]>([]);
-  const [userPreferences, setUserPreferences] = useState<IUserPreference>(initialUserPreferences);
+  const [userPreferences, setUserPreferences] = useState<IUserPreference>(
+    initialUserPreferences
+  );
   const [loading, setLoading] = useState<boolean>(true);
-  const [responses, setResponses] = useState<IUserPreferenceQuestion>(initialUserPreferenceQuestion);
-
+  const [responses, setResponses] = useState<IUserPreferenceQuestion>(
+    initialUserPreferenceQuestion
+  );
 
   useEffect(() => {
     const fetchPreferences = async () => {
       try {
-        const response: IResponse = await PreferencesService.ObtainPreferences();
+        const response: IResponse =
+          await PreferencesService.ObtainPreferences();
         setPreferences(response.data);
       } catch (error) {
         console.error("Error fetching preferences:", error);
@@ -36,36 +45,37 @@ const Gustos: React.FC = () => {
     return <Loader />;
   }
 
-
   const handleSelectionChange = (selectedIds: number[]) => {
     setSelectedPreferences(selectedIds);
     setUserPreferences((prev) => {
       // Genera un número aleatorio entre 0 y 9999
       const newUserId = Math.floor(Math.random() * 10000);
-      const formattedUserId = String(newUserId).padStart(4, '0');
+      const formattedUserId = String(newUserId).padStart(4, "0");
       return {
         ...prev,
-        userId: formattedUserId,
+        userId: store.getState().auth.idUser,
         preferences: selectedIds,
       };
     });
   };
 
-
   const handleSubmitPreferences = async () => {
     try {
-      const response = await UserPreferencesService.SaveUserPreferences(userPreferences);
-      console.log('User preferences saved successfully:', response.message);
+      const response = await UserPreferencesService.SaveUserPreferences(
+        userPreferences
+      );
+      console.log("User preferences saved successfully:", response.message);
     } catch (error) {
-      console.error('Error saving user preferences:', error);
+      console.error("Error saving user preferences:", error);
     }
   };
 
-
-  const handleResponseChange = (key: keyof IUserPreferenceQuestion, value: string) => {
+  const handleResponseChange = (
+    key: keyof IUserPreferenceQuestion,
+    value: string
+  ) => {
     setResponses((prev) => ({ ...prev, [key]: value }));
   };
-
 
   return (
     <GustosView
@@ -76,7 +86,7 @@ const Gustos: React.FC = () => {
       responses={responses}
       handleResponseChange={handleResponseChange}
     />
-  )
+  );
 };
 
 export default Gustos;

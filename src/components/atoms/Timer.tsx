@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import CommonTextStyles from "../CommonStyles/CommonTextStyles";
 
-const Timer = () => {
+interface TimerProp {
+  SetIndisponibleRetry: (estado: boolean) => void;
+}
+
+const Timer: React.FC<TimerProp> = ({ SetIndisponibleRetry }) => {
   const [minute, setMinute] = useState<number>(3);
   const [second, setSecond] = useState<number>(0);
   const startTimer = () => {};
@@ -15,6 +19,9 @@ const Timer = () => {
           setSecond(59);
           setMinute(minute - 1);
         }
+      }
+      if (minute == 0 && second == 0) {
+        SetIndisponibleRetry(false);
       }
     }, 1000);
 

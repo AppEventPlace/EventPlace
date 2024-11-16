@@ -31,6 +31,8 @@ const OtpCard = ({
   const inputRefs = useRef([]);
   const [otp, setOtp] = useState(datosIni);
   const [validado, setValidado] = useState(false);
+  const [deshabiltado, setDeshabilitado] = useState(true);
+
   const handleTextChange = (text, index) => {
     // Mover automáticamente el foco al siguiente input si se ha ingresado un carácter
     if (text.length === 1 && index < inputRefs.current.length - 1) {
@@ -67,6 +69,9 @@ const OtpCard = ({
 
   const ValidaciondDiligencia = () => {
     setValidado(!otp.includes(""));
+  };
+  const SetIndisponibleRetry = (estado) => {
+    setDeshabilitado(estado);
   };
   return (
     <View style={CommonStyles.container}>
@@ -112,7 +117,7 @@ const OtpCard = ({
             </View>
 
             <View style={{ alignSelf: "center" }}>
-              <Timer />
+              <Timer SetIndisponibleRetry={SetIndisponibleRetry} />
             </View>
             <View style={styles.Height}>
               <Button
@@ -120,6 +125,7 @@ const OtpCard = ({
                 label="Solicitar nuevo código"
                 onPress={onPressReload}
                 color={Color_Button.Default}
+                disabled={deshabiltado}
               />
             </View>
           </View>

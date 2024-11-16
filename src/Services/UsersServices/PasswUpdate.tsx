@@ -6,9 +6,10 @@ const PasswUpdate = async (
   validado: (estado: boolean, message: string) => void
 ) => {
   let result;
+
   try {
     const response = await fetch(
-      "https://5yofmbz7k8.execute-api.us-east-1.amazonaws.com/updateUser",
+      "https://dxskui0le8.execute-api.us-east-1.amazonaws.com/updateUser",
       {
         method: "POST",
         headers: {

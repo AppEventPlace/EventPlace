@@ -13,14 +13,16 @@ import { StyleSheet } from "react-native";
 import Button from "@/components/CommonComponents/Button";
 import { IUserPreferenceQuestion } from "@/interfaces/prefererence-Interfaces/IUserPreferenceQuestion";
 
-
 export interface IGustosViewProps {
   preferences: IPreference[];
   handleSelectionChange: (selectedIds: number[]) => void;
   handleSubmitPreferences: () => Promise<void>;
   selectedPreferences: number[];
   responses: IUserPreferenceQuestion;
-  handleResponseChange: (key: keyof IUserPreferenceQuestion, value: string) => void;
+  handleResponseChange: (
+    key: keyof IUserPreferenceQuestion,
+    value: string
+  ) => void;
 }
 
 const GustosView: React.FC<IGustosViewProps> = ({
@@ -29,7 +31,7 @@ const GustosView: React.FC<IGustosViewProps> = ({
   handleSubmitPreferences,
   selectedPreferences,
   responses,
-  handleResponseChange
+  handleResponseChange,
 }) => {
   return (
     <SafeAreaView
@@ -50,13 +52,13 @@ const GustosView: React.FC<IGustosViewProps> = ({
           <View style={[CommonStyles.ViewProgressBar, { marginVertical: 12 }]}>
             <LinearProgress
               style={CommonStyles.ProgressBar}
-              value={0.6}
+              value={1}
               color={Colors.NightBlue_800}
               variant="determinate"
               trackColor={Colors.NightBlue_200}
               animation={{ duration: 1500 }}
             />
-            <Text>{0.6 * 100}%</Text>
+            <Text>{60}%</Text>
           </View>
           <View style={CommonSpacingStyles.VerticalSpacing_40}>
             <View style={CommonSpacingStyles.VerticalSpacing_24}>
@@ -70,9 +72,15 @@ const GustosView: React.FC<IGustosViewProps> = ({
                 </Text>
               </View>
               <View
-                style={[CommonStyles.container, { paddingHorizontal: 10, paddingVertical: 10 }]}
+                style={[
+                  CommonStyles.container,
+                  { paddingHorizontal: 10, paddingVertical: 10 },
+                ]}
               >
-                <SeleccionTags OpcSeleccion={preferences} onSelectionChange={handleSelectionChange} />
+                <SeleccionTags
+                  OpcSeleccion={preferences}
+                  onSelectionChange={handleSelectionChange}
+                />
               </View>
               <View style={styles.container}>
                 <View style={styles.questionContainer}>
@@ -82,14 +90,22 @@ const GustosView: React.FC<IGustosViewProps> = ({
                   <View style={styles.radioContainer}>
                     <RadioButton
                       value="Si"
-                      status={responses.createEvents === "Si" ? "checked" : "unchecked"}
-                      onPress={() => handleResponseChange('createEvents', "Si")}
+                      status={
+                        responses.createEvents === "Si"
+                          ? "checked"
+                          : "unchecked"
+                      }
+                      onPress={() => handleResponseChange("createEvents", "Si")}
                     />
                     <Text style={styles.radioLabel}>Si</Text>
                     <RadioButton
                       value="No"
-                      status={responses.createEvents === "No" ? "checked" : "unchecked"}
-                      onPress={() => handleResponseChange('createEvents', "No")}
+                      status={
+                        responses.createEvents === "No"
+                          ? "checked"
+                          : "unchecked"
+                      }
+                      onPress={() => handleResponseChange("createEvents", "No")}
                     />
                     <Text style={styles.radioLabel}>No</Text>
                   </View>
@@ -101,14 +117,26 @@ const GustosView: React.FC<IGustosViewProps> = ({
                   <View style={styles.radioContainer}>
                     <RadioButton
                       value="Si"
-                      status={responses.provideServices === "Si" ? "checked" : "unchecked"}
-                      onPress={() => handleResponseChange('provideServices', "Si")}
+                      status={
+                        responses.provideServices === "Si"
+                          ? "checked"
+                          : "unchecked"
+                      }
+                      onPress={() =>
+                        handleResponseChange("provideServices", "Si")
+                      }
                     />
                     <Text style={styles.radioLabel}>Si</Text>
                     <RadioButton
                       value="No"
-                      status={responses.provideServices === "No" ? "checked" : "unchecked"}
-                      onPress={() => handleResponseChange('provideServices', "No")}
+                      status={
+                        responses.provideServices === "No"
+                          ? "checked"
+                          : "unchecked"
+                      }
+                      onPress={() =>
+                        handleResponseChange("provideServices", "No")
+                      }
                     />
                     <Text style={styles.radioLabel}>No</Text>
                   </View>
@@ -120,20 +148,23 @@ const GustosView: React.FC<IGustosViewProps> = ({
                   <View style={styles.radioContainer}>
                     <RadioButton
                       value="Si"
-                      status={responses.havePlace === "Si" ? "checked" : "unchecked"}
-                      onPress={() => handleResponseChange('havePlace', "Si")}
+                      status={
+                        responses.havePlace === "Si" ? "checked" : "unchecked"
+                      }
+                      onPress={() => handleResponseChange("havePlace", "Si")}
                     />
                     <Text style={styles.radioLabel}>Si</Text>
                     <RadioButton
                       value="No"
-                      status={responses.havePlace === "No" ? "checked" : "unchecked"}
-                      onPress={() => handleResponseChange('havePlace', "No")}
+                      status={
+                        responses.havePlace === "No" ? "checked" : "unchecked"
+                      }
+                      onPress={() => handleResponseChange("havePlace", "No")}
                     />
                     <Text style={styles.radioLabel}>No</Text>
                   </View>
                 </View>
               </View>
-
             </View>
             <View
               style={{
